@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact & Book Consultation | Jagat Turkiya</title>
+  <meta name="description" content="Get in touch with Jagat Turkiya's office for executive consultations, keynote speaking engagements, and Aapka Coach mentorship programs." />
+  <link rel="shortcut icon" href="./assets/images/logo-transparent.png" type="image/png" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,400;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="./css/style.css" />
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="index.html" class="brand-wrapper" aria-label="Jagat Turkiya Home">
+        <img src="./assets/images/logo-transparent.png" alt="Jagat Turkiya Logo" class="brand-logo-img" width="38" height="38" />
+        <span class="brand-name">Jagat Turkiya</span>
+      </a>
+
+      <nav class="main-nav" aria-label="Primary Navigation">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="about.html" class="nav-link">About</a>
+        <a href="media.html" class="nav-link">Media & Times Square</a>
+        <a href="books.html" class="nav-link">Books</a>
+        <a href="contact.html" class="nav-link active">Contact</a>
+      </nav>
+
+      <div class="header-actions">
+        <a href="contact.html" class="btn btn-gold">Book Consultation</a>
+        <button type="button" class="hamburger-btn" id="hamburgerBtn" aria-label="Open Navigation Menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Drawer -->
+  <div class="mobile-nav-drawer" id="mobileDrawer">
+    <div class="drawer-header">
+      <span class="brand-name">Jagat Turkiya</span>
+      <button type="button" class="drawer-close-btn" id="drawerCloseBtn" aria-label="Close Menu">&times;</button>
+    </div>
+    <ul class="mobile-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="media.html">Media & Times Square</a></li>
+      <li><a href="books.html">Books</a></li>
+      <li><a href="contact.html" class="active">Contact & Consultation</a></li>
+    </ul>
+  </div>
+
+  <div class="page-wrapper">
+    
+    <!-- PAGE TITLE -->
+    <section class="section" style="padding-bottom: 2rem;">
+      <div class="container">
+        <p class="section-eyebrow">Connect Directly</p>
+        <h1 class="section-title">Schedule a <span class="gold-accent serif-font">Consultation</span></h1>
+        <p class="section-desc">
+          Reach out to Jagat Turkiya’s executive office for keynote speaking invitations, corporate advisory, or executive 1-on-1 mentorship.
+        </p>
+      </div>
+    </section>
+
+    <!-- CONTACT DETAILS & FORM -->
+    <section class="section section-darker">
+      <div class="container">
+        <div class="contact-grid">
+          
+          <div class="contact-info-col">
+            <h3>Executive Advisory & <span class="gold-accent">Speaking Desk</span></h3>
+            <p>
+              Please provide details regarding your event, organization, or personal focus areas. Our executive team reviews every submission and responds within 24–48 hours.
+            </p>
+
+            <div class="contact-methods">
+              <div class="contact-method-item">
+                <h5>Official Email</h5>
+                <a href="mailto:hello@apkacoach.com">hello@apkacoach.com</a>
+              </div>
+
+              <div class="contact-method-item">
+                <h5>Keynote & Corporate Workshops</h5>
+                <p>Available worldwide for select leadership conferences and offsites.</p>
+              </div>
+
+              <div class="contact-method-item">
+                <h5>Platform & Mentorship</h5>
+                <p>Founder & CEO, Aapka Coach (<a href="https://apkacoach.com" target="_blank" rel="noopener noreferrer" style="color:var(--text-gold); text-decoration: underline;">apkacoach.com</a>)</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="contact-form-box">
+            <h4 style="font-size: 1.4rem; margin-bottom: 1.5rem;">Inquiry Form</h4>
+            
+            <form id="inquiryForm">
+              <div class="form-group">
+                <label class="form-label" for="userName">Full Name *</label>
+                <input type="text" id="userName" name="name" class="form-control" placeholder="Your full name" required />
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="userEmail">Email Address *</label>
+                <input type="email" id="userEmail" name="email" class="form-control" placeholder="name@domain.com" required />
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="userPhone">WhatsApp / Mobile Number *</label>
+                <input type="tel" id="userPhone" name="phone" class="form-control" placeholder="+91 98765 43210" required />
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="userPurpose">Primary Purpose *</label>
+                <select id="userPurpose" name="purpose" class="form-control" required>
+                  <option value="1-on-1 Executive Consultation">1-on-1 Executive Consultation</option>
+                  <option value="Keynote Speaking / Seminar">Keynote Speaking / Seminar</option>
+                  <option value="Aapka Coach Inquiries">Aapka Coach Programs</option>
+                  <option value="Media / Interview Request">Media / Interview Request</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="userMessage">Brief Context / Message</label>
+                <textarea id="userMessage" name="message" class="form-control" rows="4" placeholder="Tell us a little bit about your event, goals, or requirements..."></textarea>
+              </div>
+
+              <button type="submit" class="btn btn-gold" style="width: 100%; padding: 0.9rem;">
+                Submit Inquiry
+              </button>
+            </form>
+
+            <div id="formSuccessNotice" style="display: none; margin-top: 1.5rem; padding: 1.2rem; background: rgba(16, 185, 129, 0.1); border: 1px solid #10b981; border-radius: var(--radius-sm); text-align: center;">
+              <h5 style="color: #10b981; margin-bottom: 0.3rem;">Inquiry Received</h5>
+              <p style="color: var(--text-secondary); font-size: 0.88rem;">Thank you. Jagat Turkiya's team will get in touch with you shortly.</p>
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-top-grid">
+        <div class="footer-brand">
+          <div class="brand-wrapper">
+            <img src="./assets/images/logo-transparent.png" alt="Jagat Logo" class="brand-logo-img" width="32" height="32" />
+            <span class="brand-name">Jagat Turkiya</span>
+          </div>
+          <p>Global Transformation Coach, Keynote Speaker, Author, and Founder & CEO of Aapka Coach.</p>
+        </div>
+        <div class="footer-col">
+          <h5>Navigation</h5>
+          <ul class="footer-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About Jagat</a></li>
+            <li><a href="media.html">Media & Times Square</a></li>
+            <li><a href="books.html">Books</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h5>Ventures</h5>
+          <ul class="footer-links">
+            <li><a href="about.html#aapka-coach">Aapka Coach Platform</a></li>
+            <li><a href="contact.html">Keynote Inquiries</a></li>
+            <li><a href="books.html">Published Titles</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h5>Direct Contact</h5>
+          <ul class="footer-links">
+            <li><a href="mailto:hello@apkacoach.com">hello@apkacoach.com</a></li>
+            <li><a href="contact.html">Consultation Request Form</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom-bar">
+        <p>© 2026 Jagat Turkiya. All rights reserved.</p>
+        <p>Founder & CEO, Aapka Coach</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="./js/main.js"></script>
+</body>
+</html>

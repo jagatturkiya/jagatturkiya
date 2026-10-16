@@ -1,0 +1,9 @@
+# OS generated files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Logs & temporary files
+*.log
+*.tmp
+.temp/
