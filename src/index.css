@@ -781,10 +781,25 @@ h1, h2, h3, h4, h5, h6 {
   margin: 2rem 0;
 }
 
-@media (max-width: 860px) {
+.mastermind-visual-split.mastermind-split-reverse {
+  grid-template-columns: 1.15fr 1fr;
+}
+
+@media (max-width: 1024px) {
   .mastermind-visual-split {
+    gap: 2.5rem;
+  }
+}
+
+@media (max-width: 860px) {
+  .mastermind-visual-split,
+  .mastermind-visual-split.mastermind-split-reverse {
     grid-template-columns: 1fr;
     gap: 2rem;
+  }
+
+  .mastermind-visual-split.mastermind-split-reverse .mm-image-wrap {
+    order: -1;
   }
 }
 
@@ -809,6 +824,23 @@ h1, h2, h3, h4, h5, h6 {
 @media (max-width: 768px) {
   .mm-image-wrap {
     height: 300px;
+  }
+}
+
+@media (max-width: 480px) {
+  .mastermind-visual-split {
+    margin: 1.25rem 0;
+    gap: 1.5rem;
+  }
+
+  .mm-image-wrap {
+    height: 230px;
+    border-radius: var(--radius-sm);
+  }
+
+  .mm-visual-content .btn {
+    width: 100%;
+    justify-content: center;
   }
 }
 

@@ -258,9 +258,9 @@ export default function Mastermind() {
       {/* Visual Showcase 2: Collaborative Masterclass & Workshops */}
       <section className="section">
         <div className="container">
-          <div className="mastermind-visual-split" style={{ gridTemplateColumns: '1.15fr 1fr' }}>
+          <div className="mastermind-visual-split mastermind-split-reverse">
             <div className="mm-visual-content">
-              <h2 style={{ fontSize: 'clamp(1.8rem, 3vw, 2.4rem)', marginBottom: '1rem' }}>
+              <h2 style={{ fontSize: 'clamp(1.65rem, 3.2vw, 2.4rem)', marginBottom: '1rem', lineHeight: 1.25 }}>
                 Transforming Ambiguity into Sovereignty
               </h2>
               <p style={{ color: 'var(--text-silver)', fontSize: '1rem', lineHeight: 1.7, marginBottom: '1rem' }}>
