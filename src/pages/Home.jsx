@@ -85,10 +85,6 @@ export default function Home() {
                 alt="Jagat Turkiya featured on Times Square Billboard in New York City"
                 loading="lazy"
               />
-              <div className="ts-image-badge">
-                <span className="title">Times Square Marquee</span>
-                <span className="loc">New York City, USA</span>
-              </div>
             </div>
             <div className="ts-image-card">
               <img
@@ -96,10 +92,6 @@ export default function Home() {
                 alt="Jagat Turkiya Times Square Billboard Close View"
                 loading="lazy"
               />
-              <div className="ts-image-badge">
-                <span className="title">Topmate Creator Club</span>
-                <span className="loc">Global Recognition</span>
-              </div>
             </div>
           </div>
 

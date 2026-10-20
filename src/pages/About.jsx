@@ -74,7 +74,7 @@ export default function About() {
               </p>
 
               <div className="editorial-quote">
-                <p>"Jab aap khud par vishwas karna shuru karte hain, tab aapki zindagi badalna shuru hoti hai. Think Different, Make Difference."</p>
+                <p>"When you begin to believe in yourself, your life begins to transform. Think Different, Make Difference."</p>
                 <span>— Jagat Turkiya</span>
               </div>
 
@@ -171,25 +171,25 @@ export default function About() {
           <div className="pillars-grid">
             <div className="pillar-card">
               <div className="pillar-icon">01</div>
-              <h4>Clarity (Spasht-ta)</h4>
-              <p>Seeing reality as it is—not better, not worse. Stripping away the self-deception and stories holding you back from making clear decisions.</p>
+              <h4>Radical Clarity</h4>
+              <p>Seeing reality as it is—not better, not worse. Stripping away the self-deception and internal stories holding you back from making clear decisions.</p>
             </div>
 
             <div className="pillar-card">
               <div className="pillar-icon">02</div>
-              <h4>Focus (Kendra)</h4>
+              <h4>Undivided Focus</h4>
               <p>Stop chasing ten shiny opportunities at once. Identifying the 2 or 3 critical priorities that will genuinely move your life and family forward.</p>
             </div>
 
             <div className="pillar-card">
               <div className="pillar-icon">03</div>
-              <h4>Direction (Disha)</h4>
+              <h4>Clear Direction</h4>
               <p>Speed means nothing if you are traveling down the wrong road. Establishing a clear North Star for your finances, career, and relationships.</p>
             </div>
 
             <div className="pillar-card">
               <div className="pillar-icon">04</div>
-              <h4>Daily Action (Niyamit Abhyas)</h4>
+              <h4>Disciplined Daily Action</h4>
               <p>Motivation is fleeting and unreliable. Real transformation happens through small, disciplined daily habits executed consistently over time.</p>
             </div>
           </div>

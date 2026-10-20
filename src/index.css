@@ -933,6 +933,66 @@ h1, h2, h3, h4, h5, h6 {
   gap: 0.75rem;
 }
 
+/* Positive Qualification Grid */
+.criteria-positive-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+  margin: 3rem 0;
+}
+
+@media (max-width: 768px) {
+  .criteria-positive-grid {
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+  }
+}
+
+.positive-fit-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  padding: 2rem 1.75rem;
+  transition: var(--transition);
+  display: flex;
+  gap: 1.25rem;
+  align-items: flex-start;
+}
+
+.positive-fit-card:hover {
+  border-color: var(--border-hover);
+  background: var(--bg-card-hover);
+  transform: translateY(-2px);
+}
+
+.fit-check-icon {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 0.95rem;
+  flex-shrink: 0;
+}
+
+.fit-content h4 {
+  font-size: 1.15rem;
+  color: var(--text-white);
+  margin-bottom: 0.45rem;
+}
+
+.fit-content p {
+  font-size: 0.92rem;
+  color: var(--text-silver);
+  line-height: 1.6;
+  margin: 0;
+}
+
 /* Products Grid */
 .products-grid {
   display: grid;
@@ -1717,22 +1777,17 @@ select.form-control {
   grid-template-columns: 1fr 1fr;
   gap: 1.75rem;
   margin-top: 2rem;
-  margin-bottom: 2rem;
-}
-
-@media (max-width: 768px) {
-  .ts-showcase-grid {
-    grid-template-columns: 1fr;
-  }
+  margin-bottom: 2.25rem;
 }
 
 .ts-image-card {
   position: relative;
   border-radius: var(--radius-md);
   overflow: hidden;
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.12);
   background: #000000;
   height: 380px;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.6);
 }
 
 .ts-image-card img {
@@ -1748,48 +1803,15 @@ select.form-control {
   transform: scale(1.02);
 }
 
-.ts-image-badge {
-  position: absolute;
-  bottom: 1rem;
-  left: 1rem;
-  right: 1rem;
-  background: rgba(0, 0, 0, 0.82);
-  backdrop-filter: blur(8px);
-  padding: 0.65rem 1rem;
-  border-radius: 8px;
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.ts-image-badge span.title {
-  color: #ffffff;
-  font-size: 0.85rem;
-  font-weight: 600;
-}
-
-.ts-image-badge span.loc {
-  color: var(--text-muted);
-  font-size: 0.75rem;
-}
-
 .ts-narrative-box {
   background: rgba(255, 255, 255, 0.025);
   border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: var(--radius-md);
-  padding: 2.25rem 2.5rem;
+  padding: 2.5rem;
   display: grid;
   grid-template-columns: 2fr 1fr;
-  gap: 2rem;
+  gap: 2.5rem;
   align-items: center;
-}
-
-@media (max-width: 860px) {
-  .ts-narrative-box {
-    grid-template-columns: 1fr;
-    padding: 1.75rem;
-  }
 }
 
 .ts-narrative-box h3 {
@@ -1818,17 +1840,6 @@ select.form-control {
   padding-left: 2rem;
 }
 
-@media (max-width: 860px) {
-  .ts-narrative-stats {
-    border-left: none;
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
-    padding-left: 0;
-    padding-top: 1.5rem;
-    flex-direction: row;
-    justify-content: space-between;
-  }
-}
-
 .ts-stat-badge h4 {
   font-size: 1.5rem;
   color: #ffffff;
@@ -1842,4 +1853,62 @@ select.form-control {
   text-transform: uppercase;
   letter-spacing: 0.05em;
   margin: 0;
+}
+
+/* Times Square Mobile Responsiveness */
+@media (max-width: 860px) {
+  .ts-narrative-box {
+    grid-template-columns: 1fr;
+    padding: 1.75rem;
+    gap: 1.75rem;
+  }
+
+  .ts-narrative-stats {
+    border-left: none;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding-left: 0;
+    padding-top: 1.5rem;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    justify-content: space-between;
+  }
+}
+
+@media (max-width: 768px) {
+  .ts-showcase-grid {
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+    margin-top: 1.5rem;
+    margin-bottom: 1.75rem;
+  }
+
+  .ts-image-card {
+    height: 280px;
+    border-radius: 12px;
+  }
+
+  .ts-narrative-box {
+    padding: 1.5rem 1.25rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .ts-image-card {
+    height: 220px;
+  }
+
+  .ts-narrative-stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.75rem;
+  }
+
+  .ts-stat-badge h4 {
+    font-size: 1.2rem;
+  }
+
+  .ts-stat-badge p {
+    font-size: 0.7rem;
+  }
 }

@@ -9,7 +9,7 @@ export default function Mastermind() {
       num: "Week 01",
       title: "Financial Clarity & Diagnostic Audit",
       headline: "Know exactly where you stand before deciding where to go.",
-      desc: "A comprehensive baseline diagnostic of your financial reality: exact income channels, recurring burn rate, existing investments, hidden commitments, and genuine long-term priorities. Without knowing where you are today, choosing a direction is impossible."
+      desc: "A comprehensive baseline diagnostic of your financial reality: exact income channels, recurring expenses, existing investments, hidden commitments, and genuine long-term priorities. Without knowing where you are today, choosing a direction is impossible."
     },
     {
       num: "Week 02",
@@ -67,6 +67,25 @@ export default function Mastermind() {
     }
   ];
 
+  const qualifyingCriteria = [
+    {
+      title: "High-Earning Professionals & Founders",
+      desc: "Earning ₹5 Lakh to ₹10 Lakh or more per month, looking to transition from reactive earning to institutional-grade wealth management."
+    },
+    {
+      title: "Seekers of Direction & Structure",
+      desc: "High earners who feel substantial money comes in every month, but quietly slips away without a defined, transparent destination."
+    },
+    {
+      title: "Risk & Capital Allocation Clarity",
+      desc: "Leaders who want objective answers on how much capital to invest, where to safely park reserves, and how to eliminate downside risks."
+    },
+    {
+      title: "Enduring Family Wealth Architecture",
+      desc: "Individuals ready to install an orderly, disciplined financial system that protects their family security and delivers complete peace of mind."
+    }
+  ];
+
   const deliverables = [
     "10-Week Structured Financial Program",
     "Step-by-Step Personal Financial Framework",
@@ -104,26 +123,10 @@ export default function Mastermind() {
 
   return (
     <div className="mastermind-page">
-      {/* Hero Section */}
+      {/* Hero Section - Clean, No Capsules */}
       <section className="hero-section text-center">
         <LiquidHero />
         <div className="container hero-container" style={{ maxWidth: '920px', margin: '0 auto' }}>
-          <div style={{ display: 'inline-block', marginBottom: '1.25rem' }}>
-            <span style={{ 
-              background: 'rgba(255, 255, 255, 0.08)', 
-              border: '1px solid rgba(255, 255, 255, 0.15)', 
-              padding: '0.4rem 1rem', 
-              borderRadius: '999px', 
-              fontSize: '0.85rem', 
-              letterSpacing: '0.08em', 
-              textTransform: 'uppercase',
-              color: '#ffffff',
-              fontWeight: 600
-            }}>
-              10-Week Executive Financial Program
-            </span>
-          </div>
-
           <h1 className="hero-title" style={{ marginBottom: '1.25rem', fontSize: 'clamp(2.4rem, 4.5vw, 3.6rem)' }}>
             Your Wealth Compass <br />
             <span className="serif-font">Direction for Your Capital &amp; Life</span>
@@ -144,7 +147,7 @@ export default function Mastermind() {
         </div>
       </section>
 
-      {/* The Core Problem */}
+      {/* The Core Problem - Pure English */}
       <section className="section section-dark">
         <div className="container" style={{ maxWidth: '900px', margin: '0 auto' }}>
           <div className="section-header text-center" style={{ marginBottom: '2.5rem' }}>
@@ -164,16 +167,16 @@ export default function Mastermind() {
             gap: '1.25rem'
           }}>
             <p style={{ fontSize: '1.05rem', color: 'var(--text-white)', lineHeight: 1.7, fontWeight: 500 }}>
-              "Aap ₹5 lakh per month kama sakte hain. ₹10 lakh per month kama sakte hain. Lekin agar aapka cash flow properly managed nahi hai… agar investments ka clear purpose nahi hai… agar unnecessary risk le rahe hain ya unnecessarily risk avoid kar rahe hain—toh sirf high income hona enough nahi hai."
+              "You might be earning ₹5 Lakh to ₹10 Lakh or more every single month. But if your cash flow isn't structured, if your investments lack a defined purpose, and if you are taking blind risks or avoiding risk altogether—a high income alone will never build lasting wealth."
             </p>
 
             <p style={{ fontSize: '0.98rem', color: 'var(--text-silver)', lineHeight: 1.7 }}>
-              Income badhne ke saath financial complexity badh jaati hai. Expenses badhte hain. Investments badhte hain. Different financial decisions aate hain. Risk ka question aata hai. Future family goals aate hain.
+              As income increases, financial complexity multiplies. Living expenses expand, tax liabilities rise, and diverse investment options demand attention. Without a system, high income often leads to higher stress, not higher freedom.
             </p>
 
             <p style={{ fontSize: '0.98rem', color: 'var(--text-silver)', lineHeight: 1.7 }}>
-              Eventually problem ye nahi rehti: <em>"Main aur paisa kaise kamaun?"</em><br />
-              Real problem ban jaati hai: <strong>"Jo paisa main already kama raha hoon, usko properly kaise manage karun?"</strong>
+              Eventually, the real question is no longer: <em>"How do I make more money?"</em><br />
+              The decisive challenge becomes: <strong>"How do I properly protect, direct, and manage the capital I am already earning?"</strong>
             </p>
 
             <div style={{
@@ -184,71 +187,33 @@ export default function Mastermind() {
               borderRadius: '0 8px 8px 0'
             }}>
               <p style={{ margin: 0, color: '#ffffff', fontSize: '1rem', fontWeight: 600 }}>
-                You don't need another hot stock tip. You need a system. That is exactly what Your Wealth Compass installs.
+                You do not need another speculative tip. You need an institutional-grade operating system. That is exactly what Your Wealth Compass installs.
               </p>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Exclusion Criteria: Who This Is For vs Not For */}
+      {/* Qualifying Criteria - Positive Focus Only */}
       <section className="section">
         <div className="container">
           <div className="section-header text-center">
             <h2 className="section-title">Is This Right For You?</h2>
             <p className="section-subtitle" style={{ margin: '0 auto', maxWidth: '640px' }}>
-              We keep cohort sizes small and work only with those who are ready for serious, disciplined financial transformation.
+              Your Wealth Compass is engineered for high-earning leaders and professionals who match this profile:
             </p>
           </div>
 
-          <div className="criteria-grid">
-            <div className="criteria-card not-for">
-              <h4 style={{ color: '#ef4444' }}>
-                <span>✕</span> Who This is NOT For
-              </h4>
-              <ul className="criteria-list">
-                <li>
-                  <span>✕</span>
-                  <span><strong>Overnight Shortcut Seekers:</strong> Anyone looking for quick get-rich-quick hacks or speculative gambles.</span>
-                </li>
-                <li>
-                  <span>✕</span>
-                  <span><strong>Blind Followers:</strong> People who want to blindly execute random stock tips without understanding the underlying risk.</span>
-                </li>
-                <li>
-                  <span>✕</span>
-                  <span><strong>Passive Bystanders:</strong> Anyone expecting a program to magically build wealth without their own active participation and honesty.</span>
-                </li>
-                <li>
-                  <span>✕</span>
-                  <span><strong>Unwilling to Audit:</strong> Individuals unwilling to look objectively at their real spending, cash leaks, and debt commitments.</span>
-                </li>
-              </ul>
-            </div>
-
-            <div className="criteria-card is-for">
-              <h4 style={{ color: '#10b981' }}>
-                <span>✓</span> Who This IS Built For
-              </h4>
-              <ul className="criteria-list">
-                <li>
-                  <span>✓</span>
-                  <span><strong>High-Earning Professionals &amp; Founders:</strong> Earning ₹5 Lakh to ₹10 Lakh+ monthly seeking structured capital management.</span>
-                </li>
-                <li>
-                  <span>✓</span>
-                  <span><strong>Seekers of Direction:</strong> High earners who feel money is coming in, but slipping away without a clear destination.</span>
-                </li>
-                <li>
-                  <span>✓</span>
-                  <span><strong>Risk &amp; Allocation Clarity:</strong> People who want to understand exactly how much to invest, where to park it, and how to protect downside.</span>
-                </li>
-                <li>
-                  <span>✓</span>
-                  <span><strong>System Thinkers:</strong> Operators ready to build an enduring family wealth architecture that lasts decades.</span>
-                </li>
-              </ul>
-            </div>
+          <div className="criteria-positive-grid">
+            {qualifyingCriteria.map((item, idx) => (
+              <div key={idx} className="positive-fit-card">
+                <div className="fit-check-icon">✓</div>
+                <div className="fit-content">
+                  <h4>{item.title}</h4>
+                  <p>{item.desc}</p>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
       </section>
@@ -304,7 +269,7 @@ export default function Mastermind() {
 
             <div style={{ marginTop: '3rem', textAlign: 'center' }}>
               <Link to="/contact" className="btn btn-white" style={{ padding: '0.95rem 2.25rem', fontSize: '1rem' }}>
-                Apply for Next Cohort
+                Apply for Mastermind
               </Link>
             </div>
           </div>
@@ -317,7 +282,7 @@ export default function Mastermind() {
           <div className="section-header text-center">
             <h2 className="section-title">Frequently Asked Questions</h2>
             <p className="section-subtitle" style={{ margin: '0 auto' }}>
-              Straightforward answers about Your Wealth Compass and cohort enrollment.
+              Straightforward answers about Your Wealth Compass and enrollment.
             </p>
           </div>
 
