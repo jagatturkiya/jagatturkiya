@@ -87,12 +87,12 @@ export default function Header() {
           </li>
           <li>
             <NavLink to="/about" onClick={closeDrawer} className={({ isActive }) => (isActive ? 'active' : '')}>
-              About Jagat Turkiya
+              About
             </NavLink>
           </li>
           <li>
             <NavLink to="/contact" onClick={closeDrawer} className={({ isActive }) => (isActive ? 'active' : '')}>
-              Contact &amp; Advisory
+              Contact
             </NavLink>
           </li>
         </ul>
