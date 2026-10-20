@@ -13,7 +13,7 @@ export default function Header() {
         <div className="container header-container">
           <Link to="/" className="header-logo-link" aria-label="Jagat Turkiya Home">
             <img
-              src="/assets/images/logo-executive.svg"
+              src="./assets/images/logo-executive.svg"
               alt="Jagat Turkiya"
               className="header-logo-img"
               width="180"
@@ -59,7 +59,7 @@ export default function Header() {
       <div className={`mobile-nav-drawer ${drawerOpen ? 'open' : ''}`}>
         <div className="drawer-header">
           <img
-            src="/assets/images/logo-executive.svg"
+            src="./assets/images/logo-executive.svg"
             alt="Jagat Turkiya"
             className="header-logo-img"
             width="160"

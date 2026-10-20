@@ -7,35 +7,35 @@ export default function Home() {
     {
       title: "Kill That Black Dragon",
       genre: "Self Mastery & Psychological Sovereignty",
-      img: "/assets/images/book-dragon.webp",
+      img: "./assets/images/book-dragon.webp",
       desc: "A systematic psychological manual for dismantling internal friction, self-sabotaging patterns, and unconscious resistance holding back high achievers.",
       link: "https://www.amazon.in/dp/B08F2432W3"
     },
     {
       title: "Asli Nayak Kaun",
       genre: "Leadership & Internal Conviction",
-      img: "/assets/images/book-nayak.webp",
+      img: "./assets/images/book-nayak.webp",
       desc: "Deconstructs the core leadership principles of genuine sovereignty, personal responsibility, and ethical power in modern enterprise.",
       link: "https://www.amazon.in/dp/B08F22K6S9"
     },
     {
       title: "Langotiya Yaar",
       genre: "Relational Dynamics & Emotional Grounding",
-      img: "/assets/images/book-langotiya.webp",
+      img: "./assets/images/book-langotiya.webp",
       desc: "An exploration of human connection, enduring bonds, and the critical role of authentic relationships in balancing intense professional ambition.",
       link: "https://www.amazon.in/dp/B08F22S9KM"
     },
     {
       title: "Nadar Rishte",
       genre: "High EQ & Family Architecture",
-      img: "/assets/images/book-nadar.webp",
+      img: "./assets/images/book-nadar.webp",
       desc: "Addresses the invisible cracks in relationships caused by corporate pressure, establishing proven communication frameworks for resilient partnerships.",
       link: "https://www.amazon.in/dp/B08F23CSW7"
     },
     {
       title: "Anubhav Sagar",
       genre: "Wisdom Syntheses & Life Strategy",
-      img: "/assets/images/book-anubhav.webp",
+      img: "./assets/images/book-anubhav.webp",
       desc: "A profound compendium of synthesized lessons from 15+ years in corporate IT and coaching high-net-worth entrepreneurs navigating extreme high-stakes crossroads.",
       link: "https://www.amazon.in/dp/B08F22X54M"
     }
@@ -198,7 +198,7 @@ export default function Home() {
         <div className="container">
           <div className="story-split">
             <div className="story-image-wrap">
-              <img src="/assets/images/seminar.webp" alt="Jagat Turkiya Live Seminar" loading="lazy" />
+              <img src="./assets/images/seminar.webp" alt="Jagat Turkiya Live Seminar" loading="lazy" />
             </div>
 
             <div className="story-text">

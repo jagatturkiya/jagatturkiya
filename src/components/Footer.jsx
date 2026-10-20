@@ -9,7 +9,7 @@ export default function Footer() {
           <div className="footer-brand">
             <Link to="/" className="header-logo-link" aria-label="Jagat Turkiya Home">
               <img
-                src="/assets/images/logo-executive.svg"
+                src="./assets/images/logo-executive.svg"
                 alt="Jagat Turkiya"
                 className="header-logo-img"
                 width="160"
@@ -66,7 +66,7 @@ export default function Footer() {
               title="Visit Aapka Coach"
             >
               <img
-                src="/assets/images/apkacoach-logo-dark.png"
+                src="./assets/images/apkacoach-logo-dark.png"
                 alt="Aapka Coach"
                 className="apkacoach-logo-img"
                 width="95"

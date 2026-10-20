@@ -23,7 +23,7 @@ export default function About() {
         <div className="container">
           <div className="story-split">
             <div className="story-image-wrap">
-              <img src="/assets/images/seminar.webp" alt="Jagat Turkiya Live Seminar" loading="lazy" />
+              <img src="./assets/images/seminar.webp" alt="Jagat Turkiya Live Seminar" loading="lazy" />
             </div>
 
             <div className="story-text">
@@ -72,7 +72,7 @@ export default function About() {
             </div>
 
             <div className="story-image-wrap">
-              <img src="/assets/images/jagat-portrait.webp" alt="Jagat Turkiya Portrait" loading="lazy" />
+              <img src="./assets/images/jagat-portrait.webp" alt="Jagat Turkiya Portrait" loading="lazy" />
             </div>
           </div>
         </div>
