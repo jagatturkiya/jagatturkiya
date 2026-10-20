@@ -7,37 +7,37 @@ export default function Mastermind() {
   const books = [
     {
       title: "Kill That Black Dragon",
-      genre: "Self Mastery & Psychological Sovereignty",
+      genre: "Mindset & Overcoming Fear",
       img: "./assets/images/book-dragon.webp",
-      desc: "A systematic psychological manual for dismantling internal friction, self-sabotaging patterns, and unconscious resistance holding back high achievers.",
+      desc: "A practical guide to dismantling internal resistance, self-sabotaging habits, and fear holding back high achievers.",
       link: "https://www.amazon.in/dp/B08F2432W3"
     },
     {
       title: "Asli Nayak Kaun",
-      genre: "Leadership & Internal Conviction",
+      genre: "Leadership & Responsibility",
       img: "./assets/images/book-nayak.webp",
-      desc: "Deconstructs the core leadership principles of genuine sovereignty, personal responsibility, and ethical power in modern enterprise.",
+      desc: "Deconstructs the principles of true leadership, self-reliance, and personal authority in everyday life.",
       link: "https://www.amazon.in/dp/B08F22K6S9"
     },
     {
       title: "Langotiya Yaar",
-      genre: "Relational Dynamics & Emotional Grounding",
+      genre: "Relationships & Connection",
       img: "./assets/images/book-langotiya.webp",
-      desc: "An exploration of human connection, enduring bonds, and the critical role of authentic relationships in balancing intense professional ambition.",
+      desc: "An exploration of genuine friendship, human connection, and balancing career success with real relationships.",
       link: "https://www.amazon.in/dp/B08F22S9KM"
     },
     {
       title: "Nadar Rishte",
-      genre: "High EQ & Family Architecture",
+      genre: "Family Harmony & Emotional EQ",
       img: "./assets/images/book-nadar.webp",
-      desc: "Addresses the invisible cracks in relationships caused by corporate pressure, establishing proven communication frameworks for resilient partnerships.",
+      desc: "Addresses the unspoken friction in personal and professional relationships, offering proven communication tools.",
       link: "https://www.amazon.in/dp/B08F23CSW7"
     },
     {
       title: "Anubhav Sagar",
-      genre: "Wisdom Syntheses & Life Strategy",
+      genre: "Wisdom & Life Strategy",
       img: "./assets/images/book-anubhav.webp",
-      desc: "A profound compendium of synthesized lessons from 15+ years in corporate IT and coaching high-net-worth entrepreneurs navigating extreme high-stakes crossroads.",
+      desc: "Key life lessons synthesized from over 15 years in enterprise IT, coaching, and guiding people through critical milestones.",
       link: "https://www.amazon.in/dp/B08F22X54M"
     }
   ];
@@ -45,88 +45,72 @@ export default function Mastermind() {
   const modules = [
     {
       num: "01",
-      title: "The Financial Operating System & Cashflow Firewalls",
-      desc: "Installing hard structural barriers between personal net worth and operating company volatility. Auditing silent capital leaks, tax inefficiencies, and unnecessary operational risks."
+      title: "Psychology of Money & Mindset",
+      desc: "Uncover and eliminate the unconscious habits, scarcity fears, and spending triggers that cause high earners to feel insecure."
     },
     {
       num: "02",
-      title: "Defensive Wealth Architecture & Runway Engineering",
-      desc: "Calculating your true emergency runway multiplier. Structuring a multi-tier liquid fortress ensuring you never make forced, low-leverage business decisions out of cash anxiety."
+      title: "Defensive Financial Structure",
+      desc: "Set up emergency runway buffers, plug silent money leaks, and build safety nets that protect you and your family."
     },
     {
       num: "03",
-      title: "High-Net-Worth Psychology & Behavioral Sovereignty",
-      desc: "Synthesizing deep principles from Jagat's 5 published works. Overcoming lifestyle inflation creep, founder loneliness, and unconscious self-sabotage that drains high monthly incomes."
+      title: "Clear Capital Allocation",
+      desc: "Learn straightforward frameworks to allocate your monthly cashflow into safe savings, investments, and business growth."
     },
     {
       num: "04",
-      title: "Institutional Capital Allocation & Asset Moats",
-      desc: "Moving beyond basic retail mutual funds. Learning how institutional families construct resilient multi-asset moats that preserve generational purchasing power against debasement."
-    },
-    {
-      num: "05",
-      title: "The Closed-Door Executive Syndicate & Peer Audits",
-      desc: "Bi-weekly confidential war-rooms with verified founders and executives. Transparent teardowns of real portfolios, business bottlenecks, and high-stakes opportunities."
+      title: "Sustained Peace of Mind",
+      desc: "Install a clear financial operating system that runs predictably so you can focus on your work, family, and passions."
     }
   ];
 
   const faqItems = [
     {
-      question: "Who is the Mastermind specifically designed for?",
-      answer: "The Mastermind is built specifically for founders, business owners, senior executives, and high-income professionals earning ₹5 Lakhs to ₹10 Lakhs+ monthly who have mastered income generation but lack an institutional system for capital defense and compounding."
+      question: "Who is the Mastermind designed for?",
+      answer: "The Mastermind is designed for business owners, salaried leaders, and professionals who earn well but want clarity, structure, and a reliable system to manage and protect their wealth."
     },
     {
-      question: "How is Mastermind different from generic financial courses?",
-      answer: "This is not a generic stock trading course or motivational webinar. It is an intimate, closed-door executive advisory cohort where Jagat Turkiya personally audits your financial operating system, installs institutional firewalls, and holds you accountable in bi-weekly syndicate sessions."
+      question: "What is the format and time commitment?",
+      answer: "The program includes structured weekly masterclasses, practical blueprint exercises, and direct Q&A sessions with Jagat Turkiya. The commitment is roughly 2 to 3 hours per week."
     },
     {
-      question: "What is the cohort size and time commitment?",
-      answer: "Cohorts are strictly capped at 12 qualified members per intake to preserve complete non-disclosure and personalized audit depth. The commitment is approximately 3 to 4 hours per month across bi-weekly executive deep-dives."
-    },
-    {
-      question: "How do I apply for the upcoming cohort?",
-      answer: "Admission is strictly through a private strategy evaluation with the advisory team. Submit your application through the Contact desk, and qualified applicants receive a confidential scheduling link within 24 hours."
+      question: "How do I join or get more details?",
+      answer: "Click the 'Join Mastermind' or 'Book Consultation' button to reach out to our team. We will share the full program details and schedule a brief call to see if it is the right fit."
     }
   ];
 
   return (
     <div className="mastermind-page">
-      {/* Top Announcement Bar */}
-      <div className="top-announcement-bar">
-        <div className="container text-center">
-          <span>Executive Mentorship &amp; Strategy Mastermind • Mentored Personally by Jagat Turkiya</span>
-        </div>
-      </div>
-
       {/* Hero Section */}
-      <section className="hero-section text-center" style={{ padding: '6rem 0 4.5rem 0' }}>
+      <section className="hero-section text-center" style={{ padding: '6.5rem 0 4.5rem 0' }}>
         <LiquidHero />
         <div className="container hero-container" style={{ maxWidth: '900px', margin: '0 auto' }}>
           <h1 className="hero-title" style={{ marginBottom: '1.25rem' }}>
             The Financial &amp; Wealth <br />
             <span className="serif-font">Transformation Mastermind</span>
           </h1>
-          <p className="hero-lead" style={{ maxWidth: '740px', margin: '0 auto 2.25rem auto' }}>
-            Earning ₹5L to ₹10L+ a month is an offense. Keeping it and compounding it is defense. Without a system, high income just creates bigger mistakes at higher speeds. Mastermind installs the institutional clarity and execution roadmap usually kept behind closed doors.
+          <p className="hero-lead" style={{ maxWidth: '720px', margin: '0 auto 2.25rem auto' }}>
+            Earning money is one skill. Protecting and compounding it without anxiety is another. Mastermind gives you the clarity and systems to manage your wealth with confidence.
           </p>
           <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap' }}>
             <Link to="/contact" className="btn btn-white">
               Join Mastermind
             </Link>
             <a href="#bookshelf" className="btn btn-glass">
-              Explore Published Books ↓
+              Explore Books ↓
             </a>
           </div>
         </div>
       </section>
 
-      {/* Systems Installed Grid */}
+      {/* Curriculum Grid */}
       <section className="section" id="framework">
         <div className="container">
           <div className="section-header text-center">
-            <h2 className="section-title">Systems Installed. Wealth Unlocked.</h2>
-            <p className="section-subtitle" style={{ margin: '0 auto', maxWidth: '700px' }}>
-              You don’t need another generic finance podcast. You need a stress-tested financial operating system.
+            <h2 className="section-title">What You Will Learn</h2>
+            <p className="section-subtitle" style={{ margin: '0 auto', maxWidth: '640px' }}>
+              Four practical modules engineered to bring order, structure, and growth to your finances.
             </p>
           </div>
 
@@ -139,42 +123,6 @@ export default function Mastermind() {
               </div>
             ))}
           </div>
-
-          <div className="deliverables-panel">
-            <h3 style={{ fontSize: '1.6rem', marginBottom: '1.5rem', textAlign: 'center' }}>
-              Mastermind Member Deliverables &amp; Protocol
-            </h3>
-            <div className="deliverables-grid">
-              <div className="deliverable-item">
-                <span className="deliverable-check">✓</span>
-                <div>
-                  <strong>Personal Wealth Audit</strong>
-                  <p>Comprehensive 1-on-1 diagnostic mapping every asset, liability, leak, and runway vulnerability.</p>
-                </div>
-              </div>
-              <div className="deliverable-item">
-                <span className="deliverable-check">✓</span>
-                <div>
-                  <strong>Bi-Weekly Closed-Door War-Rooms</strong>
-                  <p>Confidential sessions with Jagat Turkiya and an elite cohort of 12 verified peers.</p>
-                </div>
-              </div>
-              <div className="deliverable-item">
-                <span className="deliverable-check">✓</span>
-                <div>
-                  <strong>Direct Advisory Access</strong>
-                  <p>Private channel for real-time strategic counsel on critical financial and operational decisions.</p>
-                </div>
-              </div>
-              <div className="deliverable-item">
-                <span className="deliverable-check">✓</span>
-                <div>
-                  <strong>Institutional Template Library</strong>
-                  <p>Proprietary allocation spreadsheets, runway calculators, and mental models.</p>
-                </div>
-              </div>
-            </div>
-          </div>
         </div>
       </section>
 
@@ -182,10 +130,9 @@ export default function Mastermind() {
       <section className="section section-dark" id="bookshelf">
         <div className="container">
           <div className="section-header text-center">
-            <span className="section-eyebrow">Intellectual Foundation</span>
-            <h2 className="section-title">Rooted in 5 Published Books</h2>
-            <p className="section-subtitle" style={{ margin: '0 auto', maxWidth: '720px' }}>
-              Mastermind curriculum incorporates the foundational psychological and behavioral frameworks documented in Jagat Turkiya’s five published works.
+            <h2 className="section-title">Author of 5 Published Books</h2>
+            <p className="section-subtitle" style={{ margin: '0 auto', maxWidth: '640px' }}>
+              Jagat Turkiya’s published works on personal leadership, relationships, and mindset.
             </p>
           </div>
 
@@ -211,14 +158,13 @@ export default function Mastermind() {
         </div>
       </section>
 
-      {/* FAQ Accordion Section */}
+      {/* FAQ Section */}
       <section className="section">
         <div className="container" style={{ maxWidth: '840px', margin: '0 auto' }}>
           <div className="section-header text-center">
-            <span className="section-eyebrow">Clarifications</span>
             <h2 className="section-title">Frequently Asked Questions</h2>
             <p className="section-subtitle" style={{ margin: '0 auto' }}>
-              Everything you need to know about Mastermind admission, structure, and confidentiality.
+              Common questions about the Mastermind structure and participation.
             </p>
           </div>
 
@@ -227,15 +173,15 @@ export default function Mastermind() {
       </section>
 
       {/* Final Mastermind CTA */}
-      <section className="section section-dark text-center" style={{ padding: '6rem 0' }}>
-        <div className="container" style={{ maxWidth: '780px', margin: '0 auto' }}>
-          <h2 style={{ fontSize: 'clamp(2rem, 3.5vw, 2.85rem)', marginBottom: '1.25rem' }}>
-            Ready to Install Your Institutional <span className="serif-font">Wealth Operating System?</span>
+      <section className="section section-dark text-center" style={{ padding: '5.5rem 0' }}>
+        <div className="container" style={{ maxWidth: '740px', margin: '0 auto' }}>
+          <h2 style={{ fontSize: 'clamp(2rem, 3.5vw, 2.7rem)', marginBottom: '1rem' }}>
+            Take Control of Your <span className="serif-font">Financial Future</span>
           </h2>
-          <p style={{ color: 'var(--text-silver)', fontSize: '1.05rem', marginBottom: '2.25rem', lineHeight: 1.7 }}>
-            Take command of your financial defense, emotional grounding, and strategic trajectory with Jagat Turkiya.
+          <p style={{ color: 'var(--text-silver)', fontSize: '1.05rem', marginBottom: '2rem', lineHeight: 1.6 }}>
+            Connect with Jagat Turkiya and his team to learn more about upcoming Mastermind sessions.
           </p>
-          <Link to="/contact" className="btn btn-white" style={{ padding: '1rem 2.5rem', fontSize: '1rem' }}>
+          <Link to="/contact" className="btn btn-white" style={{ padding: '0.95rem 2.25rem', fontSize: '1rem' }}>
             Book Consultation
           </Link>
         </div>

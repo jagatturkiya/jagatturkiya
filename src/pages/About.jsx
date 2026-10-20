@@ -4,20 +4,19 @@ import { Link } from 'react-router-dom';
 export default function About() {
   return (
     <div className="about-page">
-      {/* Page Header - Clean Executive Styling without WebGL */}
-      <section className="page-header" style={{ padding: '6.5rem 0 4rem', borderBottom: '1px solid var(--border-subtle)', background: 'linear-gradient(180deg, var(--bg-black) 0%, var(--bg-surface) 100%)' }}>
-        <div className="container text-center" style={{ maxWidth: '860px', margin: '0 auto' }}>
-          <span className="section-eyebrow">The Authentic Story</span>
-          <h1 className="section-title" style={{ fontSize: 'clamp(2.4rem, 4.5vw, 3.4rem)', marginBottom: '1.25rem' }}>
+      {/* Page Header - Clean, No Gradient, No Eyebrow */}
+      <section className="page-header" style={{ padding: '5.5rem 0 3.5rem', borderBottom: '1px solid var(--border-subtle)', background: 'var(--bg-black)' }}>
+        <div className="container text-center" style={{ maxWidth: '820px', margin: '0 auto' }}>
+          <h1 className="section-title" style={{ fontSize: 'clamp(2.4rem, 4.5vw, 3.4rem)', marginBottom: '1rem' }}>
             Architect of Clarity &amp; <span className="serif-font">Human Potential</span>
           </h1>
-          <p className="section-subtitle" style={{ maxWidth: '740px', margin: '0 auto', fontSize: '1.1rem', color: 'var(--text-silver)', lineHeight: 1.7 }}>
-            From walking 4 km on foot every day to save ₹30, to guiding thousands of high-achieving founders across 9+ countries, setting a Guinness World Record milestone, publishing 5 transformative books, and standing on the Times Square marquee in New York City.
+          <p className="section-subtitle" style={{ maxWidth: '680px', margin: '0 auto', fontSize: '1.05rem', color: 'var(--text-silver)', lineHeight: 1.6 }}>
+            Guiding founders, professionals, and families across 9+ countries to build inner clarity, emotional grounding, and purposeful action.
           </p>
         </div>
       </section>
 
-      {/* The Hardship Season & Origin */}
+      {/* Origin Story */}
       <section className="section">
         <div className="container">
           <div className="story-split">
@@ -26,15 +25,14 @@ export default function About() {
             </div>
 
             <div className="story-text">
-              <span className="section-eyebrow">The Origin</span>
-              <h2 style={{ fontSize: 'clamp(2rem, 3.2vw, 2.6rem)', marginBottom: '1.25rem' }}>
+              <h2 style={{ fontSize: 'clamp(1.8rem, 3vw, 2.4rem)', marginBottom: '1.25rem' }}>
                 Forged in Scarcity, Guided by Purpose
               </h2>
               <p>
-                Before stepping onto international keynote stages or authoring 5 published books, Jagat’s life was tested in the crucible of financial constraint. Early in his journey, he walked 4 kilometers on foot every single day for 12 continuous months simply to save ₹30 in daily transit expenses.
+                Before stepping onto keynote stages and publishing 5 books, Jagat walked 4 kilometers on foot every single day for an entire year simply to save ₹30 in daily bus fare.
               </p>
               <p>
-                That defining period permanently eliminated all excuses. It taught him the profound power of compounding discipline, the psychology of emotional resilience, and the danger of falling into self-pity.
+                That defining season taught him that true growth is never about excuses—it is about relentless consistency, self-discipline, and taking complete responsibility for your outcomes.
               </p>
 
               <div className="editorial-quote">
@@ -43,30 +41,26 @@ export default function About() {
               </div>
 
               <p>
-                Rather than allowing scarcity to become a limitation, Jagat leveraged it as a catalyst to master human behavior, emotional intelligence, and high-performance financial systems.
+                Today, he channels those real-life lessons to help leaders master their internal psychology and make high-stakes life decisions with calm confidence.
               </p>
             </div>
           </div>
         </div>
       </section>
 
-      {/* 15 Years in IT & Mentorship Authority */}
+      {/* 15 Years of Experience */}
       <section className="section section-dark">
         <div className="container">
           <div className="story-split" style={{ gridTemplateColumns: '1.1fr 0.9fr' }}>
             <div className="story-text">
-              <span className="section-eyebrow">Technical Architecture &amp; Advisory</span>
-              <h2 style={{ fontSize: 'clamp(2rem, 3.2vw, 2.6rem)', marginBottom: '1.25rem' }}>
-                From 15 Years in Corporate IT to Mentorship Authority
+              <h2 style={{ fontSize: 'clamp(1.8rem, 3vw, 2.4rem)', marginBottom: '1.25rem' }}>
+                15+ Years of Real Mentorship
               </h2>
               <p>
-                With over 15 years of rigorous professional experience spanning IT engineering, financial advisory, and executive coaching, Jagat recognized a critical pattern: technical intelligence alone is never enough for sustained fulfillment. High achievers regularly struggle with mental blind spots, relationship strain, and chronic procrastination.
+                With more than 15 years in enterprise IT and executive advisory, Jagat recognized that intelligence alone doesn't guarantee peace or fulfillment. Even the most successful people battle mental roadblocks, relationship friction, and self-doubt.
               </p>
               <p>
-                Over the last several years alone, Jagat has conducted over 1,500+ private 1-on-1 deep mentorship consultations and impacted more than 15,000 lives across India, the United States, the UK, UAE, Canada, Thailand, and Mauritius.
-              </p>
-              <p>
-                His unique advisory approach combines analytical enterprise precision with profound emotional understanding—giving leaders the systems they need to protect their balance sheets and the mindset they need to sustain inner peace.
+                Through 1,500+ private 1-on-1 sessions and impacting 15,000+ people across 9 countries, Jagat delivers practical, compassionate guidance that helps individuals regain clarity and build harmonious relationships.
               </p>
             </div>
 
@@ -77,61 +71,59 @@ export default function About() {
         </div>
       </section>
 
-      {/* Honors & Global Recognitions */}
+      {/* Honors & Milestones */}
       <section className="section">
         <div className="container">
           <div className="section-header text-center">
-            <span className="section-eyebrow">Global Footprint</span>
-            <h2 className="section-title">Recognized Nationally &amp; Globally</h2>
-            <p className="section-subtitle" style={{ margin: '0 auto', maxWidth: '720px' }}>
-              Milestones achieved along the path of building credible, transformative human leadership.
+            <h2 className="section-title">National &amp; Global Milestones</h2>
+            <p className="section-subtitle" style={{ margin: '0 auto', maxWidth: '640px' }}>
+              Recognitions earned on the journey of empowering people and communities.
             </p>
           </div>
 
           <div className="achievements-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))', gap: '1.5rem' }}>
             <div className="achievement-card card-glass" style={{ padding: '2rem' }}>
               <div style={{ fontSize: '2.5rem', marginBottom: '1rem' }}>🏆</div>
-              <h4 style={{ fontSize: '1.25rem', marginBottom: '0.6rem', color: '#ffffff' }}>Guinness World Record</h4>
-              <p style={{ color: 'var(--text-silver)', fontSize: '0.92rem', lineHeight: 1.6 }}>
-                Associated with the historic Guinness World Record event as speaker and leadership mentor.
+              <h4 style={{ fontSize: '1.2rem', marginBottom: '0.5rem', color: '#ffffff' }}>Guinness World Record</h4>
+              <p style={{ color: 'var(--text-silver)', fontSize: '0.9rem', lineHeight: 1.6 }}>
+                Official co-author in the Guinness World Record for the thickest published book in the world.
               </p>
             </div>
 
             <div className="achievement-card card-glass" style={{ padding: '2rem' }}>
               <div style={{ fontSize: '2.5rem', marginBottom: '1rem' }}>🎖️</div>
-              <h4 style={{ fontSize: '1.25rem', marginBottom: '0.6rem', color: '#ffffff' }}>National Icon Award 2024</h4>
-              <p style={{ color: 'var(--text-silver)', fontSize: '0.92rem', lineHeight: 1.6 }}>
-                Conferred with the prestigious Icon 2024 award for excellence in human coaching and public empowerment.
+              <h4 style={{ fontSize: '1.2rem', marginBottom: '0.5rem', color: '#ffffff' }}>National Icon Award 2024</h4>
+              <p style={{ color: 'var(--text-silver)', fontSize: '0.9rem', lineHeight: 1.6 }}>
+                Awarded for outstanding contribution to human coaching and personal empowerment.
               </p>
             </div>
 
             <div className="achievement-card card-glass" style={{ padding: '2rem' }}>
               <div style={{ fontSize: '2.5rem', marginBottom: '1rem' }}>🏅</div>
-              <h4 style={{ fontSize: '1.25rem', marginBottom: '0.6rem', color: '#ffffff' }}>Dr. APJ Abdul Kalam Award</h4>
-              <p style={{ color: 'var(--text-silver)', fontSize: '0.92rem', lineHeight: 1.6 }}>
-                Recognized for tireless contribution to youth education, mindset transformation, and social value.
+              <h4 style={{ fontSize: '1.2rem', marginBottom: '0.5rem', color: '#ffffff' }}>Dr. APJ Abdul Kalam Award</h4>
+              <p style={{ color: 'var(--text-silver)', fontSize: '0.9rem', lineHeight: 1.6 }}>
+                Recognized for dedicated work in youth empowerment, education, and social leadership.
               </p>
             </div>
 
             <div className="achievement-card card-glass" style={{ padding: '2rem' }}>
               <div style={{ fontSize: '2.5rem', marginBottom: '1rem' }}>🌟</div>
-              <h4 style={{ fontSize: '1.25rem', marginBottom: '0.6rem', color: '#ffffff' }}>Times Square, NYC Billboard</h4>
-              <p style={{ color: 'var(--text-silver)', fontSize: '0.92rem', lineHeight: 1.6 }}>
-                Featured on the iconic marquee in Times Square, New York City through Topmate’s Creator Club.
+              <h4 style={{ fontSize: '1.2rem', marginBottom: '0.5rem', color: '#ffffff' }}>Times Square NYC Billboard</h4>
+              <p style={{ color: 'var(--text-silver)', fontSize: '0.9rem', lineHeight: 1.6 }}>
+                Featured on the digital marquee in Times Square, New York City via Topmate’s Creator Club.
               </p>
             </div>
           </div>
         </div>
       </section>
 
-      {/* The 4 Pillars of Transformation */}
+      {/* The 4 Pillars */}
       <section className="section section-dark">
         <div className="container">
           <div className="section-header text-center">
-            <span className="section-eyebrow">The Methodology</span>
             <h2 className="section-title">The 4 Pillars of Transformation</h2>
-            <p className="section-subtitle" style={{ margin: '0 auto', maxWidth: '740px' }}>
-              The four cornerstone disciplines engineered by Jagat Turkiya to build an unshakeable foundation for life, wealth, and family harmony.
+            <p className="section-subtitle" style={{ margin: '0 auto', maxWidth: '640px' }}>
+              Core principles designed to help you live with purpose, clarity, and peace of mind.
             </p>
           </div>
 
@@ -139,38 +131,38 @@ export default function About() {
             <div className="pillar-card">
               <div className="pillar-icon">01</div>
               <h4>Radical Clarity</h4>
-              <p>Most people do not suffer from a lack of effort; they suffer from ambiguity. Clarity means identifying where you truly stand, stripping away illusions, and defining your non-negotiables.</p>
+              <p>Knowing exactly who you are, where you stand, and what matters most. Stripping away confusion.</p>
             </div>
 
             <div className="pillar-card">
               <div className="pillar-icon">02</div>
               <h4>Undivided Focus</h4>
-              <p>In a hyper-stimulated world designed for continuous distraction, focus is an elite advantage. Filtering out noise to direct your cognitive resources into high-leverage milestones.</p>
+              <p>Cutting through daily noise and distractions to channel your energy toward what moves the needle.</p>
             </div>
 
             <div className="pillar-card">
               <div className="pillar-icon">03</div>
-              <h4>Strategic Direction</h4>
-              <p>Aimless hard work leads to burnout. Direction means having an objective, step-by-step roadmap with strict timeline accountability and measurable benchmarks.</p>
+              <h4>Clear Direction</h4>
+              <p>Having a straightforward, step-by-step roadmap so you always know your next right step.</p>
             </div>
 
             <div className="pillar-card">
               <div className="pillar-icon">04</div>
               <h4>Disciplined Action</h4>
-              <p>Execution that functions independently of temporary emotional states. Building daily habit loops that ensure continuous momentum even on days when motivation is absent.</p>
+              <p>Building consistent daily habits that keep you moving forward regardless of mood or motivation.</p>
             </div>
           </div>
         </div>
       </section>
 
-      {/* The 500,000 Mission Panel */}
+      {/* Mission Panel */}
       <section className="section">
         <div className="container">
           <div className="ts-narrative" style={{ background: 'var(--bg-card)', padding: '3.5rem', borderRadius: 'var(--radius-lg)', display: 'grid', gridTemplateColumns: '1.3fr 0.7fr', gap: '2.5rem', alignItems: 'center' }}>
             <div>
-              <h2 style={{ fontSize: '2.1rem', marginBottom: '1rem' }}>The Mission to Empower 500,000 Lives</h2>
-              <p style={{ color: 'var(--text-silver)', lineHeight: 1.75, fontSize: '1rem', marginBottom: '1.75rem' }}>
-                Through <strong>Minderist Training LLP</strong>, his 5 published books, and <strong>Aapka Coach</strong> (<a href="https://apkacoach.com" target="_blank" rel="noopener noreferrer" style={{ color: '#ffffff', textDecoration: 'underline' }}>apkacoach.com</a>), Jagat is on an active mission to bring clarity, emotional sovereignty, and purpose to 500,000 individuals across India and the global Indian diaspora.
+              <h2 style={{ fontSize: '2rem', marginBottom: '1rem' }}>Empowering 500,000 Lives</h2>
+              <p style={{ color: 'var(--text-silver)', lineHeight: 1.7, fontSize: '1rem', marginBottom: '1.75rem' }}>
+                Through <strong>Minderist Training LLP</strong>, 5 published books, and <strong>Aapka Coach</strong> (<a href="https://apkacoach.com" target="_blank" rel="noopener noreferrer" style={{ color: '#ffffff', textDecoration: 'underline' }}>apkacoach.com</a>), Jagat is on a mission to bring clarity, emotional resilience, and purpose to 500,000 individuals worldwide.
               </p>
               <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap' }}>
                 <Link to="/contact" className="btn btn-white">
@@ -185,15 +177,15 @@ export default function About() {
             <div className="ts-badge-panel" style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem', borderLeft: '1px solid var(--border-subtle)', paddingLeft: '2rem' }}>
               <div>
                 <h3 style={{ fontSize: '2.4rem', color: '#ffffff', lineHeight: 1 }}>500,000</h3>
-                <p style={{ color: 'var(--text-muted)', fontSize: '0.85rem', textTransform: 'uppercase', letterSpacing: '0.05em' }}>Mission Target</p>
+                <p style={{ color: 'var(--text-muted)', fontSize: '0.85rem', textTransform: 'uppercase' }}>Mission Goal</p>
               </div>
               <div>
                 <h3 style={{ fontSize: '2.4rem', color: '#ffffff', lineHeight: 1 }}>9+</h3>
-                <p style={{ color: 'var(--text-muted)', fontSize: '0.85rem', textTransform: 'uppercase', letterSpacing: '0.05em' }}>Countries Reached</p>
+                <p style={{ color: 'var(--text-muted)', fontSize: '0.85rem', textTransform: 'uppercase' }}>Countries Reached</p>
               </div>
               <div>
                 <h3 style={{ fontSize: '2.4rem', color: '#ffffff', lineHeight: 1 }}>100%</h3>
-                <p style={{ color: 'var(--text-muted)', fontSize: '0.85rem', textTransform: 'uppercase', letterSpacing: '0.05em' }}>Action-Oriented</p>
+                <p style={{ color: 'var(--text-muted)', fontSize: '0.85rem', textTransform: 'uppercase' }}>Action-Oriented</p>
               </div>
             </div>
           </div>
