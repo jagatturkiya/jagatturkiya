@@ -74,7 +74,7 @@ export default function Home() {
           <div className="section-header text-center">
             <h2 className="section-title">Featured on Times Square, New York City</h2>
             <p className="section-subtitle" style={{ margin: '0 auto', maxWidth: '640px' }}>
-              Recognized on the global marquee in Times Square, NYC for transformational leadership and impact.
+              Spotlighted on the global digital marquee in Times Square, NYC for excellence in transformational leadership.
             </p>
           </div>
 
@@ -85,6 +85,10 @@ export default function Home() {
                 alt="Jagat Turkiya featured on Times Square Billboard in New York City"
                 loading="lazy"
               />
+              <div className="ts-image-badge">
+                <span className="title">Times Square Marquee</span>
+                <span className="loc">New York City, USA</span>
+              </div>
             </div>
             <div className="ts-image-card">
               <img
@@ -92,6 +96,36 @@ export default function Home() {
                 alt="Jagat Turkiya Times Square Billboard Close View"
                 loading="lazy"
               />
+              <div className="ts-image-badge">
+                <span className="title">Topmate Creator Club</span>
+                <span className="loc">Global Recognition</span>
+              </div>
+            </div>
+          </div>
+
+          <div className="ts-narrative-box">
+            <div>
+              <h3>From Walking 4 km Daily to the Heart of Manhattan</h3>
+              <p>
+                In 2024, Jagat Singh Turkiya was spotlighted on the world-famous digital marquee in Times Square, New York City by Topmate’s Creator Club. This recognition honored him as an "incredible transformation coach" who has helped thousands of individuals overcome internal roadblocks and create lasting clarity in their lives and careers.
+              </p>
+              <p>
+                For someone who once walked four kilometers every day simply to save ₹30 in bus fare, seeing his name and mission projected in the center of NYC stands as proof: with disciplined focus, genuine humility, and consistent execution, authentic work transcends every geographical boundary.
+              </p>
+            </div>
+            <div className="ts-narrative-stats">
+              <div className="ts-stat-badge">
+                <h4>Times Sq.</h4>
+                <p>New York City</p>
+              </div>
+              <div className="ts-stat-badge">
+                <h4>Topmate</h4>
+                <p>Creator Club</p>
+              </div>
+              <div className="ts-stat-badge">
+                <h4>15,000+</h4>
+                <p>Lives Impacted</p>
+              </div>
             </div>
           </div>
         </div>
@@ -125,13 +159,13 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Words from Mentees (Testimonials Cards) */}
+      {/* What Clients Say (Testimonials Cards) */}
       <section className="section">
         <div className="container">
           <div className="section-header text-center">
-            <h2 className="section-title">Words from Mentees</h2>
+            <h2 className="section-title">What Clients Say</h2>
             <p className="section-subtitle" style={{ margin: '0 auto', maxWidth: '640px' }}>
-              Real experiences from founders, executives, and leaders mentored by Jagat Turkiya.
+              Real feedback from entrepreneurs, executives, and leaders who have worked directly with Jagat Turkiya.
             </p>
           </div>
 

@@ -1714,13 +1714,13 @@ select.form-control {
    ========================================================================== */
 .ts-showcase-grid {
   display: grid;
-  grid-template-columns: 1.2fr 0.8fr;
-  gap: 2rem;
-  align-items: center;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.75rem;
   margin-top: 2rem;
+  margin-bottom: 2rem;
 }
 
-@media (max-width: 900px) {
+@media (max-width: 768px) {
   .ts-showcase-grid {
     grid-template-columns: 1fr;
   }
@@ -1731,13 +1731,15 @@ select.form-control {
   border-radius: var(--radius-md);
   overflow: hidden;
   border: 1px solid rgba(255, 255, 255, 0.1);
-  background: rgba(255, 255, 255, 0.02);
+  background: #000000;
+  height: 380px;
 }
 
 .ts-image-card img {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  object-position: center;
   display: block;
   transition: transform 0.4s ease;
 }
@@ -1746,22 +1748,98 @@ select.form-control {
   transform: scale(1.02);
 }
 
-.ts-content-card {
-  background: rgba(255, 255, 255, 0.025);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: var(--radius-md);
-  padding: 2.75rem 2.25rem;
+.ts-image-badge {
+  position: absolute;
+  bottom: 1rem;
+  left: 1rem;
+  right: 1rem;
+  background: rgba(0, 0, 0, 0.82);
+  backdrop-filter: blur(8px);
+  padding: 0.65rem 1rem;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
-.ts-content-card h3 {
-  font-size: clamp(1.6rem, 2.8vw, 2.2rem);
+.ts-image-badge span.title {
   color: #ffffff;
-  margin-bottom: 1rem;
+  font-size: 0.85rem;
+  font-weight: 600;
 }
 
-.ts-content-card p {
+.ts-image-badge span.loc {
+  color: var(--text-muted);
+  font-size: 0.75rem;
+}
+
+.ts-narrative-box {
+  background: rgba(255, 255, 255, 0.025);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: var(--radius-md);
+  padding: 2.25rem 2.5rem;
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 2rem;
+  align-items: center;
+}
+
+@media (max-width: 860px) {
+  .ts-narrative-box {
+    grid-template-columns: 1fr;
+    padding: 1.75rem;
+  }
+}
+
+.ts-narrative-box h3 {
+  font-size: clamp(1.4rem, 2.5vw, 1.85rem);
+  color: #ffffff;
+  margin-bottom: 0.85rem;
+  font-family: var(--font-heading);
+}
+
+.ts-narrative-box p {
   color: var(--text-silver);
   font-size: 0.95rem;
   line-height: 1.7;
-  margin-bottom: 1.25rem;
+  margin-bottom: 0.75rem;
+}
+
+.ts-narrative-box p:last-of-type {
+  margin-bottom: 0;
+}
+
+.ts-narrative-stats {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  border-left: 1px solid rgba(255, 255, 255, 0.1);
+  padding-left: 2rem;
+}
+
+@media (max-width: 860px) {
+  .ts-narrative-stats {
+    border-left: none;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding-left: 0;
+    padding-top: 1.5rem;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+}
+
+.ts-stat-badge h4 {
+  font-size: 1.5rem;
+  color: #ffffff;
+  margin-bottom: 0.2rem;
+  font-weight: 700;
+}
+
+.ts-stat-badge p {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin: 0;
 }
