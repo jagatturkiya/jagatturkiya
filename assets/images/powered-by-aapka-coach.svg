@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 280 64" width="280" height="64" fill="none">
+  <!-- Powered by Aapka Coach Executive Lockup -->
+  <defs>
+    <linearGradient id="crestGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ffffff"/>
+      <stop offset="50%" stop-color="#cbd5e1"/>
+      <stop offset="100%" stop-color="#64748b"/>
+    </linearGradient>
+    <linearGradient id="borderGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="rgba(255,255,255,0.2)"/>
+      <stop offset="100%" stop-color="rgba(255,255,255,0.05)"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Crest Icon: Geometric Diamond Compass / Coach Star -->
+  <g transform="translate(4, 8)">
+    <rect x="0" y="0" width="48" height="48" rx="10" fill="#141418" stroke="url(#borderGrad)" stroke-width="1.2"/>
+    <!-- Compass / Diamond Star Shape -->
+    <path d="M24 10 L28.5 20.5 L39 24 L28.5 27.5 L24 38 L19.5 27.5 L9 24 L19.5 20.5 Z" fill="url(#crestGrad)"/>
+    <circle cx="24" cy="24" r="2.8" fill="#08080a"/>
+  </g>
+
+  <!-- Typography Block -->
+  <g transform="translate(64, 18)">
+    <!-- Eyebrow: POWERED BY -->
+    <text x="0" y="8" fill="#94a3b8" font-family="'Instrument Sans', -apple-system, BlinkMacSystemFont, sans-serif" font-size="9.5" font-weight="600" letter-spacing="3" text-transform="uppercase">POWERED BY</text>
+    <!-- Brand Name: AAPKA COACH -->
+    <text x="0" y="27" fill="#ffffff" font-family="'Instrument Sans', -apple-system, BlinkMacSystemFont, sans-serif" font-size="18" font-weight="800" letter-spacing="1.4">AAPKA COACH</text>
+    <!-- Subtitle: apkacoach.com -->
+    <text x="0" y="38" fill="#64748b" font-family="'Inter', -apple-system, BlinkMacSystemFont, sans-serif" font-size="8.5" font-weight="500" letter-spacing="0.5">apkacoach.com</text>
+  </g>
+</svg>
