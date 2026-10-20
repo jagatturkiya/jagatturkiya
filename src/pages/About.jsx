@@ -2,6 +2,44 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 export default function About() {
+  const books = [
+    {
+      title: "Kill That Black Dragon",
+      genre: "Mindset & Overcoming Fear",
+      img: "./assets/images/book-dragon.webp",
+      desc: "A practical guide to dismantling internal resistance, self-sabotaging habits, and fear holding back high achievers.",
+      link: "https://www.amazon.in/dp/B08F2432W3"
+    },
+    {
+      title: "Asli Nayak Kaun",
+      genre: "Leadership & Responsibility",
+      img: "./assets/images/book-nayak.webp",
+      desc: "Deconstructs the principles of true leadership, self-reliance, and personal authority in everyday life.",
+      link: "https://www.amazon.in/dp/B08F22K6S9"
+    },
+    {
+      title: "Langotiya Yaar",
+      genre: "Relationships & Connection",
+      img: "./assets/images/book-langotiya.webp",
+      desc: "An exploration of genuine friendship, human connection, and balancing career success with real relationships.",
+      link: "https://www.amazon.in/dp/B08F22S9KM"
+    },
+    {
+      title: "Nadar Rishte",
+      genre: "Family Harmony & Emotional EQ",
+      img: "./assets/images/book-nadar.webp",
+      desc: "Addresses the unspoken friction in personal and professional relationships, offering proven communication tools.",
+      link: "https://www.amazon.in/dp/B08F23CSW7"
+    },
+    {
+      title: "Anubhav Sagar",
+      genre: "Wisdom & Life Strategy",
+      img: "./assets/images/book-anubhav.webp",
+      desc: "Key life lessons synthesized from over 15 years in enterprise IT, coaching, and guiding people through critical milestones.",
+      link: "https://www.amazon.in/dp/B08F22X54M"
+    }
+  ];
+
   return (
     <div className="about-page">
       {/* Page Header - Clean, No Gradient, No Eyebrow */}
@@ -26,10 +64,10 @@ export default function About() {
 
             <div className="story-text">
               <h2 style={{ fontSize: 'clamp(1.8rem, 3vw, 2.4rem)', marginBottom: '1.25rem' }}>
-                Forged in Scarcity, Guided by Purpose
+                Forged in Scarcity, Driven by Purpose
               </h2>
               <p>
-                Before stepping onto keynote stages and publishing 5 books, Jagat walked 4 kilometers on foot every single day for an entire year simply to save ₹30 in daily bus fare.
+                Before mentoring founders and professionals, Jagat walked 4 kilometers on foot every single day for an entire year simply to save ₹30 in daily bus fare.
               </p>
               <p>
                 That defining season taught him that true growth is never about excuses—it is about relentless consistency, self-discipline, and taking complete responsibility for your outcomes.
@@ -155,8 +193,40 @@ export default function About() {
         </div>
       </section>
 
+      {/* Author of 5 Published Books */}
+      <section className="section" id="bookshelf">
+        <div className="container">
+          <div className="section-header text-center">
+            <h2 className="section-title">Author of 5 Published Books</h2>
+            <p className="section-subtitle" style={{ margin: '0 auto', maxWidth: '640px' }}>
+              Jagat Turkiya’s seminal works on personal leadership, relationships, and emotional resilience.
+            </p>
+          </div>
+
+          <div className="bookshelf-grid">
+            {books.map((b, i) => (
+              <div key={i} className="book-card">
+                <div className="book-cover-wrap">
+                  <img src={b.img} alt={b.title} loading="lazy" />
+                </div>
+                <div className="book-details">
+                  <span className="book-genre">{b.genre}</span>
+                  <h4>{b.title}</h4>
+                  <p>{b.desc}</p>
+                  <div className="book-footer">
+                    <Link to="/contact" className="btn btn-outline" style={{ width: '100%' }}>
+                      Request a Copy
+                    </Link>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* Mission Panel */}
-      <section className="section">
+      <section className="section section-dark">
         <div className="container">
           <div className="ts-narrative" style={{ background: 'var(--bg-card)', padding: '3.5rem', borderRadius: 'var(--radius-lg)', display: 'grid', gridTemplateColumns: '1.3fr 0.7fr', gap: '2.5rem', alignItems: 'center' }}>
             <div>

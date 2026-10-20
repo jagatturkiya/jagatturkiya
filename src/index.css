@@ -5,19 +5,19 @@
    ========================================================================== */
 
 :root {
-  /* Pure Monochrome Obsidian Palette */
-  --bg-black: #080808;
-  --bg-deep: #0c0c0e;
-  --bg-surface: #111114;
-  --bg-card: #151518;
-  --bg-card-hover: #1b1b20;
-  --bg-elevated: #202025;
-  --bg-glass: rgba(14, 14, 16, 0.88);
+  /* Pure Monochrome Obsidian Palette - Unified Deep Black */
+  --bg-black: #050505;
+  --bg-deep: #050505;
+  --bg-surface: #050505;
+  --bg-card: rgba(255, 255, 255, 0.03);
+  --bg-card-hover: rgba(255, 255, 255, 0.055);
+  --bg-elevated: #0d0d0f;
+  --bg-glass: rgba(10, 10, 12, 0.88);
 
   /* Precise Architectural Borders */
-  --border-subtle: rgba(255, 255, 255, 0.08);
-  --border-medium: rgba(255, 255, 255, 0.14);
-  --border-hover: rgba(255, 255, 255, 0.28);
+  --border-subtle: rgba(255, 255, 255, 0.07);
+  --border-medium: rgba(255, 255, 255, 0.12);
+  --border-hover: rgba(255, 255, 255, 0.25);
   --border-active: #ffffff;
 
   /* Humanized Typography */
@@ -130,13 +130,13 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .section-dark {
-  background-color: var(--bg-surface);
-  border-top: 1px solid var(--border-subtle);
-  border-bottom: 1px solid var(--border-subtle);
+  background-color: #050505;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
 }
 
 .section-deep {
-  background-color: var(--bg-deep);
+  background-color: #050505;
 }
 
 .section-header {
@@ -151,14 +151,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .section-eyebrow {
-  display: inline-block;
-  font-family: var(--font-heading);
-  font-size: 0.8rem;
-  text-transform: uppercase;
-  letter-spacing: 0.12em;
-  color: var(--text-muted);
-  font-weight: 600;
-  margin-bottom: 0.85rem;
+  display: none !important;
 }
 
 .section-title {
@@ -394,7 +387,7 @@ h1, h2, h3, h4, h5, h6 {
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 6rem 0 6.5rem 0;
+  padding: 8.5rem 0 6rem 0;
   overflow: hidden;
   background-color: var(--bg-black);
   text-align: center;
@@ -1615,4 +1608,160 @@ select.form-control {
     gap: 0.75rem;
     text-align: center;
   }
+}
+
+/* ==========================================================================
+   TESTIMONIALS CARDS (ELEGANT DARK GLASS STYLE)
+   ========================================================================== */
+.testimonials-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+@media (max-width: 992px) {
+  .testimonials-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 640px) {
+  .testimonials-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.testimonial-card, .testimonial-box {
+  background: rgba(255, 255, 255, 0.025);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: var(--radius-md);
+  padding: 2.25rem 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: all 0.25s ease;
+  position: relative;
+  text-align: left;
+}
+
+.testimonial-card:hover, .testimonial-box:hover {
+  border-color: rgba(255, 255, 255, 0.22);
+  background: rgba(255, 255, 255, 0.045);
+  transform: translateY(-3px);
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.7);
+}
+
+.test-stars {
+  color: #f59e0b;
+  font-size: 0.95rem;
+  letter-spacing: 2px;
+  margin-bottom: 0.85rem;
+}
+
+.testimonial-highlight {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #ffffff;
+  margin-bottom: 0.85rem;
+}
+
+.testimonial-quote, .test-quote {
+  font-size: 0.92rem;
+  color: var(--text-silver);
+  line-height: 1.7;
+  margin-bottom: 1.5rem;
+  flex-grow: 1;
+}
+
+.test-author-info, .testimonial-author {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.07);
+}
+
+.author-avatar-monogram {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 0.85rem;
+  color: #ffffff;
+  flex-shrink: 0;
+}
+
+.author-meta h5 {
+  font-size: 0.95rem;
+  color: #ffffff;
+  margin-bottom: 0.15rem;
+  font-weight: 600;
+}
+
+.author-meta p, .author-meta span {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+}
+
+/* ==========================================================================
+   TIMES SQUARE NYC SHOWCASE (HOME PAGE)
+   ========================================================================== */
+.ts-showcase-grid {
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  gap: 2rem;
+  align-items: center;
+  margin-top: 2rem;
+}
+
+@media (max-width: 900px) {
+  .ts-showcase-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.ts-image-card {
+  position: relative;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.ts-image-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.4s ease;
+}
+
+.ts-image-card:hover img {
+  transform: scale(1.02);
+}
+
+.ts-content-card {
+  background: rgba(255, 255, 255, 0.025);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: var(--radius-md);
+  padding: 2.75rem 2.25rem;
+}
+
+.ts-content-card h3 {
+  font-size: clamp(1.6rem, 2.8vw, 2.2rem);
+  color: #ffffff;
+  margin-bottom: 1rem;
+}
+
+.ts-content-card p {
+  color: var(--text-silver);
+  font-size: 0.95rem;
+  line-height: 1.7;
+  margin-bottom: 1.25rem;
 }

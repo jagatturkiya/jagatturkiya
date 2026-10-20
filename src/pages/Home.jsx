@@ -7,45 +7,45 @@ export default function Home() {
     {
       name: "Tabraj Singh",
       role: "Verified Client • Topmate",
-      quote: "Working with Jagat was a great experience. He helped transform my mindset and gave me the exact clarity to achieve my goals.",
-      highlight: "Mindset Transformation"
+      monogram: "TS",
+      quote: "Working with Jagat was a great experience. He helped transform my mindset and gave me the exact clarity to achieve my goals."
     },
     {
       name: "Renu Chaudhary",
       role: "Verified Client • Topmate",
-      quote: "He is always providing handholding support to face challenges. The tools and frameworks he uses are practical and easy to apply.",
-      highlight: "Practical Frameworks"
+      monogram: "RC",
+      quote: "He is always providing handholding support to face challenges. The tools and frameworks he uses are practical and easy to apply."
     },
     {
       name: "Rahul Singh",
       role: "Software Executive",
-      quote: "Working with Jagat Turkiya has been life-changing. His guidance and insight helped me overcome roadblocks in my personal and career growth.",
-      highlight: "Executive Breakthrough"
+      monogram: "RS",
+      quote: "Working with Jagat Turkiya has been life-changing. His guidance and insight helped me overcome roadblocks in my personal and career growth."
     },
     {
       name: "Aditi Shah",
       role: "Business Owner",
-      quote: "Jagat has deep knowledge and is always ready to support people who want to grow. His guidance is straightforward and easy to connect with.",
-      highlight: "Direct & Grounded"
+      monogram: "AS",
+      quote: "Jagat has deep knowledge and is always ready to support people who want to grow. His guidance is straightforward and easy to connect with."
     },
     {
       name: "Neetu Negi",
       role: "Corporate Professional",
-      quote: "Jagat is a calm, patient, empathetic, and empowering coach. He made our sessions pleasant, productive, and brought absolute clarity.",
-      highlight: "Empathy & Clarity"
+      monogram: "NN",
+      quote: "Jagat is a calm, patient, empathetic, and empowering coach. He made our sessions pleasant, productive, and brought absolute clarity."
     },
     {
       name: "Rritu Singhi",
       role: "Transformation Coach",
-      quote: "Jagat provides relentless clarity, structured frameworks, and unmatched guidance for personal and executive growth.",
-      highlight: "Relentless Focus"
+      monogram: "RS",
+      quote: "Jagat provides relentless clarity, structured frameworks, and unmatched guidance for personal and executive growth."
     }
   ];
 
   return (
     <div className="home-page">
       {/* Hero Section */}
-      <section className="hero-section text-center" style={{ padding: '6.5rem 0 4.5rem 0' }}>
+      <section className="hero-section text-center">
         <LiquidHero />
         <div className="container hero-container" style={{ maxWidth: '900px', margin: '0 auto' }}>
           <h1 className="hero-title" style={{ marginBottom: '1.25rem' }}>
@@ -68,63 +68,30 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Stats Strip */}
-      <section className="section section-dark" style={{ padding: '3.5rem 0' }}>
-        <div className="container">
-          <div className="stats-grid">
-            <div className="stat-card">
-              <span className="stat-number">15+</span>
-              <span className="stat-label">Years of Mentorship</span>
-            </div>
-            <div className="stat-card">
-              <span className="stat-number">1,500+</span>
-              <span className="stat-label">Private Consultations</span>
-            </div>
-            <div className="stat-card">
-              <span className="stat-number">15,000+</span>
-              <span className="stat-label">Lives Impacted</span>
-            </div>
-            <div className="stat-card">
-              <span className="stat-number">9+</span>
-              <span className="stat-label">Countries Reached</span>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Core Focus Areas */}
-      <section className="section">
+      {/* Times Square NYC Global Recognition */}
+      <section className="section" id="times-square">
         <div className="container">
           <div className="section-header text-center">
-            <h2 className="section-title">How We Help You Grow</h2>
+            <h2 className="section-title">Featured on Times Square, New York City</h2>
             <p className="section-subtitle" style={{ margin: '0 auto', maxWidth: '640px' }}>
-              Practical frameworks designed to build confidence, peace of mind, and consistent execution.
+              Recognized on the global marquee in Times Square, NYC for transformational leadership and impact.
             </p>
           </div>
 
-          <div className="pillars-grid">
-            <div className="pillar-card">
-              <div className="pillar-icon">01</div>
-              <h3>Mindset &amp; Clarity</h3>
-              <p>
-                Dismantle self-doubt, overcome fear of failure, and gain complete clarity on who you are and where you are headed.
-              </p>
+          <div className="ts-showcase-grid">
+            <div className="ts-image-card">
+              <img
+                src="./assets/images/times-square-wide.webp"
+                alt="Jagat Turkiya featured on Times Square Billboard in New York City"
+                loading="lazy"
+              />
             </div>
-
-            <div className="pillar-card">
-              <div className="pillar-icon">02</div>
-              <h3>Wealth &amp; Strategy</h3>
-              <p>
-                Install proven financial habits, manage money without stress, and build long-term generational security.
-              </p>
-            </div>
-
-            <div className="pillar-card">
-              <div className="pillar-icon">03</div>
-              <h3>Relationship Harmony</h3>
-              <p>
-                Develop emotional intelligence to nurture deep family bonds and authentic connections alongside your professional ambitions.
-              </p>
+            <div className="ts-image-card">
+              <img
+                src="./assets/images/times-square-close.webp"
+                alt="Jagat Turkiya Times Square Billboard Close View"
+                loading="lazy"
+              />
             </div>
           </div>
         </div>
@@ -143,10 +110,10 @@ export default function Home() {
                 Forged in Scarcity, Driven by Purpose
               </h2>
               <p>
-                Before mentoring founders and professionals, Jagat walked 4 kilometers on foot every day for a full year simply to save ₹30 in daily bus fare.
+                Before mentoring founders and professionals across 9 nations, Jagat walked 4 kilometers on foot every day for a full year simply to save ₹30 in daily bus fare.
               </p>
               <p>
-                That season shaped his entire philosophy: true transformation doesn't come from luck or shortcuts. It comes from disciplined daily action, emotional resilience, and relentless focus.
+                That defining season taught him that true growth comes from disciplined daily action, emotional resilience, and relentless focus.
               </p>
               <div style={{ marginTop: '1.5rem' }}>
                 <Link to="/about" className="btn btn-outline">
@@ -158,25 +125,26 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Testimonials */}
+      {/* Words from Mentees (Testimonials Cards) */}
       <section className="section">
         <div className="container">
           <div className="section-header text-center">
             <h2 className="section-title">Words from Mentees</h2>
             <p className="section-subtitle" style={{ margin: '0 auto', maxWidth: '640px' }}>
-              Real experiences from professionals, founders, and leaders guided by Jagat Turkiya.
+              Real experiences from founders, executives, and leaders mentored by Jagat Turkiya.
             </p>
           </div>
 
           <div className="testimonials-grid">
             {testimonials.map((t, i) => (
               <div key={i} className="testimonial-card">
-                <div className="testimonial-highlight">{t.highlight}</div>
+                <div className="test-stars">★★★★★</div>
                 <p className="testimonial-quote">"{t.quote}"</p>
-                <div className="testimonial-author">
+                <div className="test-author-info">
+                  <div className="author-avatar-monogram">{t.monogram}</div>
                   <div className="author-meta">
                     <h5>{t.name}</h5>
-                    <span>{t.role}</span>
+                    <p>{t.role}</p>
                   </div>
                 </div>
               </div>

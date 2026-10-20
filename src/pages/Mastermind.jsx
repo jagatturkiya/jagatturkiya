@@ -42,84 +42,133 @@ export default function Mastermind() {
     }
   ];
 
-  const modules = [
+  const phases = [
+    {
+      tag: "Weeks 1–4",
+      title: "Mindset & Diagnostic Audit",
+      desc: "A complete personal and financial diagnostic. Uncover subconscious money blocks, plug silent cashflow leaks, and establish solid emergency runways."
+    },
+    {
+      tag: "Weeks 5–8",
+      title: "Defensive System Installation",
+      desc: "Set up allocation firewalls, separate enterprise volatility from personal peace, and install stress-tested wealth compounding rules."
+    },
+    {
+      tag: "Weeks 9–10",
+      title: "Execution & Life Alignment",
+      desc: "Build sustainable daily execution loops, align family goals with career ambition, and install high-leverage decision frameworks."
+    },
+    {
+      tag: "Months 3–6",
+      title: "Ongoing Mentorship & Accountability",
+      desc: "Bi-weekly strategy reviews, portfolio checks, and direct guidance with Jagat Turkiya to keep you focused and executing consistently."
+    }
+  ];
+
+  const pillars = [
     {
       num: "01",
-      title: "Psychology of Money & Mindset",
-      desc: "Uncover and eliminate the unconscious habits, scarcity fears, and spending triggers that cause high earners to feel insecure."
+      title: "Psychology & Inner Sovereignty",
+      desc: "Eliminate the anxiety that comes with volatile cashflow. Learn to operate from calm authority rather than constant pressure."
     },
     {
       num: "02",
-      title: "Defensive Financial Structure",
-      desc: "Set up emergency runway buffers, plug silent money leaks, and build safety nets that protect you and your family."
+      title: "Defensive Wealth Architecture",
+      desc: "Earning is offense; defending is defense. Protect your balance sheet with emergency firewalls, capital safety moats, and zero-leak systems."
     },
     {
       num: "03",
-      title: "Clear Capital Allocation",
-      desc: "Learn straightforward frameworks to allocate your monthly cashflow into safe savings, investments, and business growth."
+      title: "Predictable Capital Allocation",
+      desc: "Install straightforward rules for how much to reinvest, save, and protect each month—without guesswork or complex spreadsheets."
     },
     {
       num: "04",
-      title: "Sustained Peace of Mind",
-      desc: "Install a clear financial operating system that runs predictably so you can focus on your work, family, and passions."
+      title: "Family Harmony & Life Balance",
+      desc: "Professional ambition should never destroy family relationships. Build emotional EQ frameworks for deep, lasting partnerships."
     }
   ];
 
   const faqItems = [
     {
-      question: "Who is the Mastermind designed for?",
-      answer: "The Mastermind is designed for business owners, salaried leaders, and professionals who earn well but want clarity, structure, and a reliable system to manage and protect their wealth."
+      question: "What is the structure of the 6-month Mastermind?",
+      answer: "The program begins with an intensive 10-week core curriculum featuring weekly masterclasses and personalized audit blueprints, followed by 4 months of bi-weekly ongoing advisory, direct hot-seats, and accountability check-ins with Jagat Turkiya."
     },
     {
-      question: "What is the format and time commitment?",
-      answer: "The program includes structured weekly masterclasses, practical blueprint exercises, and direct Q&A sessions with Jagat Turkiya. The commitment is roughly 2 to 3 hours per week."
+      question: "How much time is required each week?",
+      answer: "Approximately 2 to 3 hours per week. 90 minutes for the live strategy masterclass, plus 45 minutes to complete your execution blueprint. Everything is action-oriented with zero busywork."
     },
     {
-      question: "How do I join or get more details?",
-      answer: "Click the 'Join Mastermind' or 'Book Consultation' button to reach out to our team. We will share the full program details and schedule a brief call to see if it is the right fit."
+      question: "Is this tailored to my real numbers and situation?",
+      answer: "Yes, 100%. While foundational principles are taught in groups, your diagnostic audits and allocation plans are customized to your specific income, family milestones, and balance sheet."
+    },
+    {
+      question: "How do I enroll or get more details?",
+      answer: "Click the 'Join Mastermind' or 'Book Consultation' button to submit an inquiry. Our team will share the complete program brochure and schedule a brief call."
     }
   ];
 
   return (
     <div className="mastermind-page">
       {/* Hero Section */}
-      <section className="hero-section text-center" style={{ padding: '6.5rem 0 4.5rem 0' }}>
+      <section className="hero-section text-center">
         <LiquidHero />
         <div className="container hero-container" style={{ maxWidth: '900px', margin: '0 auto' }}>
           <h1 className="hero-title" style={{ marginBottom: '1.25rem' }}>
-            The Financial &amp; Wealth <br />
-            <span className="serif-font">Transformation Mastermind</span>
+            The 6-Month Executive <br />
+            <span className="serif-font">Wealth &amp; Life Mastermind</span>
           </h1>
-          <p className="hero-lead" style={{ maxWidth: '720px', margin: '0 auto 2.25rem auto' }}>
-            Earning money is one skill. Protecting and compounding it without anxiety is another. Mastermind gives you the clarity and systems to manage your wealth with confidence.
+          <p className="hero-lead" style={{ maxWidth: '740px', margin: '0 auto 2.25rem auto' }}>
+            A comprehensive 6-month mentorship program featuring a 10-week intensive framework designed to install personal clarity, defensive financial architecture, and long-term peace of mind.
           </p>
           <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap' }}>
             <Link to="/contact" className="btn btn-white">
               Join Mastermind
             </Link>
-            <a href="#bookshelf" className="btn btn-glass">
-              Explore Books ↓
+            <a href="#curriculum" className="btn btn-glass">
+              Explore Program ↓
             </a>
           </div>
         </div>
       </section>
 
-      {/* Curriculum Grid */}
-      <section className="section" id="framework">
+      {/* Program Roadmap: 6 Months & 10 Weeks */}
+      <section className="section" id="curriculum">
         <div className="container">
           <div className="section-header text-center">
-            <h2 className="section-title">What You Will Learn</h2>
+            <h2 className="section-title">6-Month Transformation Roadmap</h2>
             <p className="section-subtitle" style={{ margin: '0 auto', maxWidth: '640px' }}>
-              Four practical modules engineered to bring order, structure, and growth to your finances.
+              From initial diagnostic audits to long-term accountability, every phase is engineered for lasting execution.
             </p>
           </div>
 
-          <div className="curriculum-grid" style={{ marginBottom: '3rem' }}>
-            {modules.map((m, idx) => (
+          <div className="curriculum-grid" style={{ marginBottom: '3.5rem' }}>
+            {phases.map((p, idx) => (
               <div key={idx} className="curriculum-card">
-                <span className="curriculum-badge">Module {m.num}</span>
-                <h3>{m.title}</h3>
-                <p>{m.desc}</p>
+                <span className="curriculum-badge">{p.tag}</span>
+                <h3>{p.title}</h3>
+                <p>{p.desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Core Systems Installed (Pillars) */}
+      <section className="section section-dark">
+        <div className="container">
+          <div className="section-header text-center">
+            <h2 className="section-title">Core Systems Installed</h2>
+            <p className="section-subtitle" style={{ margin: '0 auto', maxWidth: '640px' }}>
+              Four fundamental disciplines to help you master your money, mind, and relationships.
+            </p>
+          </div>
+
+          <div className="pillars-grid">
+            {pillars.map((pi, idx) => (
+              <div key={idx} className="pillar-card">
+                <div className="pillar-icon">{pi.num}</div>
+                <h3>{pi.title}</h3>
+                <p>{pi.desc}</p>
               </div>
             ))}
           </div>
@@ -127,12 +176,12 @@ export default function Mastermind() {
       </section>
 
       {/* Bookshelf Section */}
-      <section className="section section-dark" id="bookshelf">
+      <section className="section" id="bookshelf">
         <div className="container">
           <div className="section-header text-center">
-            <h2 className="section-title">Author of 5 Published Books</h2>
+            <h2 className="section-title">Rooted in 5 Published Books</h2>
             <p className="section-subtitle" style={{ margin: '0 auto', maxWidth: '640px' }}>
-              Jagat Turkiya’s published works on personal leadership, relationships, and mindset.
+              Mastermind principles are reinforced by Jagat Turkiya’s published works on leadership, psychology, and relationships.
             </p>
           </div>
 
@@ -159,12 +208,12 @@ export default function Mastermind() {
       </section>
 
       {/* FAQ Section */}
-      <section className="section">
+      <section className="section section-dark">
         <div className="container" style={{ maxWidth: '840px', margin: '0 auto' }}>
           <div className="section-header text-center">
             <h2 className="section-title">Frequently Asked Questions</h2>
             <p className="section-subtitle" style={{ margin: '0 auto' }}>
-              Common questions about the Mastermind structure and participation.
+              Common questions about the Mastermind structure and enrollment.
             </p>
           </div>
 
@@ -173,13 +222,13 @@ export default function Mastermind() {
       </section>
 
       {/* Final Mastermind CTA */}
-      <section className="section section-dark text-center" style={{ padding: '5.5rem 0' }}>
+      <section className="section text-center" style={{ padding: '5.5rem 0' }}>
         <div className="container" style={{ maxWidth: '740px', margin: '0 auto' }}>
           <h2 style={{ fontSize: 'clamp(2rem, 3.5vw, 2.7rem)', marginBottom: '1rem' }}>
             Take Control of Your <span className="serif-font">Financial Future</span>
           </h2>
           <p style={{ color: 'var(--text-silver)', fontSize: '1.05rem', marginBottom: '2rem', lineHeight: 1.6 }}>
-            Connect with Jagat Turkiya and his team to learn more about upcoming Mastermind sessions.
+            Connect with Jagat Turkiya and his team to learn more about the 6-Month Mastermind program.
           </p>
           <Link to="/contact" className="btn btn-white" style={{ padding: '0.95rem 2.25rem', fontSize: '1rem' }}>
             Book Consultation
