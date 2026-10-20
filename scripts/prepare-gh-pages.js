@@ -15,7 +15,10 @@ const compiledHtmlPath = fs.existsSync(path.join(distDir, 'dev.html'))
   : path.join(distDir, 'index.html');
 
 if (fs.existsSync(compiledHtmlPath)) {
-  const htmlContent = fs.readFileSync(compiledHtmlPath, 'utf-8');
+  let htmlContent = fs.readFileSync(compiledHtmlPath, 'utf-8');
+  const v = Date.now();
+  htmlContent = htmlContent.replace(/src="\.?\/assets\/index\.js(\?v=[^"]*)?"/, `src="./assets/index.js?v=${v}"`);
+  htmlContent = htmlContent.replace(/href="\.?\/assets\/index\.css(\?v=[^"]*)?"/, `href="./assets/index.css?v=${v}"`);
   
   // Write to dist
   fs.writeFileSync(path.join(distDir, 'index.html'), htmlContent);

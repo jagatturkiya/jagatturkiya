@@ -383,14 +383,30 @@ h1, h2, h3, h4, h5, h6 {
    ========================================================================== */
 .hero-section {
   position: relative;
-  min-height: calc(85vh - var(--header-height));
+  width: 100%;
+  min-height: calc(100vh - var(--header-height));
+  min-height: calc(100dvh - var(--header-height));
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 8.5rem 0 6rem 0;
+  padding: 4rem 1.5rem;
+  box-sizing: border-box;
   overflow: hidden;
   background-color: var(--bg-black);
   text-align: center;
+}
+
+.hero-section::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 90px;
+  background: linear-gradient(to bottom, transparent, var(--bg-black));
+  pointer-events: none;
+  z-index: 1;
 }
 
 .hero-liquid-canvas {
@@ -1921,7 +1937,14 @@ select.form-control {
   }
 
   .hero-section {
-    padding: 4.5rem 0;
+    min-height: calc(100vh - var(--header-height));
+    min-height: calc(100dvh - var(--header-height));
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 3rem 1.25rem;
+    box-sizing: border-box;
   }
 
   .ts-grid {
