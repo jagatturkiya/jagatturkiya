@@ -61,9 +61,9 @@ export default function Mastermind() {
     },
     {
       num: "Week 10",
-      title: "Your Wealth Compass: The Operating System",
-      headline: "Permanent clarity, total direction, and lifetime peace of mind.",
-      desc: "We bring every component together into your permanent financial compass. You now operate with total clarity on cash flow, portfolio direction, risk boundaries, and future choices. You now hold an unshakeable compass for your wealth."
+      title: "Your Permanent Financial Operating System",
+      headline: "Complete clarity, total direction, and lifetime peace of mind.",
+      desc: "We bring every component together into your permanent financial operating system. You now operate with total clarity on cash flow, portfolio direction, risk boundaries, and future choices. You now hold an unshakeable compass for your capital."
     }
   ];
 
@@ -87,53 +87,52 @@ export default function Mastermind() {
   ];
 
   const deliverables = [
-    "10-Week Structured Financial Program",
-    "Step-by-Step Personal Financial Framework",
+    "10-Week Structured Mastermind Framework",
+    "Step-by-Step Personal Financial Blueprint",
     "Objective Investment & Allocation Guidance",
     "Defensive Risk Architecture & Capital Moats",
     "Flow-of-Money & Cash Leakage Audit",
     "Multi-Horizon Goal Planning (Short, Medium, Long-Term)",
     "Guided 1-on-1 Strategy & Audit Sessions",
     "Hands-On Practical Implementation Support",
-    "Your Lifetime Personal Wealth Compass Blueprint"
+    "Your Lifetime Wealth Operating System"
   ];
 
   const faqItems = [
     {
-      question: "Who is Your Wealth Compass specifically built for?",
-      answer: "This program is built specifically for high-earning professionals, executives, entrepreneurs, and business owners earning ₹5 Lakh to ₹10 Lakh+ per month who realize that high income alone does not equal wealth. It is for those who want an organized, systematic operating system to manage, protect, and direct their money."
+      question: "Who is The Mastermind specifically built for?",
+      answer: "The Mastermind is designed for high-earning professionals, executives, entrepreneurs, and business owners earning ₹5 Lakh to ₹10 Lakh+ per month who realize that high income alone does not equal wealth. It is for leaders who want an organized, systematic operating system to manage, protect, and direct their capital."
     },
     {
-      question: "Is this program about selling me financial products or stocks?",
-      answer: "No. Absolutely not. Your Wealth Compass is an independent educational and strategic framework. We do not sell insurance, mutual funds, or stocks, nor do we take commissions. Our sole objective is to give you the clarity, frameworks, and decision-making system to manage your own wealth independently."
+      question: "Is this program about selling financial products or stocks?",
+      answer: "No. Absolutely not. The Mastermind is an independent educational and strategic advisory framework. We do not sell insurance, mutual funds, or stocks, nor do we take commissions. Our sole objective is to give you the clarity, frameworks, and decision-making system to manage your own wealth independently."
     },
     {
       question: "How are the 1-on-1 sessions conducted?",
-      answer: "Alongside the 10-week core framework, you receive dedicated one-on-one diagnostic and strategy reviews with Jagat Turkiya and senior advisors. In these sessions, your real numbers, cash flow architecture, and personalized blueprints are evaluated under strict confidentiality."
+      answer: "Alongside the 10-week core curriculum, you receive dedicated one-on-one diagnostic and strategy reviews with Jagat Turkiya and senior advisors. In these sessions, your real numbers, cash flow architecture, and personalized blueprints are evaluated under strict confidentiality."
     },
     {
       question: "What is the weekly time commitment required?",
-      answer: "Approximately 2 to 3 hours per week. This includes the weekly strategic module, execution of your practical worksheets, and periodic one-on-one sessions. The program is designed for busy professionals with zero busywork."
+      answer: "Approximately 2 to 3 hours per week. This includes the strategic session, execution of your practical worksheets, and periodic one-on-one reviews. The program is built for busy executives with zero busywork."
     },
     {
-      question: "How do I enroll or check if I am eligible?",
+      question: "How do I enroll or check eligibility?",
       answer: "Click the 'Apply for Mastermind' or 'Book Consultation' button below to schedule an initial diagnostic conversation. We review your current situation to ensure the program is a mutual fit before enrollment."
     }
   ];
 
   return (
     <div className="mastermind-page">
-      {/* Hero Section - Clean, No Capsules */}
+      {/* Hero Section - Short Headline, Shorter Sub-headline */}
       <section className="hero-section text-center">
         <LiquidHero />
-        <div className="container hero-container" style={{ maxWidth: '920px', margin: '0 auto' }}>
-          <h1 className="hero-title" style={{ marginBottom: '1.25rem', fontSize: 'clamp(2.4rem, 4.5vw, 3.6rem)' }}>
-            Your Wealth Compass <br />
-            <span className="serif-font">Direction for Your Capital &amp; Life</span>
+        <div className="container hero-container" style={{ maxWidth: '840px', margin: '0 auto' }}>
+          <h1 className="hero-title" style={{ marginBottom: '0.85rem', fontSize: 'clamp(2.6rem, 5vw, 4rem)' }}>
+            The Executive Mastermind
           </h1>
 
-          <p className="hero-lead" style={{ maxWidth: '780px', margin: '0 auto 2.25rem auto' }}>
-            Built for operators and high earners making ₹5 Lakh to ₹10 Lakh+ per month who are tired of random decisions and want a clear, systematic operating system to manage, protect, and grow their wealth.
+          <p className="hero-lead" style={{ maxWidth: '620px', margin: '0 auto 2rem auto', fontSize: '1.15rem' }}>
+            Direction, structure, and peace of mind for high-earning leaders.
           </p>
 
           <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap' }}>
@@ -143,6 +142,59 @@ export default function Mastermind() {
             <a href="#curriculum" className="btn btn-glass">
               Explore 10-Week Roadmap ↓
             </a>
+          </div>
+        </div>
+      </section>
+
+      {/* Visual Showcase: Mentorship in Action */}
+      <section className="section" style={{ paddingTop: '2rem' }}>
+        <div className="container">
+          <div className="mastermind-visual-split">
+            <div className="mm-image-wrap">
+              <img
+                src="./assets/images/jagat-speaking.webp"
+                alt="Jagat Turkiya Mentoring Leaders"
+                loading="lazy"
+              />
+            </div>
+
+            <div className="mm-visual-content">
+              <h2 style={{ fontSize: 'clamp(1.8rem, 3vw, 2.4rem)', marginBottom: '1rem' }}>
+                Private Advisory for Serious Leaders
+              </h2>
+              <p style={{ color: 'var(--text-silver)', fontSize: '1rem', lineHeight: 1.7, marginBottom: '0.75rem' }}>
+                The Mastermind is an exclusive, closed-door advisory experience designed for executives, founders, and operators earning ₹5 Lakh to ₹10 Lakh+ per month who want an institutional-grade operating system for their wealth.
+              </p>
+              <p style={{ color: 'var(--text-silver)', fontSize: '1rem', lineHeight: 1.7 }}>
+                You do not need more financial noise, speculation, or random tips. You need a structured, confidential setting to audit your numbers, protect against downside risk, and direct your hard-earned money with unshakeable clarity.
+              </p>
+
+              <div className="mm-feature-list">
+                <div className="mm-feature-item">
+                  <div className="mm-feature-icon">✓</div>
+                  <div>
+                    <h5>1-on-1 Strategic Diagnostic</h5>
+                    <p>Direct private reviews with Jagat Turkiya to audit cash flow, commitments, and blind spots.</p>
+                  </div>
+                </div>
+
+                <div className="mm-feature-item">
+                  <div className="mm-feature-icon">✓</div>
+                  <div>
+                    <h5>Strict Closed-Door Confidentiality</h5>
+                    <p>A trusted, private environment protecting your numbers, balance sheet, and family security.</p>
+                  </div>
+                </div>
+
+                <div className="mm-feature-item">
+                  <div className="mm-feature-icon">✓</div>
+                  <div>
+                    <h5>Actionable Institutional Architecture</h5>
+                    <p>10 structured modules engineered for execution, capital defense, and permanent peace of mind.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -187,20 +239,53 @@ export default function Mastermind() {
               borderRadius: '0 8px 8px 0'
             }}>
               <p style={{ margin: 0, color: '#ffffff', fontSize: '1rem', fontWeight: 600 }}>
-                You do not need another speculative tip. You need an institutional-grade operating system. That is exactly what Your Wealth Compass installs.
+                You do not need another speculative tip. You need an institutional-grade operating system. That is exactly what The Mastermind installs.
               </p>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Qualifying Criteria - Positive Focus Only */}
+      {/* Visual Showcase 2: Collaborative Masterclass & Workshops */}
       <section className="section">
+        <div className="container">
+          <div className="mastermind-visual-split" style={{ gridTemplateColumns: '1.15fr 1fr' }}>
+            <div className="mm-visual-content">
+              <h2 style={{ fontSize: 'clamp(1.8rem, 3vw, 2.4rem)', marginBottom: '1rem' }}>
+                Transforming Ambiguity into Sovereignty
+              </h2>
+              <p style={{ color: 'var(--text-silver)', fontSize: '1rem', lineHeight: 1.7, marginBottom: '1rem' }}>
+                Through guided masterclasses and personalized worksheet reviews, you work through each layer of your personal finance step-by-step.
+              </p>
+              <p style={{ color: 'var(--text-silver)', fontSize: '1rem', lineHeight: 1.7 }}>
+                From plugging silent cash drain and structuring defensive capital moats to harmonizing real estate, liquid reserves, and equities—every piece works together to create enduring security.
+              </p>
+
+              <div style={{ marginTop: '2rem' }}>
+                <Link to="/contact" className="btn btn-outline">
+                  Apply for Mastermind →
+                </Link>
+              </div>
+            </div>
+
+            <div className="mm-image-wrap">
+              <img
+                src="./assets/images/seminar.webp"
+                alt="Jagat Turkiya Live Strategy Session"
+                loading="lazy"
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Qualifying Criteria - Positive Focus Only */}
+      <section className="section section-dark">
         <div className="container">
           <div className="section-header text-center">
             <h2 className="section-title">Is This Right For You?</h2>
             <p className="section-subtitle" style={{ margin: '0 auto', maxWidth: '640px' }}>
-              Your Wealth Compass is engineered for high-earning leaders and professionals who match this profile:
+              The Mastermind is engineered for high-earning leaders and professionals who match this profile:
             </p>
           </div>
 
@@ -219,10 +304,10 @@ export default function Mastermind() {
       </section>
 
       {/* The 10-Week Journey */}
-      <section className="section section-dark" id="curriculum">
+      <section className="section" id="curriculum">
         <div className="container">
           <div className="section-header text-center">
-            <h2 className="section-title">The 10-Week Journey</h2>
+            <h2 className="section-title">The 10-Week Mastermind Roadmap</h2>
             <p className="section-subtitle" style={{ margin: '0 auto', maxWidth: '680px' }}>
               A step-by-step master roadmap taking you from unorganized cash flow to an unshakeable financial operating system.
             </p>
@@ -246,12 +331,12 @@ export default function Mastermind() {
       </section>
 
       {/* What You Get (Deliverables) */}
-      <section className="section">
+      <section className="section section-dark">
         <div className="container">
-          <div className="deliverables-panel">
+          <div className="deliverables-panel" style={{ background: 'var(--bg-card)' }}>
             <div className="text-center" style={{ maxWidth: '680px', margin: '0 auto 2.5rem' }}>
               <h2 className="section-title" style={{ fontSize: 'clamp(1.8rem, 3vw, 2.4rem)' }}>
-                Everything Included in Your Wealth Compass
+                Everything Included in The Mastermind
               </h2>
               <p style={{ color: 'var(--text-silver)', fontSize: '0.98rem', lineHeight: 1.6 }}>
                 This is not a passive video course you forget in a folder. It is an end-to-end, hands-on transformation with direct guided support.
@@ -277,12 +362,12 @@ export default function Mastermind() {
       </section>
 
       {/* FAQ Section */}
-      <section className="section section-dark">
+      <section className="section">
         <div className="container" style={{ maxWidth: '840px', margin: '0 auto' }}>
           <div className="section-header text-center">
             <h2 className="section-title">Frequently Asked Questions</h2>
             <p className="section-subtitle" style={{ margin: '0 auto' }}>
-              Straightforward answers about Your Wealth Compass and enrollment.
+              Straightforward answers about The Mastermind structure and enrollment.
             </p>
           </div>
 
@@ -291,14 +376,14 @@ export default function Mastermind() {
       </section>
 
       {/* Final Close & CTA */}
-      <section className="section text-center" style={{ padding: '5.5rem 0' }}>
+      <section className="section section-dark text-center" style={{ padding: '5.5rem 0' }}>
         <div className="container" style={{ maxWidth: '780px', margin: '0 auto' }}>
           <h2 style={{ fontSize: 'clamp(2rem, 3.5vw, 2.8rem)', marginBottom: '1.25rem' }}>
             Earning is only one part of the equation. <br />
             <span className="serif-font">What are you doing with what you already earn?</span>
           </h2>
           <p style={{ color: 'var(--text-silver)', fontSize: '1.05rem', marginBottom: '2.25rem', lineHeight: 1.7 }}>
-            If you are tired of making random financial decisions and ready to give your wealth a clear, permanent direction, Your Wealth Compass is your next step.
+            If you are tired of making random financial decisions and ready to give your wealth a clear, permanent direction, The Mastermind is your next step.
           </p>
           <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap' }}>
             <Link to="/contact" className="btn btn-white" style={{ padding: '0.95rem 2.25rem', fontSize: '1rem' }}>

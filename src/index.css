@@ -772,6 +772,96 @@ h1, h2, h3, h4, h5, h6 {
   margin-bottom: 1.25rem;
 }
 
+/* Mastermind Visual Showcase & Feature Split */
+.mastermind-visual-split {
+  display: grid;
+  grid-template-columns: 1fr 1.15fr;
+  gap: 3.5rem;
+  align-items: center;
+  margin: 2rem 0;
+}
+
+@media (max-width: 860px) {
+  .mastermind-visual-split {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+}
+
+.mm-image-wrap {
+  position: relative;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: #000000;
+  height: 420px;
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.6);
+}
+
+.mm-image-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+}
+
+@media (max-width: 768px) {
+  .mm-image-wrap {
+    height: 300px;
+  }
+}
+
+.mm-feature-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.1rem;
+  margin-top: 1.75rem;
+}
+
+.mm-feature-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  padding: 1.15rem 1.25rem;
+  background: rgba(255, 255, 255, 0.025);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: var(--radius-sm);
+  transition: var(--transition);
+}
+
+.mm-feature-item:hover {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: rgba(255, 255, 255, 0.15);
+}
+
+.mm-feature-icon {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.1);
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 0.9rem;
+  flex-shrink: 0;
+}
+
+.mm-feature-item h5 {
+  font-size: 1.02rem;
+  color: #ffffff;
+  margin-bottom: 0.2rem;
+}
+
+.mm-feature-item p {
+  font-size: 0.88rem;
+  color: var(--text-silver);
+  line-height: 1.55;
+  margin: 0;
+}
+
 /* 10-Week Mastermind Journey Architecture */
 .curriculum-wrap {
   margin-top: 4rem;

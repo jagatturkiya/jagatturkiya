@@ -80,6 +80,21 @@ const server = http.createServer((req, res) => {
   });
 });
 
+server.on('error', (e) => {
+  if (e.code === 'EADDRINUSE') {
+    const fallbackPort = 5000;
+    console.log(`Port ${PORT} is in use, starting on http://localhost:${fallbackPort}...`);
+    server.listen(fallbackPort, () => {
+      console.log(`===================================================`);
+      console.log(`Jagat Turkiya Executive Website is running locally!`);
+      console.log(`Local URL: http://localhost:${fallbackPort}`);
+      console.log(`===================================================`);
+    });
+  } else {
+    console.error('Server error:', e);
+  }
+});
+
 server.listen(PORT, () => {
   console.log(`===================================================`);
   console.log(`Jagat Turkiya Executive Website is running locally!`);
