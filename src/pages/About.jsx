@@ -43,9 +43,9 @@ export default function About() {
   return (
     <div className="about-page">
       {/* Page Header */}
-      <section className="page-header" style={{ padding: '5.5rem 0 3.5rem', borderBottom: '1px solid var(--border-subtle)', background: 'var(--bg-black)' }}>
-        <div className="container text-center" style={{ maxWidth: '820px', margin: '0 auto' }}>
-          <h1 className="section-title" style={{ fontSize: 'clamp(2.4rem, 4.5vw, 3.4rem)', marginBottom: '1rem' }}>
+      <section className="about-header text-center">
+        <div className="container" style={{ maxWidth: '820px', margin: '0 auto' }}>
+          <h1 className="section-title" style={{ fontSize: 'clamp(2.2rem, 4.5vw, 3.4rem)', marginBottom: '1rem' }}>
             Jagat Singh Turkiya
           </h1>
           <p className="section-subtitle" style={{ maxWidth: '680px', margin: '0 auto', fontSize: '1.05rem', color: 'var(--text-silver)', lineHeight: 1.6 }}>
@@ -89,7 +89,7 @@ export default function About() {
       {/* 15+ Years in Enterprise IT & Mentorship */}
       <section className="section section-dark">
         <div className="container">
-          <div className="story-split" style={{ gridTemplateColumns: '1.1fr 0.9fr' }}>
+          <div className="story-split story-reverse">
             <div className="story-text">
               <h2 style={{ fontSize: 'clamp(1.8rem, 3vw, 2.4rem)', marginBottom: '1.25rem' }}>
                 15+ Years in the Corporate Trenches
@@ -122,8 +122,8 @@ export default function About() {
             </p>
           </div>
 
-          <div className="achievements-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))', gap: '1.5rem' }}>
-            <div className="achievement-card card-glass" style={{ padding: '2rem' }}>
+          <div className="achievements-grid">
+            <div className="achievement-card card-glass">
               <div style={{ fontSize: '2.5rem', marginBottom: '1rem' }}>🏆</div>
               <h4 style={{ fontSize: '1.2rem', marginBottom: '0.5rem', color: '#ffffff' }}>Guinness World Record</h4>
               <p style={{ color: 'var(--text-silver)', fontSize: '0.9rem', lineHeight: 1.6 }}>
@@ -131,7 +131,7 @@ export default function About() {
               </p>
             </div>
 
-            <div className="achievement-card card-glass" style={{ padding: '2rem' }}>
+            <div className="achievement-card card-glass">
               <div style={{ fontSize: '2.5rem', marginBottom: '1rem' }}>🎖️</div>
               <h4 style={{ fontSize: '1.2rem', marginBottom: '0.5rem', color: '#ffffff' }}>National Icon Award 2024</h4>
               <p style={{ color: 'var(--text-silver)', fontSize: '0.9rem', lineHeight: 1.6 }}>
@@ -139,7 +139,7 @@ export default function About() {
               </p>
             </div>
 
-            <div className="achievement-card card-glass" style={{ padding: '2rem' }}>
+            <div className="achievement-card card-glass">
               <div style={{ fontSize: '2.5rem', marginBottom: '1rem' }}>🏅</div>
               <h4 style={{ fontSize: '1.2rem', marginBottom: '0.5rem', color: '#ffffff' }}>Dr. APJ Abdul Kalam Award</h4>
               <p style={{ color: 'var(--text-silver)', fontSize: '0.9rem', lineHeight: 1.6 }}>
@@ -147,7 +147,7 @@ export default function About() {
               </p>
             </div>
 
-            <div className="achievement-card card-glass" style={{ padding: '2rem' }}>
+            <div className="achievement-card card-glass">
               <div style={{ fontSize: '2.5rem', marginBottom: '1rem' }}>🌟</div>
               <h4 style={{ fontSize: '1.2rem', marginBottom: '0.5rem', color: '#ffffff' }}>Times Square NYC Billboard</h4>
               <p style={{ color: 'var(--text-silver)', fontSize: '0.9rem', lineHeight: 1.6 }}>
@@ -209,18 +209,16 @@ export default function About() {
           <div className="bookshelf-grid">
             {books.map((b, i) => (
               <div key={i} className="book-card">
-                <div className="book-cover-wrap">
+                <div className="book-cover-container">
                   <img src={b.img} alt={b.title} loading="lazy" />
                 </div>
-                <div className="book-details">
-                  <span className="book-genre">{b.genre}</span>
-                  <h4>{b.title}</h4>
-                  <p>{b.desc}</p>
-                  <div className="book-footer">
-                    <Link to="/contact" className="btn btn-outline" style={{ width: '100%' }}>
-                      Request a Copy
-                    </Link>
-                  </div>
+                <span className="book-tag">{b.genre}</span>
+                <h4>{b.title}</h4>
+                <p>{b.desc}</p>
+                <div className="book-footer">
+                  <Link to="/contact" className="btn btn-outline" style={{ width: '100%' }}>
+                    Request a Copy
+                  </Link>
                 </div>
               </div>
             ))}
@@ -231,9 +229,11 @@ export default function About() {
       {/* Mission Panel */}
       <section className="section section-dark">
         <div className="container">
-          <div className="ts-narrative" style={{ background: 'var(--bg-card)', padding: '3.5rem', borderRadius: 'var(--radius-lg)', display: 'grid', gridTemplateColumns: '1.3fr 0.7fr', gap: '2.5rem', alignItems: 'center' }}>
+          <div className="about-mission-panel">
             <div>
-              <h2 style={{ fontSize: '2rem', marginBottom: '1rem' }}>On a Mission to Empower 500,000 Lives</h2>
+              <h2 style={{ fontSize: 'clamp(1.8rem, 3vw, 2.3rem)', marginBottom: '1rem' }}>
+                On a Mission to Empower 500,000 Lives
+              </h2>
               <p style={{ color: 'var(--text-silver)', lineHeight: 1.7, fontSize: '1rem', marginBottom: '1.75rem' }}>
                 Through <strong>Minderist Training LLP</strong>, 5 published books, and <strong>Aapka Coach</strong> (<a href="https://apkacoach.com" target="_blank" rel="noopener noreferrer" style={{ color: '#ffffff', textDecoration: 'underline' }}>apkacoach.com</a>), Jagat is dedicated to equipping 500,000 people with the tools to live with absolute clarity, emotional strength, and financial sovereignty.
               </p>
@@ -247,18 +247,18 @@ export default function About() {
               </div>
             </div>
 
-            <div className="ts-badge-panel" style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem', borderLeft: '1px solid var(--border-subtle)', paddingLeft: '2rem' }}>
-              <div>
-                <h3 style={{ fontSize: '2.4rem', color: '#ffffff', lineHeight: 1 }}>500,000</h3>
-                <p style={{ color: 'var(--text-muted)', fontSize: '0.85rem', textTransform: 'uppercase' }}>Mission Target</p>
+            <div className="about-mission-stats">
+              <div className="about-stat-item">
+                <h3>500,000</h3>
+                <p>Mission Target</p>
               </div>
-              <div>
-                <h3 style={{ fontSize: '2.4rem', color: '#ffffff', lineHeight: 1 }}>9+</h3>
-                <p style={{ color: 'var(--text-muted)', fontSize: '0.85rem', textTransform: 'uppercase' }}>Countries Mentored</p>
+              <div className="about-stat-item">
+                <h3>9+</h3>
+                <p>Countries Mentored</p>
               </div>
-              <div>
-                <h3 style={{ fontSize: '2.4rem', color: '#ffffff', lineHeight: 1 }}>1,500+</h3>
-                <p style={{ color: 'var(--text-muted)', fontSize: '0.85rem', textTransform: 'uppercase' }}>1-on-1 Sessions</p>
+              <div className="about-stat-item">
+                <h3>1,500+</h3>
+                <p>1-on-1 Sessions</p>
               </div>
             </div>
           </div>

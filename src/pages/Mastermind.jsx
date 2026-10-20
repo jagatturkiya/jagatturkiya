@@ -139,9 +139,18 @@ export default function Mastermind() {
             <Link to="/contact" className="btn btn-white">
               Apply for Mastermind
             </Link>
-            <a href="#curriculum" className="btn btn-glass">
+            <button
+              type="button"
+              className="btn btn-glass"
+              onClick={() => {
+                const el = document.getElementById('curriculum');
+                if (el) {
+                  el.scrollIntoView({ behavior: 'smooth' });
+                }
+              }}
+            >
               Explore 10-Week Roadmap ↓
-            </a>
+            </button>
           </div>
         </div>
       </section>
