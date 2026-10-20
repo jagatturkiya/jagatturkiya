@@ -136,7 +136,7 @@ export default function Mastermind() {
           </p>
 
           <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap' }}>
-            <Link to="/contact" className="btn btn-white">
+            <Link to="/form" className="btn btn-white">
               Apply for Mastermind
             </Link>
             <button
@@ -271,7 +271,7 @@ export default function Mastermind() {
               </p>
 
               <div style={{ marginTop: '2rem' }}>
-                <Link to="/contact" className="btn btn-outline">
+                <Link to="/form" className="btn btn-outline">
                   Apply for Mastermind →
                 </Link>
               </div>
@@ -362,7 +362,7 @@ export default function Mastermind() {
             </div>
 
             <div style={{ marginTop: '3rem', textAlign: 'center' }}>
-              <Link to="/contact" className="btn btn-white" style={{ padding: '0.95rem 2.25rem', fontSize: '1rem' }}>
+              <Link to="/form" className="btn btn-white" style={{ padding: '0.95rem 2.25rem', fontSize: '1rem' }}>
                 Apply for Mastermind
               </Link>
             </div>
@@ -395,7 +395,7 @@ export default function Mastermind() {
             If you are tired of making random financial decisions and ready to give your wealth a clear, permanent direction, The Mastermind is your next step.
           </p>
           <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap' }}>
-            <Link to="/contact" className="btn btn-white" style={{ padding: '0.95rem 2.25rem', fontSize: '1rem' }}>
+            <Link to="/form" className="btn btn-white" style={{ padding: '0.95rem 2.25rem', fontSize: '1rem' }}>
               Book Consultation &amp; Apply
             </Link>
             <Link to="/about" className="btn btn-glass" style={{ padding: '0.95rem 2.25rem', fontSize: '1rem' }}>

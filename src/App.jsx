@@ -19,7 +19,7 @@ import ThankYou from './pages/ThankYou';
 
 export default function App() {
   const location = useLocation();
-  const isStandaloneFunnel = ['/vsl', '/form', '/apply', '/access', '/thank-you'].includes(location.pathname);
+  const isStandaloneFunnel = ['/vsl', '/form', '/forms', '/apply', '/access', '/thank-you'].includes(location.pathname);
 
   return (
     <div className={`site-wrapper ${isStandaloneFunnel ? 'funnel-layout' : ''}`}>
@@ -39,6 +39,7 @@ export default function App() {
           {/* Standalone Private Funnel Pages (Not linked in navigation) */}
           <Route path="/vsl" element={<Vsl />} />
           <Route path="/form" element={<LeadForm />} />
+          <Route path="/forms" element={<LeadForm />} />
           <Route path="/apply" element={<LeadForm />} />
           <Route path="/access" element={<LeadForm />} />
           <Route path="/thank-you" element={<ThankYou />} />

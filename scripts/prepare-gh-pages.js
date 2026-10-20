@@ -45,7 +45,7 @@ if (fs.existsSync(compiledHtmlPath)) {
   fs.writeFileSync(path.join(rootDir, '.nojekyll'), '');
 
   // Copy standalone html redirects to dist
-  const redirectFiles = ['form.html', 'vsl.html', 'thank-you.html', 'apply.html'];
+  const redirectFiles = ['form.html', 'forms.html', 'vsl.html', 'thank-you.html', 'apply.html'];
   for (const f of redirectFiles) {
     const srcPath = path.join(rootDir, f);
     if (fs.existsSync(srcPath)) {
