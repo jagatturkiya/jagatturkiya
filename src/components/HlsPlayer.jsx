@@ -43,6 +43,39 @@ export default function HlsPlayer({
     if (src) setCustomSrc(src);
   }, [src]);
 
+  // Sync fullscreen state & auto-lock orientation to landscape on mobile devices
+  useEffect(() => {
+    const handleFullscreenChange = () => {
+      const isFull = !!(document.fullscreenElement || document.webkitFullscreenElement);
+      setIsFullscreen(isFull);
+
+      if (isFull) {
+        // Auto-tilt: lock screen orientation to landscape
+        if (window.screen?.orientation?.lock) {
+          window.screen.orientation.lock('landscape').catch(() => {
+            // Orientation lock fallback
+          });
+        }
+      } else {
+        // Unlock screen orientation back to normal/portrait
+        if (window.screen?.orientation?.unlock) {
+          try {
+            window.screen.orientation.unlock();
+          } catch {
+            // Ignore
+          }
+        }
+      }
+    };
+
+    document.addEventListener('fullscreenchange', handleFullscreenChange);
+    document.addEventListener('webkitfullscreenchange', handleFullscreenChange);
+    return () => {
+      document.removeEventListener('fullscreenchange', handleFullscreenChange);
+      document.removeEventListener('webkitfullscreenchange', handleFullscreenChange);
+    };
+  }, []);
+
   // Initialize HLS / Native video source
   useEffect(() => {
     const video = videoRef.current;
@@ -162,24 +195,57 @@ export default function HlsPlayer({
     }
   };
 
-  const toggleFullscreen = () => {
+  const toggleFullscreen = async () => {
     const container = containerRef.current;
-    if (!container) return;
+    const video = videoRef.current;
+    if (!container || !video) return;
 
-    if (!document.fullscreenElement) {
-      if (container.requestFullscreen) {
-        container.requestFullscreen();
-      } else if (container.webkitRequestFullscreen) {
-        container.webkitRequestFullscreen();
+    const isCurrentlyFullscreen = !!(document.fullscreenElement || document.webkitFullscreenElement);
+
+    if (!isCurrentlyFullscreen) {
+      try {
+        if (container.requestFullscreen) {
+          await container.requestFullscreen();
+        } else if (container.webkitRequestFullscreen) {
+          await container.webkitRequestFullscreen();
+        } else if (video.webkitEnterFullscreen) {
+          // iOS Safari native fullscreen handles automatic landscape rotation
+          video.webkitEnterFullscreen();
+          setIsFullscreen(true);
+          return;
+        }
+
+        setIsFullscreen(true);
+
+        // Auto-tilt / lock screen orientation to landscape
+        if (window.screen?.orientation?.lock) {
+          window.screen.orientation.lock('landscape').catch(() => {});
+        }
+      } catch {
+        if (video.webkitEnterFullscreen) {
+          video.webkitEnterFullscreen();
+          setIsFullscreen(true);
+        }
       }
-      setIsFullscreen(true);
     } else {
-      if (document.exitFullscreen) {
-        document.exitFullscreen();
-      } else if (document.webkitExitFullscreen) {
-        document.webkitExitFullscreen();
+      try {
+        if (document.exitFullscreen) {
+          await document.exitFullscreen();
+        } else if (document.webkitExitFullscreen) {
+          await document.webkitExitFullscreen();
+        }
+      } catch {
+        // Fallback
       }
       setIsFullscreen(false);
+
+      if (window.screen?.orientation?.unlock) {
+        try {
+          window.screen.orientation.unlock();
+        } catch {
+          // Ignore
+        }
+      }
     }
   };
 
@@ -261,6 +327,7 @@ export default function HlsPlayer({
     >
       <div 
         ref={containerRef}
+        className="vsl-player-container"
         style={{
           position: 'relative',
           width: '100%',
