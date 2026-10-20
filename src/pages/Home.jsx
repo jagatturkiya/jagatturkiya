@@ -83,11 +83,11 @@ export default function Home() {
           </p>
 
           <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap' }}>
-            <Link to="/contact" className="btn btn-white">
-              Apply for Strategy Evaluation
+            <Link to="/mastermind" className="btn btn-white">
+              Explore Mastermind
             </Link>
-            <Link to="/mastermind" className="btn btn-glass">
-              Explore The Mastermind →
+            <Link to="/contact" className="btn btn-glass">
+              Book Consultation
             </Link>
           </div>
         </div>
@@ -182,9 +182,9 @@ export default function Home() {
                   <h4>{b.title}</h4>
                   <p>{b.desc}</p>
                   <div className="book-footer">
-                    <a href={b.link} target="_blank" rel="noopener noreferrer" className="btn btn-outline" style={{ width: '100%' }}>
-                      View on Amazon ↗
-                    </a>
+                    <Link to="/contact" className="btn btn-outline" style={{ width: '100%' }}>
+                      Request a Copy
+                    </Link>
                   </div>
                 </div>
               </div>
@@ -260,17 +260,17 @@ export default function Home() {
       <section className="section text-center" style={{ padding: '6rem 0' }}>
         <div className="container" style={{ maxWidth: '780px', margin: '0 auto' }}>
           <h2 style={{ fontSize: 'clamp(2rem, 3.5vw, 2.85rem)', marginBottom: '1.25rem' }}>
-            Ready to Install Your <span className="serif-font">Wealth Operating System?</span>
+            Transform Your Life &amp; Wealth with <span className="serif-font">Jagat Turkiya</span>
           </h2>
           <p style={{ color: 'var(--text-silver)', fontSize: '1.05rem', marginBottom: '2.25rem', lineHeight: 1.7 }}>
-            Advisory placements and Mastermind cohorts are limited strictly to qualified operators to maintain confidentiality and high peer standards.
+            Ready to install proven clarity, emotional sovereignty, and strategic frameworks for your life and financial future? Connect directly for personalized mentorship.
           </p>
           <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap' }}>
             <Link to="/contact" className="btn btn-white" style={{ padding: '1rem 2.5rem', fontSize: '1rem' }}>
-              Apply for Strategy Evaluation
+              Book Consultation
             </Link>
             <Link to="/mastermind" className="btn btn-glass" style={{ padding: '1rem 2.5rem', fontSize: '1rem' }}>
-              Explore Mastermind Cohort
+              Explore Mastermind
             </Link>
           </div>
         </div>

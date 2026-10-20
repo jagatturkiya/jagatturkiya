@@ -1,24 +1,23 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import LiquidHero from '../components/LiquidHero';
 
 export default function About() {
   return (
     <div className="about-page">
-      {/* Hero Section */}
-      <section className="hero-section text-center" style={{ padding: '6rem 0 4.5rem 0' }}>
-        <LiquidHero />
-        <div className="container hero-container" style={{ maxWidth: '860px', margin: '0 auto' }}>
-          <h1 className="hero-title" style={{ marginBottom: '1.25rem' }}>
-            The Journey of <span className="serif-font">Jagat Turkiya</span>
+      {/* Page Header - Clean Executive Styling without WebGL */}
+      <section className="page-header" style={{ padding: '6.5rem 0 4rem', borderBottom: '1px solid var(--border-subtle)', background: 'linear-gradient(180deg, var(--bg-black) 0%, var(--bg-surface) 100%)' }}>
+        <div className="container text-center" style={{ maxWidth: '860px', margin: '0 auto' }}>
+          <span className="section-eyebrow">The Authentic Story</span>
+          <h1 className="section-title" style={{ fontSize: 'clamp(2.4rem, 4.5vw, 3.4rem)', marginBottom: '1.25rem' }}>
+            Architect of Clarity &amp; <span className="serif-font">Human Potential</span>
           </h1>
-          <p className="hero-lead" style={{ maxWidth: '780px', margin: '0 auto' }}>
-            From walking 4 km on foot every day for an entire year to save ₹30, to mentoring thousands across 9 nations, setting a Guinness World Record milestone, publishing 5 transformative books, and standing on the Times Square billboard in New York City.
+          <p className="section-subtitle" style={{ maxWidth: '740px', margin: '0 auto', fontSize: '1.1rem', color: 'var(--text-silver)', lineHeight: 1.7 }}>
+            From walking 4 km on foot every day to save ₹30, to guiding thousands of high-achieving founders across 9+ countries, setting a Guinness World Record milestone, publishing 5 transformative books, and standing on the Times Square marquee in New York City.
           </p>
         </div>
       </section>
 
-      {/* The Hardship Season */}
+      {/* The Hardship Season & Origin */}
       <section className="section">
         <div className="container">
           <div className="story-split">
@@ -51,7 +50,7 @@ export default function About() {
         </div>
       </section>
 
-      {/* 15 Years in IT & Mentorship */}
+      {/* 15 Years in IT & Mentorship Authority */}
       <section className="section section-dark">
         <div className="container">
           <div className="story-split" style={{ gridTemplateColumns: '1.1fr 0.9fr' }}>
@@ -78,39 +77,94 @@ export default function About() {
         </div>
       </section>
 
-      {/* Guinness World Record & Times Square Milestones */}
+      {/* Honors & Global Recognitions */}
       <section className="section">
         <div className="container">
           <div className="section-header text-center">
             <span className="section-eyebrow">Global Footprint</span>
-            <h2 className="section-title">Milestones of Global Impact</h2>
+            <h2 className="section-title">Recognized Nationally &amp; Globally</h2>
             <p className="section-subtitle" style={{ margin: '0 auto', maxWidth: '720px' }}>
-              Recognitions achieved through relentless service, scalable transformation frameworks, and international stages.
+              Milestones achieved along the path of building credible, transformative human leadership.
             </p>
           </div>
 
-          <div className="milestones-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '2rem' }}>
-            <div className="card-glass" style={{ padding: '2.5rem' }}>
+          <div className="achievements-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))', gap: '1.5rem' }}>
+            <div className="achievement-card card-glass" style={{ padding: '2rem' }}>
               <div style={{ fontSize: '2.5rem', marginBottom: '1rem' }}>🏆</div>
-              <h3 style={{ fontSize: '1.4rem', marginBottom: '0.8rem', color: '#ffffff' }}>Guinness World Record Milestone</h3>
-              <p style={{ color: 'var(--text-muted)', lineHeight: '1.7', fontSize: '0.95rem' }}>
-                Recognized as an official co-author and record holder in the Guinness World Record for the thickest published book in the world, validating a commitment to monumental intellectual contributions.
+              <h4 style={{ fontSize: '1.25rem', marginBottom: '0.6rem', color: '#ffffff' }}>Guinness World Record</h4>
+              <p style={{ color: 'var(--text-silver)', fontSize: '0.92rem', lineHeight: 1.6 }}>
+                Associated with the historic Guinness World Record event as speaker and leadership mentor.
               </p>
             </div>
 
-            <div className="card-glass" style={{ padding: '2.5rem' }}>
-              <div style={{ fontSize: '2.5rem', marginBottom: '1rem' }}>🗽</div>
-              <h3 style={{ fontSize: '1.4rem', marginBottom: '0.8rem', color: '#ffffff' }}>Times Square NYC Billboard</h3>
-              <p style={{ color: 'var(--text-muted)', lineHeight: '1.7', fontSize: '0.95rem' }}>
-                Broadcast on the iconic digital screens of Times Square in New York City, symbolizing the international reach of his transformational mentorship, keynote speaking, and authorial achievements.
+            <div className="achievement-card card-glass" style={{ padding: '2rem' }}>
+              <div style={{ fontSize: '2.5rem', marginBottom: '1rem' }}>🎖️</div>
+              <h4 style={{ fontSize: '1.25rem', marginBottom: '0.6rem', color: '#ffffff' }}>National Icon Award 2024</h4>
+              <p style={{ color: 'var(--text-silver)', fontSize: '0.92rem', lineHeight: 1.6 }}>
+                Conferred with the prestigious Icon 2024 award for excellence in human coaching and public empowerment.
+              </p>
+            </div>
+
+            <div className="achievement-card card-glass" style={{ padding: '2rem' }}>
+              <div style={{ fontSize: '2.5rem', marginBottom: '1rem' }}>🏅</div>
+              <h4 style={{ fontSize: '1.25rem', marginBottom: '0.6rem', color: '#ffffff' }}>Dr. APJ Abdul Kalam Award</h4>
+              <p style={{ color: 'var(--text-silver)', fontSize: '0.92rem', lineHeight: 1.6 }}>
+                Recognized for tireless contribution to youth education, mindset transformation, and social value.
+              </p>
+            </div>
+
+            <div className="achievement-card card-glass" style={{ padding: '2rem' }}>
+              <div style={{ fontSize: '2.5rem', marginBottom: '1rem' }}>🌟</div>
+              <h4 style={{ fontSize: '1.25rem', marginBottom: '0.6rem', color: '#ffffff' }}>Times Square, NYC Billboard</h4>
+              <p style={{ color: 'var(--text-silver)', fontSize: '0.92rem', lineHeight: 1.6 }}>
+                Featured on the iconic marquee in Times Square, New York City through Topmate’s Creator Club.
               </p>
             </div>
           </div>
         </div>
       </section>
 
-      {/* The 500,000 Mission */}
+      {/* The 4 Pillars of Transformation */}
       <section className="section section-dark">
+        <div className="container">
+          <div className="section-header text-center">
+            <span className="section-eyebrow">The Methodology</span>
+            <h2 className="section-title">The 4 Pillars of Transformation</h2>
+            <p className="section-subtitle" style={{ margin: '0 auto', maxWidth: '740px' }}>
+              The four cornerstone disciplines engineered by Jagat Turkiya to build an unshakeable foundation for life, wealth, and family harmony.
+            </p>
+          </div>
+
+          <div className="pillars-grid">
+            <div className="pillar-card">
+              <div className="pillar-icon">01</div>
+              <h4>Radical Clarity</h4>
+              <p>Most people do not suffer from a lack of effort; they suffer from ambiguity. Clarity means identifying where you truly stand, stripping away illusions, and defining your non-negotiables.</p>
+            </div>
+
+            <div className="pillar-card">
+              <div className="pillar-icon">02</div>
+              <h4>Undivided Focus</h4>
+              <p>In a hyper-stimulated world designed for continuous distraction, focus is an elite advantage. Filtering out noise to direct your cognitive resources into high-leverage milestones.</p>
+            </div>
+
+            <div className="pillar-card">
+              <div className="pillar-icon">03</div>
+              <h4>Strategic Direction</h4>
+              <p>Aimless hard work leads to burnout. Direction means having an objective, step-by-step roadmap with strict timeline accountability and measurable benchmarks.</p>
+            </div>
+
+            <div className="pillar-card">
+              <div className="pillar-icon">04</div>
+              <h4>Disciplined Action</h4>
+              <p>Execution that functions independently of temporary emotional states. Building daily habit loops that ensure continuous momentum even on days when motivation is absent.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* The 500,000 Mission Panel */}
+      <section className="section">
         <div className="container">
           <div className="ts-narrative" style={{ background: 'var(--bg-card)', padding: '3.5rem', borderRadius: 'var(--radius-lg)', display: 'grid', gridTemplateColumns: '1.3fr 0.7fr', gap: '2.5rem', alignItems: 'center' }}>
             <div>
@@ -120,10 +174,10 @@ export default function About() {
               </p>
               <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap' }}>
                 <Link to="/contact" className="btn btn-white">
-                  Apply for Strategy Evaluation
+                  Book Consultation
                 </Link>
                 <Link to="/mastermind" className="btn btn-glass">
-                  Explore The Mastermind
+                  Explore Mastermind
                 </Link>
               </div>
             </div>

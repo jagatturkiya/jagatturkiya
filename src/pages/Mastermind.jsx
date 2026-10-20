@@ -94,7 +94,7 @@ export default function Mastermind() {
       {/* Top Announcement Bar */}
       <div className="top-announcement-bar">
         <div className="container text-center">
-          <span>Next Cohort Application: Limited to 12 Qualified Applicants • New Delhi &amp; Global Virtual</span>
+          <span>Executive Mentorship &amp; Strategy Mastermind • Mentored Personally by Jagat Turkiya</span>
         </div>
       </div>
 
@@ -110,8 +110,8 @@ export default function Mastermind() {
             Earning ₹5L to ₹10L+ a month is an offense. Keeping it and compounding it is defense. Without a system, high income just creates bigger mistakes at higher speeds. Mastermind installs the institutional clarity and execution roadmap usually kept behind closed doors.
           </p>
           <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap' }}>
-            <Link to="/contact?subject=MastermindApplication" className="btn btn-white">
-              Apply to Work With the Advisory Team
+            <Link to="/contact" className="btn btn-white">
+              Join Mastermind
             </Link>
             <a href="#bookshelf" className="btn btn-glass">
               Explore Published Books ↓
@@ -200,9 +200,9 @@ export default function Mastermind() {
                   <h4>{b.title}</h4>
                   <p>{b.desc}</p>
                   <div className="book-footer">
-                    <a href={b.link} target="_blank" rel="noopener noreferrer" className="btn btn-outline" style={{ width: '100%' }}>
-                      View on Amazon ↗
-                    </a>
+                    <Link to="/contact" className="btn btn-outline" style={{ width: '100%' }}>
+                      Request a Copy
+                    </Link>
                   </div>
                 </div>
               </div>
@@ -233,10 +233,10 @@ export default function Mastermind() {
             Ready to Install Your Institutional <span className="serif-font">Wealth Operating System?</span>
           </h2>
           <p style={{ color: 'var(--text-silver)', fontSize: '1.05rem', marginBottom: '2.25rem', lineHeight: 1.7 }}>
-            Cohorts fill on a rolling qualification basis. Submit your private application today to schedule your strategy evaluation with the advisory team.
+            Take command of your financial defense, emotional grounding, and strategic trajectory with Jagat Turkiya.
           </p>
-          <Link to="/contact?subject=MastermindCohortApplication" className="btn btn-white" style={{ padding: '1rem 2.5rem', fontSize: '1rem' }}>
-            Apply for Strategy Evaluation
+          <Link to="/contact" className="btn btn-white" style={{ padding: '1rem 2.5rem', fontSize: '1rem' }}>
+            Book Consultation
           </Link>
         </div>
       </section>

@@ -45,7 +45,7 @@ export default function Footer() {
             <h5>Advisory Desk</h5>
             <ul className="footer-links">
               <li><a href="mailto:hello@jagatturkiya.com">hello@jagatturkiya.com</a></li>
-              <li><Link to="/contact">Apply for Strategy Evaluation</Link></li>
+              <li><Link to="/contact">Book Consultation</Link></li>
               <li>
                 <a href="https://yourwealthcompass.in" target="_blank" rel="noopener noreferrer">
                   Your Wealth Compass (Tool) ↗

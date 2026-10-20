@@ -38,7 +38,7 @@ export default function Header() {
 
           <div className="header-cta-wrap">
             <Link to="/contact" className="btn btn-white">
-              Apply for Strategy
+              Book Consultation
             </Link>
             <button
               type="button"
@@ -98,7 +98,7 @@ export default function Header() {
         </ul>
         <div style={{ marginTop: 'auto', paddingTop: '2rem' }}>
           <Link to="/contact" onClick={closeDrawer} className="btn btn-white" style={{ width: '100%' }}>
-            Apply for Strategy
+            Book Consultation
           </Link>
         </div>
       </div>
