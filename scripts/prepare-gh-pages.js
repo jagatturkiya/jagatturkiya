@@ -22,13 +22,38 @@ if (fs.existsSync(compiledHtmlPath)) {
   
   // Write to dist
   fs.writeFileSync(path.join(distDir, 'index.html'), htmlContent);
-  fs.writeFileSync(path.join(distDir, '404.html'), htmlContent);
+
+  // Create 404.html with automatic HashRouter SPA redirect for GitHub Pages
+  const spa404Content = htmlContent.replace('</head>', `  <script>
+    (function() {
+      var p = window.location.pathname;
+      var repo = '/jagatturkiya';
+      if (p.startsWith(repo)) p = p.slice(repo.length);
+      p = p.replace(/^\\/+/, '').replace(/\\.html$/, '');
+      if (p && !p.startsWith('assets/')) {
+        window.location.replace(window.location.origin + repo + '/#/' + p + window.location.search);
+      }
+    })();
+  </script>
+</head>`);
+  fs.writeFileSync(path.join(distDir, '404.html'), spa404Content);
   fs.writeFileSync(path.join(distDir, '.nojekyll'), '');
 
   // Write to root for direct branch serving
   fs.writeFileSync(path.join(rootDir, 'index.html'), htmlContent);
-  fs.writeFileSync(path.join(rootDir, '404.html'), htmlContent);
+  fs.writeFileSync(path.join(rootDir, '404.html'), spa404Content);
   fs.writeFileSync(path.join(rootDir, '.nojekyll'), '');
+
+  // Copy standalone html redirects to dist
+  const redirectFiles = ['form.html', 'vsl.html', 'thank-you.html', 'apply.html'];
+  for (const f of redirectFiles) {
+    const srcPath = path.join(rootDir, f);
+    if (fs.existsSync(srcPath)) {
+      fs.copyFileSync(srcPath, path.join(distDir, f));
+      console.log(`[prepare-gh-pages] Copied ${f} to dist/`);
+    }
+  }
+
   console.log('[prepare-gh-pages] Written index.html, 404.html, and .nojekyll to dist/ and root.');
 } else {
   console.error('[prepare-gh-pages] Error: compiled HTML not found in dist');
