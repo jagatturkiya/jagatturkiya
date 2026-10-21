@@ -63,7 +63,7 @@ export default function StoryReaderModal({
             onClick={onClose}
             aria-label="Back to stories"
           >
-            &larr; Back to Stories
+            &larr; Back<span className="hide-on-mobile"> to Stories</span>
           </button>
         </div>
       </header>
