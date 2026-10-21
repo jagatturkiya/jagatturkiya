@@ -329,11 +329,8 @@ export default function SuccessStories() {
       {/* Comprehensive Client Reviews with Category Filters */}
       <section className="section section-dark">
         <div className="container">
-          <div className="section-header text-center" style={{ marginBottom: '3rem' }}>
+          <div className="section-header text-center" style={{ marginBottom: '2.5rem' }}>
             <h2 className="section-title">Verified Mentee &amp; Client Experiences</h2>
-            <p className="section-subtitle" style={{ margin: '0 auto', maxWidth: '660px' }}>
-              Explore unfiltered perspectives across professionals, bankers, insurance advisors, and homemakers.
-            </p>
           </div>
 
           {/* Testimonials Masonry / Grid */}
