@@ -30,15 +30,14 @@ export default function FunnelFooter() {
           {/* Jagat Turkiya Logo */}
           <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
             <img
-              src="./assets/images/logo-clean-dark.png"
+              src="./assets/images/logo-executive.svg"
               alt="Jagat Turkiya"
-              width="130"
-              height="36"
+              width="135"
+              height="22"
               style={{
-                height: '36px',
+                height: '22px',
                 width: 'auto',
-                display: 'block',
-                objectFit: 'contain'
+                display: 'block'
               }}
             />
           </div>

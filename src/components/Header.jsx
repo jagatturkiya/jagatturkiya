@@ -13,17 +13,11 @@ export default function Header() {
         <div className="container header-container">
           <Link to="/" className="header-logo-link" aria-label="Jagat Turkiya Home">
             <img
-              src="./assets/images/logo-clean-dark.png"
+              src="./assets/images/logo-executive.svg"
               alt="Jagat Turkiya"
               className="header-logo-img"
-              width="150"
-              height="44"
-              style={{
-                height: '44px',
-                width: 'auto',
-                display: 'block',
-                objectFit: 'contain'
-              }}
+              width="180"
+              height="32"
             />
           </Link>
 
@@ -68,17 +62,11 @@ export default function Header() {
       <div className={`mobile-nav-drawer ${drawerOpen ? 'open' : ''}`}>
         <div className="drawer-header">
           <img
-            src="./assets/images/logo-clean-dark.png"
+            src="./assets/images/logo-executive.svg"
             alt="Jagat Turkiya"
             className="header-logo-img"
-            width="130"
-            height="38"
-            style={{
-              height: '38px',
-              width: 'auto',
-              display: 'block',
-              objectFit: 'contain'
-            }}
+            width="160"
+            height="30"
           />
           <button
             type="button"

@@ -7,19 +7,13 @@ export default function Footer() {
       <div className="container">
         <div className="footer-top">
           <div className="footer-brand">
-            <Link to="/" className="header-logo-link" aria-label="Jagat Turkiya Home" style={{ display: 'inline-block', marginBottom: '1rem' }}>
+            <Link to="/" className="header-logo-link" aria-label="Jagat Turkiya Home">
               <img
-                src="./assets/images/logo-clean-dark.png"
+                src="./assets/images/logo-executive.svg"
                 alt="Jagat Turkiya"
                 className="header-logo-img"
-                width="140"
-                height="40"
-                style={{
-                  height: '40px',
-                  width: 'auto',
-                  display: 'block',
-                  objectFit: 'contain'
-                }}
+                width="160"
+                height="28"
               />
             </Link>
             <p>

@@ -258,9 +258,9 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .header-logo-img {
-  height: 44px;
+  height: 32px;
   width: auto;
-  max-width: 200px;
+  max-width: 220px;
   display: block;
   object-fit: contain;
 }
