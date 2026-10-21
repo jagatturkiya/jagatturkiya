@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import BrandLogo from './BrandLogo';
 
 export default function Footer() {
   return (
@@ -7,21 +8,8 @@ export default function Footer() {
       <div className="container">
         <div className="footer-top">
           <div className="footer-brand">
-            <Link to="/" className="header-logo-link" aria-label="Jagat Turkiya Home">
-              <img
-                src="./assets/images/jagat-logo.png"
-                alt="Jagat Turkiya"
-                className="header-logo-img"
-                width="100"
-                height="44"
-                style={{
-                  height: '44px',
-                  width: 'auto',
-                  display: 'block',
-                  objectFit: 'contain',
-                  marginBottom: '1rem'
-                }}
-              />
+            <Link to="/" className="header-logo-link" aria-label="Jagat Turkiya Home" style={{ display: 'inline-block', marginBottom: '1rem' }}>
+              <BrandLogo height={34} />
             </Link>
             <p>
               Global Transformation Coach, Financial Consultant, Author of 5 published books, and Founder of Aapka Coach.

@@ -168,7 +168,7 @@ export default function Vsl() {
                 margin: 0
               }}>
                 <strong style={{ color: '#ffffff', fontWeight: 600 }}>What we do on the call:</strong>{' '}
-                We get on a private video chat to look at your real numbers, talk through your goals, and see if our 6-month private coaching mentorship is genuinely the right fit for you. No pressure.
+                We get on a private video chat to look at your real numbers, talk through your goals, and see if our 10-week private coaching mentorship is genuinely the right fit for you. No pressure.
               </p>
             </li>
 

@@ -258,11 +258,11 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .header-logo-img {
-  height: 44px;
+  height: 38px;
   width: auto;
+  max-width: 220px;
   display: block;
   object-fit: contain;
-  filter: drop-shadow(0 0 1px rgba(255, 255, 255, 0.4));
 }
 
 
@@ -736,7 +736,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /* ==========================================================================
-   PRODUCTS PAGE: 6-MONTH MASTERMIND, YOUR WEALTH COMPASS, AAPKA COACH, BOOKS
+   PRODUCTS / MASTERMIND PAGE: 10-WEEK MASTERMIND, YOUR WEALTH COMPASS, AAPKA COACH, BOOKS
    ========================================================================== */
 .mastermind-spotlight {
   background: linear-gradient(180deg, var(--bg-elevated) 0%, var(--bg-card) 100%);

@@ -133,7 +133,7 @@ export default function SuccessStories() {
       tag: 'Tax & Capital Protection Moats',
       source: 'Direct Mentorship',
       timeAgo: 'Verified Client',
-      quote: 'High earnings in banking come with relentless stress and hidden capital leakage. Jagat Turkiya’s 6-month framework is the only system that bridged my earning with enduring wealth. His psychological approach to money is extraordinary.'
+      quote: 'High earnings in banking come with relentless stress and hidden capital leakage. Jagat Turkiya’s 10-week framework is the only system that bridged my earning with enduring wealth. His psychological approach to money is extraordinary.'
     },
     {
       name: 'Kavita Saxena',

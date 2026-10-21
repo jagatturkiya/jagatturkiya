@@ -1,4 +1,5 @@
 import React from 'react';
+import BrandLogo from './BrandLogo';
 
 export default function FunnelHeader() {
   return (
@@ -29,7 +30,7 @@ export default function FunnelHeader() {
           justifyContent: 'center'
         }}
       >
-        {/* Official Executive Logo from Website - Transparent & Centered */}
+        {/* Official Executive BrandLogo - Transparent, Vector-Sharp & Centered */}
         <div 
           style={{
             display: 'inline-flex',
@@ -40,18 +41,7 @@ export default function FunnelHeader() {
           }}
           aria-label="Jagat Turkiya"
         >
-          <img
-            src="./assets/images/jagat-logo.png"
-            alt="Jagat Turkiya"
-            width="100"
-            height="46"
-            style={{
-              height: '46px',
-              width: 'auto',
-              display: 'block',
-              objectFit: 'contain'
-            }}
-          />
+          <BrandLogo height={38} />
         </div>
       </div>
     </header>
