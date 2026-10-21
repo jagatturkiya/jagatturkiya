@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { NavLink, Link } from 'react-router-dom';
-import BrandLogo from './BrandLogo';
 
 export default function Header() {
   const [drawerOpen, setDrawerOpen] = useState(false);
@@ -13,7 +12,19 @@ export default function Header() {
       <header className="site-header">
         <div className="container header-container">
           <Link to="/" className="header-logo-link" aria-label="Jagat Turkiya Home">
-            <BrandLogo height={38} />
+            <img
+              src="./assets/images/logo-clean-dark.png"
+              alt="Jagat Turkiya"
+              className="header-logo-img"
+              width="150"
+              height="44"
+              style={{
+                height: '44px',
+                width: 'auto',
+                display: 'block',
+                objectFit: 'contain'
+              }}
+            />
           </Link>
 
           <nav className="main-nav" aria-label="Primary Navigation">
@@ -56,7 +67,19 @@ export default function Header() {
       {/* Mobile Drawer */}
       <div className={`mobile-nav-drawer ${drawerOpen ? 'open' : ''}`}>
         <div className="drawer-header">
-          <BrandLogo height={32} />
+          <img
+            src="./assets/images/logo-clean-dark.png"
+            alt="Jagat Turkiya"
+            className="header-logo-img"
+            width="130"
+            height="38"
+            style={{
+              height: '38px',
+              width: 'auto',
+              display: 'block',
+              objectFit: 'contain'
+            }}
+          />
           <button
             type="button"
             className="drawer-close-btn"

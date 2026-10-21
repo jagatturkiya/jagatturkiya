@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import BrandLogo from './BrandLogo';
 
 export default function FunnelFooter() {
   const [activePolicy, setActivePolicy] = useState(null); // 'privacy' | 'terms' | 'refund' | null
@@ -28,9 +27,20 @@ export default function FunnelFooter() {
             textAlign: 'center'
           }}
         >
-          {/* Jagat Turkiya BrandLogo */}
+          {/* Jagat Turkiya Logo */}
           <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-            <BrandLogo height={32} />
+            <img
+              src="./assets/images/logo-clean-dark.png"
+              alt="Jagat Turkiya"
+              width="130"
+              height="36"
+              style={{
+                height: '36px',
+                width: 'auto',
+                display: 'block',
+                objectFit: 'contain'
+              }}
+            />
           </div>
 
           {/* Policies in exact "policy | terms | refund" pipe format */}

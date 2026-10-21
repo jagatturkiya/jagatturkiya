@@ -1,5 +1,4 @@
 import React, { useEffect, useRef } from 'react';
-import BrandLogo from './BrandLogo';
 
 export default function StoryReaderModal({
   story,
@@ -50,7 +49,12 @@ export default function StoryReaderModal({
             style={{ cursor: 'pointer', display: 'flex', alignItems: 'center' }}
             title="Back to home"
           >
-            <BrandLogo height={32} />
+            <img
+              src="./assets/images/logo-clean-dark.png"
+              alt="Jagat Turkiya"
+              className="header-logo-img"
+              style={{ height: '36px', width: 'auto', display: 'block', objectFit: 'contain' }}
+            />
           </div>
 
           <button
