@@ -54,7 +54,17 @@ if (fs.existsSync(compiledHtmlPath)) {
     }
   }
 
-  console.log('[prepare-gh-pages] Written index.html, 404.html, and .nojekyll to dist/ and root.');
+  // Copy all favicon formats to dist & root
+  const faviconFiles = ['favicon.ico', 'favicon.png', 'favicon.svg', 'favicon-32x32.png', 'favicon-16x16.png', 'favicon-64x64.png', 'apple-touch-icon.png'];
+  for (const f of faviconFiles) {
+    const srcPath = path.join(rootDir, 'public', f);
+    if (fs.existsSync(srcPath)) {
+      fs.copyFileSync(srcPath, path.join(distDir, f));
+      fs.copyFileSync(srcPath, path.join(rootDir, f));
+    }
+  }
+
+  console.log('[prepare-gh-pages] Written index.html, 404.html, .nojekyll, and favicons to dist/ and root.');
 } else {
   console.error('[prepare-gh-pages] Error: compiled HTML not found in dist');
   process.exit(1);
