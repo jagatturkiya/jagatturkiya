@@ -9,9 +9,25 @@ function Create-Favicon($size, $outputPath, $isIco = $false) {
     $g.InterpolationMode = [System.Drawing.Drawing2D.InterpolationMode]::HighQualityBicubic
     $g.Clear([System.Drawing.Color]::Transparent)
 
-    # Calculate dimensions
+    # Dark background base for crisp contrast on all tabs
+    $bgBrush = New-Object System.Drawing.SolidBrush ([System.Drawing.Color]::FromArgb(255, 10, 10, 12))
+    $bgRect = New-Object System.Drawing.Rectangle 0, 0, $size, $size
+    $cornerRad = [int]($size * 0.22)
+    
+    # Draw rounded dark background
+    $path = New-Object System.Drawing.Drawing2D.GraphicsPath
+    $d = $cornerRad * 2
+    $path.AddArc(0, 0, $d, $d, 180, 90)
+    $path.AddArc(($size - $d), 0, $d, $d, 270, 90)
+    $path.AddArc(($size - $d), ($size - $d), $d, $d, 0, 90)
+    $path.AddArc(0, ($size - $d), $d, $d, 90, 90)
+    $path.CloseFigure()
+    $g.FillPath($bgBrush, $path)
+    $bgBrush.Dispose()
+
+    # Calculate diamond dimensions
     $center = [single]($size / 2.0)
-    $diamondRadius = [single]($size * 0.40)
+    $diamondRadius = [single]($size * 0.36)
     
     # Diamond 45-degree polygon points
     $pTop = New-Object System.Drawing.PointF $center, ($center - $diamondRadius)
@@ -20,33 +36,34 @@ function Create-Favicon($size, $outputPath, $isIco = $false) {
     $pLeft = New-Object System.Drawing.PointF ($center - $diamondRadius), $center
     $poly = [System.Drawing.PointF[]]@($pTop, $pRight, $pBottom, $pLeft)
 
-    # Subtle fill
-    $fillBrush = New-Object System.Drawing.SolidBrush ([System.Drawing.Color]::FromArgb(35, 245, 176, 37))
+    # Subtle golden glow fill
+    $fillBrush = New-Object System.Drawing.SolidBrush ([System.Drawing.Color]::FromArgb(45, 245, 158, 11))
     $g.FillPolygon($fillBrush, $poly)
     $fillBrush.Dispose()
 
-    # Golden border
-    $penWidth = [single][Math]::Max(2.0, ($size * 0.085))
-    $pen = New-Object System.Drawing.Pen ([System.Drawing.Color]::FromArgb(255, 245, 176, 37)), $penWidth
+    # Vibrant Golden border
+    $penWidth = [single][Math]::Max(2.0, ($size * 0.08))
+    $pen = New-Object System.Drawing.Pen ([System.Drawing.Color]::FromArgb(255, 245, 158, 11)), $penWidth
     $pen.LineJoin = [System.Drawing.Drawing2D.LineJoin]::Round
     $g.DrawPolygon($pen, $poly)
     $pen.Dispose()
 
-    # Draw bold JT text
+    # Draw bold PURE WHITE JT text (as requested!)
     $fontSize = [single]($size * 0.38)
     $font = New-Object System.Drawing.Font("Arial", $fontSize, [System.Drawing.FontStyle]::Bold, [System.Drawing.GraphicsUnit]::Pixel)
-    $textBrush = New-Object System.Drawing.SolidBrush ([System.Drawing.Color]::FromArgb(255, 245, 176, 37))
+    $textBrush = New-Object System.Drawing.SolidBrush ([System.Drawing.Color]::FromArgb(255, 255, 255, 255))
     
     $sf = New-Object System.Drawing.StringFormat
     $sf.Alignment = [System.Drawing.StringAlignment]::Center
     $sf.LineAlignment = [System.Drawing.StringAlignment]::Center
     
-    $rect = New-Object System.Drawing.RectangleF ([single]0), ([single]($size * 0.02)), ([single]$size), ([single]$size)
+    $rect = New-Object System.Drawing.RectangleF ([single]0), ([single]($size * 0.03)), ([single]$size), ([single]$size)
     $g.DrawString("JT", $font, $textBrush, $rect, $sf)
 
     $font.Dispose()
     $textBrush.Dispose()
     $sf.Dispose()
+    $path.Dispose()
     $g.Dispose()
 
     if ($isIco) {
@@ -59,7 +76,7 @@ function Create-Favicon($size, $outputPath, $isIco = $false) {
         $bmp.Save($outputPath, [System.Drawing.Imaging.ImageFormat]::Png)
     }
     $bmp.Dispose()
-    Write-Host "Created $outputPath successfully"
+    Write-Host "Created $outputPath with WHITE JT successfully"
 }
 
 # Generate PNGs and ICO in public and dist
