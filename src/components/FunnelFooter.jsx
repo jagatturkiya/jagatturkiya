@@ -227,7 +227,7 @@ export default function FunnelFooter() {
                 </h2>
                 <div style={{ fontSize: '0.92rem', lineHeight: '1.75', color: '#d4d4d8', display: 'flex', flexDirection: 'column', gap: '1rem' }}>
                   <p>
-                    We respect your privacy and confidentiality. Any information you submit on this advisory portal—including your name, email address, and contact number—is strictly used for communication regarding your strategy consultation and our 10-week private wealth mentorship.
+                    We respect your privacy and confidentiality. Any information you submit on this advisory portal—including your name, email address, and contact number—is strictly used for communication regarding your strategy consultation and our 6-month private mentorship.
                   </p>
                   <p>
                     <strong>Data Protection:</strong> We do not sell, rent, or distribute your personal contact information to third-party marketing brokers or advertisers. All transmissions are encrypted using standard industry security protocols.
@@ -270,7 +270,7 @@ export default function FunnelFooter() {
                     <strong>100% Instant Refund:</strong> When you book a 1-on-1 strategy call, the ₹499 commitment deposit is strictly a reservation anchor to prevent no-shows. The moment you show up to your scheduled video chat, your ₹499 is transferred right back to your source account.
                   </p>
                   <p>
-                    <strong>Mutual Fit Decision:</strong> Even if, during or after the call, we determine that our 10-week mentorship is not the ideal fit for your current financial situation, you still receive your 100% full deposit back immediately.
+                    <strong>Mutual Fit Decision:</strong> Even if, during or after the call, we determine that our 6-month mentorship is not the ideal fit for your current financial situation, you still receive your 100% full deposit back immediately.
                   </p>
                   <p>
                     <strong>The Only Exception:</strong> The deposit is non-refundable only if you book a slot, block an advisor&apos;s time, and simply don&apos;t show up without informing us beforehand.

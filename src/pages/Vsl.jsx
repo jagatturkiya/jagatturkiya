@@ -40,7 +40,7 @@ export default function Vsl() {
           margin: '0 auto 2.5rem',
           letterSpacing: '-0.02em'
         }}>
-          How To Bridge Your Wealth Gap &amp; Build A Predictable Financial Fortress
+          How High Earners Bridge Their Wealth Gap &amp; Build Unshakeable Peace of Mind
         </h1>
 
         {/* Clean HLS Video Player (100% video focus, no watermarks, no stream buttons) */}
@@ -168,7 +168,7 @@ export default function Vsl() {
                 margin: 0
               }}>
                 <strong style={{ color: '#ffffff', fontWeight: 600 }}>What we do on the call:</strong>{' '}
-                We get on a private video chat to look at your real numbers, talk through your goals, and see if our 10-week mentorship is genuinely the right fit for you. No pressure.
+                We get on a private video chat to look at your real numbers, talk through your goals, and see if our 6-month private coaching mentorship is genuinely the right fit for you. No pressure.
               </p>
             </li>
 

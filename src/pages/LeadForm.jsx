@@ -82,7 +82,7 @@ export default function LeadForm() {
         flexDirection: 'column',
         alignItems: 'center'
       }}>
-        {/* Bold Headline */}
+        {/* Coach-Centric Professional Headline */}
         <h1 style={{
           fontFamily: "'Instrument Sans', -apple-system, sans-serif",
           fontSize: 'clamp(2rem, 4.5vw, 3rem)',
@@ -90,11 +90,11 @@ export default function LeadForm() {
           lineHeight: 1.2,
           color: '#ffffff',
           textAlign: 'center',
-          maxWidth: '820px',
+          maxWidth: '860px',
           marginBottom: '1.75rem',
           letterSpacing: '-0.025em'
         }}>
-          We Hand-Hold High Earners &amp; Founders To Make Their Wealth Predictable &amp; Generational.
+          Work Directly With Coach Jagat Turkiya To Master Your Wealth, Mindset &amp; Long-Term Direction.
         </h1>
 
         {/* Money-Back Guarantee in Vibrant Green (Directly above the form) */}

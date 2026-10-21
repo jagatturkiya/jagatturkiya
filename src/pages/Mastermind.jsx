@@ -6,61 +6,61 @@ import FaqAccordion from '../components/FaqAccordion';
 export default function Mastermind() {
   const weeks = [
     {
-      num: "Week 01",
+      num: "Milestone 01",
       title: "Financial Clarity & Diagnostic Audit",
       headline: "Know exactly where you stand before deciding where to go.",
       desc: "A comprehensive baseline diagnostic of your financial reality: exact income channels, recurring expenses, existing investments, hidden commitments, and genuine long-term priorities. Without knowing where you are today, choosing a direction is impossible."
     },
     {
-      num: "Week 02",
+      num: "Milestone 02",
       title: "Flow of Money & Silent Leakage",
       headline: "Map the inflows, outflows, and plug unnoticed capital drain.",
       desc: "Where is your hard-earned money really going? We map your cash velocity—how much is retained, how much is deployed, and where unnecessary financial leakage is quietly sabotaging wealth accumulation. Objective: give your cash a disciplined architecture."
     },
     {
-      num: "Week 03",
+      num: "Milestone 03",
       title: "Multi-Horizon Financial Goals",
       headline: "Align financial decisions with real life milestones.",
       desc: "Dismantling random investing. We categorize and articulate your goals across 3 clear horizons: Short-Term (liquidity & peace), Medium-Term (acquisitions & pivots), and Long-Term (generational freedom). The right financial decision for the right life goal."
     },
     {
-      num: "Week 04",
+      num: "Milestone 04",
       title: "Objective Investment Guidance",
       headline: "Replace random stock tips with a robust evaluation framework.",
       desc: "Stop reacting to social media hype, speculative trends, or unsolicited advice. Learn a structured framework to evaluate how different asset classes, timelines, and vehicle structures align with your risk capacity and wealth objectives."
     },
     {
-      num: "Week 05",
+      num: "Milestone 05",
       title: "Defensive Risk Management",
       headline: "Master downside protection, because wealth is about retention.",
       desc: "High returns mean nothing without downside protection. How much risk is actually appropriate for your life stage? Which risks must be eliminated, insured, or absorbed? We systematically construct defensive capital moats and emergency firewalls."
     },
     {
-      num: "Week 06",
+      num: "Milestone 06",
       title: "Strategic Wealth Allocation",
       headline: "Connect isolated investments into one cohesive ecosystem.",
       desc: "Most high earners hold disconnected investments that work against each other. Here, we harmonize your portfolio so that real estate, equity, liquid reserves, and business capital support your broader life priorities as one coordinated system."
     },
     {
-      num: "Week 07",
+      num: "Milestone 07",
       title: "Executive Financial Decision Making",
       headline: "Eliminate emotional choices with a proven evaluation matrix.",
       desc: "Which opportunity deserves focus right now? Which past decisions should be cut or restructured? We replace impulsive, fear-driven, or ego-based financial decisions with an objective, stress-tested executive decision-making filter."
     },
     {
-      num: "Week 08",
+      num: "Milestone 08",
       title: "Your Personal Financial Strategy",
       headline: "Synthesize all insights into a customized master blueprint.",
       desc: "Your financial reality is unlike anyone else's. Your income, family obligations, risk tolerance, and aspirations are unique. We tailor the entire framework into a personalized operational strategy built specifically for your balance sheet."
     },
     {
-      num: "Week 09",
+      num: "Milestone 09",
       title: "Hands-On Practical Implementation",
       headline: "Bridge the gap between strategy and real-world execution.",
       desc: "A great strategy on paper changes nothing. In Week 9, we work with you to execute: reorganizing account structures, setting up automatic allocation protocols, cutting leaks, and putting your financial blueprint into actual practice."
     },
     {
-      num: "Week 10",
+      num: "Milestone 10",
       title: "Your Permanent Financial Operating System",
       headline: "Complete clarity, total direction, and lifetime peace of mind.",
       desc: "We bring every component together into your permanent financial operating system. You now operate with total clarity on cash flow, portfolio direction, risk boundaries, and future choices. You now hold an unshakeable compass for your capital."
@@ -87,15 +87,15 @@ export default function Mastermind() {
   ];
 
   const deliverables = [
-    "10-Week Structured Mastermind Framework",
-    "Step-by-Step Personal Financial Blueprint",
+    "6-Month Structured Mastermind & Mentorship Framework",
+    "Step-by-Step Personal Financial & Life Blueprint",
     "Objective Investment & Allocation Guidance",
     "Defensive Risk Architecture & Capital Moats",
     "Flow-of-Money & Cash Leakage Audit",
     "Multi-Horizon Goal Planning (Short, Medium, Long-Term)",
-    "Guided 1-on-1 Strategy & Audit Sessions",
+    "Guided 1-on-1 Coaching & Diagnostic Sessions With Jagat Turkiya",
     "Hands-On Practical Implementation Support",
-    "Your Lifetime Wealth Operating System"
+    "Your Lifetime Wealth & Mental Operating System"
   ];
 
   const faqItems = [
@@ -109,7 +109,7 @@ export default function Mastermind() {
     },
     {
       question: "How are the 1-on-1 sessions conducted?",
-      answer: "Alongside the 10-week core curriculum, you receive dedicated one-on-one diagnostic and strategy reviews with Jagat Turkiya and senior advisors. In these sessions, your real numbers, cash flow architecture, and personalized blueprints are evaluated under strict confidentiality."
+      answer: "Alongside the 6-month core curriculum, you receive dedicated one-on-one diagnostic and strategy coaching sessions with Jagat Turkiya and senior advisors. In these sessions, your real numbers, cash flow architecture, and personalized blueprints are evaluated under strict confidentiality."
     },
     {
       question: "What is the weekly time commitment required?",
@@ -131,8 +131,8 @@ export default function Mastermind() {
             The Executive Mastermind
           </h1>
 
-          <p className="hero-lead" style={{ maxWidth: '620px', margin: '0 auto 2rem auto', fontSize: '1.15rem' }}>
-            Direction, structure, and peace of mind for high-earning leaders.
+          <p className="hero-lead" style={{ maxWidth: '680px', margin: '0 auto 2rem auto', fontSize: '1.15rem' }}>
+            A 6-month comprehensive coaching container with Jagat Turkiya. Direction, structure, and peace of mind for high-earning leaders.
           </p>
 
           <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap' }}>
@@ -149,7 +149,7 @@ export default function Mastermind() {
                 }
               }}
             >
-              Explore 10-Week Roadmap ↓
+              Explore 6-Month Roadmap ↓
             </button>
           </div>
         </div>
@@ -312,13 +312,13 @@ export default function Mastermind() {
         </div>
       </section>
 
-      {/* The 10-Week Journey */}
+      {/* The 6-Month Journey */}
       <section className="section" id="curriculum">
         <div className="container">
           <div className="section-header text-center">
-            <h2 className="section-title">The 10-Week Mastermind Roadmap</h2>
+            <h2 className="section-title">The 6-Month Mastermind Roadmap</h2>
             <p className="section-subtitle" style={{ margin: '0 auto', maxWidth: '680px' }}>
-              A step-by-step master roadmap taking you from unorganized cash flow to an unshakeable financial operating system.
+              A comprehensive 10-milestone roadmap taking you from unorganized cash flow to an unshakeable life and financial operating system.
             </p>
           </div>
 
