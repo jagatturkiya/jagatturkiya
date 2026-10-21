@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 
 export default function SuccessStories() {
-  const [activeTab, setActiveTab] = useState('all');
   const [activeVideoModal, setActiveVideoModal] = useState(null);
 
   const videoTestimonials = [
@@ -147,10 +146,6 @@ export default function SuccessStories() {
       quote: 'The peace of mind our family has gained through Jagat’s mentoring is priceless. No speculative risks, no confusion—just an unshakeable roadmap for our children’s education and future freedom.'
     }
   ];
-
-  const filteredReviews = activeTab === 'all' 
-    ? allReviews 
-    : allReviews.filter(r => r.category === activeTab);
 
   return (
     <div className="success-stories-page">
@@ -334,36 +329,16 @@ export default function SuccessStories() {
       {/* Comprehensive Client Reviews with Category Filters */}
       <section className="section section-dark">
         <div className="container">
-          <div className="section-header text-center" style={{ marginBottom: '2.5rem' }}>
+          <div className="section-header text-center" style={{ marginBottom: '3rem' }}>
             <h2 className="section-title">Verified Mentee &amp; Client Experiences</h2>
             <p className="section-subtitle" style={{ margin: '0 auto', maxWidth: '660px' }}>
               Explore unfiltered perspectives across professionals, bankers, insurance advisors, and homemakers.
             </p>
-
-            {/* Filter Tabs */}
-            <div className="success-tabs-wrap">
-              {[
-                { id: 'all', label: 'All Reviews (10)' },
-                { id: 'professionals', label: 'Professionals & Corporate' },
-                { id: 'advisors', label: 'Insurance Agents & Bankers' },
-                { id: 'homemakers', label: 'Homemakers & Family Wealth' },
-                { id: 'topmate', label: 'Topmate Verified' }
-              ].map(tab => (
-                <button
-                  key={tab.id}
-                  type="button"
-                  onClick={() => setActiveTab(tab.id)}
-                  className={`success-tab-btn ${activeTab === tab.id ? 'active' : ''}`}
-                >
-                  {tab.label}
-                </button>
-              ))}
-            </div>
           </div>
 
           {/* Testimonials Masonry / Grid */}
           <div className="success-reviews-grid">
-            {filteredReviews.map((r, i) => (
+            {allReviews.map((r, i) => (
               <div key={i} className="success-review-card">
                 <div>
                   <div style={{
