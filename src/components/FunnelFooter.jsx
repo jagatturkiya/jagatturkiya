@@ -233,7 +233,7 @@ export default function FunnelFooter() {
                     <strong>Data Protection:</strong> We do not sell, rent, or distribute your personal contact information to third-party marketing brokers or advertisers. All transmissions are encrypted using standard industry security protocols.
                   </p>
                   <p>
-                    <strong>Communications:</strong> You may receive session reminders, calendar invites, and advisory orientation guides via email or WhatsApp. You can opt out at any time by replying &quot;STOP&quot; or emailing us at hello@jagatturkiya.com.
+                    <strong>Communications:</strong> You may receive session reminders, calendar invites, and advisory orientation guides via email or WhatsApp. You can opt out at any time by replying &quot;STOP&quot; or emailing us at hello@apkacoach.com.
                   </p>
                 </div>
               </div>

@@ -69,20 +69,20 @@ export default function Mastermind() {
 
   const qualifyingCriteria = [
     {
-      title: "High-Earning Professionals & Founders",
-      desc: "Earning ₹5 Lakh to ₹10 Lakh or more per month, looking to transition from reactive earning to institutional-grade wealth management."
+      title: "Corporate & Industry Professionals",
+      desc: "Specialists, consultants, managers, and executives who have solid recurring income but want to transition from trading time for money to building long-term compounding assets."
     },
     {
-      title: "Seekers of Direction & Structure",
-      desc: "High earners who feel substantial money comes in every month, but quietly slips away without a defined, transparent destination."
+      title: "Insurance Advisors, Bankers & Practitioners",
+      desc: "Professionals who guide others on financial instruments daily, but recognize the critical need for an objective, disciplined wealth architecture for their own household."
     },
     {
-      title: "Risk & Capital Allocation Clarity",
-      desc: "Leaders who want objective answers on how much capital to invest, where to safely park reserves, and how to eliminate downside risks."
+      title: "Homemakers & Family Wealth Custodians",
+      desc: "Family stewards who manage household decisions and want the financial sovereignty, structured literacy, and security systems to protect their family's long-term future."
     },
     {
-      title: "Enduring Family Wealth Architecture",
-      desc: "Individuals ready to install an orderly, disciplined financial system that protects their family security and delivers complete peace of mind."
+      title: "Seekers of Direction & Lifelong Peace",
+      desc: "Driven individuals who are tired of noise, confusion, and emotional decisions, and are ready for a grounded, disciplined operating system that delivers permanent peace of mind."
     }
   ];
 
@@ -101,7 +101,7 @@ export default function Mastermind() {
   const faqItems = [
     {
       question: "Who is The Mastermind specifically built for?",
-      answer: "The Mastermind is designed for high-earning professionals, executives, entrepreneurs, and business owners earning ₹5 Lakh to ₹10 Lakh+ per month who realize that high income alone does not equal wealth. It is for leaders who want an organized, systematic operating system to manage, protect, and direct their capital."
+      answer: "The Mastermind is crafted for driven working professionals, financial practitioners, bankers, insurance advisors, and family wealth custodians who have money coming in and are ready to turn it into enduring, protected wealth. It is for anyone who wants an organized, systematic operating system to manage, protect, and multiply their capital with complete peace of mind."
     },
     {
       question: "Is this program about selling financial products or stocks?",
@@ -136,7 +136,7 @@ export default function Mastermind() {
           </p>
 
           <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap' }}>
-            <Link to="/form" className="btn btn-white">
+            <Link to="/optin" className="btn btn-white">
               Apply for Mastermind
             </Link>
             <button
@@ -169,13 +169,13 @@ export default function Mastermind() {
 
             <div className="mm-visual-content">
               <h2 style={{ fontSize: 'clamp(1.8rem, 3vw, 2.4rem)', marginBottom: '1rem' }}>
-                Private Advisory for Serious Leaders
+                Personal Advisory for Lasting Wealth &amp; Peace of Mind
               </h2>
               <p style={{ color: 'var(--text-silver)', fontSize: '1rem', lineHeight: 1.7, marginBottom: '0.75rem' }}>
-                The Mastermind is an exclusive, closed-door advisory experience designed for executives, founders, and operators earning ₹5 Lakh to ₹10 Lakh+ per month who want an institutional-grade operating system for their wealth.
+                The Mastermind is an exclusive, closed-door coaching container designed for ambitious professionals, financial practitioners, and dedicated family stewards who are earning well, managing money, and want to build lasting, compounding wealth with absolute clarity.
               </p>
               <p style={{ color: 'var(--text-silver)', fontSize: '1rem', lineHeight: 1.7 }}>
-                You do not need more financial noise, speculation, or random tips. You need a structured, confidential setting to audit your numbers, protect against downside risk, and direct your hard-earned money with unshakeable clarity.
+                You do not need speculative trends, confusing jargon, or random tips. You need a structured, confidential setting to audit your numbers, protect against downside risk, and direct your hard-earned capital with unshakeable confidence.
               </p>
 
               <div className="mm-feature-list">
@@ -208,47 +208,133 @@ export default function Mastermind() {
         </div>
       </section>
 
-      {/* The Core Problem - Pure English */}
+      {/* The Core Problem & Audience Architecture - Indirect & Human Written */}
       <section className="section section-dark">
-        <div className="container" style={{ maxWidth: '900px', margin: '0 auto' }}>
-          <div className="section-header text-center" style={{ marginBottom: '2.5rem' }}>
-            <h2 className="section-title">High Income is Not Wealth</h2>
-            <p className="section-subtitle" style={{ margin: '0 auto', maxWidth: '680px' }}>
-              Why earning ₹5L to ₹10L+ per month without a system creates greater complexity, not greater freedom.
+        <div className="container" style={{ maxWidth: '1000px', margin: '0 auto' }}>
+          <div className="section-header text-center" style={{ marginBottom: '3rem' }}>
+            <h2 className="section-title">Transforming Flowing Capital into Permanent Wealth</h2>
+            <p className="section-subtitle" style={{ margin: '0 auto', maxWidth: '720px' }}>
+              Why earning, advising, or managing money without an intentional architecture creates silent stress rather than true sovereignty.
             </p>
           </div>
 
+          {/* Three Indirect Audience Pillars */}
+          <div style={{
+            display: 'grid',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
+            gap: '1.5rem',
+            marginBottom: '2rem'
+          }}>
+            {/* Pillar 1: Professionals */}
+            <div style={{
+              background: 'var(--bg-card)',
+              border: '1px solid var(--border-medium)',
+              borderRadius: '12px',
+              padding: '2rem 1.75rem',
+              display: 'flex',
+              flexDirection: 'column'
+            }}>
+              <div style={{
+                fontSize: '0.78rem',
+                fontWeight: 700,
+                textTransform: 'uppercase',
+                letterSpacing: '0.08em',
+                color: '#d4d4d8',
+                marginBottom: '0.75rem'
+              }}>
+                Executives &amp; Professionals
+              </div>
+              <h4 style={{ fontSize: '1.18rem', color: '#ffffff', marginBottom: '0.75rem', lineHeight: 1.35 }}>
+                High Career Momentum, Fragmented Personal Portfolio
+              </h4>
+              <p style={{ color: 'var(--text-silver)', fontSize: '0.93rem', lineHeight: 1.65, margin: 0 }}>
+                You deliver high-impact work, yet rising tax burdens, lifestyle expansion, and scattered investments mean capital quietly leaks out. You want a structured framework that turns income into lasting autonomy without adding more career hours.
+              </p>
+            </div>
+
+            {/* Pillar 2: Bankers & Insurance Agents */}
+            <div style={{
+              background: 'var(--bg-card)',
+              border: '1px solid var(--border-medium)',
+              borderRadius: '12px',
+              padding: '2rem 1.75rem',
+              display: 'flex',
+              flexDirection: 'column'
+            }}>
+              <div style={{
+                fontSize: '0.78rem',
+                fontWeight: 700,
+                textTransform: 'uppercase',
+                letterSpacing: '0.08em',
+                color: '#d4d4d8',
+                marginBottom: '0.75rem'
+              }}>
+                Advisors, Bankers &amp; Agents
+              </div>
+              <h4 style={{ fontSize: '1.18rem', color: '#ffffff', marginBottom: '0.75rem', lineHeight: 1.35 }}>
+                Directing Capital for Others, Neglecting Personal Architecture
+              </h4>
+              <p style={{ color: 'var(--text-silver)', fontSize: '0.93rem', lineHeight: 1.65, margin: 0 }}>
+                You understand markets, products, and policies inside out. Yet amid demanding client targets and commissions, your personal family portfolio often lacks the disciplined, defensive separation needed for generational security.
+              </p>
+            </div>
+
+            {/* Pillar 3: Homemakers */}
+            <div style={{
+              background: 'var(--bg-card)',
+              border: '1px solid var(--border-medium)',
+              borderRadius: '12px',
+              padding: '2rem 1.75rem',
+              display: 'flex',
+              flexDirection: 'column'
+            }}>
+              <div style={{
+                fontSize: '0.78rem',
+                fontWeight: 700,
+                textTransform: 'uppercase',
+                letterSpacing: '0.08em',
+                color: '#d4d4d8',
+                marginBottom: '0.75rem'
+              }}>
+                Family Stewards &amp; Homemakers
+              </div>
+              <h4 style={{ fontSize: '1.18rem', color: '#ffffff', marginBottom: '0.75rem', lineHeight: 1.35 }}>
+                Safeguarding Family Reserves with Clarity &amp; Certainty
+              </h4>
+              <p style={{ color: 'var(--text-silver)', fontSize: '0.93rem', lineHeight: 1.65, margin: 0 }}>
+                You hold the household together and care deeply about lifelong security. You seek total clarity and empowerment over family reserves without confusing jargon or speculative bets—guaranteeing peace of mind for the next generation.
+              </p>
+            </div>
+          </div>
+
+          {/* Core Unifying Truth Banner */}
           <div style={{
             background: 'var(--bg-card)',
             border: '1px solid var(--border-medium)',
-            borderRadius: 'var(--radius-lg)',
-            padding: 'clamp(2rem, 4vw, 3rem)',
+            borderRadius: '12px',
+            padding: 'clamp(1.75rem, 3.5vw, 2.5rem)',
             display: 'flex',
             flexDirection: 'column',
-            gap: '1.25rem'
+            gap: '1rem'
           }}>
-            <p style={{ fontSize: '1.05rem', color: 'var(--text-white)', lineHeight: 1.7, fontWeight: 500 }}>
-              "You might be earning ₹5 Lakh to ₹10 Lakh or more every single month. But if your cash flow isn't structured, if your investments lack a defined purpose, and if you are taking blind risks or avoiding risk altogether—a high income alone will never build lasting wealth."
+            <p style={{ fontSize: '1.05rem', color: 'var(--text-white)', lineHeight: 1.7, fontWeight: 500, margin: 0 }}>
+              "Earning or touching money is an activity. Wealth is an intentional architecture. Without a clear operating system, simply handling more money never creates freedom—it merely multiplies stress, emotional decisions, and hidden leakage."
             </p>
 
-            <p style={{ fontSize: '0.98rem', color: 'var(--text-silver)', lineHeight: 1.7 }}>
-              As income increases, financial complexity multiplies. Living expenses expand, tax liabilities rise, and diverse investment options demand attention. Without a system, high income often leads to higher stress, not higher freedom.
-            </p>
-
-            <p style={{ fontSize: '0.98rem', color: 'var(--text-silver)', lineHeight: 1.7 }}>
-              Eventually, the real question is no longer: <em>"How do I make more money?"</em><br />
-              The decisive challenge becomes: <strong>"How do I properly protect, direct, and manage the capital I am already earning?"</strong>
+            <p style={{ fontSize: '0.95rem', color: 'var(--text-silver)', lineHeight: 1.7, margin: 0 }}>
+              Eventually, the breakthrough is no longer: <em>"How do I chase another speculative bet or work longer hours?"</em><br />
+              The real question becomes: <strong>"How do I build an unshakeable life and financial system where capital is defended, purposeful, and continually compounding toward genuine freedom?"</strong>
             </p>
 
             <div style={{
-              marginTop: '1rem',
+              marginTop: '0.5rem',
               padding: '1.25rem 1.5rem',
               background: 'rgba(255, 255, 255, 0.04)',
               borderLeft: '3px solid #ffffff',
               borderRadius: '0 8px 8px 0'
             }}>
-              <p style={{ margin: 0, color: '#ffffff', fontSize: '1rem', fontWeight: 600 }}>
-                You do not need another speculative tip. You need an institutional-grade operating system. That is exactly what The Mastermind installs.
+              <p style={{ margin: 0, color: '#ffffff', fontSize: '0.96rem', fontWeight: 600 }}>
+                You do not need more financial noise or get-rich-quick promises. You need a calm, proven life and capital architecture installed step-by-step. That is precisely what Coach Jagat Turkiya guides you to master over 6 months of hands-on mentorship.
               </p>
             </div>
           </div>
@@ -271,7 +357,7 @@ export default function Mastermind() {
               </p>
 
               <div style={{ marginTop: '2rem' }}>
-                <Link to="/form" className="btn btn-outline">
+                <Link to="/optin" className="btn btn-outline">
                   Apply for Mastermind →
                 </Link>
               </div>
@@ -362,7 +448,7 @@ export default function Mastermind() {
             </div>
 
             <div style={{ marginTop: '3rem', textAlign: 'center' }}>
-              <Link to="/form" className="btn btn-white" style={{ padding: '0.95rem 2.25rem', fontSize: '1rem' }}>
+              <Link to="/optin" className="btn btn-white" style={{ padding: '0.95rem 2.25rem', fontSize: '1rem' }}>
                 Apply for Mastermind
               </Link>
             </div>

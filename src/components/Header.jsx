@@ -28,6 +28,9 @@ export default function Header() {
             <NavLink to="/mastermind" className={({ isActive }) => `nav-link ${isActive ? 'active' : ''}`}>
               Mastermind
             </NavLink>
+            <NavLink to="/success-stories" className={({ isActive }) => `nav-link ${isActive ? 'active' : ''}`}>
+              Success Stories
+            </NavLink>
             <NavLink to="/about" className={({ isActive }) => `nav-link ${isActive ? 'active' : ''}`}>
               About
             </NavLink>
@@ -83,6 +86,11 @@ export default function Header() {
           <li>
             <NavLink to="/mastermind" onClick={closeDrawer} className={({ isActive }) => (isActive ? 'active' : '')}>
               Mastermind
+            </NavLink>
+          </li>
+          <li>
+            <NavLink to="/success-stories" onClick={closeDrawer} className={({ isActive }) => (isActive ? 'active' : '')}>
+              Success Stories
             </NavLink>
           </li>
           <li>

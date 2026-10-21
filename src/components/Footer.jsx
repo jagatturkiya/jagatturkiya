@@ -26,6 +26,7 @@ export default function Footer() {
             <ul className="footer-links">
               <li><Link to="/">Home</Link></li>
               <li><Link to="/mastermind">Mastermind</Link></li>
+              <li><Link to="/success-stories">Success Stories</Link></li>
               <li><Link to="/about">About Jagat Turkiya</Link></li>
               <li><Link to="/contact">Contact &amp; Advisory</Link></li>
             </ul>
@@ -44,7 +45,7 @@ export default function Footer() {
           <div className="footer-nav-col">
             <h5>Advisory Desk</h5>
             <ul className="footer-links">
-              <li><a href="mailto:hello@jagatturkiya.com">hello@jagatturkiya.com</a></li>
+              <li><a href="mailto:hello@apkacoach.com">hello@apkacoach.com</a></li>
               <li><Link to="/contact">Book Consultation</Link></li>
               <li>
                 <a href="https://yourwealthcompass.in" target="_blank" rel="noopener noreferrer">

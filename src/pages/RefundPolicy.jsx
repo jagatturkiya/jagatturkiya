@@ -28,7 +28,7 @@ export default function RefundPolicy() {
 
           <h3 style={{ color: '#fff', marginTop: '2rem', marginBottom: '0.75rem' }}>4. Inquiries</h3>
           <p>
-            For assistance regarding payments or billing, contact <a href="mailto:hello@jagatturkiya.com" style={{ color: '#fff', textDecoration: 'underline' }}>hello@jagatturkiya.com</a>.
+            For assistance regarding payments or billing, contact <a href="mailto:hello@apkacoach.com" style={{ color: '#fff', textDecoration: 'underline' }}>hello@apkacoach.com</a>.
           </p>
         </div>
       </section>

@@ -33,7 +33,7 @@ export default function Contact() {
   const faqItems = [
     {
       question: "How do I schedule a consultation?",
-      answer: "Submit your details using the form on this page or email us at hello@jagatturkiya.com. Our team will get back to you within 24 hours to schedule your session."
+      answer: "Submit your details using the form on this page or email us at hello@apkacoach.com. Our team will get back to you within 24 hours to schedule your session."
     },
     {
       question: "Can I book Jagat Turkiya for keynote speaking or events?",
@@ -79,7 +79,7 @@ export default function Contact() {
 
               <div className="direct-email-box" style={{ marginTop: '2.5rem' }}>
                 <h5>Email Us</h5>
-                <a href="mailto:hello@jagatturkiya.com">hello@jagatturkiya.com</a>
+                <a href="mailto:hello@apkacoach.com">hello@apkacoach.com</a>
                 <p style={{ fontSize: '0.85rem', color: 'var(--text-dim)', marginTop: '0.4rem' }}>
                   Quick response within 24 business hours.
                 </p>

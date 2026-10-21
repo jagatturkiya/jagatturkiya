@@ -3,7 +3,8 @@ import Hls from 'hls.js';
 
 export default function HlsPlayer({ 
   src = 'https://pub-ba6edddb861846b39535d2d0cabfeeea.r2.dev/Jagat%20Video%202%20compressed.mp4',
-  poster = ''
+  poster = '',
+  autoPlay = true
 }) {
   const videoRef = useRef(null);
   const containerRef = useRef(null);
@@ -16,6 +17,7 @@ export default function HlsPlayer({
   const [isFullscreen, setIsFullscreen] = useState(false);
   const [showControls, setShowControls] = useState(true);
   const [customSrc, setCustomSrc] = useState(src);
+  const [mutedAutoplayActive, setMutedAutoplayActive] = useState(false);
 
   // Lock forward/backward seeking
   const lastAllowedTimeRef = useRef(0);
@@ -42,6 +44,64 @@ export default function HlsPlayer({
   useEffect(() => {
     if (src) setCustomSrc(src);
   }, [src]);
+
+  // Attempt autoplay safely handling browser policies
+  const attemptAutoPlay = () => {
+    const video = videoRef.current;
+    if (!video) return;
+
+    // Check if autoplay requested
+    const hashQuery = window.location.hash.split('?')[1] || '';
+    const directQuery = window.location.search.replace(/^\?/, '');
+    const queryStr = hashQuery || directQuery;
+    const hasAutoplayParam = queryStr.includes('autoplay=1');
+    const shouldAutoplay = autoPlay || hasAutoplayParam;
+
+    if (!shouldAutoplay) return;
+
+    const playPromise = video.play();
+    if (playPromise !== undefined) {
+      playPromise
+        .then(() => {
+          setIsPlaying(true);
+          setMutedAutoplayActive(false);
+        })
+        .catch(() => {
+          // Browser prevented unmuted autoplay -> initiate muted autoplay
+          video.muted = true;
+          setIsMuted(true);
+          setMutedAutoplayActive(true);
+          video.play()
+            .then(() => {
+              setIsPlaying(true);
+            })
+            .catch(() => {
+              // Both blocked, wait for user interaction
+            });
+        });
+    }
+  };
+
+  // Auto unmute on first user touch/click anywhere on page
+  useEffect(() => {
+    const handleFirstInteraction = () => {
+      const video = videoRef.current;
+      if (video && video.muted) {
+        video.muted = false;
+        setIsMuted(false);
+        setMutedAutoplayActive(false);
+        video.volume = 1;
+        setVolume(1);
+      }
+    };
+
+    window.addEventListener('click', handleFirstInteraction, { once: true });
+    window.addEventListener('touchstart', handleFirstInteraction, { once: true });
+    return () => {
+      window.removeEventListener('click', handleFirstInteraction);
+      window.removeEventListener('touchstart', handleFirstInteraction);
+    };
+  }, []);
 
   // Sync fullscreen state & auto-lock orientation to landscape on mobile devices
   useEffect(() => {
@@ -84,7 +144,6 @@ export default function HlsPlayer({
     // Reset seeking anchor
     lastAllowedTimeRef.current = 0;
     setCurrentTime(0);
-    setIsPlaying(false);
 
     if (hlsRef.current) {
       hlsRef.current.destroy();
@@ -104,6 +163,10 @@ export default function HlsPlayer({
       hls.loadSource(customSrc);
       hls.attachMedia(video);
 
+      hls.on(Hls.Events.MANIFEST_PARSED, () => {
+        attemptAutoPlay();
+      });
+
       hls.on(Hls.Events.ERROR, (event, data) => {
         if (data.fatal) {
           switch (data.type) {
@@ -122,9 +185,25 @@ export default function HlsPlayer({
     } else if (video.canPlayType('application/vnd.apple.mpegurl') || !isHls) {
       // Native Safari HLS or regular MP4/video
       video.src = customSrc;
+      
+      const onLoaded = () => {
+        attemptAutoPlay();
+      };
+      video.addEventListener('loadeddata', onLoaded, { once: true });
+      video.addEventListener('canplay', onLoaded, { once: true });
+      // In case metadata is already cached
+      if (video.readyState >= 2) {
+        attemptAutoPlay();
+      }
     }
 
+    // Safety timeout to trigger autoplay if events missed
+    const timer = setTimeout(() => {
+      attemptAutoPlay();
+    }, 450);
+
     return () => {
+      clearTimeout(timer);
       if (hlsRef.current) {
         hlsRef.current.destroy();
         hlsRef.current = null;
@@ -338,10 +417,46 @@ export default function HlsPlayer({
         onMouseMove={handleMouseMove}
         onClick={(e) => {
           if (!e.target.closest('.vsl-control-bar')) {
-            togglePlay();
+            if (isMuted && isPlaying) {
+              toggleMute();
+            } else {
+              togglePlay();
+            }
           }
         }}
       >
+        {/* Unmute floating banner if playing muted */}
+        {isPlaying && isMuted && (
+          <div 
+            onClick={(e) => {
+              e.stopPropagation();
+              toggleMute();
+            }}
+            style={{
+              position: 'absolute',
+              top: '16px',
+              left: '50%',
+              transform: 'translateX(-50%)',
+              zIndex: 15,
+              display: 'flex',
+              alignItems: 'center',
+              gap: '8px',
+              backgroundColor: 'rgba(0, 0, 0, 0.82)',
+              border: '1px solid rgba(255, 255, 255, 0.3)',
+              borderRadius: '24px',
+              padding: '8px 16px',
+              color: '#ffffff',
+              fontSize: '0.85rem',
+              fontWeight: 600,
+              cursor: 'pointer',
+              backdropFilter: 'blur(8px)',
+              boxShadow: '0 4px 20px rgba(0, 0, 0, 0.6)'
+            }}
+          >
+            <span>🔊 Video playing muted — Tap for sound</span>
+          </div>
+        )}
+
         {/* Video Element */}
         <video
           ref={videoRef}

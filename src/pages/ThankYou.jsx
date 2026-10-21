@@ -142,10 +142,10 @@ export default function ThankYou() {
           }}>
             Have any immediate questions? Write to our advisory team directly at{' '}
             <a 
-              href="mailto:hello@jagatturkiya.com" 
+              href="mailto:hello@apkacoach.com" 
               style={{ color: '#ffffff', textDecoration: 'underline', textUnderlineOffset: '3px', fontWeight: 600 }}
             >
-              hello@jagatturkiya.com
+              hello@apkacoach.com
             </a>.
           </p>
 

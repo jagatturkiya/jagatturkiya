@@ -45,7 +45,7 @@ export default function Vsl() {
 
         {/* Clean HLS Video Player (100% video focus, no watermarks, no stream buttons) */}
         <div style={{ width: '100%', maxWidth: '980px', marginBottom: '3rem' }}>
-          <HlsPlayer src="https://pub-ba6edddb861846b39535d2d0cabfeeea.r2.dev/Jagat%20Video%202%20compressed.mp4" />
+          <HlsPlayer autoPlay={true} src="https://pub-ba6edddb861846b39535d2d0cabfeeea.r2.dev/Jagat%20Video%202%20compressed.mp4" />
         </div>
 
         {/* CTA Button: BOOK A CALL (Solid Crisp White .btn-white) */}
@@ -220,7 +220,7 @@ export default function Vsl() {
           }}>
             Have any questions before booking? Write to us directly at{' '}
             <a
-              href="mailto:hello@jagatturkiya.com"
+              href="mailto:hello@apkacoach.com"
               style={{
                 color: '#ffffff',
                 textDecoration: 'underline',
@@ -228,7 +228,7 @@ export default function Vsl() {
                 fontWeight: 600
               }}
             >
-              hello@jagatturkiya.com
+              hello@apkacoach.com
             </a>
             .
           </p>

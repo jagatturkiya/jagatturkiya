@@ -38,7 +38,7 @@ export default function PrivacyPolicy() {
 
           <h3 style={{ color: '#fff', marginTop: '2rem', marginBottom: '0.75rem' }}>5. Contact</h3>
           <p>
-            For any privacy inquiries or data requests, contact us at <a href="mailto:hello@jagatturkiya.com" style={{ color: '#fff', textDecoration: 'underline' }}>hello@jagatturkiya.com</a>.
+            For any privacy inquiries or data requests, contact us at <a href="mailto:hello@apkacoach.com" style={{ color: '#fff', textDecoration: 'underline' }}>hello@apkacoach.com</a>.
           </p>
         </div>
       </section>
