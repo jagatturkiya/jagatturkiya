@@ -208,122 +208,39 @@ export default function Mastermind() {
         </div>
       </section>
 
-      {/* The Core Problem & Audience Architecture - Indirect & Human Written */}
+      {/* The Core Problem & Wealth Insight - Simple, Human, Clear */}
       <section className="section section-dark">
-        <div className="container" style={{ maxWidth: '1000px', margin: '0 auto' }}>
-          <div className="section-header text-center" style={{ marginBottom: '3rem' }}>
-            <h2 className="section-title">Transforming Flowing Capital into Permanent Wealth</h2>
-            <p className="section-subtitle" style={{ margin: '0 auto', maxWidth: '720px' }}>
-              Why earning, advising, or managing money without an intentional architecture creates silent stress rather than true sovereignty.
+        <div className="container" style={{ maxWidth: '860px', margin: '0 auto' }}>
+          <div className="section-header text-center" style={{ marginBottom: '2.5rem' }}>
+            <h2 className="section-title">Earning Money Is Only Half the Story. <br /><span className="serif-font">Building Wealth Takes a System.</span></h2>
+            <p className="section-subtitle" style={{ margin: '0 auto', maxWidth: '640px' }}>
+              Why having good money coming in doesn’t automatically bring financial freedom—and what actually does.
             </p>
           </div>
 
-          {/* Three Indirect Audience Pillars */}
-          <div style={{
-            display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
-            gap: '1.5rem',
-            marginBottom: '2rem'
-          }}>
-            {/* Pillar 1: Professionals */}
-            <div style={{
-              background: 'var(--bg-card)',
-              border: '1px solid var(--border-medium)',
-              borderRadius: '12px',
-              padding: '2rem 1.75rem',
-              display: 'flex',
-              flexDirection: 'column'
-            }}>
-              <div style={{
-                fontSize: '0.78rem',
-                fontWeight: 700,
-                textTransform: 'uppercase',
-                letterSpacing: '0.08em',
-                color: '#d4d4d8',
-                marginBottom: '0.75rem'
-              }}>
-                Executives &amp; Professionals
-              </div>
-              <h4 style={{ fontSize: '1.18rem', color: '#ffffff', marginBottom: '0.75rem', lineHeight: 1.35 }}>
-                High Career Momentum, Fragmented Personal Portfolio
-              </h4>
-              <p style={{ color: 'var(--text-silver)', fontSize: '0.93rem', lineHeight: 1.65, margin: 0 }}>
-                You deliver high-impact work, yet rising tax burdens, lifestyle expansion, and scattered investments mean capital quietly leaks out. You want a structured framework that turns income into lasting autonomy without adding more career hours.
-              </p>
-            </div>
-
-            {/* Pillar 2: Bankers & Insurance Agents */}
-            <div style={{
-              background: 'var(--bg-card)',
-              border: '1px solid var(--border-medium)',
-              borderRadius: '12px',
-              padding: '2rem 1.75rem',
-              display: 'flex',
-              flexDirection: 'column'
-            }}>
-              <div style={{
-                fontSize: '0.78rem',
-                fontWeight: 700,
-                textTransform: 'uppercase',
-                letterSpacing: '0.08em',
-                color: '#d4d4d8',
-                marginBottom: '0.75rem'
-              }}>
-                Advisors, Bankers &amp; Agents
-              </div>
-              <h4 style={{ fontSize: '1.18rem', color: '#ffffff', marginBottom: '0.75rem', lineHeight: 1.35 }}>
-                Directing Capital for Others, Neglecting Personal Architecture
-              </h4>
-              <p style={{ color: 'var(--text-silver)', fontSize: '0.93rem', lineHeight: 1.65, margin: 0 }}>
-                You understand markets, products, and policies inside out. Yet amid demanding client targets and commissions, your personal family portfolio often lacks the disciplined, defensive separation needed for generational security.
-              </p>
-            </div>
-
-            {/* Pillar 3: Homemakers */}
-            <div style={{
-              background: 'var(--bg-card)',
-              border: '1px solid var(--border-medium)',
-              borderRadius: '12px',
-              padding: '2rem 1.75rem',
-              display: 'flex',
-              flexDirection: 'column'
-            }}>
-              <div style={{
-                fontSize: '0.78rem',
-                fontWeight: 700,
-                textTransform: 'uppercase',
-                letterSpacing: '0.08em',
-                color: '#d4d4d8',
-                marginBottom: '0.75rem'
-              }}>
-                Family Stewards &amp; Homemakers
-              </div>
-              <h4 style={{ fontSize: '1.18rem', color: '#ffffff', marginBottom: '0.75rem', lineHeight: 1.35 }}>
-                Safeguarding Family Reserves with Clarity &amp; Certainty
-              </h4>
-              <p style={{ color: 'var(--text-silver)', fontSize: '0.93rem', lineHeight: 1.65, margin: 0 }}>
-                You hold the household together and care deeply about lifelong security. You seek total clarity and empowerment over family reserves without confusing jargon or speculative bets—guaranteeing peace of mind for the next generation.
-              </p>
-            </div>
-          </div>
-
-          {/* Core Unifying Truth Banner */}
           <div style={{
             background: 'var(--bg-card)',
             border: '1px solid var(--border-medium)',
             borderRadius: '12px',
-            padding: 'clamp(1.75rem, 3.5vw, 2.5rem)',
+            padding: 'clamp(2rem, 4vw, 3rem)',
             display: 'flex',
             flexDirection: 'column',
-            gap: '1rem'
+            gap: '1.4rem'
           }}>
-            <p style={{ fontSize: '1.05rem', color: 'var(--text-white)', lineHeight: 1.7, fontWeight: 500, margin: 0 }}>
-              "Earning or touching money is an activity. Wealth is an intentional architecture. Without a clear operating system, simply handling more money never creates freedom—it merely multiplies stress, emotional decisions, and hidden leakage."
+            <p style={{ fontSize: '1.08rem', color: '#ffffff', lineHeight: 1.7, fontWeight: 500, margin: 0 }}>
+              "Most people don't have an income problem. They have a clarity and system problem."
             </p>
 
-            <p style={{ fontSize: '0.95rem', color: 'var(--text-silver)', lineHeight: 1.7, margin: 0 }}>
-              Eventually, the breakthrough is no longer: <em>"How do I chase another speculative bet or work longer hours?"</em><br />
-              The real question becomes: <strong>"How do I build an unshakeable life and financial system where capital is defended, purposeful, and continually compounding toward genuine freedom?"</strong>
+            <p style={{ fontSize: '0.98rem', color: 'var(--text-silver)', lineHeight: 1.75, margin: 0 }}>
+              You work hard, you bring money in, and you save what you can. But as time goes on, life only seems to get more complicated. Taxes take a bite, household expenses expand, and capital ends up parked across disconnected policies, mutual funds, and accounts with no clear master plan.
+            </p>
+
+            <p style={{ fontSize: '0.98rem', color: 'var(--text-silver)', lineHeight: 1.75, margin: 0 }}>
+              Many people spend their days managing capital or targets for others, yet their own personal family wealth stays unstructured. Others run demanding corporate careers or guide the household and want absolute security for their children's future, but feel held back by conflicting advice, fear of mistakes, or lack of time.
+            </p>
+
+            <p style={{ fontSize: '0.98rem', color: 'var(--text-silver)', lineHeight: 1.75, margin: 0 }}>
+              The truth is simple: <strong>more money without a clear direction just creates more stress.</strong> The goal isn't just to work longer hours or take blind speculative risks. The real breakthrough happens when every rupee you touch is given a defined purpose—protecting your family, compounding quietly in the background, and giving you genuine peace of mind.
             </p>
 
             <div style={{
@@ -333,8 +250,8 @@ export default function Mastermind() {
               borderLeft: '3px solid #ffffff',
               borderRadius: '0 8px 8px 0'
             }}>
-              <p style={{ margin: 0, color: '#ffffff', fontSize: '0.96rem', fontWeight: 600 }}>
-                You do not need more financial noise or get-rich-quick promises. You need a calm, proven life and capital architecture installed step-by-step. That is precisely what Coach Jagat Turkiya guides you to master over 6 months of hands-on mentorship.
+              <p style={{ margin: 0, color: '#ffffff', fontSize: '0.96rem', fontWeight: 600, lineHeight: 1.6 }}>
+                You don’t need complicated financial theories. You need a calm, practical roadmap tailored to your life. That is exactly what Jagat Turkiya coaches you to install over 6 months of personal mentorship.
               </p>
             </div>
           </div>

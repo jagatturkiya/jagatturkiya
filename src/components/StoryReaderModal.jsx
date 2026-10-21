@@ -50,10 +50,10 @@ export default function StoryReaderModal({
             title="Back to home"
           >
             <img
-              src="./assets/images/logo-executive.svg"
+              src="./assets/images/jagat-logo.png"
               alt="Jagat Turkiya"
               className="header-logo-img"
-              style={{ height: '30px', width: 'auto', display: 'block' }}
+              style={{ height: '36px', width: 'auto', display: 'block', objectFit: 'contain' }}
             />
           </div>
 

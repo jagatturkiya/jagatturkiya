@@ -157,22 +157,6 @@ export default function SuccessStories() {
       {/* Hero Header */}
       <section className="section text-center" style={{ paddingTop: '5rem', paddingBottom: '3.5rem' }}>
         <div className="container" style={{ maxWidth: '920px', margin: '0 auto' }}>
-          <div style={{
-            display: 'inline-block',
-            padding: '6px 14px',
-            backgroundColor: 'rgba(255, 255, 255, 0.06)',
-            border: '1px solid rgba(255, 255, 255, 0.16)',
-            borderRadius: '20px',
-            fontSize: '0.8rem',
-            fontWeight: 700,
-            letterSpacing: '0.08em',
-            color: '#d4d4d8',
-            marginBottom: '1.25rem',
-            textTransform: 'uppercase'
-          }}>
-            Client Experiences &amp; Transformations
-          </div>
-
           <h1 className="section-title" style={{ fontSize: 'clamp(2.2rem, 4.5vw, 3.4rem)', marginBottom: '1.25rem', lineHeight: 1.18 }}>
             Real People. Real Breakthroughs. <br />
             <span className="serif-font">Permanent Peace of Mind.</span>
@@ -289,37 +273,18 @@ export default function SuccessStories() {
                       </svg>
                     </div>
                   </div>
-                  <div style={{
-                    position: 'absolute',
-                    bottom: '10px',
-                    left: '12px',
-                    backgroundColor: 'rgba(0,0,0,0.75)',
-                    padding: '3px 8px',
-                    borderRadius: '4px',
-                    fontSize: '0.75rem',
-                    color: '#ffffff',
-                    fontWeight: 600
-                  }}>
-                    Watch Experience ▶
-                  </div>
                 </div>
 
                 {/* Content */}
                 <div style={{ padding: '1.5rem', display: 'flex', flexDirection: 'column', flex: 1 }}>
-                  <div style={{
-                    display: 'inline-block',
-                    alignSelf: 'flex-start',
-                    padding: '3px 10px',
-                    backgroundColor: 'rgba(255, 255, 255, 0.06)',
-                    border: '1px solid rgba(255, 255, 255, 0.12)',
-                    borderRadius: '12px',
-                    fontSize: '0.75rem',
-                    color: '#e4e4e7',
-                    fontWeight: 600,
-                    marginBottom: '0.75rem'
+                  <p style={{
+                    fontSize: '0.82rem',
+                    color: '#d4d4d8',
+                    fontWeight: 500,
+                    margin: '0 0 0.75rem 0'
                   }}>
                     {v.outcome}
-                  </div>
+                  </p>
 
                   <p style={{
                     color: 'var(--text-silver)',
@@ -435,20 +400,6 @@ export default function SuccessStories() {
             alignItems: 'center'
           }}>
             <div>
-              <div style={{
-                display: 'inline-block',
-                padding: '4px 12px',
-                borderRadius: '16px',
-                backgroundColor: 'rgba(255,255,255,0.08)',
-                color: '#ffffff',
-                fontSize: '0.78rem',
-                fontWeight: 700,
-                letterSpacing: '0.06em',
-                textTransform: 'uppercase',
-                marginBottom: '1rem'
-              }}>
-                Global Recognition • Times Square NYC
-              </div>
               <h3 style={{ fontSize: 'clamp(1.6rem, 2.8vw, 2.2rem)', lineHeight: 1.25, marginBottom: '1rem' }}>
                 Honored on the World Stage by Topmate's Creator Club
               </h3>
@@ -587,19 +538,14 @@ export default function SuccessStories() {
                 </div>
 
                 <div>
-                  <div style={{
-                    display: 'inline-block',
-                    padding: '2px 8px',
-                    borderRadius: '10px',
-                    backgroundColor: 'rgba(255,255,255,0.05)',
-                    border: '1px solid rgba(255,255,255,0.1)',
-                    fontSize: '0.72rem',
-                    color: '#d4d4d8',
-                    fontWeight: 600,
-                    marginBottom: '1rem'
+                  <p style={{
+                    fontSize: '0.78rem',
+                    color: 'var(--text-muted)',
+                    fontWeight: 500,
+                    margin: '0 0 0.85rem 0'
                   }}>
                     {r.tag}
-                  </div>
+                  </p>
 
                   <div style={{
                     display: 'flex',

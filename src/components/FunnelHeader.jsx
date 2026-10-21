@@ -29,28 +29,29 @@ export default function FunnelHeader() {
           justifyContent: 'center'
         }}
       >
-        {/* Bold Executive Wordmark - Strictly Non-Clickable */}
+        {/* Official Executive Logo from Website - Transparent & Centered */}
         <div 
           style={{
             display: 'inline-flex',
             alignItems: 'center',
+            justifyContent: 'center',
             cursor: 'default',
             userSelect: 'none'
           }}
           aria-label="Jagat Turkiya"
         >
-          <span 
+          <img
+            src="./assets/images/jagat-logo.png"
+            alt="Jagat Turkiya"
+            width="100"
+            height="46"
             style={{
-              fontFamily: "'Instrument Sans', -apple-system, BlinkMacSystemFont, sans-serif",
-              fontSize: '1.3rem',
-              fontWeight: 800,
-              letterSpacing: '0.22em',
-              color: '#ffffff',
-              textTransform: 'uppercase'
+              height: '46px',
+              width: 'auto',
+              display: 'block',
+              objectFit: 'contain'
             }}
-          >
-            JAGAT TURKIYA
-          </span>
+          />
         </div>
       </div>
     </header>

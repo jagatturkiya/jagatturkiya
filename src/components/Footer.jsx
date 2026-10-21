@@ -9,11 +9,18 @@ export default function Footer() {
           <div className="footer-brand">
             <Link to="/" className="header-logo-link" aria-label="Jagat Turkiya Home">
               <img
-                src="./assets/images/logo-executive.svg"
+                src="./assets/images/jagat-logo.png"
                 alt="Jagat Turkiya"
                 className="header-logo-img"
-                width="160"
-                height="28"
+                width="100"
+                height="44"
+                style={{
+                  height: '44px',
+                  width: 'auto',
+                  display: 'block',
+                  objectFit: 'contain',
+                  marginBottom: '1rem'
+                }}
               />
             </Link>
             <p>
