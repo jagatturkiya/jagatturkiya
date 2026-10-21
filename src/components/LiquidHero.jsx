@@ -3,7 +3,8 @@ import React, { useEffect, useRef } from 'react';
 /**
  * LiquidHero Component
  * WebGL-powered liquid silk distortion with metallic silver/platinum highlights.
- * Deep obsidian black (#08080a) with subtle silver fluid currents.
+ * Deep obsidian black (#060607) with rich, responsive fluid currents.
+ * Fully optimized for both Mobile touch devices and Desktop mouse interaction.
  */
 export default function LiquidHero() {
   const canvasRef = useRef(null);
@@ -17,53 +18,89 @@ export default function LiquidHero() {
 
     let gl = canvas.getContext('webgl2') || canvas.getContext('webgl') || canvas.getContext('experimental-webgl');
 
+    let mouseX = 0;
+    let mouseY = 0;
+    let targetMouseX = 0;
+    let targetMouseY = 0;
+    let lastUserInteraction = 0;
+
+    const updateCoords = (clientX, clientY) => {
+      const rect = canvas.getBoundingClientRect();
+      targetMouseX = (clientX - rect.left) * (canvas.width / rect.width);
+      targetMouseY = (rect.height - (clientY - rect.top)) * (canvas.height / rect.height);
+      lastUserInteraction = performance.now();
+    };
+
+    const onMouseMove = (e) => {
+      updateCoords(e.clientX, e.clientY);
+    };
+
+    const onTouchMove = (e) => {
+      if (e.touches && e.touches.length > 0) {
+        updateCoords(e.touches[0].clientX, e.touches[0].clientY);
+      }
+    };
+
+    window.addEventListener('mousemove', onMouseMove, { passive: true });
+    window.addEventListener('touchstart', onTouchMove, { passive: true });
+    window.addEventListener('touchmove', onTouchMove, { passive: true });
+
     if (!gl) {
-      // 2D Fallback
+      // 2D Fallback for older devices without WebGL
       const ctx = canvas.getContext('2d');
       if (!ctx) return;
 
       const resize2D = () => {
         const dpr = Math.min(window.devicePixelRatio || 1, 2);
         const rect = canvas.getBoundingClientRect();
-        canvas.width = rect.width * dpr;
-        canvas.height = rect.height * dpr;
+        canvas.width = Math.round(rect.width * dpr);
+        canvas.height = Math.round(rect.height * dpr);
+        targetMouseX = canvas.width * 0.5;
+        targetMouseY = canvas.height * 0.5;
       };
 
       resize2D();
       window.addEventListener('resize', resize2D);
 
-      let t = 0;
-      const render2D = () => {
+      const startTime2D = performance.now();
+      const render2D = (now) => {
         if (destroyed) return;
-        t += 0.015;
+        const elapsed = (now - startTime2D) * 0.001;
         const w = canvas.width;
         const h = canvas.height;
-        ctx.fillStyle = '#08080a';
+
+        const isIdle = (now - lastUserInteraction) > 2500;
+        if (isIdle) {
+          targetMouseX = (0.5 + 0.28 * Math.sin(elapsed * 0.6)) * w;
+          targetMouseY = (0.5 + 0.24 * Math.cos(elapsed * 0.45)) * h;
+        }
+
+        mouseX += (targetMouseX - mouseX) * 0.05;
+        mouseY += (targetMouseY - mouseY) * 0.05;
+
+        ctx.fillStyle = '#060607';
         ctx.fillRect(0, 0, w, h);
 
-        const grad1 = ctx.createRadialGradient(
-          w * (0.5 + 0.25 * Math.sin(t * 0.4)),
-          h * (0.5 + 0.2 * Math.cos(t * 0.3)),
-          10,
-          w * 0.5,
-          h * 0.5,
-          w * 0.65
-        );
-        grad1.addColorStop(0, 'rgba(45, 48, 56, 0.45)');
-        grad1.addColorStop(0.5, 'rgba(20, 20, 24, 0.25)');
-        grad1.addColorStop(1, 'rgba(8, 8, 10, 0)');
+        const radius = Math.max(w, h) * 0.65;
+        const grad = ctx.createRadialGradient(mouseX, h - mouseY, 10, mouseX, h - mouseY, radius);
+        grad.addColorStop(0, 'rgba(62, 66, 78, 0.45)');
+        grad.addColorStop(0.45, 'rgba(22, 23, 28, 0.28)');
+        grad.addColorStop(1, 'rgba(6, 6, 7, 0)');
 
-        ctx.fillStyle = grad1;
+        ctx.fillStyle = grad;
         ctx.fillRect(0, 0, w, h);
 
         animId = requestAnimationFrame(render2D);
       };
 
-      render2D();
+      animId = requestAnimationFrame(render2D);
 
       return () => {
         destroyed = true;
         if (animId) cancelAnimationFrame(animId);
+        window.removeEventListener('mousemove', onMouseMove);
+        window.removeEventListener('touchstart', onTouchMove);
+        window.removeEventListener('touchmove', onTouchMove);
         window.removeEventListener('resize', resize2D);
       };
     }
@@ -130,41 +167,45 @@ export default function LiquidHero() {
       }
 
       void main() {
-        vec2 uv = gl_FragCoord.xy / u_resolution.xy;
-        float t = 0.28 * u_time;
+        float t = 0.32 * u_time;
+        float minDim = min(u_resolution.x, u_resolution.y);
 
-        float aspect = u_resolution.x / u_resolution.y;
-        vec2 st = uv - 0.5;
-        st.x *= aspect;
-        st = rotate(st, 0.15 * sin(t * 0.4));
-        st += 0.5;
+        // Responsive normalization: guarantees identical fluid scale on mobile portrait & desktop widescreen
+        vec2 st = (gl_FragCoord.xy - 0.5 * u_resolution.xy) / minDim;
+        st = rotate(st, 0.16 * sin(t * 0.4));
 
-        float n1 = noise(st * 1.4 + t * 0.6);
-        float n2 = noise(st * 2.2 - t * 0.4);
+        // Fluid noise turbulence
+        float n1 = noise(st * 1.6 + t * 0.55);
+        float n2 = noise(st * 2.5 - t * 0.4);
         float angle = n1 * TWO_PI;
-        st.x += 0.18 * n2 * cos(angle);
-        st.y += 0.18 * n2 * sin(angle);
+        st.x += 0.22 * n2 * cos(angle);
+        st.y += 0.22 * n2 * sin(angle);
 
+        // Multi-frequency wave currents
         for (float i = 1.0; i <= 5.0; i++) {
-          st.x += (0.45 / i) * cos(t * 0.8 + i * 1.4 * st.y);
-          st.y += (0.45 / i) * sin(t * 0.8 + i * 1.1 * st.x);
+          st.x += (0.42 / i) * cos(t * 0.75 + i * 1.35 * st.y);
+          st.y += (0.42 / i) * sin(t * 0.75 + i * 1.15 * st.x);
         }
 
-        vec2 mouseUV = u_mouse / u_resolution;
-        float distToMouse = length(uv - mouseUV);
-        st += (uv - mouseUV) * exp(-distToMouse * 5.0) * 0.08;
+        // Touch & cursor interaction
+        vec2 mouseST = (u_mouse - 0.5 * u_resolution.xy) / minDim;
+        float distToMouse = length(st - mouseST);
+        st += (st - mouseST) * exp(-distToMouse * 4.5) * 0.09;
 
-        float shape = 0.5 + 0.5 * sin(st.x * 2.8) * cos(st.y * 2.8);
+        // Wave folds & dynamic mixer
+        float shape = 0.5 + 0.5 * sin(st.x * 3.0) * cos(st.y * 3.0);
         float mixer = clamp(shape, 0.0, 1.0);
 
-        vec4 c1 = vec4(0.031, 0.031, 0.039, 1.0); // #08080a Deep Obsidian
-        vec4 c2 = vec4(0.078, 0.078, 0.094, 1.0); // #141418 Dark Graphite
-        vec4 c3 = vec4(0.196, 0.204, 0.235, 1.0); // #32343c Metallic Silver Highlight
+        // Rich metallic silver/platinum on deep obsidian black
+        vec4 c1 = vec4(0.024, 0.024, 0.028, 1.0); // #060607 Deep Obsidian
+        vec4 c2 = vec4(0.086, 0.090, 0.108, 1.0); // #16171c Charcoal graphite
+        vec4 c3 = vec4(0.245, 0.258, 0.298, 1.0); // #3e424c Silky metallic silver highlight
 
-        vec4 col = blend_colors(c1, c2, c3, mixer, 0.35, 0.2);
+        vec4 col = blend_colors(c1, c2, c3, mixer, 0.32, 0.22);
 
-        vec2 centerUV = uv - 0.5;
-        float vignette = 1.0 - dot(centerUV, centerUV) * 0.95;
+        // Smooth subtle vignette
+        vec2 centerUV = (gl_FragCoord.xy / u_resolution.xy) - 0.5;
+        float vignette = 1.0 - dot(centerUV, centerUV) * 0.85;
         col.rgb *= clamp(vignette, 0.0, 1.0);
 
         fragColor = col;
@@ -216,41 +257,38 @@ export default function LiquidHero() {
       }
 
       void main() {
-        vec2 uv = gl_FragCoord.xy / u_resolution.xy;
-        float t = 0.28 * u_time;
+        float t = 0.32 * u_time;
+        float minDim = min(u_resolution.x, u_resolution.y);
 
-        float aspect = u_resolution.x / u_resolution.y;
-        vec2 st = uv - 0.5;
-        st.x *= aspect;
-        st = rotate(st, 0.15 * sin(t * 0.4));
-        st += 0.5;
+        vec2 st = (gl_FragCoord.xy - 0.5 * u_resolution.xy) / minDim;
+        st = rotate(st, 0.16 * sin(t * 0.4));
 
-        float n1 = noise(st * 1.4 + t * 0.6);
-        float n2 = noise(st * 2.2 - t * 0.4);
+        float n1 = noise(st * 1.6 + t * 0.55);
+        float n2 = noise(st * 2.5 - t * 0.4);
         float angle = n1 * TWO_PI;
-        st.x += 0.18 * n2 * cos(angle);
-        st.y += 0.18 * n2 * sin(angle);
+        st.x += 0.22 * n2 * cos(angle);
+        st.y += 0.22 * n2 * sin(angle);
 
         for (float i = 1.0; i <= 5.0; i++) {
-          st.x += (0.45 / i) * cos(t * 0.8 + i * 1.4 * st.y);
-          st.y += (0.45 / i) * sin(t * 0.8 + i * 1.1 * st.x);
+          st.x += (0.42 / i) * cos(t * 0.75 + i * 1.35 * st.y);
+          st.y += (0.42 / i) * sin(t * 0.75 + i * 1.15 * st.x);
         }
 
-        vec2 mouseUV = u_mouse / u_resolution;
-        float distToMouse = length(uv - mouseUV);
-        st += (uv - mouseUV) * exp(-distToMouse * 5.0) * 0.08;
+        vec2 mouseST = (u_mouse - 0.5 * u_resolution.xy) / minDim;
+        float distToMouse = length(st - mouseST);
+        st += (st - mouseST) * exp(-distToMouse * 4.5) * 0.09;
 
-        float shape = 0.5 + 0.5 * sin(st.x * 2.8) * cos(st.y * 2.8);
+        float shape = 0.5 + 0.5 * sin(st.x * 3.0) * cos(st.y * 3.0);
         float mixer = clamp(shape, 0.0, 1.0);
 
-        vec4 c1 = vec4(0.031, 0.031, 0.039, 1.0);
-        vec4 c2 = vec4(0.078, 0.078, 0.094, 1.0);
-        vec4 c3 = vec4(0.196, 0.204, 0.235, 1.0);
+        vec4 c1 = vec4(0.024, 0.024, 0.028, 1.0);
+        vec4 c2 = vec4(0.086, 0.090, 0.108, 1.0);
+        vec4 c3 = vec4(0.245, 0.258, 0.298, 1.0);
 
-        vec4 col = blend_colors(c1, c2, c3, mixer, 0.35, 0.2);
+        vec4 col = blend_colors(c1, c2, c3, mixer, 0.32, 0.22);
 
-        vec2 centerUV = uv - 0.5;
-        float vignette = 1.0 - dot(centerUV, centerUV) * 0.95;
+        vec2 centerUV = (gl_FragCoord.xy / u_resolution.xy) - 0.5;
+        float vignette = 1.0 - dot(centerUV, centerUV) * 0.85;
         col.rgb *= clamp(vignette, 0.0, 1.0);
 
         gl_FragColor = col;
@@ -296,19 +334,6 @@ export default function LiquidHero() {
     const uResolution = gl.getUniformLocation(program, 'u_resolution');
     const uMouse = gl.getUniformLocation(program, 'u_mouse');
 
-    let mouseX = 0;
-    let mouseY = 0;
-    let targetMouseX = 0;
-    let targetMouseY = 0;
-
-    const onMouseMove = (e) => {
-      const rect = canvas.getBoundingClientRect();
-      targetMouseX = (e.clientX - rect.left) * (canvas.width / rect.width);
-      targetMouseY = (rect.height - (e.clientY - rect.top)) * (canvas.height / rect.height);
-    };
-
-    window.addEventListener('mousemove', onMouseMove, { passive: true });
-
     const resize = () => {
       const dpr = Math.min(window.devicePixelRatio || 1, 2);
       const rect = canvas.getBoundingClientRect();
@@ -319,6 +344,8 @@ export default function LiquidHero() {
         canvas.width = displayW;
         canvas.height = displayH;
         gl.viewport(0, 0, canvas.width, canvas.height);
+        targetMouseX = canvas.width * 0.5;
+        targetMouseY = canvas.height * 0.5;
       }
     };
 
@@ -331,8 +358,16 @@ export default function LiquidHero() {
       if (destroyed) return;
 
       const elapsed = (now - startTime) * 0.001;
-      mouseX += (targetMouseX - mouseX) * 0.05;
-      mouseY += (targetMouseY - mouseY) * 0.05;
+
+      // When user is not actively interacting, gently swirl the fluid autonomously
+      const isIdle = (now - lastUserInteraction) > 2000;
+      if (isIdle) {
+        targetMouseX = (0.5 + 0.3 * Math.sin(elapsed * 0.55)) * canvas.width;
+        targetMouseY = (0.5 + 0.25 * Math.cos(elapsed * 0.42)) * canvas.height;
+      }
+
+      mouseX += (targetMouseX - mouseX) * 0.055;
+      mouseY += (targetMouseY - mouseY) * 0.055;
 
       gl.useProgram(program);
 
@@ -356,6 +391,8 @@ export default function LiquidHero() {
       destroyed = true;
       if (animId) cancelAnimationFrame(animId);
       window.removeEventListener('mousemove', onMouseMove);
+      window.removeEventListener('touchstart', onTouchMove);
+      window.removeEventListener('touchmove', onTouchMove);
       window.removeEventListener('resize', resize);
     };
   }, []);
