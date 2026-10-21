@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import LiquidHero from '../components/LiquidHero';
+import StoriesSection from '../components/StoriesSection';
 
 export default function Home() {
   const testimonials = [
@@ -8,36 +9,42 @@ export default function Home() {
       name: "Tabraj Singh",
       role: "Verified Client • Topmate",
       monogram: "TS",
+      image: null,
       quote: "Working with Jagat was a great experience. He helped transform my mindset and gave me the exact clarity to achieve my goals."
     },
     {
       name: "Renu Chaudhary",
       role: "Verified Client • Topmate",
       monogram: "RC",
+      image: null,
       quote: "He is always providing handholding support to face challenges. The tools and frameworks he uses are practical and easy to apply."
     },
     {
       name: "Rahul Singh",
       role: "Software Executive",
       monogram: "RS",
+      image: "./assets/images/testimonials/rahul-singh.jpg",
       quote: "Working with Jagat Turkiya has been life-changing. His guidance and insight helped me overcome roadblocks in my personal and career growth."
     },
     {
       name: "Aditi Shah",
       role: "Business Owner",
       monogram: "AS",
+      image: "./assets/images/testimonials/aditi-shah.jpg",
       quote: "Jagat has deep knowledge and is always ready to support people who want to grow. His guidance is straightforward and easy to connect with."
     },
     {
       name: "Neetu Negi",
       role: "Corporate Professional",
       monogram: "NN",
+      image: "./assets/images/testimonials/neetu-tyagi.png",
       quote: "Jagat is a calm, patient, empathetic, and empowering coach. He made our sessions pleasant, productive, and brought absolute clarity."
     },
     {
       name: "Rritu Singhi",
       role: "Transformation Coach",
       monogram: "RS",
+      image: null,
       quote: "Jagat provides relentless clarity, structured frameworks, and unmatched guidance for personal and executive growth."
     }
   ];
@@ -133,23 +140,26 @@ export default function Home() {
 
             <div className="story-text">
               <h2 style={{ fontSize: 'clamp(1.8rem, 3vw, 2.4rem)', marginBottom: '1.25rem' }}>
-                Forged in Scarcity, Driven by Purpose
+                Transformation That Lasts a Lifetime
               </h2>
               <p>
-                Before mentoring founders and professionals across 9 nations, Jagat walked 4 kilometers on foot every day for a full year simply to save ₹30 in daily bus fare.
+                Jagat Turkiya is an internationally recognized transformational coach and mentor dedicated to helping high earners, founders, and leaders eliminate friction and master unshakeable direction.
               </p>
               <p>
-                That defining season taught him that true growth comes from disciplined daily action, emotional resilience, and relentless focus.
+                With over 15 years of coaching experience, 200+ workshops, and 15,000+ lives transformed across 9 countries, his battle-tested frameworks turn confusion into decisive action.
               </p>
               <div style={{ marginTop: '1.5rem' }}>
                 <Link to="/about" className="btn btn-outline">
-                  Read Full Story →
+                  Learn More About Jagat →
                 </Link>
               </div>
             </div>
           </div>
         </div>
       </section>
+
+      {/* Real Life Stories & Wisdom Hub (Insights for a Better Life) */}
+      <StoriesSection />
 
       {/* What Clients Say (Testimonials Cards) */}
       <section className="section">
@@ -167,7 +177,16 @@ export default function Home() {
                 <div className="test-stars">★★★★★</div>
                 <p className="testimonial-quote">"{t.quote}"</p>
                 <div className="test-author-info">
-                  <div className="author-avatar-monogram">{t.monogram}</div>
+                  {t.image ? (
+                    <img
+                      src={t.image}
+                      alt={t.name}
+                      className="author-pic"
+                      loading="lazy"
+                    />
+                  ) : (
+                    <div className="author-avatar-monogram">{t.monogram}</div>
+                  )}
                   <div className="author-meta">
                     <h5>{t.name}</h5>
                     <p>{t.role}</p>

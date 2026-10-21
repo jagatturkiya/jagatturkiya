@@ -1,5 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { Trophy, Award, Medal, Tv } from 'lucide-react';
+import StoriesSection from '../components/StoriesSection';
 
 export default function About() {
   const books = [
@@ -54,7 +56,7 @@ export default function About() {
         </div>
       </section>
 
-      {/* Origin Story - The 4 km Daily Walk */}
+      {/* Executive Biography - Meet the Mind Behind Thousands of Transformations */}
       <section className="section">
         <div className="container">
           <div className="story-split">
@@ -64,13 +66,13 @@ export default function About() {
 
             <div className="story-text">
               <h2 style={{ fontSize: 'clamp(1.8rem, 3vw, 2.4rem)', marginBottom: '1.25rem' }}>
-                Walking 4 Kilometers to Save ₹30
+                Meet the Mind Behind Thousands of Transformations
               </h2>
               <p>
-                Long before speaking on international stages or mentoring senior executives, Jagat walked 4 kilometers on foot through Delhi every single day for an entire year—simply to save ₹30 in daily bus fare so his family could make ends meet.
+                Jagat Turkiya is a globally recognized transformational coach, corporate mentor, and author dedicated to helping high-performing executives, founders, and ambitious professionals unlock their highest potential.
               </p>
               <p>
-                Those long walks in the Delhi heat and winter cold became his crucible. They taught him a truth that no textbook could ever explain: <em>circumstances do not define your future; your daily discipline and refusal to make excuses do.</em>
+                Over the past 15+ years, he has conducted 200+ workshops and empowered more than 15,000 individuals across 9 countries to eliminate limiting beliefs, conquer self-doubt, and master absolute clarity in their careers, wealth, and relationships.
               </p>
 
               <div className="editorial-quote">
@@ -79,7 +81,7 @@ export default function About() {
               </div>
 
               <p>
-                Today, when he coaches high earners or addresses large audiences, he doesn't speak from theory. He speaks from the lived reality of having pulled himself up through grit, relentless self-belief, and personal accountability.
+                He doesn't teach theoretical motivation or textbook platitudes. Every framework he delivers is battle-tested through 1,500+ private one-on-one sessions, executive advisory, and corporate leadership trenches—engineered to produce measurable, lasting results.
               </p>
             </div>
           </div>
@@ -124,7 +126,9 @@ export default function About() {
 
           <div className="achievements-grid">
             <div className="achievement-card card-glass">
-              <div style={{ fontSize: '2.5rem', marginBottom: '1rem' }}>🏆</div>
+              <div className="milestone-icon-wrap">
+                <Trophy size={32} strokeWidth={1.5} color="#ffffff" />
+              </div>
               <h4 style={{ fontSize: '1.2rem', marginBottom: '0.5rem', color: '#ffffff' }}>Guinness World Record</h4>
               <p style={{ color: 'var(--text-silver)', fontSize: '0.9rem', lineHeight: 1.6 }}>
                 Official co-author in the Guinness World Record for the thickest published book in the world.
@@ -132,7 +136,9 @@ export default function About() {
             </div>
 
             <div className="achievement-card card-glass">
-              <div style={{ fontSize: '2.5rem', marginBottom: '1rem' }}>🎖️</div>
+              <div className="milestone-icon-wrap">
+                <Award size={32} strokeWidth={1.5} color="#ffffff" />
+              </div>
               <h4 style={{ fontSize: '1.2rem', marginBottom: '0.5rem', color: '#ffffff' }}>National Icon Award 2024</h4>
               <p style={{ color: 'var(--text-silver)', fontSize: '0.9rem', lineHeight: 1.6 }}>
                 Honored for significant contributions to mindset transformation and executive coaching.
@@ -140,7 +146,9 @@ export default function About() {
             </div>
 
             <div className="achievement-card card-glass">
-              <div style={{ fontSize: '2.5rem', marginBottom: '1rem' }}>🏅</div>
+              <div className="milestone-icon-wrap">
+                <Medal size={32} strokeWidth={1.5} color="#ffffff" />
+              </div>
               <h4 style={{ fontSize: '1.2rem', marginBottom: '0.5rem', color: '#ffffff' }}>Dr. APJ Abdul Kalam Award</h4>
               <p style={{ color: 'var(--text-silver)', fontSize: '0.9rem', lineHeight: 1.6 }}>
                 Recognized for leadership in youth development, education, and empowering communities.
@@ -148,7 +156,9 @@ export default function About() {
             </div>
 
             <div className="achievement-card card-glass">
-              <div style={{ fontSize: '2.5rem', marginBottom: '1rem' }}>🌟</div>
+              <div className="milestone-icon-wrap">
+                <Tv size={32} strokeWidth={1.5} color="#ffffff" />
+              </div>
               <h4 style={{ fontSize: '1.2rem', marginBottom: '0.5rem', color: '#ffffff' }}>Times Square NYC Billboard</h4>
               <p style={{ color: 'var(--text-silver)', fontSize: '0.9rem', lineHeight: 1.6 }}>
                 Featured by Topmate’s Creator Club on the Nasdaq digital marquee in Times Square, New York City.
@@ -195,6 +205,9 @@ export default function About() {
           </div>
         </div>
       </section>
+
+      {/* Real Life Stories & Wisdom Hub (Pure Hindi, No Capsules) */}
+      <StoriesSection />
 
       {/* Author of 5 Published Books */}
       <section className="section" id="bookshelf">
