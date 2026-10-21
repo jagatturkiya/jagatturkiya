@@ -77,14 +77,14 @@ export default function Mastermind() {
   ];
 
   const deliverables = [
-    "10-Week Structured Mastermind & Mentorship Framework",
+    "10-Week Intensive Mastermind Curriculum",
+    "Ongoing Handholding & Implementation Support Till 6 Months",
     "Step-by-Step Personal Financial & Life Blueprint",
-    "Objective Investment & Allocation Guidance",
+    "Objective Investment & Capital Allocation Guidance",
     "Defensive Risk Architecture & Capital Moats",
     "Flow-of-Money & Cash Leakage Audit",
     "Multi-Horizon Goal Planning (Short, Medium, Long-Term)",
     "Guided 1-on-1 Coaching & Diagnostic Sessions With Jagat Turkiya",
-    "Hands-On Practical Implementation Support",
     "Your Lifetime Wealth & Mental Operating System"
   ];
 
@@ -98,8 +98,8 @@ export default function Mastermind() {
       answer: "No. Absolutely not. The Mastermind is an independent educational and strategic advisory framework. We do not sell insurance, mutual funds, or stocks, nor do we take commissions. Our sole objective is to give you the clarity, frameworks, and decision-making system to manage your own wealth independently."
     },
     {
-      question: "How are the 1-on-1 sessions conducted?",
-      answer: "Alongside the 10-week core curriculum, you receive dedicated one-on-one diagnostic and strategy coaching sessions with Jagat Turkiya and senior advisors. In these sessions, your real numbers, cash flow architecture, and personalized blueprints are evaluated under strict confidentiality."
+      question: "How are the sessions and handholding conducted?",
+      answer: "You go through a structured 10-week intensive curriculum, paired with private 1-on-1 diagnostic sessions with Jagat Turkiya. Following the 10 weeks, you receive continuous handholding support till 6 months to review your execution, adapt your blueprint, and resolve any real-world hurdles."
     },
     {
       question: "What is the weekly time commitment required?",
@@ -121,8 +121,8 @@ export default function Mastermind() {
             The Executive Mastermind
           </h1>
 
-          <p className="hero-lead" style={{ maxWidth: '680px', margin: '0 auto 2rem auto', fontSize: '1.15rem' }}>
-            A 10-week structured coaching container with Jagat Turkiya. Direction, structure, and peace of mind for high-earning leaders.
+          <p className="hero-lead" style={{ maxWidth: '720px', margin: '0 auto 2rem auto', fontSize: '1.15rem' }}>
+            10-week intensive program followed by dedicated handholding support till 6 months. Direction, structure, and lasting peace of mind.
           </p>
 
           <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap' }}>
@@ -241,7 +241,7 @@ export default function Mastermind() {
               borderRadius: '0 8px 8px 0'
             }}>
               <p style={{ margin: 0, color: '#ffffff', fontSize: '0.96rem', fontWeight: 600, lineHeight: 1.6 }}>
-                You don’t need complicated financial theories. You need a calm, practical roadmap tailored to your life. That is exactly what Jagat Turkiya coaches you to install across 10 weeks of structured personal mentorship.
+                You don’t need complicated financial theories. You need a calm, practical roadmap tailored to your life. That is exactly what Jagat Turkiya coaches you to install across a 10-week intensive program with continuous handholding support till 6 months.
               </p>
             </div>
           </div>
@@ -310,8 +310,8 @@ export default function Mastermind() {
         <div className="container">
           <div className="section-header text-center">
             <h2 className="section-title">The 10-Week Mastermind Roadmap</h2>
-            <p className="section-subtitle" style={{ margin: '0 auto', maxWidth: '680px' }}>
-              A structured 10-week roadmap taking you from unorganized cash flow to an unshakeable life and financial operating system.
+            <p className="section-subtitle" style={{ margin: '0 auto', maxWidth: '720px' }}>
+              A structured 10-week intensive roadmap, followed by continuous handholding support till 6 months to ensure seamless execution.
             </p>
           </div>
 

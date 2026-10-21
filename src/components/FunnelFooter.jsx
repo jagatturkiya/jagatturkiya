@@ -227,7 +227,7 @@ export default function FunnelFooter() {
                 </h2>
                 <div style={{ fontSize: '0.92rem', lineHeight: '1.75', color: '#d4d4d8', display: 'flex', flexDirection: 'column', gap: '1rem' }}>
                   <p>
-                    We respect your privacy and confidentiality. Any information you submit on this advisory portal—including your name, email address, and contact number—is strictly used for communication regarding your strategy consultation and our 10-week private mentorship.
+                    We respect your privacy and confidentiality. Any information you submit on this advisory portal—including your name, email address, and contact number—is strictly used for communication regarding your strategy consultation and our 10-week private mentorship with 6 months of handholding support.
                   </p>
                   <p>
                     <strong>Data Protection:</strong> We do not sell, rent, or distribute your personal contact information to third-party marketing brokers or advertisers. All transmissions are encrypted using standard industry security protocols.
