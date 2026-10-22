@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import FunnelHeader from '../components/FunnelHeader';
 import FunnelFooter from '../components/FunnelFooter';
+import { submitLead } from '../lib/supabase';
 
 export default function Optin() {
   const navigate = useNavigate();
@@ -21,7 +22,7 @@ export default function Optin() {
     if (errorMsg) setErrorMsg('');
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     if (!formData.firstName.trim()) {
@@ -49,6 +50,16 @@ export default function Optin() {
         phone: formData.phone.trim(),
         timestamp: new Date().toISOString()
       }));
+      // Push lead to Supabase / Admin CRM
+      await submitLead({
+        firstName: formData.firstName.trim(),
+        email: formData.email.trim(),
+        phone: formData.phone.trim(),
+        source: 'VSL Optin Funnel',
+        program: 'Mastermind',
+        preferredTime: 'Morning (10 AM - 1 PM)',
+        notes: 'Submitted contact from /optin funnel'
+      });
     } catch {
       // storage error fallback
     }

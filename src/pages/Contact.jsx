@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import FaqAccordion from '../components/FaqAccordion';
+import { submitLead } from '../lib/supabase';
 
 export default function Contact() {
   const [searchParams] = useSearchParams();
@@ -21,13 +22,21 @@ export default function Contact() {
     setFormData(prev => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     setSubmitting(true);
-    setTimeout(() => {
-      setSubmitting(false);
-      setSubmitted(true);
-    }, 600);
+    try {
+      await submitLead({
+        name: formData.name,
+        email: formData.email,
+        phone: formData.phone,
+        message: formData.message,
+        source: 'Contact Page Inquiry',
+        program: initialSubject || 'General Inquiry'
+      });
+    } catch {}
+    setSubmitting(false);
+    setSubmitted(true);
   };
 
   const faqItems = [
