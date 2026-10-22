@@ -1,61 +1,28 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import LiquidHero from '../components/LiquidHero';
 import FaqAccordion from '../components/FaqAccordion';
+import { getMastermindDetails, getFaqs } from '../lib/cmsStore';
 
 export default function Mastermind() {
-  const weeks = [
-    {
-      num: "Week 01",
-      title: "Know Your Identity",
-      desc: "Discover what drives you to do what you do. These simple question-based tools help you unlock financial clarity, personal transformation, and how each area of your life aligns."
-    },
-    {
-      num: "Week 02",
-      title: "Flow of Money & Silent Leakage",
-      desc: "Map your true cash flow and plug unnoticed leaks. Understand the psychology behind your spending and install simple controls to keep your capital safe."
-    },
-    {
-      num: "Week 03",
-      title: "Multi-Horizon Financial Goals",
-      desc: "Define what you want your money to accomplish across three clear timelines: immediate peace of mind, medium-term family milestones, and generational freedom."
-    },
-    {
-      num: "Week 04",
-      title: "Objective Investment Guidance",
-      desc: "Stop reacting to market noise and stock tips. Learn a practical, objective framework to assess real risk capacity, time horizons, and asset quality."
-    },
-    {
-      num: "Week 05",
-      title: "Defensive Risk & Capital Moats",
-      desc: "Master downside protection. Build unshakeable emergency buffers and insurance firewalls so market shocks never threaten your family’s security."
-    },
-    {
-      num: "Week 06",
-      title: "Cohesive Wealth Allocation",
-      desc: "Connect scattered investments into one balanced ecosystem where liquid reserves, real estate, and equities work together seamlessly."
-    },
-    {
-      num: "Week 07",
-      title: "High-Stakes Decision Making",
-      desc: "Eliminate emotional, impulsive financial choices. Install a stress-tested evaluation matrix to decide what to fund, cut, or scale with absolute calm."
-    },
-    {
-      num: "Week 08",
-      title: "Your Custom Financial Blueprint",
-      desc: "Synthesize your unique cash flow, commitments, and family priorities into a single personalized strategy built exclusively for you."
-    },
-    {
-      num: "Week 09",
-      title: "Hands-On Execution & Restructuring",
-      desc: "Put strategy into live action. Reorganize account allocations, automate capital defense protocols, and implement your blueprint step-by-step."
-    },
-    {
-      num: "Week 10",
-      title: "Your Permanent Operating System",
-      desc: "Integrate every layer into an unshakeable operating system—giving you lifelong clarity, daily focus, and permanent financial peace of mind."
-    }
-  ];
+  const [mmData, setMmData] = useState(() => getMastermindDetails());
+  const [faqItems, setFaqItems] = useState(() => getFaqs().mastermind || []);
+
+  useEffect(() => {
+    const handleUpdate = () => {
+      setMmData(getMastermindDetails());
+      setFaqItems(getFaqs().mastermind || []);
+    };
+    window.addEventListener('jt_cms_updated', handleUpdate);
+    window.addEventListener('storage', handleUpdate);
+    return () => {
+      window.removeEventListener('jt_cms_updated', handleUpdate);
+      window.removeEventListener('storage', handleUpdate);
+    };
+  }, []);
+
+  const cohort = mmData.cohort || {};
+  const weeks = mmData.weeks || [];
 
   const qualifyingCriteria = [
     {
@@ -88,41 +55,51 @@ export default function Mastermind() {
     "Your Lifetime Wealth & Mental Operating System"
   ];
 
-  const faqItems = [
-    {
-      question: "Who is The Mastermind specifically built for?",
-      answer: "The Mastermind is crafted for driven working professionals, financial practitioners, bankers, insurance advisors, and family wealth custodians who have money coming in and are ready to turn it into enduring, protected wealth. It is for anyone who wants an organized, systematic operating system to manage, protect, and multiply their capital with complete peace of mind."
-    },
-    {
-      question: "Is this program about selling financial products or stocks?",
-      answer: "No. Absolutely not. The Mastermind is an independent educational and strategic advisory framework. We do not sell insurance, mutual funds, or stocks, nor do we take commissions. Our sole objective is to give you the clarity, frameworks, and decision-making system to manage your own wealth independently."
-    },
-    {
-      question: "How are the sessions and handholding conducted?",
-      answer: "You go through a structured 10-week intensive curriculum, paired with private 1-on-1 diagnostic sessions with Jagat Turkiya. Following the 10 weeks, you receive continuous handholding support till 6 months to review your execution, adapt your blueprint, and resolve any real-world hurdles."
-    },
-    {
-      question: "What is the weekly time commitment required?",
-      answer: "Approximately 2 to 3 hours per week. This includes the strategic session, execution of your practical worksheets, and periodic one-on-one reviews. The program is built for busy executives with zero busywork."
-    },
-    {
-      question: "How do I enroll or check eligibility?",
-      answer: "Click the 'Apply for Mastermind' or 'Book Consultation' button below to schedule an initial diagnostic conversation. We review your current situation to ensure the program is a mutual fit before enrollment."
-    }
-  ];
-
   return (
     <div className="mastermind-page">
-      {/* Hero Section - Short Headline, Shorter Sub-headline */}
+      {/* Hero Section */}
       <section className="hero-section text-center">
         <LiquidHero />
-        <div className="container hero-container" style={{ maxWidth: '840px', margin: '0 auto' }}>
+        <div className="container hero-container" style={{ maxWidth: '880px', margin: '0 auto' }}>
+          {/* Live Cohort Status Banner */}
+          {cohort.batchName && (
+            <div style={{
+              display: 'inline-flex',
+              alignItems: 'center',
+              gap: '10px',
+              padding: '0.45rem 1.15rem',
+              backgroundColor: 'rgba(255, 255, 255, 0.04)',
+              border: '1px solid rgba(255, 255, 255, 0.12)',
+              borderRadius: '9999px',
+              fontSize: '0.82rem',
+              color: '#d4d4d8',
+              marginBottom: '1.25rem'
+            }}>
+              <span style={{
+                width: '8px',
+                height: '8px',
+                borderRadius: '50%',
+                backgroundColor: cohort.status === 'Waitlist Only' ? '#f59e0b' : '#10b981',
+                display: 'inline-block'
+              }} />
+              <span style={{ fontWeight: 700, color: '#ffffff' }}>{cohort.batchName}</span>
+              <span style={{ color: '#666666' }}>•</span>
+              <span>{cohort.startDate}</span>
+              {cohort.seatsRemaining && (
+                <>
+                  <span style={{ color: '#666666' }}>•</span>
+                  <span style={{ color: '#fbbf24', fontWeight: 600 }}>{cohort.seatsRemaining}</span>
+                </>
+              )}
+            </div>
+          )}
+
           <h1 className="hero-title" style={{ marginBottom: '0.85rem', fontSize: 'clamp(2.6rem, 5vw, 4rem)' }}>
             The Executive Mastermind
           </h1>
 
           <p className="hero-lead" style={{ maxWidth: '720px', margin: '0 auto 2rem auto', fontSize: '1.15rem' }}>
-            10-week intensive program followed by dedicated handholding support till 6 months. Direction, structure, and lasting peace of mind.
+            {cohort.duration || '10-week intensive program followed by dedicated handholding support till 6 months.'} Direction, structure, and lasting peace of mind.
           </p>
 
           <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap' }}>

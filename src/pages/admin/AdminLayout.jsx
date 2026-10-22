@@ -4,6 +4,10 @@ import {
   BookOpen,
   Star,
   Users,
+  Award,
+  HelpCircle,
+  Sparkles,
+  PhoneCall,
   Menu,
   X,
   ExternalLink
@@ -25,17 +29,41 @@ export default function AdminLayout() {
       icon: Star
     },
     {
-      label: 'Leads & Inquiries',
+      label: 'Leads & Inquiries CRM',
       path: '/admin/leads',
       icon: Users
+    },
+    {
+      label: 'Mastermind & Cohort',
+      path: '/admin/mastermind',
+      icon: Award
+    },
+    {
+      label: 'FAQs Management',
+      path: '/admin/faqs',
+      icon: HelpCircle
+    },
+    {
+      label: 'Homepage & Stats',
+      path: '/admin/homepage',
+      icon: Sparkles
+    },
+    {
+      label: 'Contact & Advisory Info',
+      path: '/admin/contact-info',
+      icon: PhoneCall
     }
   ];
 
   const getPageTitle = () => {
     const path = location.pathname;
-    if (path.includes('testimonials')) return 'Client Testimonials';
+    if (path.includes('testimonials')) return 'Client Testimonials CMS';
     if (path.includes('leads')) return 'Leads & Inquiries CRM';
-    return 'Success Stories';
+    if (path.includes('mastermind')) return 'Mastermind Cohort & Curriculum CMS';
+    if (path.includes('faqs')) return 'Frequently Asked Questions CMS';
+    if (path.includes('homepage')) return 'Homepage Hero & Stats CMS';
+    if (path.includes('contact-info')) return 'Direct Contact & Advisory Info CMS';
+    return 'Success Stories CMS';
   };
 
   return (

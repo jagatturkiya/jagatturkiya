@@ -1,11 +1,27 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import FaqAccordion from '../components/FaqAccordion';
-import { recordLead } from '../lib/cmsStore';
+import { recordLead, getContactInfo, getFaqs } from '../lib/cmsStore';
 
 export default function Contact() {
   const [searchParams] = useSearchParams();
   const initialSubject = searchParams.get('subject') || '';
+
+  const [contactInfo, setContactInfo] = useState(() => getContactInfo());
+  const [faqItems, setFaqItems] = useState(() => getFaqs().contact || []);
+
+  useEffect(() => {
+    const handleUpdate = () => {
+      setContactInfo(getContactInfo());
+      setFaqItems(getFaqs().contact || []);
+    };
+    window.addEventListener('jt_cms_updated', handleUpdate);
+    window.addEventListener('storage', handleUpdate);
+    return () => {
+      window.removeEventListener('jt_cms_updated', handleUpdate);
+      window.removeEventListener('storage', handleUpdate);
+    };
+  }, []);
 
   const [formData, setFormData] = useState({
     name: '',
@@ -40,24 +56,8 @@ export default function Contact() {
     setSubmitted(true);
   };
 
-  const faqItems = [
-    {
-      question: "How do I schedule a consultation?",
-      answer: "Submit your details using the form on this page or email us at hello@apkacoach.com. Our team will get back to you within 24 hours to schedule your session."
-    },
-    {
-      question: "Can I book Jagat Turkiya for keynote speaking or events?",
-      answer: "Yes. Jagat is available for keynote speaking, corporate workshops, and leadership seminars in India and internationally."
-    },
-    {
-      question: "How do I request a copy of the books?",
-      answer: "Mention the book title in your message along with your delivery address or email, and our team will assist you with access."
-    },
-    {
-      question: "Is my inquiry kept confidential?",
-      answer: "Yes, 100%. All communications, inquiries, and personal details are strictly private and confidential."
-    }
-  ];
+  const waNumber = (contactInfo.whatsapp || '').replace(/\D/g, '');
+  const waUrl = waNumber ? `https://wa.me/${waNumber.length === 10 ? `91${waNumber}` : waNumber}` : '';
 
   return (
     <div className="contact-page">
@@ -89,15 +89,45 @@ export default function Contact() {
 
               <div className="direct-email-box" style={{ marginTop: '2.5rem' }}>
                 <h5>Email Us</h5>
-                <a href="mailto:hello@apkacoach.com">hello@apkacoach.com</a>
+                <a href={`mailto:${contactInfo.email || 'hello@apkacoach.com'}`}>{contactInfo.email || 'hello@apkacoach.com'}</a>
                 <p style={{ fontSize: '0.85rem', color: 'var(--text-dim)', marginTop: '0.4rem' }}>
-                  Quick response within 24 business hours.
+                  {contactInfo.responseHours || 'Quick response within 24 business hours.'}
                 </p>
               </div>
 
+              {contactInfo.phone && (
+                <div style={{ marginTop: '1.25rem' }}>
+                  <h5 style={{ fontSize: '0.95rem', color: '#ffffff', margin: '0 0 4px', fontWeight: 700 }}>Direct Advisory Helpline</h5>
+                  <a href={`tel:${contactInfo.phone}`} style={{ color: 'var(--text-silver)', textDecoration: 'none', fontSize: '0.95rem' }}>
+                    {contactInfo.phone}
+                  </a>
+                </div>
+              )}
+
+              {waUrl && (
+                <div style={{ marginTop: '1.25rem' }}>
+                  <a
+                    href={waUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    style={{
+                      display: 'inline-flex',
+                      alignItems: 'center',
+                      gap: '8px',
+                      color: '#10b981',
+                      fontSize: '0.92rem',
+                      fontWeight: 600,
+                      textDecoration: 'none'
+                    }}
+                  >
+                    <span>💬 Message on WhatsApp ({contactInfo.whatsapp})</span>
+                  </a>
+                </div>
+              )}
+
               <div style={{ marginTop: '2rem', padding: '1.25rem', background: 'rgba(255,255,255,0.02)', border: '1px solid var(--border-subtle)', borderRadius: 'var(--radius-sm)' }}>
                 <p style={{ fontSize: '0.9rem', color: 'var(--text-silver)', margin: 0, lineHeight: '1.6' }}>
-                  Available for in-person consultations in New Delhi and virtual sessions worldwide.
+                  {contactInfo.availability || `Available for in-person consultations in ${contactInfo.location || 'New Delhi'} and virtual sessions worldwide.`}
                 </p>
               </div>
             </div>

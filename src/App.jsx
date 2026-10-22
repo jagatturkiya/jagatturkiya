@@ -23,6 +23,10 @@ import AdminLayout from './pages/admin/AdminLayout';
 import LeadsCRM from './pages/admin/LeadsCRM';
 import SuccessStoriesAdmin from './pages/admin/SuccessStoriesAdmin';
 import TestimonialsAdmin from './pages/admin/TestimonialsAdmin';
+import MastermindAdmin from './pages/admin/MastermindAdmin';
+import FaqsAdmin from './pages/admin/FaqsAdmin';
+import HomePageAdmin from './pages/admin/HomePageAdmin';
+import ContactInfoAdmin from './pages/admin/ContactInfoAdmin';
 import AdminLogin from './pages/admin/AdminLogin';
 
 export default function App() {
@@ -42,6 +46,10 @@ export default function App() {
             <Route path="stories" element={<SuccessStoriesAdmin />} />
             <Route path="testimonials" element={<TestimonialsAdmin />} />
             <Route path="leads" element={<LeadsCRM />} />
+            <Route path="mastermind" element={<MastermindAdmin />} />
+            <Route path="faqs" element={<FaqsAdmin />} />
+            <Route path="homepage" element={<HomePageAdmin />} />
+            <Route path="contact-info" element={<ContactInfoAdmin />} />
             <Route path="*" element={<Navigate to="/admin/stories" replace />} />
           </Route>
         </Routes>

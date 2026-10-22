@@ -1,7 +1,22 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import { getContactInfo } from '../lib/cmsStore';
 
 export default function Footer() {
+  const [contact, setContact] = useState(() => getContactInfo());
+
+  useEffect(() => {
+    const handleUpdate = () => {
+      setContact(getContactInfo());
+    };
+    window.addEventListener('jt_cms_updated', handleUpdate);
+    window.addEventListener('storage', handleUpdate);
+    return () => {
+      window.removeEventListener('jt_cms_updated', handleUpdate);
+      window.removeEventListener('storage', handleUpdate);
+    };
+  }, []);
+
   return (
     <footer className="site-footer">
       <div className="container">
@@ -45,13 +60,16 @@ export default function Footer() {
           <div className="footer-nav-col">
             <h5>Advisory Desk</h5>
             <ul className="footer-links">
-              <li><a href="mailto:hello@apkacoach.com">hello@apkacoach.com</a></li>
+              <li><a href={`mailto:${contact.email || 'hello@apkacoach.com'}`}>{contact.email || 'hello@apkacoach.com'}</a></li>
+              {contact.phone && <li><a href={`tel:${contact.phone}`}>{contact.phone}</a></li>}
               <li><Link to="/contact">Book Consultation</Link></li>
-              <li>
-                <a href="https://yourwealthcompass.in" target="_blank" rel="noopener noreferrer">
-                  Your Wealth Compass (Tool) ↗
-                </a>
-              </li>
+              {contact.wealthCompassUrl && (
+                <li>
+                  <a href={contact.wealthCompassUrl} target="_blank" rel="noopener noreferrer">
+                    Your Wealth Compass (Tool) ↗
+                  </a>
+                </li>
+              )}
             </ul>
           </div>
         </div>

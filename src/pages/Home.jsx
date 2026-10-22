@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import LiquidHero from '../components/LiquidHero';
 import StoriesSection from '../components/StoriesSection';
-import { getTestimonials } from '../lib/cmsStore';
+import { getTestimonials, getHeroAndTimesSquare } from '../lib/cmsStore';
 
 export default function Home() {
   const [testimonials, setTestimonials] = useState(() => {
@@ -10,10 +10,13 @@ export default function Home() {
     return data.reviews;
   });
 
+  const [heroStats, setHeroStats] = useState(() => getHeroAndTimesSquare());
+
   useEffect(() => {
     const handleUpdate = () => {
       const data = getTestimonials();
       setTestimonials(data.reviews);
+      setHeroStats(getHeroAndTimesSquare());
     };
     window.addEventListener('jt_cms_updated', handleUpdate);
     window.addEventListener('storage', handleUpdate);
@@ -30,20 +33,20 @@ export default function Home() {
         <LiquidHero />
         <div className="container hero-container" style={{ maxWidth: '900px', margin: '0 auto' }}>
           <h1 className="hero-title" style={{ marginBottom: '1.25rem' }}>
-            Transform Your Perspective with <br />
-            <span className="serif-font">Clarity, Focus &amp; Action</span>
+            {heroStats.heroTitle || 'Transform Your Perspective with'} <br />
+            <span className="serif-font">{heroStats.heroTitleHighlight || 'Clarity, Focus & Action'}</span>
           </h1>
 
           <p className="hero-lead" style={{ maxWidth: '720px', margin: '0 auto 2.25rem auto' }}>
-            Overcome limiting beliefs, eliminate friction, and build an unshakeable direction for your career, wealth, and life with Jagat Turkiya.
+            {heroStats.heroLead || 'Overcome limiting beliefs, eliminate friction, and build an unshakeable direction for your career, wealth, and life with Jagat Turkiya.'}
           </p>
 
           <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap' }}>
-            <Link to="/mastermind" className="btn btn-white">
-              Explore Mastermind
+            <Link to={heroStats.ctaPrimaryLink || '/mastermind'} className="btn btn-white">
+              {heroStats.ctaPrimaryText || 'Explore Mastermind'}
             </Link>
-            <Link to="/contact" className="btn btn-glass">
-              Book Consultation
+            <Link to={heroStats.ctaSecondaryLink || '/contact'} className="btn btn-glass">
+              {heroStats.ctaSecondaryText || 'Book Consultation'}
             </Link>
           </div>
         </div>
@@ -53,9 +56,9 @@ export default function Home() {
       <section className="section" id="times-square">
         <div className="container">
           <div className="section-header text-center">
-            <h2 className="section-title">Featured on Times Square, New York City</h2>
+            <h2 className="section-title">{heroStats.timesSquareTitle || 'Featured on Times Square, New York City'}</h2>
             <p className="section-subtitle" style={{ margin: '0 auto', maxWidth: '640px' }}>
-              Spotlighted on the global digital marquee in Times Square, NYC for excellence in transformational leadership.
+              {heroStats.timesSquareSubtitle || 'Spotlighted on the global digital marquee in Times Square, NYC for excellence in transformational leadership.'}
             </p>
           </div>
 
@@ -78,26 +81,26 @@ export default function Home() {
 
           <div className="ts-narrative-box">
             <div>
-              <h3>From Walking 4 km Daily to the Heart of Manhattan</h3>
+              <h3>{heroStats.timesSquareStoryTitle || 'From Walking 4 km Daily to the Heart of Manhattan'}</h3>
               <p>
-                In 2024, Jagat Singh Turkiya was spotlighted on the world-famous digital marquee in Times Square, New York City by Topmate’s Creator Club. This recognition honored him as an "incredible transformation coach" who has helped thousands of individuals overcome internal roadblocks and create lasting clarity in their lives and careers.
+                {heroStats.timesSquareStoryPara1 || "In 2024, Jagat Singh Turkiya was spotlighted on the world-famous digital marquee in Times Square, New York City by Topmate’s Creator Club. This recognition honored him as an 'incredible transformation coach' who has helped thousands of individuals overcome internal roadblocks and create lasting clarity in their lives and careers."}
               </p>
               <p>
-                For someone who once walked four kilometers every day simply to save ₹30 in bus fare, seeing his name and mission projected in the center of NYC stands as proof: with disciplined focus, genuine humility, and consistent execution, authentic work transcends every geographical boundary.
+                {heroStats.timesSquareStoryPara2 || "For someone who once walked four kilometers every day simply to save ₹30 in bus fare, seeing his name and mission projected in the center of NYC stands as proof: with disciplined focus, genuine humility, and consistent execution, authentic work transcends every geographical boundary."}
               </p>
             </div>
             <div className="ts-narrative-stats">
               <div className="ts-stat-badge">
-                <h4>Times Sq.</h4>
-                <p>New York City</p>
+                <h4>{heroStats.stat1Val || 'Times Sq.'}</h4>
+                <p>{heroStats.stat1Label || 'New York City'}</p>
               </div>
               <div className="ts-stat-badge">
-                <h4>Topmate</h4>
-                <p>Creator Club</p>
+                <h4>{heroStats.stat2Val || 'Topmate'}</h4>
+                <p>{heroStats.stat2Label || 'Creator Club'}</p>
               </div>
               <div className="ts-stat-badge">
-                <h4>15,000+</h4>
-                <p>Lives Impacted</p>
+                <h4>{heroStats.stat3Val || '15,000+'}</h4>
+                <p>{heroStats.stat3Label || 'Lives Impacted'}</p>
               </div>
             </div>
           </div>

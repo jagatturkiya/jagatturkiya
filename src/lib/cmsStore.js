@@ -383,3 +383,317 @@ export async function removeLead(id) {
     return [];
   }
 }
+
+// ==========================================
+// 4. FAQS STORE (CONTACT & MASTERMIND)
+// ==========================================
+
+export const defaultMastermindFaqs = [
+  {
+    id: 'mm-faq-1',
+    question: "Who is The Mastermind specifically built for?",
+    answer: "The Mastermind is crafted for driven working professionals, financial practitioners, bankers, insurance advisors, and family wealth custodians who have money coming in and are ready to turn it into enduring, protected wealth. It is for anyone who wants an organized, systematic operating system to manage, protect, and multiply their capital with complete peace of mind."
+  },
+  {
+    id: 'mm-faq-2',
+    question: "Is this program about selling financial products or stocks?",
+    answer: "No. Absolutely not. The Mastermind is an independent educational and strategic advisory framework. We do not sell insurance, mutual funds, or stocks, nor do we take commissions. Our sole objective is to give you the clarity, frameworks, and decision-making system to manage your own wealth independently."
+  },
+  {
+    id: 'mm-faq-3',
+    question: "How are the sessions and handholding conducted?",
+    answer: "You go through a structured 10-week intensive curriculum, paired with private 1-on-1 diagnostic sessions with Jagat Turkiya. Following the 10 weeks, you receive continuous handholding support till 6 months to review your execution, adapt your blueprint, and resolve any real-world hurdles."
+  },
+  {
+    id: 'mm-faq-4',
+    question: "What is the weekly time commitment required?",
+    answer: "Approximately 2 to 3 hours per week. This includes the strategic session, execution of your practical worksheets, and periodic one-on-one reviews. The program is built for busy executives with zero busywork."
+  },
+  {
+    id: 'mm-faq-5',
+    question: "How do I enroll or check eligibility?",
+    answer: "Click the 'Apply for Mastermind' or 'Book Consultation' button below to schedule an initial diagnostic conversation. We review your current situation to ensure the program is a mutual fit before enrollment."
+  }
+];
+
+export const defaultContactFaqs = [
+  {
+    id: 'contact-faq-1',
+    question: "How do I schedule a consultation?",
+    answer: "Submit your details using the form on this page or email us at hello@apkacoach.com. Our team will get back to you within 24 hours to schedule your session."
+  },
+  {
+    id: 'contact-faq-2',
+    question: "Can I book Jagat Turkiya for keynote speaking or events?",
+    answer: "Yes. Jagat is available for keynote speaking, corporate workshops, and leadership seminars in India and internationally."
+  },
+  {
+    id: 'contact-faq-3',
+    question: "How do I request a copy of the books?",
+    answer: "Mention the book title in your message along with your delivery address or email, and our team will assist you with access."
+  },
+  {
+    id: 'contact-faq-4',
+    question: "Is my inquiry kept confidential?",
+    answer: "Yes, 100%. All communications, inquiries, and personal details are strictly private and confidential."
+  }
+];
+
+export function getFaqs() {
+  try {
+    const cached = localStorage.getItem('jt_cms_faqs');
+    if (cached) return JSON.parse(cached);
+    const initial = {
+      mastermind: defaultMastermindFaqs,
+      contact: defaultContactFaqs
+    };
+    localStorage.setItem('jt_cms_faqs', JSON.stringify(initial));
+    return initial;
+  } catch {
+    return {
+      mastermind: defaultMastermindFaqs,
+      contact: defaultContactFaqs
+    };
+  }
+}
+
+export function saveFaq({ type, id, question, answer }) {
+  const all = getFaqs();
+  const list = all[type] || [];
+  let updatedList;
+  if (!id) {
+    const newFaq = {
+      id: `${type}-faq-${Date.now()}`,
+      question: question.trim(),
+      answer: answer.trim()
+    };
+    updatedList = [...list, newFaq];
+  } else {
+    updatedList = list.map(item => item.id === id ? { ...item, question: question.trim(), answer: answer.trim() } : item);
+  }
+  const updatedAll = { ...all, [type]: updatedList };
+  localStorage.setItem('jt_cms_faqs', JSON.stringify(updatedAll));
+  window.dispatchEvent(new Event('jt_cms_updated'));
+  return updatedAll;
+}
+
+export function deleteFaq(type, id) {
+  const all = getFaqs();
+  const list = all[type] || [];
+  const updatedList = list.filter(item => item.id !== id);
+  const updatedAll = { ...all, [type]: updatedList };
+  localStorage.setItem('jt_cms_faqs', JSON.stringify(updatedAll));
+  window.dispatchEvent(new Event('jt_cms_updated'));
+  return updatedAll;
+}
+
+// ==========================================
+// 5. MASTERMIND COHORT & CURRICULUM STORE
+// ==========================================
+
+export const defaultCurriculumWeeks = [
+  {
+    id: 'week-1',
+    num: "Week 01",
+    title: "Know Your Identity",
+    desc: "Discover what drives you to do what you do. These simple question-based tools help you unlock financial clarity, personal transformation, and how each area of your life aligns."
+  },
+  {
+    id: 'week-2',
+    num: "Week 02",
+    title: "Flow of Money & Silent Leakage",
+    desc: "Map your true cash flow and plug unnoticed leaks. Understand the psychology behind your spending and install simple controls to keep your capital safe."
+  },
+  {
+    id: 'week-3',
+    num: "Week 03",
+    title: "Multi-Horizon Financial Goals",
+    desc: "Define what you want your money to accomplish across three clear timelines: immediate peace of mind, medium-term family milestones, and generational freedom."
+  },
+  {
+    id: 'week-4',
+    num: "Week 04",
+    title: "Objective Investment Guidance",
+    desc: "Stop reacting to market noise and stock tips. Learn a practical, objective framework to assess real risk capacity, time horizons, and asset quality."
+  },
+  {
+    id: 'week-5',
+    num: "Week 05",
+    title: "Defensive Risk & Capital Moats",
+    desc: "Master downside protection. Build unshakeable emergency buffers and insurance firewalls so market shocks never threaten your family’s security."
+  },
+  {
+    id: 'week-6',
+    num: "Week 06",
+    title: "Cohesive Wealth Allocation",
+    desc: "Connect scattered investments into one balanced ecosystem where liquid reserves, real estate, and equities work together seamlessly."
+  },
+  {
+    id: 'week-7',
+    num: "Week 07",
+    title: "High-Stakes Decision Making",
+    desc: "Eliminate emotional, impulsive financial choices. Install a stress-tested evaluation matrix to decide what to fund, cut, or scale with absolute calm."
+  },
+  {
+    id: 'week-8',
+    num: "Week 08",
+    title: "Your Custom Financial Blueprint",
+    desc: "Synthesize your unique cash flow, commitments, and family priorities into a single personalized strategy built exclusively for you."
+  },
+  {
+    id: 'week-9',
+    num: "Week 09",
+    title: "Hands-On Execution & Restructuring",
+    desc: "Put strategy into live action. Reorganize account allocations, automate capital defense protocols, and implement your blueprint step-by-step."
+  },
+  {
+    id: 'week-10',
+    num: "Week 10",
+    title: "Your Permanent Operating System",
+    desc: "Integrate every layer into an unshakeable operating system—giving you lifelong clarity, daily focus, and permanent financial peace of mind."
+  }
+];
+
+export const defaultCohortInfo = {
+  batchName: "Executive Mastermind Cohort",
+  startDate: "Upcoming Batch Starting Soon",
+  duration: "10-Week Intensive + 6 Months Handholding",
+  seatsRemaining: "Only 4 Seats Left",
+  totalSeats: "Strict 15-Member Cap",
+  status: "Admissions Open"
+};
+
+export function getMastermindDetails() {
+  try {
+    const cached = localStorage.getItem('jt_cms_mastermind');
+    if (cached) return JSON.parse(cached);
+    const initial = {
+      cohort: defaultCohortInfo,
+      weeks: defaultCurriculumWeeks
+    };
+    localStorage.setItem('jt_cms_mastermind', JSON.stringify(initial));
+    return initial;
+  } catch {
+    return {
+      cohort: defaultCohortInfo,
+      weeks: defaultCurriculumWeeks
+    };
+  }
+}
+
+export function saveMastermindCohort(cohortData) {
+  const current = getMastermindDetails();
+  const updated = {
+    ...current,
+    cohort: { ...current.cohort, ...cohortData }
+  };
+  localStorage.setItem('jt_cms_mastermind', JSON.stringify(updated));
+  window.dispatchEvent(new Event('jt_cms_updated'));
+  return updated;
+}
+
+export function saveCurriculumWeek(weekData) {
+  const current = getMastermindDetails();
+  let updatedWeeks;
+  if (!weekData.id) {
+    const newWeek = {
+      ...weekData,
+      id: 'week-' + Date.now(),
+      num: weekData.num || `Week ${(current.weeks.length + 1).toString().padStart(2, '0')}`
+    };
+    updatedWeeks = [...current.weeks, newWeek];
+  } else {
+    updatedWeeks = current.weeks.map(w => w.id === weekData.id ? { ...w, ...weekData } : w);
+  }
+  const updated = { ...current, weeks: updatedWeeks };
+  localStorage.setItem('jt_cms_mastermind', JSON.stringify(updated));
+  window.dispatchEvent(new Event('jt_cms_updated'));
+  return updated;
+}
+
+export function deleteCurriculumWeek(id) {
+  const current = getMastermindDetails();
+  const updatedWeeks = current.weeks.filter(w => w.id !== id);
+  const updated = { ...current, weeks: updatedWeeks };
+  localStorage.setItem('jt_cms_mastermind', JSON.stringify(updated));
+  window.dispatchEvent(new Event('jt_cms_updated'));
+  return updated;
+}
+
+// ==========================================
+// 6. HOMEPAGE HERO & TIMES SQUARE STATS STORE
+// ==========================================
+
+export const defaultHeroAndStats = {
+  heroTitle: "Transform Your Perspective with",
+  heroTitleHighlight: "Clarity, Focus & Action",
+  heroLead: "Overcome limiting beliefs, eliminate friction, and build an unshakeable direction for your career, wealth, and life with Jagat Turkiya.",
+  ctaPrimaryText: "Explore Mastermind",
+  ctaPrimaryLink: "/mastermind",
+  ctaSecondaryText: "Book Consultation",
+  ctaSecondaryLink: "/contact",
+  timesSquareTitle: "Featured on Times Square, New York City",
+  timesSquareSubtitle: "Spotlighted on the global digital marquee in Times Square, NYC for excellence in transformational leadership.",
+  timesSquareStoryTitle: "From Walking 4 km Daily to the Heart of Manhattan",
+  timesSquareStoryPara1: "In 2024, Jagat Singh Turkiya was spotlighted on the world-famous digital marquee in Times Square, New York City by Topmate’s Creator Club. This recognition honored him as an \"incredible transformation coach\" who has helped thousands of individuals overcome internal roadblocks and create lasting clarity in their lives and careers.",
+  timesSquareStoryPara2: "For someone who once walked four kilometers every day simply to save ₹30 in bus fare, seeing his name and mission projected in the center of NYC stands as proof: with disciplined focus, genuine humility, and consistent execution, authentic work transcends every geographical boundary.",
+  stat1Val: "Times Sq.",
+  stat1Label: "New York City",
+  stat2Val: "Topmate",
+  stat2Label: "Creator Club",
+  stat3Val: "15,000+",
+  stat3Label: "Lives Impacted"
+};
+
+export function getHeroAndTimesSquare() {
+  try {
+    const cached = localStorage.getItem('jt_cms_home_stats');
+    if (cached) return { ...defaultHeroAndStats, ...JSON.parse(cached) };
+    localStorage.setItem('jt_cms_home_stats', JSON.stringify(defaultHeroAndStats));
+    return defaultHeroAndStats;
+  } catch {
+    return defaultHeroAndStats;
+  }
+}
+
+export function saveHeroAndTimesSquare(data) {
+  const current = getHeroAndTimesSquare();
+  const updated = { ...current, ...data };
+  localStorage.setItem('jt_cms_home_stats', JSON.stringify(updated));
+  window.dispatchEvent(new Event('jt_cms_updated'));
+  return updated;
+}
+
+// ==========================================
+// 7. DIRECT CONTACT & ADVISORY INFO STORE
+// ==========================================
+
+export const defaultContactInfo = {
+  email: "hello@apkacoach.com",
+  phone: "+91 98765 43210",
+  whatsapp: "+91 98765 43210",
+  location: "New Delhi, India",
+  availability: "Available for in-person consultations in New Delhi and virtual sessions worldwide.",
+  responseHours: "Quick response within 24 business hours.",
+  topmateUrl: "https://topmate.io/jagatturkiya",
+  wealthCompassUrl: "https://yourwealthcompass.in"
+};
+
+export function getContactInfo() {
+  try {
+    const cached = localStorage.getItem('jt_cms_contact_info');
+    if (cached) return { ...defaultContactInfo, ...JSON.parse(cached) };
+    localStorage.setItem('jt_cms_contact_info', JSON.stringify(defaultContactInfo));
+    return defaultContactInfo;
+  } catch {
+    return defaultContactInfo;
+  }
+}
+
+export function saveContactInfo(data) {
+  const current = getContactInfo();
+  const updated = { ...current, ...data };
+  localStorage.setItem('jt_cms_contact_info', JSON.stringify(updated));
+  window.dispatchEvent(new Event('jt_cms_updated'));
+  return updated;
+}
