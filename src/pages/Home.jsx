@@ -7,13 +7,13 @@ import { getTestimonials } from '../lib/cmsStore';
 export default function Home() {
   const [testimonials, setTestimonials] = useState(() => {
     const data = getTestimonials();
-    return data.reviews.slice(0, 6);
+    return data.reviews;
   });
 
   useEffect(() => {
     const handleUpdate = () => {
       const data = getTestimonials();
-      setTestimonials(data.reviews.slice(0, 6));
+      setTestimonials(data.reviews);
     };
     window.addEventListener('jt_cms_updated', handleUpdate);
     window.addEventListener('storage', handleUpdate);

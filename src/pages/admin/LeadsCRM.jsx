@@ -11,15 +11,17 @@ import {
   ExternalLink,
   Filter,
   CheckCircle2,
-  Calendar
+  Calendar,
+  Tag
 } from 'lucide-react';
-import { getLeadsList, recordLead, removeLead } from '../../lib/cmsStore';
+import { getLeadsList, recordLead, removeLead, updateLeadStatus } from '../../lib/cmsStore';
 
 export default function LeadsCRM() {
   const [leads, setLeads] = useState([]);
   const [loading, setLoading] = useState(true);
   const [searchQuery, setSearchQuery] = useState('');
   const [sourceFilter, setSourceFilter] = useState('ALL');
+  const [statusFilter, setStatusFilter] = useState('ALL');
   const [expandedId, setExpandedId] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
@@ -28,7 +30,8 @@ export default function LeadsCRM() {
     email: '',
     phone: '',
     source: 'Manual Inquiry',
-    message: ''
+    message: '',
+    status: 'New'
   });
 
   useEffect(() => {
@@ -49,6 +52,11 @@ export default function LeadsCRM() {
     }
   };
 
+  const handleStatusChange = async (id, newStatus) => {
+    setLeads(prev => prev.map(l => l.id === id ? { ...l, status: newStatus } : l));
+    await updateLeadStatus(id, newStatus);
+  };
+
   const handleCreateLead = async (e) => {
     e.preventDefault();
     if (!newLead.name.trim() || !newLead.phone.trim()) {
@@ -62,7 +70,8 @@ export default function LeadsCRM() {
       phone: newLead.phone.trim().slice(0, 15),
       message: (newLead.message || '').trim().slice(0, 500),
       source: newLead.source || 'Manual CRM Entry',
-      program: 'Mastermind Inquiry'
+      program: 'Mastermind Inquiry',
+      status: 'New'
     });
 
     setIsModalOpen(false);
@@ -71,7 +80,8 @@ export default function LeadsCRM() {
       email: '',
       phone: '',
       source: 'Manual Inquiry',
-      message: ''
+      message: '',
+      status: 'New'
     });
     await loadLeads();
   };
@@ -91,11 +101,22 @@ export default function LeadsCRM() {
       sourceFilter === 'CONTACT' ? (l.source && (l.source.toLowerCase().includes('contact') || l.source.toLowerCase().includes('inquiry'))) :
       true;
 
-    return matchesSearch && matchesSource;
+    const leadStatus = (l.status || 'New').toLowerCase();
+    const matchesStatus = 
+      statusFilter === 'ALL' ? true :
+      leadStatus === statusFilter.toLowerCase();
+
+    return matchesSearch && matchesSource && matchesStatus;
   });
 
   const optinCount = leads.filter(l => l.source && l.source.toLowerCase().includes('optin')).length;
   const contactCount = leads.filter(l => l.source && (l.source.toLowerCase().includes('contact') || l.source.toLowerCase().includes('inquiry'))).length;
+
+  const newCount = leads.filter(l => !l.status || l.status.toLowerCase() === 'new').length;
+  const contactedCount = leads.filter(l => l.status && l.status.toLowerCase() === 'contacted').length;
+  const followUpCount = leads.filter(l => l.status && l.status.toLowerCase() === 'follow-up').length;
+  const convertedCount = leads.filter(l => l.status && l.status.toLowerCase() === 'converted').length;
+  const closedCount = leads.filter(l => l.status && l.status.toLowerCase() === 'closed').length;
 
   return (
     <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
@@ -169,7 +190,7 @@ export default function LeadsCRM() {
         justifyContent: 'space-between',
         flexWrap: 'wrap',
         gap: '1.5rem',
-        marginBottom: '1.75rem',
+        marginBottom: '1.25rem',
         paddingBottom: '1rem',
         borderBottom: '1px solid rgba(255, 255, 255, 0.08)'
       }}>
@@ -255,6 +276,61 @@ export default function LeadsCRM() {
         </div>
       </div>
 
+      {/* Status Tags Filter */}
+      <div style={{
+        display: 'flex',
+        alignItems: 'center',
+        gap: '0.6rem',
+        flexWrap: 'wrap',
+        marginBottom: '1.5rem'
+      }}>
+        <span style={{ fontSize: '0.78rem', color: '#888888', fontWeight: 600, display: 'inline-flex', alignItems: 'center', gap: '4px' }}>
+          <Tag size={13} /> Tag Filter:
+        </span>
+        {[
+          { id: 'ALL', label: `All (${leads.length})` },
+          { id: 'New', label: `New (${newCount})`, color: '#10b981' },
+          { id: 'Contacted', label: `Contacted (${contactedCount})`, color: '#f59e0b' },
+          { id: 'Follow-up', label: `Follow-up (${followUpCount})`, color: '#38bdf8' },
+          { id: 'Converted', label: `Converted (${convertedCount})`, color: '#c084fc' },
+          { id: 'Closed', label: `Closed (${closedCount})`, color: '#a1a1aa' }
+        ].map((tab) => {
+          const isSelected = statusFilter.toLowerCase() === tab.id.toLowerCase();
+          return (
+            <button
+              key={tab.id}
+              type="button"
+              onClick={() => setStatusFilter(tab.id)}
+              style={{
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: '6px',
+                padding: '0.35rem 0.75rem',
+                borderRadius: '6px',
+                border: isSelected ? '1px solid rgba(255, 255, 255, 0.4)' : '1px solid rgba(255, 255, 255, 0.08)',
+                backgroundColor: isSelected ? 'rgba(255, 255, 255, 0.08)' : 'transparent',
+                color: isSelected ? '#ffffff' : '#888888',
+                fontSize: '0.78rem',
+                fontWeight: isSelected ? 700 : 500,
+                cursor: 'pointer',
+                transition: 'all 0.15s ease'
+              }}
+            >
+              {tab.color && (
+                <span style={{
+                  width: '7px',
+                  height: '7px',
+                  borderRadius: '50%',
+                  backgroundColor: tab.color,
+                  display: 'inline-block'
+                }} />
+              )}
+              <span>{tab.label}</span>
+            </button>
+          );
+        })}
+      </div>
+
       {/* Leads Table */}
       <div style={{
         backgroundColor: '#0a0a0a',
@@ -276,6 +352,7 @@ export default function LeadsCRM() {
               }}>
                 <th style={{ padding: '0.95rem 1.25rem' }}>Client Name</th>
                 <th style={{ padding: '0.95rem 1.25rem' }}>Contact Info</th>
+                <th style={{ padding: '0.95rem 1.25rem' }}>Status / Tag</th>
                 <th style={{ padding: '0.95rem 1.25rem' }}>Source</th>
                 <th style={{ padding: '0.95rem 1.25rem' }}>Message / Inquiry</th>
                 <th style={{ padding: '0.95rem 1.25rem' }}>Received</th>
@@ -285,7 +362,7 @@ export default function LeadsCRM() {
             <tbody>
               {filteredLeads.length === 0 ? (
                 <tr>
-                  <td colSpan={6} style={{ padding: '3.5rem 1rem', textAlign: 'center', color: '#666666' }}>
+                  <td colSpan={7} style={{ padding: '3.5rem 1rem', textAlign: 'center', color: '#666666' }}>
                     {loading ? 'Fetching inquiries from database...' : 'No leads found matching your criteria.'}
                   </td>
                 </tr>
@@ -359,6 +436,47 @@ export default function LeadsCRM() {
                             </a>
                           )}
                         </div>
+                      </td>
+
+                      {/* Status / Tag Interactive Dropdown */}
+                      <td style={{ padding: '1rem 1.25rem' }}>
+                        <select
+                          value={lead.status || 'New'}
+                          onChange={(e) => handleStatusChange(lead.id, e.target.value)}
+                          style={{
+                            backgroundColor:
+                              (lead.status === 'New' || !lead.status) ? 'rgba(16, 185, 129, 0.12)' :
+                              lead.status === 'Contacted' ? 'rgba(245, 158, 11, 0.12)' :
+                              lead.status === 'Follow-up' ? 'rgba(56, 189, 248, 0.12)' :
+                              lead.status === 'Converted' ? 'rgba(168, 85, 247, 0.12)' :
+                              'rgba(113, 113, 122, 0.12)',
+                            color:
+                              (lead.status === 'New' || !lead.status) ? '#10b981' :
+                              lead.status === 'Contacted' ? '#f59e0b' :
+                              lead.status === 'Follow-up' ? '#38bdf8' :
+                              lead.status === 'Converted' ? '#c084fc' :
+                              '#a1a1aa',
+                            border: `1px solid ${
+                              (lead.status === 'New' || !lead.status) ? 'rgba(16, 185, 129, 0.3)' :
+                              lead.status === 'Contacted' ? 'rgba(245, 158, 11, 0.3)' :
+                              lead.status === 'Follow-up' ? 'rgba(56, 189, 248, 0.3)' :
+                              lead.status === 'Converted' ? 'rgba(168, 85, 247, 0.3)' :
+                              'rgba(113, 113, 122, 0.3)'
+                            }`,
+                            borderRadius: '6px',
+                            padding: '0.35rem 0.65rem',
+                            fontSize: '0.78rem',
+                            fontWeight: 600,
+                            outline: 'none',
+                            cursor: 'pointer'
+                          }}
+                        >
+                          <option value="New" style={{ backgroundColor: '#141414', color: '#10b981' }}>● New</option>
+                          <option value="Contacted" style={{ backgroundColor: '#141414', color: '#f59e0b' }}>● Contacted</option>
+                          <option value="Follow-up" style={{ backgroundColor: '#141414', color: '#38bdf8' }}>● Follow-up</option>
+                          <option value="Converted" style={{ backgroundColor: '#141414', color: '#c084fc' }}>● Converted</option>
+                          <option value="Closed" style={{ backgroundColor: '#141414', color: '#a1a1aa' }}>● Closed</option>
+                        </select>
                       </td>
 
                       {/* Source */}
@@ -522,7 +640,7 @@ export default function LeadsCRM() {
                   maxLength={60}
                   value={newLead.name}
                   onChange={e => setNewLead({ ...newLead, name: e.target.value })}
-                  placeholder="Enter client name"
+                  placeholder="e.g. Vikramaditya Sharma"
                   style={{
                     width: '100%',
                     padding: '0.75rem 1rem',
@@ -573,7 +691,7 @@ export default function LeadsCRM() {
                     maxLength={80}
                     value={newLead.email}
                     onChange={e => setNewLead({ ...newLead, email: e.target.value })}
-                    placeholder="client@gmail.com"
+                    placeholder="e.g. vikram@enterprise.com"
                     style={{
                       width: '100%',
                       padding: '0.75rem 1rem',
@@ -626,7 +744,7 @@ export default function LeadsCRM() {
                   maxLength={500}
                   value={newLead.message}
                   onChange={e => setNewLead({ ...newLead, message: e.target.value })}
-                  placeholder="Inquiry notes, challenges, or goals..."
+                  placeholder="e.g. Inquired about 1-on-1 wealth architecture & executive mindset coaching..."
                   style={{
                     width: '100%',
                     padding: '0.75rem 1rem',

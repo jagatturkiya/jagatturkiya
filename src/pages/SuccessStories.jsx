@@ -92,15 +92,6 @@ export default function SuccessStories() {
                 {/* Content */}
                 <div className="success-video-card-body">
                   <p style={{
-                    fontSize: '0.82rem',
-                    color: '#d4d4d8',
-                    fontWeight: 500,
-                    margin: '0 0 0.75rem 0'
-                  }}>
-                    {v.outcome}
-                  </p>
-
-                  <p style={{
                     color: 'var(--text-silver)',
                     fontSize: '0.94rem',
                     lineHeight: 1.6,
@@ -242,15 +233,6 @@ export default function SuccessStories() {
                 </div>
 
                 <div>
-                  <p style={{
-                    fontSize: '0.78rem',
-                    color: 'var(--text-muted)',
-                    fontWeight: 500,
-                    margin: '0 0 0.85rem 0'
-                  }}>
-                    {r.tag}
-                  </p>
-
                   <div style={{
                     display: 'flex',
                     alignItems: 'center',

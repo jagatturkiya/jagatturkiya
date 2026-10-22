@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import { BookOpen, Plus, Edit3, Trash2, ExternalLink, Image as ImageIcon, Check } from 'lucide-react';
+import { Plus, Edit3, Trash2, Check } from 'lucide-react';
 import { getStories, saveStory, deleteStory } from '../../lib/cmsStore';
+import ImageDropzone from '../../components/admin/ImageDropzone';
+
+const DEFAULT_FALLBACK_IMAGE = 'https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&w=800&q=80';
 
 export default function SuccessStoriesAdmin() {
   const [stories, setStories] = useState([]);
@@ -9,7 +12,6 @@ export default function SuccessStoriesAdmin() {
   const [editingStory, setEditingStory] = useState({
     id: '',
     title: '',
-    category: 'Leadership & Mindset',
     clientName: '',
     readTime: '5 min read',
     date: '16 Jun, 2026',
@@ -31,11 +33,10 @@ export default function SuccessStoriesAdmin() {
     setEditingStory({
       id: '',
       title: '',
-      category: 'Leadership & Mindset',
       clientName: '',
       readTime: '5 min read',
       date: new Date().toLocaleDateString('en-GB', { day: '2-digit', month: 'short', year: 'numeric' }),
-      image: 'https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&w=600&q=80',
+      image: '',
       excerpt: '',
       paragraphs: ['']
     });
@@ -82,8 +83,8 @@ export default function SuccessStoriesAdmin() {
       ...editingStory,
       title: editingStory.title.trim().slice(0, 100),
       clientName: (editingStory.clientName || '').trim().slice(0, 60),
-      category: (editingStory.category || 'Mindset').trim().slice(0, 50),
       readTime: (editingStory.readTime || '5 min read').trim().slice(0, 20),
+      image: editingStory.image || DEFAULT_FALLBACK_IMAGE,
       excerpt: (editingStory.excerpt || '').trim().slice(0, 250),
       paragraphs: editingStory.paragraphs.filter(p => p.trim().length > 0)
     };
@@ -100,6 +101,14 @@ export default function SuccessStoriesAdmin() {
       const updated = deleteStory(id);
       setStories(updated);
     }
+  };
+
+  const getStoryImage = (st) => {
+    const src = st.image || st.localImage;
+    if (!src || typeof src !== 'string' || src.trim().length < 5) {
+      return DEFAULT_FALLBACK_IMAGE;
+    }
+    return src;
   };
 
   return (
@@ -143,7 +152,7 @@ export default function SuccessStoriesAdmin() {
             Success Stories CMS
           </h1>
           <p style={{ margin: 0, color: '#888888', fontSize: '0.88rem' }}>
-            Directly edit stories displayed on the homepage magazine grid and story reader modals.
+            Edit and publish transformation stories displayed across the website.
           </p>
         </div>
 
@@ -180,7 +189,7 @@ export default function SuccessStoriesAdmin() {
               overflow: 'hidden',
               display: 'flex',
               flexDirection: 'column',
-              transition: 'transform 0.2s, border-color 0.2s'
+              transition: 'border-color 0.2s'
             }}
           >
             {/* Story Thumbnail preview */}
@@ -191,7 +200,7 @@ export default function SuccessStoriesAdmin() {
               overflow: 'hidden'
             }}>
               <img
-                src={st.localImage || st.image || 'https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&w=600&q=80'}
+                src={getStoryImage(st)}
                 alt={st.title}
                 style={{
                   width: '100%',
@@ -199,7 +208,8 @@ export default function SuccessStoriesAdmin() {
                   objectFit: 'cover'
                 }}
                 onError={(e) => {
-                  e.target.src = 'https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&w=600&q=80';
+                  e.target.onerror = null;
+                  e.target.src = DEFAULT_FALLBACK_IMAGE;
                 }}
               />
             </div>
@@ -314,7 +324,7 @@ export default function SuccessStoriesAdmin() {
             border: '1px solid rgba(255, 255, 255, 0.15)',
             borderRadius: '14px',
             width: '100%',
-            maxWidth: '750px',
+            maxWidth: '720px',
             maxHeight: '90vh',
             display: 'flex',
             flexDirection: 'column',
@@ -333,7 +343,7 @@ export default function SuccessStoriesAdmin() {
                   {editingStory.id ? 'Edit Story' : 'Write New Story'}
                 </h3>
                 <p style={{ margin: '3px 0 0', fontSize: '0.78rem', color: '#888888' }}>
-                  Changes will update live across the website instantly.
+                  Updates live on the public website immediately.
                 </p>
               </div>
 
@@ -354,7 +364,7 @@ export default function SuccessStoriesAdmin() {
 
             {/* Modal Scrollable Body */}
             <form onSubmit={handleSave} style={{ flex: 1, overflowY: 'auto', padding: '1.5rem' }}>
-              {/* Title Input with character limit */}
+              {/* Title Input */}
               <div style={{ marginBottom: '1.25rem' }}>
                 <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '6px' }}>
                   <label style={{ fontSize: '0.82rem', fontWeight: 600, color: '#e2e8f0' }}>Story Title *</label>
@@ -380,7 +390,7 @@ export default function SuccessStoriesAdmin() {
                 />
               </div>
 
-              {/* Grid: Client Name & Category */}
+              {/* Grid: Client Name & Read Time (Category removed as requested) */}
               <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem', marginBottom: '1.25rem' }}>
                 <div>
                   <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '6px' }}>
@@ -392,7 +402,7 @@ export default function SuccessStoriesAdmin() {
                     maxLength={60}
                     value={editingStory.clientName || ''}
                     onChange={e => setEditingStory({ ...editingStory, clientName: e.target.value })}
-                    placeholder="e.g. Rahul Singh / Jagat Turkiya"
+                    placeholder="e.g. Rahul Singh (Corporate Executive)"
                     style={{
                       width: '100%',
                       padding: '0.75rem 1rem',
@@ -408,35 +418,9 @@ export default function SuccessStoriesAdmin() {
 
                 <div>
                   <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '6px' }}>
-                    <label style={{ fontSize: '0.82rem', fontWeight: 600, color: '#e2e8f0' }}>Category &amp; Focus</label>
-                    <span style={{ fontSize: '0.72rem', color: '#888888' }}>{(editingStory.category || '').length}/50</span>
+                    <label style={{ fontSize: '0.82rem', fontWeight: 600, color: '#e2e8f0' }}>Estimated Read Time</label>
+                    <span style={{ fontSize: '0.72rem', color: '#888888' }}>{(editingStory.readTime || '').length}/20</span>
                   </div>
-                  <input
-                    type="text"
-                    maxLength={50}
-                    value={editingStory.category || ''}
-                    onChange={e => setEditingStory({ ...editingStory, category: e.target.value })}
-                    placeholder="e.g. Leadership, Financial Discipline"
-                    style={{
-                      width: '100%',
-                      padding: '0.75rem 1rem',
-                      backgroundColor: '#141414',
-                      border: '1px solid rgba(255, 255, 255, 0.12)',
-                      borderRadius: '8px',
-                      color: '#ffffff',
-                      fontSize: '0.9rem',
-                      outline: 'none'
-                    }}
-                  />
-                </div>
-              </div>
-
-              {/* Grid: Read Time & Cover Image */}
-              <div style={{ display: 'grid', gridTemplateColumns: '140px 1fr', gap: '1rem', marginBottom: '1.25rem' }}>
-                <div>
-                  <label style={{ display: 'block', fontSize: '0.82rem', fontWeight: 600, color: '#e2e8f0', marginBottom: '6px' }}>
-                    Read Time
-                  </label>
                   <input
                     type="text"
                     maxLength={20}
@@ -455,29 +439,14 @@ export default function SuccessStoriesAdmin() {
                     }}
                   />
                 </div>
-
-                <div>
-                  <label style={{ display: 'block', fontSize: '0.82rem', fontWeight: 600, color: '#e2e8f0', marginBottom: '6px' }}>
-                    Cover Image URL
-                  </label>
-                  <input
-                    type="text"
-                    value={editingStory.image || ''}
-                    onChange={e => setEditingStory({ ...editingStory, image: e.target.value })}
-                    placeholder="https://... or ./assets/images/..."
-                    style={{
-                      width: '100%',
-                      padding: '0.75rem 1rem',
-                      backgroundColor: '#141414',
-                      border: '1px solid rgba(255, 255, 255, 0.12)',
-                      borderRadius: '8px',
-                      color: '#ffffff',
-                      fontSize: '0.9rem',
-                      outline: 'none'
-                    }}
-                  />
-                </div>
               </div>
+
+              {/* Drag and Drop Image Dropzone (No link required) */}
+              <ImageDropzone
+                value={editingStory.image}
+                onChange={img => setEditingStory({ ...editingStory, image: img })}
+                label="Story Cover Photo (Drag & Drop image here)"
+              />
 
               {/* Short Excerpt */}
               <div style={{ marginBottom: '1.25rem' }}>
@@ -491,7 +460,7 @@ export default function SuccessStoriesAdmin() {
                   maxLength={250}
                   value={editingStory.excerpt || ''}
                   onChange={e => setEditingStory({ ...editingStory, excerpt: e.target.value })}
-                  placeholder="A short punchy teaser shown on the card preview..."
+                  placeholder="e.g. How relentless discipline and psychological clarity turned early struggle into enduring executive leadership..."
                   style={{
                     width: '100%',
                     padding: '0.75rem 1rem',
@@ -559,7 +528,7 @@ export default function SuccessStoriesAdmin() {
                         maxLength={1000}
                         value={para}
                         onChange={e => handleParagraphChange(pIdx, e.target.value)}
-                        placeholder={`Paragraph ${pIdx + 1} content...`}
+                        placeholder={`Paragraph ${pIdx + 1}: Share the journey, hurdles, and transformation...`}
                         style={{
                           width: '100%',
                           padding: '0.75rem 1rem',

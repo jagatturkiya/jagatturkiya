@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Video, MessageSquare, Plus, Edit3, Trash2, Check, ExternalLink, Star } from 'lucide-react';
 import { getTestimonials, saveTestimonial, deleteTestimonial } from '../../lib/cmsStore';
+import ImageDropzone from '../../components/admin/ImageDropzone';
 
 export default function TestimonialsAdmin() {
   const [activeTab, setActiveTab] = useState('video'); // 'video' | 'reviews'
@@ -17,8 +18,7 @@ export default function TestimonialsAdmin() {
     role: '',
     thumbnail: '',
     videoUrl: '',
-    quote: '',
-    outcome: ''
+    quote: ''
   });
 
   const [reviewForm, setReviewForm] = useState({
@@ -26,12 +26,9 @@ export default function TestimonialsAdmin() {
     type: 'text',
     name: '',
     role: '',
-    category: 'professionals',
     image: '',
     monogram: 'JT',
-    tag: '',
-    source: 'Direct Mentorship',
-    timeAgo: 'Recently',
+    source: '1-on-1 Mentorship',
     quote: ''
   });
 
@@ -54,8 +51,7 @@ export default function TestimonialsAdmin() {
         role: '',
         thumbnail: '',
         videoUrl: '',
-        quote: '',
-        outcome: ''
+        quote: ''
       });
       setModalType('video');
     } else {
@@ -64,12 +60,9 @@ export default function TestimonialsAdmin() {
         type: 'text',
         name: '',
         role: '',
-        category: 'professionals',
         image: '',
         monogram: '',
-        tag: 'Executive Growth & Mindset',
-        source: 'Direct Mentorship',
-        timeAgo: 'Recently',
+        source: '1-on-1 Mentorship',
         quote: ''
       });
       setModalType('review');
@@ -102,8 +95,7 @@ export default function TestimonialsAdmin() {
         ...videoForm,
         name: videoForm.name.trim().slice(0, 60),
         role: (videoForm.role || '').trim().slice(0, 80),
-        outcome: (videoForm.outcome || '').trim().slice(0, 60),
-        quote: videoForm.quote.trim().slice(0, 400),
+        quote: videoForm.quote.trim().slice(0, 500),
         videoUrl: (videoForm.videoUrl || '').trim().slice(0, 300),
         thumbnail: (videoForm.thumbnail || '').trim()
       });
@@ -117,10 +109,9 @@ export default function TestimonialsAdmin() {
         ...reviewForm,
         name: reviewForm.name.trim().slice(0, 60),
         role: (reviewForm.role || '').trim().slice(0, 80),
-        tag: (reviewForm.tag || '').trim().slice(0, 50),
-        source: (reviewForm.source || 'Direct Mentorship').trim().slice(0, 50),
+        source: (reviewForm.source || '1-on-1 Mentorship').trim().slice(0, 50),
         monogram: mono,
-        quote: reviewForm.quote.trim().slice(0, 400)
+        quote: reviewForm.quote.trim().slice(0, 500)
       });
     }
 
@@ -459,18 +450,6 @@ export default function TestimonialsAdmin() {
                 "{rev.quote}"
               </p>
 
-              {/* Tag */}
-              {rev.tag && (
-                <div style={{
-                  fontSize: '0.75rem',
-                  color: '#a1a1aa',
-                  fontWeight: 500,
-                  marginBottom: '1rem'
-                }}>
-                  {rev.tag}
-                </div>
-              )}
-
               {/* Author lockup & actions */}
               <div style={{
                 display: 'flex',
@@ -656,7 +635,7 @@ export default function TestimonialsAdmin() {
                         maxLength={80}
                         value={videoForm.role}
                         onChange={e => setVideoForm({ ...videoForm, role: e.target.value })}
-                        placeholder="e.g. Corporate Professional"
+                        placeholder="e.g. Senior Corporate Leader"
                         style={{
                           width: '100%',
                           padding: '0.75rem 1rem',
@@ -671,18 +650,18 @@ export default function TestimonialsAdmin() {
                     </div>
                   </div>
 
-                  {/* Outcome Tag */}
+                  {/* Video URL */}
                   <div style={{ marginBottom: '1.25rem' }}>
                     <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '6px' }}>
-                      <label style={{ fontSize: '0.82rem', fontWeight: 600, color: '#e2e8f0' }}>Outcome / Focus Badge</label>
-                      <span style={{ fontSize: '0.72rem', color: '#888888' }}>{videoForm.outcome.length}/60</span>
+                      <label style={{ fontSize: '0.82rem', fontWeight: 600, color: '#e2e8f0' }}>Video Link / File URL</label>
+                      <span style={{ fontSize: '0.72rem', color: '#888888' }}>{videoForm.videoUrl.length}/300</span>
                     </div>
                     <input
                       type="text"
-                      maxLength={60}
-                      value={videoForm.outcome}
-                      onChange={e => setVideoForm({ ...videoForm, outcome: e.target.value })}
-                      placeholder="e.g. Breakthrough Clarity & Mindset Shift"
+                      maxLength={300}
+                      value={videoForm.videoUrl}
+                      onChange={e => setVideoForm({ ...videoForm, videoUrl: e.target.value })}
+                      placeholder="e.g. https://www.youtube.com/watch?v=... or direct video link"
                       style={{
                         width: '100%',
                         padding: '0.75rem 1rem',
@@ -696,67 +675,28 @@ export default function TestimonialsAdmin() {
                     />
                   </div>
 
-                  {/* Video URL & Thumbnail URL */}
-                  <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem', marginBottom: '1.25rem' }}>
-                    <div>
-                      <label style={{ display: 'block', fontSize: '0.82rem', fontWeight: 600, color: '#e2e8f0', marginBottom: '6px' }}>
-                        Video File URL (.mp4 / host)
-                      </label>
-                      <input
-                        type="text"
-                        maxLength={300}
-                        value={videoForm.videoUrl}
-                        onChange={e => setVideoForm({ ...videoForm, videoUrl: e.target.value })}
-                        placeholder="https://jagatturkiya.com/videos/..."
-                        style={{
-                          width: '100%',
-                          padding: '0.75rem 1rem',
-                          backgroundColor: '#141414',
-                          border: '1px solid rgba(255, 255, 255, 0.12)',
-                          borderRadius: '8px',
-                          color: '#ffffff',
-                          fontSize: '0.9rem',
-                          outline: 'none'
-                        }}
-                      />
-                    </div>
-
-                    <div>
-                      <label style={{ display: 'block', fontSize: '0.82rem', fontWeight: 600, color: '#e2e8f0', marginBottom: '6px' }}>
-                        Thumbnail Image URL
-                      </label>
-                      <input
-                        type="text"
-                        value={videoForm.thumbnail}
-                        onChange={e => setVideoForm({ ...videoForm, thumbnail: e.target.value })}
-                        placeholder="./assets/images/testimonials/..."
-                        style={{
-                          width: '100%',
-                          padding: '0.75rem 1rem',
-                          backgroundColor: '#141414',
-                          border: '1px solid rgba(255, 255, 255, 0.12)',
-                          borderRadius: '8px',
-                          color: '#ffffff',
-                          fontSize: '0.9rem',
-                          outline: 'none'
-                        }}
-                      />
-                    </div>
+                  {/* Drag and Drop Thumbnail */}
+                  <div style={{ marginBottom: '1.25rem' }}>
+                    <ImageDropzone
+                      value={videoForm.thumbnail}
+                      onChange={(dataUrl) => setVideoForm({ ...videoForm, thumbnail: dataUrl })}
+                      label="Drop Video Thumbnail Image (Auto-compressed)"
+                    />
                   </div>
 
                   {/* Quote */}
                   <div style={{ marginBottom: '1.5rem' }}>
                     <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '6px' }}>
                       <label style={{ fontSize: '0.82rem', fontWeight: 600, color: '#e2e8f0' }}>Client Quote / Testimonial *</label>
-                      <span style={{ fontSize: '0.72rem', color: '#888888' }}>{videoForm.quote.length}/400</span>
+                      <span style={{ fontSize: '0.72rem', color: '#888888' }}>{videoForm.quote.length}/500</span>
                     </div>
                     <textarea
                       required
                       rows={4}
-                      maxLength={400}
+                      maxLength={500}
                       value={videoForm.quote}
                       onChange={e => setVideoForm({ ...videoForm, quote: e.target.value })}
-                      placeholder="What the client shared about their transformation..."
+                      placeholder="e.g. Coach Jagat's mentorship brought complete stillness to my decision-making and transformed how I steward our family wealth..."
                       style={{
                         width: '100%',
                         padding: '0.75rem 1rem',
@@ -811,7 +751,7 @@ export default function TestimonialsAdmin() {
                         maxLength={80}
                         value={reviewForm.role}
                         onChange={e => setReviewForm({ ...reviewForm, role: e.target.value })}
-                        placeholder="e.g. Software Executive"
+                        placeholder="e.g. Senior Software Architect"
                         style={{
                           width: '100%',
                           padding: '0.75rem 1rem',
@@ -826,35 +766,11 @@ export default function TestimonialsAdmin() {
                     </div>
                   </div>
 
-                  {/* Tag & Source */}
-                  <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem', marginBottom: '1.25rem' }}>
+                  {/* Source & Monogram */}
+                  <div style={{ display: 'grid', gridTemplateColumns: '1fr 120px', gap: '1rem', marginBottom: '1.25rem' }}>
                     <div>
                       <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '6px' }}>
-                        <label style={{ fontSize: '0.82rem', fontWeight: 600, color: '#e2e8f0' }}>Tag / Highlight</label>
-                        <span style={{ fontSize: '0.72rem', color: '#888888' }}>{reviewForm.tag.length}/50</span>
-                      </div>
-                      <input
-                        type="text"
-                        maxLength={50}
-                        value={reviewForm.tag}
-                        onChange={e => setReviewForm({ ...reviewForm, tag: e.target.value })}
-                        placeholder="e.g. Executive Growth & Mindset"
-                        style={{
-                          width: '100%',
-                          padding: '0.75rem 1rem',
-                          backgroundColor: '#141414',
-                          border: '1px solid rgba(255, 255, 255, 0.12)',
-                          borderRadius: '8px',
-                          color: '#ffffff',
-                          fontSize: '0.9rem',
-                          outline: 'none'
-                        }}
-                      />
-                    </div>
-
-                    <div>
-                      <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '6px' }}>
-                        <label style={{ fontSize: '0.82rem', fontWeight: 600, color: '#e2e8f0' }}>Source / Verification</label>
+                        <label style={{ fontSize: '0.82rem', fontWeight: 600, color: '#e2e8f0' }}>Verification Source</label>
                         <span style={{ fontSize: '0.72rem', color: '#888888' }}>{reviewForm.source.length}/50</span>
                       </div>
                       <input
@@ -862,7 +778,7 @@ export default function TestimonialsAdmin() {
                         maxLength={50}
                         value={reviewForm.source}
                         onChange={e => setReviewForm({ ...reviewForm, source: e.target.value })}
-                        placeholder="e.g. Direct Mentorship / Topmate"
+                        placeholder="e.g. 1-on-1 Mentorship / Topmate"
                         style={{
                           width: '100%',
                           padding: '0.75rem 1rem',
@@ -875,13 +791,10 @@ export default function TestimonialsAdmin() {
                         }}
                       />
                     </div>
-                  </div>
 
-                  {/* Avatar / Monogram */}
-                  <div style={{ display: 'grid', gridTemplateColumns: '120px 1fr', gap: '1rem', marginBottom: '1.25rem' }}>
                     <div>
                       <label style={{ display: 'block', fontSize: '0.82rem', fontWeight: 600, color: '#e2e8f0', marginBottom: '6px' }}>
-                        Monogram (Initials)
+                        Initials
                       </label>
                       <input
                         type="text"
@@ -903,43 +816,30 @@ export default function TestimonialsAdmin() {
                         }}
                       />
                     </div>
+                  </div>
 
-                    <div>
-                      <label style={{ display: 'block', fontSize: '0.82rem', fontWeight: 600, color: '#e2e8f0', marginBottom: '6px' }}>
-                        Profile Photo URL (Optional)
-                      </label>
-                      <input
-                        type="text"
-                        value={reviewForm.image || ''}
-                        onChange={e => setReviewForm({ ...reviewForm, image: e.target.value })}
-                        placeholder="./assets/images/testimonials/..."
-                        style={{
-                          width: '100%',
-                          padding: '0.75rem 1rem',
-                          backgroundColor: '#141414',
-                          border: '1px solid rgba(255, 255, 255, 0.12)',
-                          borderRadius: '8px',
-                          color: '#ffffff',
-                          fontSize: '0.9rem',
-                          outline: 'none'
-                        }}
-                      />
-                    </div>
+                  {/* Drag and Drop Profile Photo */}
+                  <div style={{ marginBottom: '1.25rem' }}>
+                    <ImageDropzone
+                      value={reviewForm.image}
+                      onChange={(dataUrl) => setReviewForm({ ...reviewForm, image: dataUrl })}
+                      label="Drop Reviewer Profile Photo (Auto-compressed)"
+                    />
                   </div>
 
                   {/* Review Text */}
                   <div style={{ marginBottom: '1.5rem' }}>
                     <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '6px' }}>
                       <label style={{ fontSize: '0.82rem', fontWeight: 600, color: '#e2e8f0' }}>Review Experience *</label>
-                      <span style={{ fontSize: '0.72rem', color: '#888888' }}>{reviewForm.quote.length}/400</span>
+                      <span style={{ fontSize: '0.72rem', color: '#888888' }}>{reviewForm.quote.length}/500</span>
                     </div>
                     <textarea
                       required
                       rows={4}
-                      maxLength={400}
+                      maxLength={500}
                       value={reviewForm.quote}
                       onChange={e => setReviewForm({ ...reviewForm, quote: e.target.value })}
-                      placeholder="The mentee's authentic review and results..."
+                      placeholder="e.g. Jagat’s insights shifted my entire financial strategy. I went from constant overwhelm to having clear frameworks..."
                       style={{
                         width: '100%',
                         padding: '0.75rem 1rem',

@@ -290,6 +290,7 @@ export async function getLeadsList() {
           source: d.source || 'Website Form',
           program: d.program || 'Mastermind',
           preferred_time: d.preferred_time || '',
+          status: d.status || 'New',
           message: d.notes || d.message || '',
           created_at: d.created_at ? new Date(d.created_at).toLocaleString('en-IN', { day: '2-digit', month: 'short', year: 'numeric', hour: '2-digit', minute: '2-digit' }) : 'Recently'
         }));
@@ -301,13 +302,14 @@ export async function getLeadsList() {
 
   try {
     const cached = localStorage.getItem('jt_leads_store');
-    return cached ? JSON.parse(cached) : [];
+    const parsed = cached ? JSON.parse(cached) : [];
+    return parsed.map(l => ({ ...l, status: l.status || 'New' }));
   } catch {
     return [];
   }
 }
 
-export async function recordLead({ name, email, phone, message, source, program, preferred_time }) {
+export async function recordLead({ name, email, phone, message, source, program, preferred_time, status = 'New' }) {
   const payload = {
     first_name: name.trim(),
     email: (email || '').trim(),
@@ -316,7 +318,7 @@ export async function recordLead({ name, email, phone, message, source, program,
     source: source || 'Website Form',
     program: program || 'Mastermind',
     preferred_time: preferred_time || 'General Inquiry',
-    status: 'New'
+    status: status || 'New'
   };
 
   // 1. Send to Supabase
@@ -336,6 +338,7 @@ export async function recordLead({ name, email, phone, message, source, program,
       id: 'lead-' + Date.now(),
       name: payload.first_name,
       message: payload.notes,
+      status: payload.status,
       created_at: new Date().toLocaleString('en-IN', { day: '2-digit', month: 'short', year: 'numeric', hour: '2-digit', minute: '2-digit' })
     };
     const updated = [newEntry, ...current];
@@ -343,6 +346,25 @@ export async function recordLead({ name, email, phone, message, source, program,
     return newEntry;
   } catch {
     return null;
+  }
+}
+
+export async function updateLeadStatus(id, newStatus) {
+  if (isSupabaseConfigured && supabase) {
+    try {
+      await supabase.from('leads').update({ status: newStatus }).eq('id', id);
+    } catch (e) {
+      console.warn('Supabase lead status update error:', e);
+    }
+  }
+
+  try {
+    const current = await getLeadsList();
+    const updated = current.map(l => l.id === id ? { ...l, status: newStatus } : l);
+    localStorage.setItem('jt_leads_store', JSON.stringify(updated));
+    return updated;
+  } catch {
+    return [];
   }
 }
 

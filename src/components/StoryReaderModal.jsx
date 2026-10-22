@@ -108,6 +108,10 @@ export default function StoryReaderModal({
             alt={story.title}
             className="story-full-hero-bg"
             loading="eager"
+            onError={(e) => {
+              e.currentTarget.onerror = null;
+              e.currentTarget.src = 'https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&w=1200&q=80';
+            }}
           />
           <div className="story-full-hero-gradient"></div>
 
