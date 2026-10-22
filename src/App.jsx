@@ -20,16 +20,9 @@ import ThankYou from './pages/ThankYou';
 
 // Admin Portal Pages
 import AdminLayout from './pages/admin/AdminLayout';
-import AdminDashboard from './pages/admin/AdminDashboard';
 import LeadsCRM from './pages/admin/LeadsCRM';
-import BookingsOrders from './pages/admin/BookingsOrders';
-import ProgramsCatalog from './pages/admin/ProgramsCatalog';
-import CommentsInbox from './pages/admin/CommentsInbox';
 import SuccessStoriesAdmin from './pages/admin/SuccessStoriesAdmin';
 import TestimonialsAdmin from './pages/admin/TestimonialsAdmin';
-import BlogsAdmin from './pages/admin/BlogsAdmin';
-import SubscribersAdmin from './pages/admin/SubscribersAdmin';
-import WebSettings from './pages/admin/WebSettings';
 import AdminLogin from './pages/admin/AdminLogin';
 
 export default function App() {
@@ -45,17 +38,11 @@ export default function App() {
         <Routes>
           <Route path="/admin/login" element={<AdminLogin />} />
           <Route path="/admin" element={<AdminLayout />}>
-            <Route index element={<AdminDashboard />} />
-            <Route path="leads" element={<LeadsCRM />} />
-            <Route path="bookings" element={<BookingsOrders />} />
-            <Route path="programs" element={<ProgramsCatalog />} />
-            <Route path="comments" element={<CommentsInbox />} />
+            <Route index element={<SuccessStoriesAdmin />} />
             <Route path="stories" element={<SuccessStoriesAdmin />} />
             <Route path="testimonials" element={<TestimonialsAdmin />} />
-            <Route path="blogs" element={<BlogsAdmin />} />
-            <Route path="subscribers" element={<SubscribersAdmin />} />
-            <Route path="settings" element={<WebSettings />} />
-            <Route path="*" element={<Navigate to="/admin" replace />} />
+            <Route path="leads" element={<LeadsCRM />} />
+            <Route path="*" element={<Navigate to="/admin/stories" replace />} />
           </Route>
         </Routes>
       </>

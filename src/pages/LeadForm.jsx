@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import FunnelHeader from '../components/FunnelHeader';
 import FunnelFooter from '../components/FunnelFooter';
+import { recordLead } from '../lib/cmsStore';
 
 export default function LeadForm() {
   const navigate = useNavigate();
@@ -21,7 +22,7 @@ export default function LeadForm() {
     if (errorMsg) setErrorMsg('');
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     if (!formData.firstName.trim()) {
@@ -44,11 +45,20 @@ export default function LeadForm() {
 
     try {
       localStorage.setItem('jt_vsl_lead', JSON.stringify({
-        name: formData.firstName.trim(),
-        email: formData.email.trim(),
-        phone: formData.phone.trim(),
+        name: formData.firstName.trim().slice(0, 50),
+        email: formData.email.trim().slice(0, 80),
+        phone: formData.phone.trim().slice(0, 15),
         timestamp: new Date().toISOString()
       }));
+
+      await recordLead({
+        name: formData.firstName.trim().slice(0, 50),
+        email: formData.email.trim().slice(0, 80),
+        phone: formData.phone.trim().slice(0, 15),
+        source: 'VSL Optin Funnel',
+        program: 'Mastermind (10-Week + 6M)',
+        preferred_time: 'Optin Registration'
+      });
     } catch {
       // storage error fallback
     }
@@ -140,6 +150,7 @@ export default function LeadForm() {
             type="text"
             name="firstName"
             required
+            maxLength={50}
             placeholder="First Name"
             value={formData.firstName}
             onChange={handleChange}
@@ -171,6 +182,7 @@ export default function LeadForm() {
             type="email"
             name="email"
             required
+            maxLength={80}
             placeholder="Email Address"
             value={formData.email}
             onChange={handleChange}
@@ -202,6 +214,7 @@ export default function LeadForm() {
             type="tel"
             name="phone"
             required
+            maxLength={15}
             placeholder="Phone"
             value={formData.phone}
             onChange={handleChange}

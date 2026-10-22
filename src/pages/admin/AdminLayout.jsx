@@ -1,21 +1,14 @@
 import React, { useState } from 'react';
-import { NavLink, Outlet, useNavigate, useLocation } from 'react-router-dom';
+import { NavLink, Outlet, useNavigate, useLocation, Link } from 'react-router-dom';
 import {
-  LayoutDashboard,
-  ShoppingBag,
-  Users,
-  Layers,
   BookOpen,
   Star,
-  FileText,
-  MessageSquare,
-  Mail,
-  Settings,
+  Users,
   LogOut,
   Menu,
   X,
   ExternalLink,
-  ChevronDown
+  Sparkles
 } from 'lucide-react';
 
 export default function AdminLayout() {
@@ -28,63 +21,40 @@ export default function AdminLayout() {
     navigate('/admin/login');
   };
 
-  const navGroups = [
+  const navItems = [
     {
-      group: 'OPERATIONS',
-      items: [
-        { label: 'Overview', path: '/admin', icon: LayoutDashboard, exact: true }
-      ]
+      label: 'Success Stories CMS',
+      path: '/admin/stories',
+      icon: BookOpen,
+      desc: 'Edit website transformation articles'
     },
     {
-      group: 'CLIENTS & SALES',
-      items: [
-        { label: 'Leads CRM', path: '/admin/leads', icon: Users, badge: 'Live' },
-        { label: 'Bookings & Orders', path: '/admin/bookings', icon: ShoppingBag }
-      ]
+      label: 'Client Testimonials CMS',
+      path: '/admin/testimonials',
+      icon: Star,
+      desc: 'Edit video & written reviews'
     },
     {
-      group: 'CATALOG',
-      items: [
-        { label: 'Programs & Sessions', path: '/admin/programs', icon: Layers }
-      ]
-    },
-    {
-      group: 'CONTENT & COMMUNITY',
-      items: [
-        { label: 'Success Stories', path: '/admin/stories', icon: BookOpen },
-        { label: 'Audience Discussions', path: '/admin/comments', icon: MessageSquare },
-        { label: 'Client Testimonials', path: '/admin/testimonials', icon: Star },
-        { label: 'Articles & Insights', path: '/admin/blogs', icon: FileText }
-      ]
-    },
-    {
-      group: 'SYSTEM',
-      items: [
-        { label: 'Database & Settings', path: '/admin/settings', icon: Settings }
-      ]
+      label: 'Leads & Inquiries CRM',
+      path: '/admin/leads',
+      icon: Users,
+      desc: 'Optin funnel & contact leads'
     }
   ];
 
   const getPageTitle = () => {
     const path = location.pathname;
-    if (path === '/admin') return 'Executive Overview';
-    if (path.includes('leads')) return 'Leads CRM';
-    if (path.includes('bookings')) return 'Orders & Transactions';
-    if (path.includes('programs')) return 'Programs & Pricing Catalog';
-    if (path.includes('comments')) return 'Audience Discussions & Replies';
-    if (path.includes('stories')) return 'Stories & Case Studies';
-    if (path.includes('testimonials')) return 'Client Testimonials';
-    if (path.includes('blogs')) return 'Articles & Essays';
-    if (path.includes('settings')) return 'Database & Web Settings';
-    return 'Executive Overview';
+    if (path.includes('testimonials')) return 'Client Testimonials CMS';
+    if (path.includes('leads')) return 'Leads & Inquiries CRM';
+    return 'Success Stories CMS';
   };
 
   return (
-    <div className="admin-portal-dark-root" style={{
+    <div className="admin-portal-root" style={{
       display: 'flex',
       minHeight: '100vh',
-      backgroundColor: '#05070e',
-      color: '#e2e8f0',
+      backgroundColor: '#050505',
+      color: '#ffffff',
       fontFamily: "'Inter', -apple-system, BlinkMacSystemFont, sans-serif"
     }}>
       {/* Mobile Sidebar Overlay */}
@@ -94,17 +64,17 @@ export default function AdminLayout() {
           style={{
             position: 'fixed',
             inset: 0,
-            backgroundColor: 'rgba(0, 0, 0, 0.8)',
+            backgroundColor: 'rgba(0, 0, 0, 0.85)',
             zIndex: 998,
-            backdropFilter: 'blur(4px)'
+            backdropFilter: 'blur(6px)'
           }}
         />
       )}
 
-      {/* Dark Luxury Executive Sidebar */}
+      {/* Dark Luxury Website-Matching Sidebar */}
       <aside style={{
-        width: '260px',
-        backgroundColor: '#070a12',
+        width: '270px',
+        backgroundColor: '#000000',
         color: '#94a3b8',
         display: 'flex',
         flexDirection: 'column',
@@ -115,31 +85,30 @@ export default function AdminLayout() {
         zIndex: 999,
         transform: sidebarOpen ? 'translateX(0)' : 'none',
         transition: 'transform 0.25s ease',
-        borderRight: '1px solid rgba(255, 255, 255, 0.08)',
-        boxShadow: '4px 0 30px rgba(0, 0, 0, 0.5)'
+        borderRight: '1px solid rgba(255, 255, 255, 0.08)'
       }}
       className={sidebarOpen ? 'sidebar-mobile-open' : 'sidebar-desktop'}
       >
         {/* Brand Header */}
         <div style={{
-          padding: '1.4rem 1.5rem',
+          padding: '1.5rem 1.4rem',
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'space-between',
-          borderBottom: '1px solid rgba(255, 255, 255, 0.06)'
+          borderBottom: '1px solid rgba(255, 255, 255, 0.08)'
         }}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '0.85rem' }}>
             <span style={{
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
-              width: '32px',
-              height: '32px',
+              width: '36px',
+              height: '36px',
               borderRadius: '8px',
-              background: '#0d121f',
-              border: '1px solid rgba(255, 255, 255, 0.15)',
+              background: '#0a0a0a',
+              border: '1px solid rgba(255, 255, 255, 0.2)',
               color: '#ffffff',
-              fontSize: '0.82rem',
+              fontSize: '0.88rem',
               fontWeight: 800,
               letterSpacing: '0.04em'
             }}>
@@ -148,21 +117,22 @@ export default function AdminLayout() {
             <div>
               <div style={{
                 color: '#ffffff',
-                fontSize: '0.92rem',
+                fontSize: '0.95rem',
                 fontWeight: 800,
-                letterSpacing: '0.06em',
+                letterSpacing: '0.04em',
                 fontFamily: "'Instrument Sans', sans-serif"
               }}>
                 JAGAT TURKIYA
               </div>
               <div style={{
-                fontSize: '0.62rem',
-                color: '#94a3b8',
+                fontSize: '0.66rem',
+                color: '#888888',
                 letterSpacing: '0.08em',
                 textTransform: 'uppercase',
-                fontWeight: 600
+                fontWeight: 600,
+                marginTop: '1px'
               }}>
-                Executive Portal
+                Admin &amp; CMS
               </div>
             </div>
           </div>
@@ -182,130 +152,144 @@ export default function AdminLayout() {
           </button>
         </div>
 
-        {/* Scrollable Nav List */}
+        {/* Live Website Status Pill */}
+        <div style={{ padding: '1rem 1.25rem 0.5rem' }}>
+          <div style={{
+            padding: '0.65rem 0.85rem',
+            borderRadius: '8px',
+            backgroundColor: '#0a0a0a',
+            border: '1px solid rgba(255, 255, 255, 0.06)',
+            display: 'flex',
+            alignItems: 'center',
+            gap: '0.6rem'
+          }}>
+            <span style={{
+              width: '7px',
+              height: '7px',
+              borderRadius: '50%',
+              backgroundColor: '#10b981',
+              boxShadow: '0 0 8px #10b981'
+            }} />
+            <span style={{ fontSize: '0.74rem', color: '#e2e8f0', fontWeight: 600 }}>
+              Live Frontend Sync Active
+            </span>
+          </div>
+        </div>
+
+        {/* Focused 3-Item Navigation */}
         <div style={{
           flex: 1,
           overflowY: 'auto',
-          padding: '1.25rem 0.85rem'
+          padding: '1rem 0.85rem'
         }}>
-          {navGroups.map((group, gIdx) => (
-            <div key={gIdx} style={{ marginBottom: '1.4rem' }}>
-              <div style={{
-                fontSize: '0.65rem',
-                fontWeight: 700,
-                color: '#64748b',
-                letterSpacing: '0.1em',
-                padding: '0.3rem 0.85rem',
-                marginBottom: '0.35rem'
-              }}>
-                {group.group}
-              </div>
+          <div style={{
+            fontSize: '0.65rem',
+            fontWeight: 700,
+            color: '#666666',
+            letterSpacing: '0.12em',
+            padding: '0.3rem 0.85rem',
+            marginBottom: '0.5rem',
+            textTransform: 'uppercase'
+          }}>
+            Website Management
+          </div>
 
-              {group.items.map((item, iIdx) => {
-                const Icon = item.icon;
-                const isActive = item.exact 
-                  ? location.pathname === item.path
-                  : location.pathname.startsWith(item.path);
+          {navItems.map((item, idx) => {
+            const Icon = item.icon;
+            const isActive = location.pathname.startsWith(item.path) || 
+              (item.path === '/admin/stories' && location.pathname === '/admin');
 
-                return (
-                  <NavLink
-                    key={iIdx}
-                    to={item.path}
-                    end={item.exact}
-                    onClick={() => setSidebarOpen(false)}
-                    style={{
-                      display: 'flex',
-                      alignItems: 'center',
-                      gap: '0.75rem',
-                      padding: '0.62rem 0.85rem',
-                      borderRadius: '8px',
-                      color: isActive ? '#ffffff' : '#94a3b8',
-                      backgroundColor: isActive ? 'rgba(255, 255, 255, 0.08)' : 'transparent',
-                      borderLeft: isActive ? '3px solid #ffffff' : '3px solid transparent',
-                      textDecoration: 'none',
-                      fontSize: '0.84rem',
-                      fontWeight: isActive ? 600 : 500,
-                      transition: 'all 0.15s ease',
-                      marginBottom: '0.15rem'
-                    }}
-                  >
-                    <Icon size={16} style={{ color: isActive ? '#ffffff' : '#64748b' }} />
-                    <span style={{ flex: 1 }}>{item.label}</span>
-                    {item.badge && (
-                      <span style={{
-                        backgroundColor: '#10b981',
-                        color: '#ffffff',
-                        fontSize: '0.6rem',
-                        fontWeight: 700,
-                        padding: '0.1rem 0.45rem',
-                        borderRadius: '4px'
-                      }}>
-                        {item.badge}
-                      </span>
-                    )}
-                  </NavLink>
-                );
-              })}
-            </div>
-          ))}
+            return (
+              <NavLink
+                key={idx}
+                to={item.path}
+                onClick={() => setSidebarOpen(false)}
+                style={{
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: '0.85rem',
+                  padding: '0.85rem 1rem',
+                  borderRadius: '10px',
+                  color: isActive ? '#ffffff' : '#94a3b8',
+                  backgroundColor: isActive ? 'rgba(255, 255, 255, 0.08)' : 'transparent',
+                  border: isActive ? '1px solid rgba(255, 255, 255, 0.15)' : '1px solid transparent',
+                  textDecoration: 'none',
+                  fontSize: '0.88rem',
+                  fontWeight: isActive ? 700 : 500,
+                  transition: 'all 0.15s ease',
+                  marginBottom: '0.5rem'
+                }}
+              >
+                <div style={{
+                  width: '32px',
+                  height: '32px',
+                  borderRadius: '6px',
+                  backgroundColor: isActive ? '#ffffff' : '#0a0a0a',
+                  color: isActive ? '#000000' : '#888888',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  border: '1px solid rgba(255, 255, 255, 0.1)'
+                }}>
+                  <Icon size={16} />
+                </div>
+                <div style={{ flex: 1, minWidth: 0 }}>
+                  <div style={{ lineHeight: 1.2 }}>{item.label}</div>
+                  <div style={{
+                    fontSize: '0.68rem',
+                    color: isActive ? '#d4d4d8' : '#666666',
+                    marginTop: '2px',
+                    whiteSpace: 'nowrap',
+                    overflow: 'hidden',
+                    textOverflow: 'ellipsis'
+                  }}>
+                    {item.desc}
+                  </div>
+                </div>
+              </NavLink>
+            );
+          })}
 
-          <div style={{ padding: '0.5rem 0.85rem' }}>
-            <a
-              href="#/"
+          {/* Quick link to public website */}
+          <div style={{ marginTop: '1.5rem', paddingTop: '1rem', borderTop: '1px solid rgba(255, 255, 255, 0.06)' }}>
+            <Link
+              to="/"
               target="_blank"
-              rel="noopener noreferrer"
               style={{
                 display: 'flex',
                 alignItems: 'center',
-                gap: '0.6rem',
-                padding: '0.6rem 0.85rem',
+                gap: '0.65rem',
+                padding: '0.7rem 0.85rem',
                 borderRadius: '8px',
-                color: '#64748b',
-                backgroundColor: 'rgba(255, 255, 255, 0.03)',
+                color: '#94a3b8',
+                backgroundColor: 'rgba(255, 255, 255, 0.02)',
                 border: '1px solid rgba(255, 255, 255, 0.05)',
-                fontSize: '0.78rem',
+                fontSize: '0.8rem',
                 textDecoration: 'none',
                 transition: 'color 0.15s'
               }}
             >
-              <ExternalLink size={14} />
-              <span>View Public Website</span>
-            </a>
+              <ExternalLink size={15} />
+              <span>Preview Live Website</span>
+            </Link>
           </div>
         </div>
 
-        {/* Profile Lockup at bottom */}
+        {/* User footer & logout */}
         <div style={{
-          padding: '1rem',
-          borderTop: '1px solid rgba(255, 255, 255, 0.06)',
-          backgroundColor: '#05070e',
+          padding: '1rem 1.25rem',
+          borderTop: '1px solid rgba(255, 255, 255, 0.08)',
+          backgroundColor: '#050505',
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'space-between'
         }}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
-            <div style={{
-              width: '34px',
-              height: '34px',
-              borderRadius: '8px',
-              backgroundColor: '#1e293b',
-              border: '1px solid rgba(255, 255, 255, 0.12)',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              color: '#ffffff',
-              fontWeight: 700,
-              fontSize: '0.9rem'
-            }}>
-              J
+          <div>
+            <div style={{ color: '#ffffff', fontSize: '0.85rem', fontWeight: 700 }}>
+              Jagat Turkiya
             </div>
-            <div>
-              <div style={{ color: '#ffffff', fontSize: '0.82rem', fontWeight: 600 }}>
-                Jagat Turkiya
-              </div>
-              <div style={{ color: '#94a3b8', fontSize: '0.64rem', fontWeight: 600, letterSpacing: '0.04em' }}>
-                Principal Coach
-              </div>
+            <div style={{ color: '#888888', fontSize: '0.68rem', marginTop: '1px' }}>
+              Administrator
             </div>
           </div>
 
@@ -314,36 +298,41 @@ export default function AdminLayout() {
             title="Log Out"
             style={{
               background: 'none',
-              border: 'none',
-              color: '#64748b',
-              cursor: 'pointer',
-              padding: '0.4rem',
+              border: '1px solid rgba(255, 255, 255, 0.12)',
+              color: '#ef4444',
+              borderRadius: '8px',
+              padding: '0.45rem 0.65rem',
               display: 'flex',
               alignItems: 'center',
-              justifyContent: 'center'
+              gap: '0.35rem',
+              cursor: 'pointer',
+              fontSize: '0.74rem',
+              fontWeight: 600
             }}
           >
-            <LogOut size={16} />
+            <LogOut size={14} />
+            <span>Logout</span>
           </button>
         </div>
       </aside>
 
-      {/* Main Workspace */}
+      {/* Main Workspace with matching #050505 theme */}
       <div style={{
         flex: 1,
-        marginLeft: '260px',
+        marginLeft: '270px',
         display: 'flex',
         flexDirection: 'column',
         minWidth: 0,
-        backgroundColor: '#05070e'
+        backgroundColor: '#050505'
       }}
       className="admin-main-wrap"
       >
         {/* Top Navbar */}
         <header style={{
-          height: '60px',
-          backgroundColor: '#070a12',
-          borderBottom: '1px solid rgba(255, 255, 255, 0.07)',
+          height: '64px',
+          backgroundColor: 'rgba(5, 5, 5, 0.85)',
+          backdropFilter: 'blur(10px)',
+          borderBottom: '1px solid rgba(255, 255, 255, 0.08)',
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'space-between',
@@ -352,7 +341,7 @@ export default function AdminLayout() {
           top: 0,
           zIndex: 100
         }}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '0.85rem' }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
             <button
               onClick={() => setSidebarOpen(true)}
               style={{
@@ -365,37 +354,41 @@ export default function AdminLayout() {
               }}
               className="admin-mobile-toggle"
             >
-              <Menu size={20} />
+              <Menu size={22} />
             </button>
 
-            <div style={{ display: 'flex', alignItems: 'center', gap: '0.45rem', fontSize: '0.82rem', color: '#64748b' }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', fontSize: '0.85rem', color: '#666666' }}>
               <span>Admin</span>
               <span>/</span>
-              <span style={{ color: '#ffffff', fontWeight: 600 }}>{getPageTitle()}</span>
+              <span style={{ color: '#ffffff', fontWeight: 700 }}>{getPageTitle()}</span>
             </div>
           </div>
 
-          <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
-            <div style={{
-              display: 'flex',
-              alignItems: 'center',
-              gap: '0.4rem',
-              backgroundColor: 'rgba(255, 255, 255, 0.04)',
-              border: '1px solid rgba(255, 255, 255, 0.08)',
-              padding: '0.35rem 0.75rem',
-              borderRadius: '6px',
-              fontSize: '0.8rem',
-              color: '#e2e8f0'
-            }}>
-              <span style={{ width: '6px', height: '6px', borderRadius: '50%', backgroundColor: '#10b981' }} />
-              <span>Supabase Connected</span>
-            </div>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '0.85rem' }}>
+            <Link
+              to="/"
+              target="_blank"
+              className="btn btn-outline"
+              style={{
+                fontSize: '0.78rem',
+                padding: '0.45rem 0.95rem',
+                borderRadius: '9999px',
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: '0.4rem',
+                color: '#ffffff',
+                borderColor: 'rgba(255, 255, 255, 0.2)'
+              }}
+            >
+              <ExternalLink size={13} />
+              <span>View Website</span>
+            </Link>
           </div>
         </header>
 
-        {/* Inner Content */}
+        {/* Content Area */}
         <main style={{
-          padding: '2rem',
+          padding: '2.25rem 2rem 4rem',
           flex: 1,
           overflowY: 'auto'
         }}>

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import FaqAccordion from '../components/FaqAccordion';
-import { submitLead } from '../lib/supabase';
+import { recordLead } from '../lib/cmsStore';
 
 export default function Contact() {
   const [searchParams] = useSearchParams();
@@ -24,13 +24,14 @@ export default function Contact() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    if (!formData.name.trim() || !formData.email.trim() || !formData.phone.trim()) return;
     setSubmitting(true);
     try {
-      await submitLead({
-        name: formData.name,
-        email: formData.email,
-        phone: formData.phone,
-        message: formData.message,
+      await recordLead({
+        name: formData.name.trim().slice(0, 60),
+        email: formData.email.trim().slice(0, 80),
+        phone: formData.phone.trim().slice(0, 15),
+        message: formData.message.trim().slice(0, 500),
         source: 'Contact Page Inquiry',
         program: initialSubject || 'General Inquiry'
       });
@@ -131,11 +132,15 @@ export default function Contact() {
               ) : (
                 <form id="inquiryForm" onSubmit={handleSubmit}>
                   <div className="form-group">
-                    <label className="form-label" htmlFor="clientName">Full Name *</label>
+                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '6px' }}>
+                      <label className="form-label" htmlFor="clientName" style={{ margin: 0 }}>Full Name *</label>
+                      <span style={{ fontSize: '0.72rem', color: 'var(--text-dim)' }}>{formData.name.length}/60</span>
+                    </div>
                     <input
                       type="text"
                       id="clientName"
                       name="name"
+                      maxLength={60}
                       className="form-control"
                       placeholder="Enter your full name"
                       value={formData.name}
@@ -145,11 +150,15 @@ export default function Contact() {
                   </div>
 
                   <div className="form-group">
-                    <label className="form-label" htmlFor="clientEmail">Email Address *</label>
+                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '6px' }}>
+                      <label className="form-label" htmlFor="clientEmail" style={{ margin: 0 }}>Email Address *</label>
+                      <span style={{ fontSize: '0.72rem', color: 'var(--text-dim)' }}>{formData.email.length}/80</span>
+                    </div>
                     <input
                       type="email"
                       id="clientEmail"
                       name="email"
+                      maxLength={80}
                       className="form-control"
                       placeholder="Enter your email address"
                       value={formData.email}
@@ -159,13 +168,17 @@ export default function Contact() {
                   </div>
 
                   <div className="form-group">
-                    <label className="form-label" htmlFor="clientPhone">Phone Number *</label>
+                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '6px' }}>
+                      <label className="form-label" htmlFor="clientPhone" style={{ margin: 0 }}>Phone Number *</label>
+                      <span style={{ fontSize: '0.72rem', color: 'var(--text-dim)' }}>{formData.phone.length}/15</span>
+                    </div>
                     <input
                       type="tel"
                       id="clientPhone"
                       name="phone"
+                      maxLength={15}
                       className="form-control"
-                      placeholder="Enter your phone or WhatsApp number"
+                      placeholder="e.g. +91 98765 43210"
                       value={formData.phone}
                       onChange={handleChange}
                       required
@@ -173,10 +186,16 @@ export default function Contact() {
                   </div>
 
                   <div className="form-group">
-                    <label className="form-label" htmlFor="clientMessage">Your Message *</label>
+                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '6px' }}>
+                      <label className="form-label" htmlFor="clientMessage" style={{ margin: 0 }}>Your Message *</label>
+                      <span style={{ fontSize: '0.72rem', color: formData.message.length > 450 ? '#f59e0b' : 'var(--text-dim)' }}>
+                        {formData.message.length}/500
+                      </span>
+                    </div>
                     <textarea
                       id="clientMessage"
                       name="message"
+                      maxLength={500}
                       className="form-control"
                       rows={5}
                       placeholder="How can we help you? Share your message or inquiry here..."

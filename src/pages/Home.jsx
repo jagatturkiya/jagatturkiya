@@ -1,53 +1,27 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import LiquidHero from '../components/LiquidHero';
 import StoriesSection from '../components/StoriesSection';
+import { getTestimonials } from '../lib/cmsStore';
 
 export default function Home() {
-  const testimonials = [
-    {
-      name: "Tabraj Singh",
-      role: "Verified Client • Topmate",
-      monogram: "TS",
-      image: null,
-      quote: "Working with Jagat was a great experience. He helped transform my mindset and gave me the exact clarity to achieve my goals."
-    },
-    {
-      name: "Renu Chaudhary",
-      role: "Verified Client • Topmate",
-      monogram: "RC",
-      image: null,
-      quote: "He is always providing handholding support to face challenges. The tools and frameworks he uses are practical and easy to apply."
-    },
-    {
-      name: "Rahul Singh",
-      role: "Software Executive",
-      monogram: "RS",
-      image: "./assets/images/testimonials/rahul-singh.jpg",
-      quote: "Working with Jagat Turkiya has been life-changing. His guidance and insight helped me overcome roadblocks in my personal and career growth."
-    },
-    {
-      name: "Aditi Shah",
-      role: "Business Owner",
-      monogram: "AS",
-      image: "./assets/images/testimonials/aditi-shah.jpg",
-      quote: "Jagat has deep knowledge and is always ready to support people who want to grow. His guidance is straightforward and easy to connect with."
-    },
-    {
-      name: "Neetu Negi",
-      role: "Corporate Professional",
-      monogram: "NN",
-      image: "./assets/images/testimonials/neetu-tyagi.png",
-      quote: "Jagat is a calm, patient, empathetic, and empowering coach. He made our sessions pleasant, productive, and brought absolute clarity."
-    },
-    {
-      name: "Rritu Singhi",
-      role: "Transformation Coach",
-      monogram: "RS",
-      image: null,
-      quote: "Jagat provides relentless clarity, structured frameworks, and unmatched guidance for personal and executive growth."
-    }
-  ];
+  const [testimonials, setTestimonials] = useState(() => {
+    const data = getTestimonials();
+    return data.reviews.slice(0, 6);
+  });
+
+  useEffect(() => {
+    const handleUpdate = () => {
+      const data = getTestimonials();
+      setTestimonials(data.reviews.slice(0, 6));
+    };
+    window.addEventListener('jt_cms_updated', handleUpdate);
+    window.addEventListener('storage', handleUpdate);
+    return () => {
+      window.removeEventListener('jt_cms_updated', handleUpdate);
+      window.removeEventListener('storage', handleUpdate);
+    };
+  }, []);
 
   return (
     <div className="home-page">

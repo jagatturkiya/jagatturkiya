@@ -1,151 +1,25 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import { getTestimonials } from '../lib/cmsStore';
 
 export default function SuccessStories() {
   const [activeVideoModal, setActiveVideoModal] = useState(null);
+  const [testimonialsData, setTestimonialsData] = useState(() => getTestimonials());
 
-  const videoTestimonials = [
-    {
-      id: 'yogeta',
-      name: 'Yogeta Shrivastav',
-      role: 'Corporate Professional',
-      thumbnail: './assets/images/testimonials/yogeta-shrivastav.png',
-      videoUrl: 'https://jagatturkiya.com/videos/testimonial/yogeta-shrivastav.mp4',
-      quote: 'Coach Jagat’s guidance transformed my perspective completely. He helped me break through inner doubts and discover decisive clarity in both my professional trajectory and personal life.',
-      outcome: 'Breakthrough Clarity & Mindset Shift'
-    },
-    {
-      id: 'hema',
-      name: 'Hema Pandey',
-      role: 'Family Wealth & Life Planning',
-      thumbnail: './assets/images/testimonials/hema-pandey.png',
-      videoUrl: 'https://jagatturkiya.com/videos/testimonial/hema-pandey.mp4',
-      quote: 'His patient, step-by-step handholding brought deep structure and lasting security to our financial thinking. Every session delivers practical tools you can implement immediately.',
-      outcome: 'Personal Discipline & Financial Peace'
-    },
-    {
-      id: 'deepali',
-      name: 'Deepali',
-      role: 'Homemaker & Aspiring Leader',
-      thumbnail: './assets/images/testimonials/deepali.png',
-      videoUrl: 'https://jagatturkiya.com/videos/testimonial/deepali.mp4',
-      quote: 'Working with Jagat gave me the courage and frameworks to step up. He treats every individual with immense empathy and helps you build real confidence from within.',
-      outcome: 'Inner Confidence & Empowerment'
-    }
-  ];
+  useEffect(() => {
+    const handleUpdate = () => {
+      setTestimonialsData(getTestimonials());
+    };
+    window.addEventListener('jt_cms_updated', handleUpdate);
+    window.addEventListener('storage', handleUpdate);
+    return () => {
+      window.removeEventListener('jt_cms_updated', handleUpdate);
+      window.removeEventListener('storage', handleUpdate);
+    };
+  }, []);
 
-  const allReviews = [
-    {
-      name: 'Rahul Singh',
-      role: 'Software Executive',
-      category: 'professionals',
-      image: './assets/images/testimonials/rahul-singh.jpg',
-      monogram: 'RS',
-      tag: 'Executive Growth & Mindset',
-      source: 'Direct Mentorship',
-      timeAgo: '1 month ago',
-      quote: 'Working with Jagat Turkiya has been life-changing. His guidance, support, and psychological insight helped me overcome roadblocks in my personal and executive career growth. Jagat’s approach is both empowering and deeply compassionate—making every single session genuinely valuable.'
-    },
-    {
-      name: 'Aditi Shah',
-      role: 'Business Owner',
-      category: 'professionals',
-      image: './assets/images/testimonials/aditi-shah.jpg',
-      monogram: 'AS',
-      tag: 'Strategic Clarity & Scale',
-      source: 'Mastermind Member',
-      timeAgo: '3 months ago',
-      quote: 'Jagat has in-depth knowledge and is always ready to support people who truly want to grow. His guidance is straightforward, grounded in reality, and easy to connect with. If you are serious about transforming your trajectory, learning under his wing is irreplaceable.'
-    },
-    {
-      name: 'Neetu Negi',
-      role: 'Corporate Professional',
-      category: 'professionals',
-      image: './assets/images/testimonials/neetu-tyagi.png',
-      monogram: 'NN',
-      tag: 'Emotional Resilience & Focus',
-      source: 'Direct Mentorship',
-      timeAgo: '2 months ago',
-      quote: 'Jagat is a very talented, calm, patient, empathetic, and empowering coach. He is easy to talk to, which makes the coaching environment pleasant, safe, and exceptionally productive. He helped me uncover blind spots I had carried for years.'
-    },
-    {
-      name: 'Rritu Singhi',
-      role: 'Transformation Coach',
-      category: 'advisors',
-      image: null,
-      monogram: 'RS',
-      tag: 'Mind Hacking & Systems',
-      source: 'Peer & Mastermind Collaborator',
-      timeAgo: '3 weeks ago',
-      quote: 'Jagat is an outstanding mind hacker coach who is always ready to guide and help. I am proud to have him as part of my mastermind circle and thoroughly enjoy collaborating with him. His frameworks cut right through the noise.'
-    },
-    {
-      name: 'Tabraj Singh',
-      role: 'Verified Mentee • Topmate',
-      category: 'topmate',
-      image: null,
-      monogram: 'TS',
-      tag: 'Mindset Transformation',
-      source: 'Topmate Verified Review',
-      timeAgo: 'Verified Session',
-      quote: 'Working with Jagat was a great experience. He helped transform my mindset and gave me the exact clarity and psychological blueprint needed to achieve my goals without second-guessing myself.'
-    },
-    {
-      name: 'Renu Choudhary',
-      role: 'Life Coach & Advisory Client',
-      category: 'advisors',
-      image: null,
-      monogram: 'RC',
-      tag: 'Handholding & Architecture',
-      source: 'Topmate Verified Review',
-      timeAgo: 'Verified Session',
-      quote: 'He provides continuous handholding support to face complex life and financial hurdles. The tools and frameworks Jagat shares are not textbook theories—they are practical, disciplined, and immediately applicable.'
-    },
-    {
-      name: 'Priya Sharma',
-      role: 'Insurance Advisor & Wealth Consultant',
-      category: 'advisors',
-      image: null,
-      monogram: 'PS',
-      tag: 'Personal Capital Architecture',
-      source: 'Mastermind Graduate',
-      timeAgo: 'Verified Client',
-      quote: 'For years I was advising clients on their policies and investments, but my own personal wealth was completely unstructured. Jagat helped me install a clean, disciplined capital allocation framework that finally gave me and my family total peace of mind.'
-    },
-    {
-      name: 'Sunita Verma',
-      role: 'Homemaker & Family Portfolio Steward',
-      category: 'homemakers',
-      image: null,
-      monogram: 'SV',
-      tag: 'Family Wealth & Clarity',
-      source: 'Mentorship Client',
-      timeAgo: 'Verified Client',
-      quote: 'As a homemaker, I often felt intimidated by complex financial jargon. Jagat explained wealth architecture in such a humane, logical, and dignified way. Today, I actively co-manage our family reserves with total confidence.'
-    },
-    {
-      name: 'Amitabh Joshi',
-      role: 'Senior Private Banker',
-      category: 'advisors',
-      image: null,
-      monogram: 'AJ',
-      tag: 'Tax & Capital Protection Moats',
-      source: 'Direct Mentorship',
-      timeAgo: 'Verified Client',
-      quote: 'High earnings in banking come with relentless stress and hidden capital leakage. Jagat Turkiya’s 10-week framework is the only system that bridged my earning with enduring wealth. His psychological approach to money is extraordinary.'
-    },
-    {
-      name: 'Kavita Saxena',
-      role: 'Homemaker & Family Decision Maker',
-      category: 'homemakers',
-      image: null,
-      monogram: 'KS',
-      tag: 'Generational Security',
-      source: 'Mentorship Client',
-      timeAgo: 'Verified Client',
-      quote: 'The peace of mind our family has gained through Jagat’s mentoring is priceless. No speculative risks, no confusion—just an unshakeable roadmap for our children’s education and future freedom.'
-    }
-  ];
+  const videoTestimonials = testimonialsData.videos;
+  const allReviews = testimonialsData.reviews;
 
   return (
     <div className="success-stories-page">

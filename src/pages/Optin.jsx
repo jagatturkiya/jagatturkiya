@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import FunnelHeader from '../components/FunnelHeader';
 import FunnelFooter from '../components/FunnelFooter';
-import { submitLead } from '../lib/supabase';
+import { recordLead } from '../lib/cmsStore';
 
 export default function Optin() {
   const navigate = useNavigate();
@@ -45,26 +45,25 @@ export default function Optin() {
 
     try {
       localStorage.setItem('jt_vsl_lead', JSON.stringify({
-        name: formData.firstName.trim(),
-        email: formData.email.trim(),
-        phone: formData.phone.trim(),
+        name: formData.firstName.trim().slice(0, 50),
+        email: formData.email.trim().slice(0, 80),
+        phone: formData.phone.trim().slice(0, 15),
         timestamp: new Date().toISOString()
       }));
-      // Push lead to Supabase / Admin CRM
-      await submitLead({
-        firstName: formData.firstName.trim(),
-        email: formData.email.trim(),
-        phone: formData.phone.trim(),
+
+      // Store lead for Admin CRM & Supabase
+      await recordLead({
+        name: formData.firstName.trim().slice(0, 50),
+        email: formData.email.trim().slice(0, 80),
+        phone: formData.phone.trim().slice(0, 15),
         source: 'VSL Optin Funnel',
-        program: 'Mastermind',
-        preferredTime: 'Morning (10 AM - 1 PM)',
-        notes: 'Submitted contact from /optin funnel'
+        program: 'Mastermind (10-Week + 6M)',
+        preferred_time: 'Optin Registration'
       });
     } catch {
-      // storage error fallback
+      // fallback
     }
 
-    // Direct user to VSL training page with autoplay flag
     setTimeout(() => {
       navigate('/vsl?autoplay=1');
     }, 200);
@@ -151,6 +150,7 @@ export default function Optin() {
             type="text"
             name="firstName"
             required
+            maxLength={50}
             placeholder="First Name"
             value={formData.firstName}
             onChange={handleChange}
@@ -182,6 +182,7 @@ export default function Optin() {
             type="email"
             name="email"
             required
+            maxLength={80}
             placeholder="Email Address"
             value={formData.email}
             onChange={handleChange}
@@ -213,6 +214,7 @@ export default function Optin() {
             type="tel"
             name="phone"
             required
+            maxLength={15}
             placeholder="Phone Number"
             value={formData.phone}
             onChange={handleChange}

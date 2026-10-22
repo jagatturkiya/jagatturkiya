@@ -1,31 +1,45 @@
-import React, { useState } from 'react';
-import storiesData from '../data/stories.json';
+import React, { useState, useEffect } from 'react';
+import { getStories } from '../lib/cmsStore';
 import StoryReaderModal from './StoryReaderModal';
 
 export default function StoriesSection({
   title = "Insights for a Better Life",
   subtitle = "Explore powerful insights from Jagat Turkiya on health, mindset, relationships and personal growth to help you create lasting transformation."
 }) {
+  const [stories, setStories] = useState(() => getStories());
   const [selectedStoryIndex, setSelectedStoryIndex] = useState(null);
 
-  const stories = storiesData;
+  useEffect(() => {
+    const handleUpdate = () => {
+      setStories(getStories());
+    };
+    window.addEventListener('jt_cms_updated', handleUpdate);
+    window.addEventListener('storage', handleUpdate);
+    return () => {
+      window.removeEventListener('jt_cms_updated', handleUpdate);
+      window.removeEventListener('storage', handleUpdate);
+    };
+  }, []);
 
-  // Find featured story (₹30 walk) and the side stories
-  const featuredStory = stories.find(s => s.id === '30-rupees-walk') || stories[2];
-  const featuredIndex = stories.findIndex(s => s.id === '30-rupees-walk');
+  // Find featured story (or first available)
+  const featuredStory = stories.find(s => s.id === '30-rupees-walk') || stories[0] || {};
+  const featuredIndex = stories.findIndex(s => s.id === featuredStory.id);
 
-  const leftStories = [
-    { story: stories.find(s => s.id === 'founder-journey') || stories[0], index: stories.findIndex(s => s.id === 'founder-journey') },
-    { story: stories.find(s => s.id === 'leadership-ego') || stories[1], index: stories.findIndex(s => s.id === 'leadership-ego') }
-  ];
+  const remaining = stories.filter(s => s.id !== featuredStory.id);
+  const leftStories = (remaining.slice(0, 2).length > 0 ? remaining.slice(0, 2) : stories.slice(0, 2)).map(story => ({
+    story,
+    index: stories.findIndex(s => s.id === story.id)
+  }));
 
-  const rightStories = [
-    { story: stories.find(s => s.id === 'cycle-consistency') || stories[3], index: stories.findIndex(s => s.id === 'cycle-consistency') },
-    { story: stories.find(s => s.id === 'artisan-experience') || stories[4], index: stories.findIndex(s => s.id === 'artisan-experience') }
-  ];
+  const rightStories = (remaining.slice(2, 4).length > 0 ? remaining.slice(2, 4) : stories.slice(2, 4)).map(story => ({
+    story,
+    index: stories.findIndex(s => s.id === story.id)
+  }));
 
   const handleOpen = (idx) => {
-    setSelectedStoryIndex(idx);
+    if (idx >= 0 && idx < stories.length) {
+      setSelectedStoryIndex(idx);
+    }
   };
 
   const handleClose = () => {

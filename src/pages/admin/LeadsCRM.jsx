@@ -4,98 +4,109 @@ import {
   Search, 
   Mail, 
   Phone, 
-  Clock, 
   Trash2, 
   Plus, 
   RefreshCw,
   MessageCircle,
-  ExternalLink
+  ExternalLink,
+  Filter,
+  CheckCircle2,
+  Calendar
 } from 'lucide-react';
-import { getLeads, updateLeadStatus, deleteLead, submitLead } from '../../lib/supabase';
+import { getLeadsList, recordLead, removeLead } from '../../lib/cmsStore';
 
 export default function LeadsCRM() {
   const [leads, setLeads] = useState([]);
-  const [filter, setFilter] = useState('All');
+  const [loading, setLoading] = useState(true);
   const [searchQuery, setSearchQuery] = useState('');
-  const [expandedMessageId, setExpandedMessageId] = useState(null);
-  const [isAddModalOpen, setIsAddModalOpen] = useState(false);
-  const [newLeadForm, setNewLeadForm] = useState({
+  const [sourceFilter, setSourceFilter] = useState('ALL');
+  const [expandedId, setExpandedId] = useState(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const [newLead, setNewLead] = useState({
     name: '',
     email: '',
     phone: '',
-    preferred_time: 'Morning (10 AM - 1 PM)',
+    source: 'Manual Inquiry',
     message: ''
   });
-  const [isSubmittingNew, setIsSubmittingNew] = useState(false);
 
   useEffect(() => {
     loadLeads();
   }, []);
 
   const loadLeads = async () => {
-    const data = await getLeads();
+    setLoading(true);
+    const data = await getLeadsList();
     setLeads(data);
+    setLoading(false);
   };
 
-  const handleStatusChange = async (id, newStatus) => {
-    const updated = await updateLeadStatus(id, newStatus);
-    setLeads(updated);
-  };
-
-  const handleDelete = async (id) => {
-    if (window.confirm('Delete this lead record?')) {
-      const updated = await deleteLead(id);
+  const handleDelete = async (id, name) => {
+    if (window.confirm(`Delete lead entry for "${name}"?`)) {
+      const updated = await removeLead(id);
       setLeads(updated);
     }
   };
 
   const handleCreateLead = async (e) => {
     e.preventDefault();
-    if (!newLeadForm.name || !newLeadForm.phone) {
+    if (!newLead.name.trim() || !newLead.phone.trim()) {
       alert('Please provide client name and phone number.');
       return;
     }
-    setIsSubmittingNew(true);
-    await submitLead(newLeadForm);
-    await loadLeads();
-    setIsSubmittingNew(false);
-    setIsAddModalOpen(false);
-    setNewLeadForm({
+
+    await recordLead({
+      name: newLead.name.trim().slice(0, 60),
+      email: (newLead.email || '').trim().slice(0, 80),
+      phone: newLead.phone.trim().slice(0, 15),
+      message: (newLead.message || '').trim().slice(0, 500),
+      source: newLead.source || 'Manual CRM Entry',
+      program: 'Mastermind Inquiry'
+    });
+
+    setIsModalOpen(false);
+    setNewLead({
       name: '',
       email: '',
       phone: '',
-      preferred_time: 'Morning (10 AM - 1 PM)',
+      source: 'Manual Inquiry',
       message: ''
     });
+    await loadLeads();
   };
 
-  const filteredLeads = leads.filter(lead => {
-    const matchesFilter = 
-      filter === 'All' ? true :
-      filter === 'Closed' ? lead.status.includes('Closed') :
-      lead.status === filter;
+  // Filter leads
+  const filteredLeads = leads.filter(l => {
+    const q = searchQuery.toLowerCase().trim();
+    const matchesSearch = !q || 
+      (l.name && l.name.toLowerCase().includes(q)) ||
+      (l.email && l.email.toLowerCase().includes(q)) ||
+      (l.phone && l.phone.includes(q)) ||
+      (l.message && l.message.toLowerCase().includes(q));
 
-    const query = searchQuery.toLowerCase().trim();
-    const matchesSearch = 
-      !query || 
-      (lead.name && lead.name.toLowerCase().includes(query)) ||
-      (lead.email && lead.email.toLowerCase().includes(query)) ||
-      (lead.phone && lead.phone.includes(query)) ||
-      (lead.message && lead.message.toLowerCase().includes(query));
+    const matchesSource = 
+      sourceFilter === 'ALL' ? true :
+      sourceFilter === 'OPTIN' ? (l.source && l.source.toLowerCase().includes('optin')) :
+      sourceFilter === 'CONTACT' ? (l.source && (l.source.toLowerCase().includes('contact') || l.source.toLowerCase().includes('inquiry'))) :
+      true;
 
-    return matchesFilter && matchesSearch;
+    return matchesSearch && matchesSource;
   });
 
+  const optinCount = leads.filter(l => l.source && l.source.toLowerCase().includes('optin')).length;
+  const contactCount = leads.filter(l => l.source && (l.source.toLowerCase().includes('contact') || l.source.toLowerCase().includes('inquiry'))).length;
+
   return (
-    <div className="dark-leads-crm" style={{ maxWidth: '1200px', margin: '0 auto' }}>
-      {/* Top Header */}
+    <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
+      {/* Header bar */}
       <div style={{
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'space-between',
         flexWrap: 'wrap',
         gap: '1rem',
-        marginBottom: '1.75rem'
+        marginBottom: '2rem'
       }}>
         <div>
           <h1 style={{
@@ -105,10 +116,10 @@ export default function LeadsCRM() {
             color: '#ffffff',
             fontFamily: "'Instrument Sans', sans-serif"
           }}>
-            Leads & Clients CRM
+            Leads &amp; Inquiries CRM
           </h1>
-          <p style={{ margin: 0, color: '#94a3b8', fontSize: '0.85rem' }}>
-            Live client inquiries from website forms with 1-click direct WhatsApp conversation links.
+          <p style={{ margin: 0, color: '#888888', fontSize: '0.88rem' }}>
+            Live repository of all submissions from the VSL Optin Funnel and Contact Us forms.
           </p>
         </div>
 
@@ -116,426 +127,585 @@ export default function LeadsCRM() {
           <button
             onClick={loadLeads}
             style={{
-              display: 'flex',
+              display: 'inline-flex',
               alignItems: 'center',
               gap: '0.45rem',
-              backgroundColor: '#0b0f19',
-              border: '1px solid rgba(255, 255, 255, 0.1)',
-              padding: '0.6rem 0.95rem',
+              backgroundColor: '#0a0a0a',
+              border: '1px solid rgba(255, 255, 255, 0.12)',
+              color: '#cccccc',
+              padding: '0.65rem 1rem',
               borderRadius: '8px',
               fontSize: '0.82rem',
               fontWeight: 600,
-              color: '#94a3b8',
               cursor: 'pointer'
             }}
           >
-            <RefreshCw size={14} />
+            <RefreshCw size={14} className={loading ? 'animate-spin' : ''} />
             <span>Refresh</span>
           </button>
 
           <button
-            onClick={() => setIsAddModalOpen(true)}
+            onClick={() => setIsModalOpen(true)}
+            className="btn btn-white"
             style={{
-              display: 'flex',
+              display: 'inline-flex',
               alignItems: 'center',
               gap: '0.5rem',
-              backgroundColor: '#ffffff',
-              color: '#050505',
-              border: 'none',
-              padding: '0.62rem 1.25rem',
-              borderRadius: '8px',
-              fontSize: '0.84rem',
-              fontWeight: 700,
+              padding: '0.65rem 1.35rem',
+              fontSize: '0.86rem',
               cursor: 'pointer'
             }}
           >
             <Plus size={16} />
-            <span>Add Inquired Client</span>
+            <span>Add Lead</span>
           </button>
+        </div>
+      </div>
+
+      {/* Metrics Counters Bar */}
+      <div style={{
+        display: 'grid',
+        gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))',
+        gap: '1rem',
+        marginBottom: '1.75rem'
+      }}>
+        <div style={{
+          backgroundColor: '#0a0a0a',
+          border: '1px solid rgba(255, 255, 255, 0.08)',
+          borderRadius: '10px',
+          padding: '1.1rem 1.25rem'
+        }}>
+          <div style={{ fontSize: '0.74rem', color: '#888888', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.04em' }}>
+            Total Inquiries
+          </div>
+          <div style={{ fontSize: '1.85rem', fontWeight: 800, color: '#ffffff', marginTop: '0.25rem' }}>
+            {leads.length}
+          </div>
+        </div>
+
+        <div style={{
+          backgroundColor: '#0a0a0a',
+          border: '1px solid rgba(255, 255, 255, 0.08)',
+          borderRadius: '10px',
+          padding: '1.1rem 1.25rem'
+        }}>
+          <div style={{ fontSize: '0.74rem', color: '#10b981', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.04em' }}>
+            Optin Funnel Leads
+          </div>
+          <div style={{ fontSize: '1.85rem', fontWeight: 800, color: '#ffffff', marginTop: '0.25rem' }}>
+            {optinCount}
+          </div>
+        </div>
+
+        <div style={{
+          backgroundColor: '#0a0a0a',
+          border: '1px solid rgba(255, 255, 255, 0.08)',
+          borderRadius: '10px',
+          padding: '1.1rem 1.25rem'
+        }}>
+          <div style={{ fontSize: '0.74rem', color: '#38bdf8', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.04em' }}>
+            Contact Us Inquiries
+          </div>
+          <div style={{ fontSize: '1.85rem', fontWeight: 800, color: '#ffffff', marginTop: '0.25rem' }}>
+            {contactCount}
+          </div>
         </div>
       </div>
 
       {/* Filter and Search Bar */}
       <div style={{
-        backgroundColor: '#0b0f19',
-        borderRadius: '12px',
-        padding: '0.75rem 1rem',
-        border: '1px solid rgba(255, 255, 255, 0.08)',
-        marginBottom: '1.5rem',
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'space-between',
         flexWrap: 'wrap',
-        gap: '1rem'
+        gap: '1rem',
+        marginBottom: '1.25rem'
       }}>
+        {/* Search */}
         <div style={{
-          display: 'flex',
-          alignItems: 'center',
-          gap: '0.6rem',
-          backgroundColor: 'rgba(255, 255, 255, 0.03)',
-          border: '1px solid rgba(255, 255, 255, 0.08)',
-          borderRadius: '8px',
-          padding: '0.45rem 0.85rem',
-          flex: '1 1 280px',
-          maxWidth: '380px'
+          position: 'relative',
+          flex: '1',
+          maxWidth: '400px'
         }}>
-          <Search size={15} color="#64748b" />
+          <Search size={15} style={{ position: 'absolute', left: '12px', top: '50%', transform: 'translateY(-50%)', color: '#666666' }} />
           <input
             type="text"
-            placeholder="Search by name, phone, notes..."
             value={searchQuery}
-            onChange={(e) => setSearchQuery(e.target.value)}
+            onChange={e => setSearchQuery(e.target.value)}
+            placeholder="Search leads by name, email, phone..."
             style={{
-              border: 'none',
-              backgroundColor: 'transparent',
-              outline: 'none',
-              fontSize: '0.85rem',
               width: '100%',
-              color: '#ffffff'
+              padding: '0.65rem 1rem 0.65rem 2.4rem',
+              backgroundColor: '#0a0a0a',
+              border: '1px solid rgba(255, 255, 255, 0.1)',
+              borderRadius: '8px',
+              color: '#ffffff',
+              fontSize: '0.86rem',
+              outline: 'none'
             }}
           />
         </div>
 
-        <div style={{ display: 'flex', alignItems: 'center', gap: '0.4rem', flexWrap: 'wrap' }}>
-          {['All', 'New', 'In Conversation', 'Closed'].map((tab) => {
-            const isActive = filter === tab;
-            return (
-              <button
-                key={tab}
-                onClick={() => setFilter(tab)}
-                style={{
-                  padding: '0.4rem 0.85rem',
-                  borderRadius: '6px',
-                  fontSize: '0.78rem',
-                  fontWeight: 600,
-                  border: 'none',
-                  backgroundColor: isActive ? '#ffffff' : 'transparent',
-                  color: isActive ? '#050505' : '#94a3b8',
-                  cursor: 'pointer'
-                }}
-              >
-                {tab === 'All' ? `All Inquiries (${leads.length})` : tab}
-              </button>
-            );
-          })}
+        {/* Source Filter Buttons */}
+        <div style={{
+          display: 'inline-flex',
+          backgroundColor: '#0a0a0a',
+          border: '1px solid rgba(255, 255, 255, 0.1)',
+          padding: '3px',
+          borderRadius: '8px',
+          gap: '3px'
+        }}>
+          <button
+            onClick={() => setSourceFilter('ALL')}
+            style={{
+              padding: '0.45rem 0.85rem',
+              borderRadius: '6px',
+              border: 'none',
+              backgroundColor: sourceFilter === 'ALL' ? '#ffffff' : 'transparent',
+              color: sourceFilter === 'ALL' ? '#000000' : '#888888',
+              fontSize: '0.78rem',
+              fontWeight: sourceFilter === 'ALL' ? 700 : 500,
+              cursor: 'pointer'
+            }}
+          >
+            All ({leads.length})
+          </button>
+          <button
+            onClick={() => setSourceFilter('OPTIN')}
+            style={{
+              padding: '0.45rem 0.85rem',
+              borderRadius: '6px',
+              border: 'none',
+              backgroundColor: sourceFilter === 'OPTIN' ? '#ffffff' : 'transparent',
+              color: sourceFilter === 'OPTIN' ? '#000000' : '#888888',
+              fontSize: '0.78rem',
+              fontWeight: sourceFilter === 'OPTIN' ? 700 : 500,
+              cursor: 'pointer'
+            }}
+          >
+            Optin ({optinCount})
+          </button>
+          <button
+            onClick={() => setSourceFilter('CONTACT')}
+            style={{
+              padding: '0.45rem 0.85rem',
+              borderRadius: '6px',
+              border: 'none',
+              backgroundColor: sourceFilter === 'CONTACT' ? '#ffffff' : 'transparent',
+              color: sourceFilter === 'CONTACT' ? '#000000' : '#888888',
+              fontSize: '0.78rem',
+              fontWeight: sourceFilter === 'CONTACT' ? 700 : 500,
+              cursor: 'pointer'
+            }}
+          >
+            Contact ({contactCount})
+          </button>
         </div>
       </div>
 
-      {/* 2-Column Dark Luxury Leads Grid */}
+      {/* Leads Table */}
       <div style={{
-        display: 'grid',
-        gridTemplateColumns: 'repeat(auto-fill, minmax(360px, 1fr))',
-        gap: '1.25rem'
+        backgroundColor: '#0a0a0a',
+        borderRadius: '12px',
+        border: '1px solid rgba(255, 255, 255, 0.08)',
+        overflow: 'hidden'
       }}>
-        {filteredLeads.map((lead) => {
-          const isExpanded = expandedMessageId === lead.id;
-          const cleanPhone = (lead.phone || '').replace(/[^0-9]/g, '');
-          const waNumber = cleanPhone.length === 10 ? `91${cleanPhone}` : cleanPhone;
-          const waMessage = encodeURIComponent(`Hi ${lead.name || 'there'}, this is Jagat Turkiya Team. We received your consultation inquiry.`);
-          const waUrl = `https://wa.me/${waNumber}?text=${waMessage}`;
-
-          return (
-            <div
-              key={lead.id}
-              style={{
-                backgroundColor: '#0b0f19',
-                borderRadius: '14px',
-                border: '1px solid rgba(255, 255, 255, 0.08)',
-                padding: '1.4rem',
-                display: 'flex',
-                flexDirection: 'column',
-                boxShadow: '0 4px 20px rgba(0, 0, 0, 0.25)'
-              }}
-            >
-              {/* Header */}
-              <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', marginBottom: '0.85rem' }}>
-                <div>
-                  <h3 style={{ fontSize: '1.1rem', fontWeight: 700, margin: '0 0 0.25rem', color: '#ffffff' }}>
-                    {lead.name}
-                  </h3>
-                  <div style={{ display: 'flex', alignItems: 'center', gap: '0.35rem', fontSize: '0.72rem', color: '#64748b' }}>
-                    <Clock size={12} />
-                    <span>{lead.created_at || 'Recently'}</span>
-                  </div>
-                </div>
-
-                <select
-                  value={lead.status}
-                  onChange={(e) => handleStatusChange(lead.id, e.target.value)}
-                  style={{
-                    backgroundColor: lead.status === 'New' 
-                      ? 'rgba(239, 68, 68, 0.15)' 
-                      : lead.status.includes('Closed')
-                      ? 'rgba(16, 185, 129, 0.15)'
-                      : 'rgba(245, 158, 11, 0.15)',
-                    color: lead.status === 'New' 
-                      ? '#f87171' 
-                      : lead.status.includes('Closed')
-                      ? '#34d399'
-                      : '#fbbf24',
-                    border: '1px solid rgba(255, 255, 255, 0.1)',
-                    padding: '0.3rem 0.65rem',
-                    borderRadius: '6px',
-                    fontSize: '0.72rem',
-                    fontWeight: 700,
-                    outline: 'none',
-                    cursor: 'pointer'
-                  }}
-                >
-                  <option value="New" style={{ background: '#0f172a', color: '#fff' }}>New (Pending)</option>
-                  <option value="In Conversation" style={{ background: '#0f172a', color: '#fff' }}>In Conversation</option>
-                  <option value="Follow-up" style={{ background: '#0f172a', color: '#fff' }}>Follow-up</option>
-                  <option value="Closed (Resolved)" style={{ background: '#0f172a', color: '#fff' }}>Closed</option>
-                </select>
-              </div>
-
-              {/* Contact Information */}
-              <div style={{
+        <div style={{ overflowX: 'auto' }}>
+          <table style={{ width: '100%', borderCollapse: 'collapse', textAlign: 'left', fontSize: '0.85rem' }}>
+            <thead>
+              <tr style={{
                 backgroundColor: 'rgba(255, 255, 255, 0.02)',
-                borderRadius: '8px',
-                padding: '0.75rem 0.85rem',
-                border: '1px solid rgba(255, 255, 255, 0.05)',
-                marginBottom: '0.85rem',
-                fontSize: '0.82rem',
-                display: 'flex',
-                flexDirection: 'column',
-                gap: '0.45rem'
-              }}>
-                <div style={{ display: 'flex', alignItems: 'center', gap: '0.55rem', color: '#cbd5e1' }}>
-                  <Phone size={13} color="#94a3b8" />
-                  <a href={`tel:${lead.phone}`} style={{ color: '#ffffff', fontWeight: 600, textDecoration: 'none' }}>
-                    {lead.phone || 'No phone'}
-                  </a>
-                </div>
-
-                {lead.email && (
-                  <div style={{ display: 'flex', alignItems: 'center', gap: '0.55rem', color: '#94a3b8' }}>
-                    <Mail size={13} color="#64748b" />
-                    <span style={{ wordBreak: 'break-all' }}>{lead.email}</span>
-                  </div>
-                )}
-              </div>
-
-              {/* Preferred Slot */}
-              <div style={{
+                borderBottom: '1px solid rgba(255, 255, 255, 0.08)',
+                color: '#666666',
                 fontSize: '0.72rem',
-                color: '#94a3b8',
-                marginBottom: '0.85rem'
+                fontWeight: 700,
+                letterSpacing: '0.08em',
+                textTransform: 'uppercase'
               }}>
-                <span style={{ color: '#64748b' }}>Preferred Slot:</span> <strong style={{ color: '#e2e8f0' }}>{lead.preferred_time || 'Morning'}</strong>
-              </div>
+                <th style={{ padding: '0.95rem 1.25rem' }}>Client Name</th>
+                <th style={{ padding: '0.95rem 1.25rem' }}>Contact Info</th>
+                <th style={{ padding: '0.95rem 1.25rem' }}>Source</th>
+                <th style={{ padding: '0.95rem 1.25rem' }}>Message / Inquiry</th>
+                <th style={{ padding: '0.95rem 1.25rem' }}>Received</th>
+                <th style={{ padding: '0.95rem 1.25rem', textAlign: 'right' }}>Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              {filteredLeads.length === 0 ? (
+                <tr>
+                  <td colSpan={6} style={{ padding: '3.5rem 1rem', textAlign: 'center', color: '#666666' }}>
+                    {loading ? 'Fetching inquiries from database...' : 'No leads found matching your criteria.'}
+                  </td>
+                </tr>
+              ) : (
+                filteredLeads.map((lead) => {
+                  const phoneClean = (lead.phone || '').replace(/\D/g, '');
+                  const waNumber = phoneClean.length === 10 ? `91${phoneClean}` : phoneClean;
+                  const waUrl = `https://wa.me/${waNumber}?text=${encodeURIComponent(`Hello ${lead.name}, this is Coach Jagat Turkiya's team. Thank you for reaching out!`)}`;
+                  const isOptin = lead.source && lead.source.toLowerCase().includes('optin');
 
-              {/* Message Snippet */}
-              <div style={{ flex: 1, marginBottom: '1.25rem' }}>
-                <p style={{
-                  fontSize: '0.82rem',
-                  color: 'rgba(255, 255, 255, 0.75)',
-                  lineHeight: 1.55,
-                  margin: '0 0 0.35rem',
-                  display: isExpanded ? 'block' : '-webkit-box',
-                  WebkitLineClamp: isExpanded ? 'none' : 2,
-                  WebkitBoxOrient: 'vertical',
-                  overflow: 'hidden'
-                }}>
-                  "{lead.message || 'Client inquired regarding 10-week Mastermind program.'}"
-                </p>
+                  return (
+                    <tr
+                      key={lead.id}
+                      style={{
+                        borderBottom: '1px solid rgba(255, 255, 255, 0.04)',
+                        transition: 'background-color 0.15s ease'
+                      }}
+                      onMouseEnter={e => e.currentTarget.style.backgroundColor = 'rgba(255, 255, 255, 0.02)'}
+                      onMouseLeave={e => e.currentTarget.style.backgroundColor = 'transparent'}
+                    >
+                      {/* Name */}
+                      <td style={{ padding: '1rem 1.25rem' }}>
+                        <div style={{ fontWeight: 700, color: '#ffffff', fontSize: '0.9rem' }}>
+                          {lead.name}
+                        </div>
+                        {lead.program && (
+                          <div style={{ fontSize: '0.72rem', color: '#888888', marginTop: '2px' }}>
+                            {lead.program}
+                          </div>
+                        )}
+                      </td>
 
-                <button
-                  onClick={() => setExpandedMessageId(isExpanded ? null : lead.id)}
-                  style={{
-                    background: 'none',
-                    border: 'none',
-                    color: '#94a3b8',
-                    fontSize: '0.74rem',
-                    fontWeight: 600,
-                    cursor: 'pointer',
-                    padding: 0,
-                    textDecoration: 'underline'
-                  }}
-                >
-                  {isExpanded ? 'Hide' : 'Read Full Message'}
-                </button>
-              </div>
+                      {/* Contact & WhatsApp Action */}
+                      <td style={{ padding: '1rem 1.25rem' }}>
+                        <div style={{ display: 'flex', flexDirection: 'column', gap: '4px' }}>
+                          {lead.phone && (
+                            <a
+                              href={waUrl}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              title="Message on WhatsApp"
+                              style={{
+                                display: 'inline-flex',
+                                alignItems: 'center',
+                                gap: '0.4rem',
+                                color: '#10b981',
+                                fontSize: '0.82rem',
+                                fontWeight: 600,
+                                textDecoration: 'none'
+                              }}
+                            >
+                              <MessageCircle size={13} />
+                              <span>{lead.phone}</span>
+                            </a>
+                          )}
+                          {lead.email && (
+                            <a
+                              href={`mailto:${lead.email}`}
+                              title="Send Email"
+                              style={{
+                                display: 'inline-flex',
+                                alignItems: 'center',
+                                gap: '0.4rem',
+                                color: '#888888',
+                                fontSize: '0.76rem',
+                                textDecoration: 'none'
+                              }}
+                            >
+                              <Mail size={12} />
+                              <span>{lead.email}</span>
+                            </a>
+                          )}
+                        </div>
+                      </td>
 
-              {/* Actions: Direct WhatsApp & Delete */}
-              <div style={{ display: 'flex', alignItems: 'center', gap: '0.65rem' }}>
-                <a
-                  href={waUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  style={{
-                    flex: 1,
-                    backgroundColor: '#10b981',
-                    color: '#ffffff',
-                    padding: '0.6rem 1rem',
-                    borderRadius: '8px',
-                    fontSize: '0.82rem',
-                    fontWeight: 700,
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    gap: '0.5rem',
-                    textDecoration: 'none'
-                  }}
-                >
-                  <MessageCircle size={15} />
-                  <span>Direct WhatsApp</span>
-                </a>
+                      {/* Source */}
+                      <td style={{ padding: '1rem 1.25rem' }}>
+                        <span style={{
+                          display: 'inline-block',
+                          padding: '0.2rem 0.55rem',
+                          borderRadius: '4px',
+                          fontSize: '0.7rem',
+                          fontWeight: 700,
+                          backgroundColor: isOptin ? 'rgba(16, 185, 129, 0.12)' : 'rgba(56, 189, 248, 0.12)',
+                          color: isOptin ? '#10b981' : '#38bdf8',
+                          border: isOptin ? '1px solid rgba(16, 185, 129, 0.25)' : '1px solid rgba(56, 189, 248, 0.25)'
+                        }}>
+                          {lead.source}
+                        </span>
+                      </td>
 
-                <button
-                  onClick={() => handleDelete(lead.id)}
-                  title="Delete Record"
-                  style={{
-                    backgroundColor: 'rgba(239, 68, 68, 0.1)',
-                    border: '1px solid rgba(239, 68, 68, 0.2)',
-                    color: '#f87171',
-                    width: '36px',
-                    height: '36px',
-                    borderRadius: '8px',
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    cursor: 'pointer'
-                  }}
-                >
-                  <Trash2 size={15} />
-                </button>
-              </div>
-            </div>
-          );
-        })}
+                      {/* Message / Notes */}
+                      <td style={{ padding: '1rem 1.25rem', maxWidth: '320px' }}>
+                        {lead.message ? (
+                          <div>
+                            <p style={{
+                              margin: 0,
+                              color: '#d4d4d8',
+                              fontSize: '0.82rem',
+                              lineHeight: 1.5,
+                              display: expandedId === lead.id ? 'block' : '-webkit-box',
+                              WebkitLineClamp: 2,
+                              WebkitBoxOrient: 'vertical',
+                              overflow: 'hidden'
+                            }}>
+                              {lead.message}
+                            </p>
+                            {lead.message.length > 70 && (
+                              <button
+                                type="button"
+                                onClick={() => setExpandedId(expandedId === lead.id ? null : lead.id)}
+                                style={{
+                                  background: 'none',
+                                  border: 'none',
+                                  color: '#888888',
+                                  fontSize: '0.7rem',
+                                  cursor: 'pointer',
+                                  padding: 0,
+                                  marginTop: '4px'
+                                }}
+                              >
+                                {expandedId === lead.id ? 'Show less' : 'Read full'}
+                              </button>
+                            )}
+                          </div>
+                        ) : (
+                          <span style={{ color: '#555555', fontSize: '0.76rem', fontStyle: 'italic' }}>
+                            Registration lead
+                          </span>
+                        )}
+                      </td>
+
+                      {/* Date */}
+                      <td style={{ padding: '1rem 1.25rem', color: '#888888', fontSize: '0.76rem', whiteSpace: 'nowrap' }}>
+                        {lead.created_at || 'Recently'}
+                      </td>
+
+                      {/* Actions */}
+                      <td style={{ padding: '1rem 1.25rem', textAlign: 'right' }}>
+                        <div style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5rem' }}>
+                          {lead.phone && (
+                            <a
+                              href={waUrl}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              title="Chat on WhatsApp"
+                              style={{
+                                backgroundColor: 'rgba(16, 185, 129, 0.1)',
+                                border: '1px solid rgba(16, 185, 129, 0.25)',
+                                color: '#10b981',
+                                padding: '0.4rem 0.55rem',
+                                borderRadius: '6px',
+                                textDecoration: 'none',
+                                display: 'inline-flex',
+                                alignItems: 'center'
+                              }}
+                            >
+                              <MessageCircle size={14} />
+                            </a>
+                          )}
+
+                          <button
+                            onClick={() => handleDelete(lead.id, lead.name)}
+                            title="Delete Lead"
+                            style={{
+                              backgroundColor: 'rgba(239, 68, 68, 0.1)',
+                              border: '1px solid rgba(239, 68, 68, 0.25)',
+                              color: '#ef4444',
+                              padding: '0.4rem 0.55rem',
+                              borderRadius: '6px',
+                              cursor: 'pointer',
+                              display: 'inline-flex',
+                              alignItems: 'center'
+                            }}
+                          >
+                            <Trash2 size={14} />
+                          </button>
+                        </div>
+                      </td>
+                    </tr>
+                  );
+                })
+              )}
+            </tbody>
+          </table>
+        </div>
       </div>
 
-      {/* Add Lead Modal */}
-      {isAddModalOpen && (
+      {/* Add Lead Manually Modal */}
+      {isModalOpen && (
         <div style={{
           position: 'fixed',
           inset: 0,
-          backgroundColor: 'rgba(0, 0, 0, 0.8)',
-          backdropFilter: 'blur(4px)',
+          backgroundColor: 'rgba(0, 0, 0, 0.85)',
+          backdropFilter: 'blur(6px)',
+          zIndex: 1000,
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
-          padding: '1rem',
-          zIndex: 1000
+          padding: '1.5rem'
         }}>
           <div style={{
-            backgroundColor: '#0b0f19',
-            borderRadius: '16px',
-            border: '1px solid rgba(255, 255, 255, 0.12)',
+            backgroundColor: '#0a0a0a',
+            border: '1px solid rgba(255, 255, 255, 0.15)',
+            borderRadius: '14px',
             width: '100%',
-            maxWidth: '460px',
-            padding: '1.75rem',
-            color: '#ffffff'
+            maxWidth: '550px',
+            overflow: 'hidden'
           }}>
-            <h2 style={{ fontSize: '1.25rem', fontWeight: 800, margin: '0 0 1.25rem' }}>
-              Add Client Inquiry
-            </h2>
+            <div style={{
+              padding: '1.25rem 1.5rem',
+              borderBottom: '1px solid rgba(255, 255, 255, 0.08)',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'space-between'
+            }}>
+              <h3 style={{ margin: 0, fontSize: '1.15rem', color: '#ffffff', fontWeight: 700 }}>
+                Record Inquired Lead
+              </h3>
+              <button
+                type="button"
+                onClick={() => setIsModalOpen(false)}
+                style={{ background: 'none', border: 'none', color: '#888888', fontSize: '1.3rem', cursor: 'pointer' }}
+              >
+                ✕
+              </button>
+            </div>
 
-            <form onSubmit={handleCreateLead} style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
-              <div>
-                <label style={{ fontSize: '0.78rem', color: '#94a3b8', display: 'block', marginBottom: '0.35rem' }}>
-                  Client Full Name *
-                </label>
+            <form onSubmit={handleCreateLead} style={{ padding: '1.5rem' }}>
+              {/* Name */}
+              <div style={{ marginBottom: '1.2rem' }}>
+                <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '6px' }}>
+                  <label style={{ fontSize: '0.82rem', fontWeight: 600, color: '#e2e8f0' }}>Full Name *</label>
+                  <span style={{ fontSize: '0.72rem', color: '#888888' }}>{newLead.name.length}/60</span>
+                </div>
                 <input
                   type="text"
                   required
-                  placeholder="e.g. Rahul Sharma"
-                  value={newLeadForm.name}
-                  onChange={(e) => setNewLeadForm({ ...newLeadForm, name: e.target.value })}
+                  maxLength={60}
+                  value={newLead.name}
+                  onChange={e => setNewLead({ ...newLead, name: e.target.value })}
+                  placeholder="Enter client name"
                   style={{
                     width: '100%',
-                    backgroundColor: 'rgba(255, 255, 255, 0.04)',
+                    padding: '0.75rem 1rem',
+                    backgroundColor: '#141414',
                     border: '1px solid rgba(255, 255, 255, 0.12)',
-                    color: '#ffffff',
-                    padding: '0.65rem 0.85rem',
                     borderRadius: '8px',
-                    fontSize: '0.85rem',
+                    color: '#ffffff',
+                    fontSize: '0.9rem',
                     outline: 'none'
                   }}
                 />
               </div>
 
-              <div>
-                <label style={{ fontSize: '0.78rem', color: '#94a3b8', display: 'block', marginBottom: '0.35rem' }}>
-                  WhatsApp Phone Number *
-                </label>
-                <input
-                  type="tel"
-                  required
-                  placeholder="e.g. 9876543210"
-                  value={newLeadForm.phone}
-                  onChange={(e) => setNewLeadForm({ ...newLeadForm, phone: e.target.value })}
-                  style={{
-                    width: '100%',
-                    backgroundColor: 'rgba(255, 255, 255, 0.04)',
-                    border: '1px solid rgba(255, 255, 255, 0.12)',
-                    color: '#ffffff',
-                    padding: '0.65rem 0.85rem',
-                    borderRadius: '8px',
-                    fontSize: '0.85rem',
-                    outline: 'none'
-                  }}
-                />
+              {/* Phone & Email */}
+              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem', marginBottom: '1.2rem' }}>
+                <div>
+                  <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '6px' }}>
+                    <label style={{ fontSize: '0.82rem', fontWeight: 600, color: '#e2e8f0' }}>Phone / WhatsApp *</label>
+                    <span style={{ fontSize: '0.72rem', color: '#888888' }}>{newLead.phone.length}/15</span>
+                  </div>
+                  <input
+                    type="tel"
+                    required
+                    maxLength={15}
+                    value={newLead.phone}
+                    onChange={e => setNewLead({ ...newLead, phone: e.target.value })}
+                    placeholder="+91 98765 43210"
+                    style={{
+                      width: '100%',
+                      padding: '0.75rem 1rem',
+                      backgroundColor: '#141414',
+                      border: '1px solid rgba(255, 255, 255, 0.12)',
+                      borderRadius: '8px',
+                      color: '#ffffff',
+                      fontSize: '0.9rem',
+                      outline: 'none'
+                    }}
+                  />
+                </div>
+
+                <div>
+                  <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '6px' }}>
+                    <label style={{ fontSize: '0.82rem', fontWeight: 600, color: '#e2e8f0' }}>Email Address</label>
+                    <span style={{ fontSize: '0.72rem', color: '#888888' }}>{newLead.email.length}/80</span>
+                  </div>
+                  <input
+                    type="email"
+                    maxLength={80}
+                    value={newLead.email}
+                    onChange={e => setNewLead({ ...newLead, email: e.target.value })}
+                    placeholder="client@gmail.com"
+                    style={{
+                      width: '100%',
+                      padding: '0.75rem 1rem',
+                      backgroundColor: '#141414',
+                      border: '1px solid rgba(255, 255, 255, 0.12)',
+                      borderRadius: '8px',
+                      color: '#ffffff',
+                      fontSize: '0.9rem',
+                      outline: 'none'
+                    }}
+                  />
+                </div>
               </div>
 
-              <div>
-                <label style={{ fontSize: '0.78rem', color: '#94a3b8', display: 'block', marginBottom: '0.35rem' }}>
-                  Email Address
+              {/* Source */}
+              <div style={{ marginBottom: '1.2rem' }}>
+                <label style={{ display: 'block', fontSize: '0.82rem', fontWeight: 600, color: '#e2e8f0', marginBottom: '6px' }}>
+                  Source Tag
                 </label>
-                <input
-                  type="email"
-                  placeholder="e.g. client@example.com"
-                  value={newLeadForm.email}
-                  onChange={(e) => setNewLeadForm({ ...newLeadForm, email: e.target.value })}
+                <select
+                  value={newLead.source}
+                  onChange={e => setNewLead({ ...newLead, source: e.target.value })}
                   style={{
                     width: '100%',
-                    backgroundColor: 'rgba(255, 255, 255, 0.04)',
+                    padding: '0.75rem 1rem',
+                    backgroundColor: '#141414',
                     border: '1px solid rgba(255, 255, 255, 0.12)',
-                    color: '#ffffff',
-                    padding: '0.65rem 0.85rem',
                     borderRadius: '8px',
-                    fontSize: '0.85rem',
+                    color: '#ffffff',
+                    fontSize: '0.9rem',
                     outline: 'none'
                   }}
-                />
+                >
+                  <option value="Manual Inquiry">Manual Inquiry</option>
+                  <option value="VSL Optin Funnel">VSL Optin Funnel</option>
+                  <option value="Contact Page Inquiry">Contact Page Inquiry</option>
+                  <option value="Direct Call / WhatsApp">Direct Call / WhatsApp</option>
+                  <option value="Referral">Referral</option>
+                </select>
               </div>
 
-              <div>
-                <label style={{ fontSize: '0.78rem', color: '#94a3b8', display: 'block', marginBottom: '0.35rem' }}>
-                  Inquiry Notes
-                </label>
+              {/* Message */}
+              <div style={{ marginBottom: '1.5rem' }}>
+                <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '6px' }}>
+                  <label style={{ fontSize: '0.82rem', fontWeight: 600, color: '#e2e8f0' }}>Notes / Message Details</label>
+                  <span style={{ fontSize: '0.72rem', color: '#888888' }}>{newLead.message.length}/500</span>
+                </div>
                 <textarea
                   rows={3}
-                  placeholder="Client background, goals, or program interest..."
-                  value={newLeadForm.message}
-                  onChange={(e) => setNewLeadForm({ ...newLeadForm, message: e.target.value })}
+                  maxLength={500}
+                  value={newLead.message}
+                  onChange={e => setNewLead({ ...newLead, message: e.target.value })}
+                  placeholder="Inquiry notes, challenges, or goals..."
                   style={{
                     width: '100%',
-                    backgroundColor: 'rgba(255, 255, 255, 0.04)',
+                    padding: '0.75rem 1rem',
+                    backgroundColor: '#141414',
                     border: '1px solid rgba(255, 255, 255, 0.12)',
-                    color: '#ffffff',
-                    padding: '0.65rem 0.85rem',
                     borderRadius: '8px',
-                    fontSize: '0.85rem',
+                    color: '#ffffff',
+                    fontSize: '0.88rem',
                     outline: 'none',
                     resize: 'vertical'
                   }}
                 />
               </div>
 
-              <div style={{ display: 'flex', gap: '0.75rem', marginTop: '0.5rem' }}>
+              {/* Actions */}
+              <div style={{ display: 'flex', justifyContent: 'flex-end', gap: '0.75rem' }}>
                 <button
                   type="button"
-                  onClick={() => setIsAddModalOpen(false)}
+                  onClick={() => setIsModalOpen(false)}
                   style={{
-                    flex: 1,
                     backgroundColor: 'transparent',
                     border: '1px solid rgba(255, 255, 255, 0.15)',
-                    color: '#94a3b8',
-                    padding: '0.65rem',
-                    borderRadius: '8px',
-                    fontWeight: 600,
+                    color: '#888888',
+                    padding: '0.75rem 1.25rem',
+                    borderRadius: '9999px',
+                    fontSize: '0.88rem',
                     cursor: 'pointer'
                   }}
                 >
@@ -543,19 +713,14 @@ export default function LeadsCRM() {
                 </button>
                 <button
                   type="submit"
-                  disabled={isSubmittingNew}
+                  className="btn btn-white"
                   style={{
-                    flex: 1,
-                    backgroundColor: '#ffffff',
-                    color: '#050505',
-                    border: 'none',
-                    padding: '0.65rem',
-                    borderRadius: '8px',
-                    fontWeight: 700,
+                    padding: '0.75rem 1.75rem',
+                    fontSize: '0.88rem',
                     cursor: 'pointer'
                   }}
                 >
-                  {isSubmittingNew ? 'Saving...' : 'Save Lead'}
+                  Save Lead
                 </button>
               </div>
             </form>
