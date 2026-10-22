@@ -10,9 +10,12 @@ const getCustomConfig = () => {
   }
 };
 
+const defaultUrl = 'https://xzyezjhorrjlbkglmcqw.supabase.co';
+const defaultAnonKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Inh6eWV6amhvcnJqbGJrZ2xtY3F3Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTI2NjM1MjAsImV4cCI6MjEwODIzOTUyMH0.Xbq_0dNcCYPu1dtwsCNzGzw2qGZLKUm-Bm_cFclH2kM';
+
 const customConfig = getCustomConfig();
-export const supabaseUrl = customConfig.url || import.meta.env.VITE_SUPABASE_URL || '';
-export const supabaseAnonKey = customConfig.anonKey || import.meta.env.VITE_SUPABASE_ANON_KEY || '';
+export const supabaseUrl = customConfig.url || import.meta.env.VITE_SUPABASE_URL || defaultUrl;
+export const supabaseAnonKey = customConfig.anonKey || import.meta.env.VITE_SUPABASE_ANON_KEY || defaultAnonKey;
 
 export const isSupabaseConfigured = Boolean(
   supabaseUrl && 
