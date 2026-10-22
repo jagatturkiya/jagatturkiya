@@ -202,33 +202,6 @@ export default function SuccessStoriesAdmin() {
                   e.target.src = 'https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&w=600&q=80';
                 }}
               />
-              <div style={{
-                position: 'absolute',
-                top: '12px',
-                left: '12px',
-                backgroundColor: 'rgba(0, 0, 0, 0.75)',
-                backdropFilter: 'blur(4px)',
-                border: '1px solid rgba(255, 255, 255, 0.15)',
-                padding: '4px 10px',
-                borderRadius: '6px',
-                fontSize: '0.72rem',
-                fontWeight: 600,
-                color: '#ffffff'
-              }}>
-                {st.category || 'Transformation'}
-              </div>
-              <div style={{
-                position: 'absolute',
-                bottom: '12px',
-                right: '12px',
-                backgroundColor: 'rgba(0, 0, 0, 0.75)',
-                padding: '3px 8px',
-                borderRadius: '4px',
-                fontSize: '0.7rem',
-                color: '#cccccc'
-              }}>
-                {st.readTime || '5 min read'}
-              </div>
             </div>
 
             {/* Story Details */}

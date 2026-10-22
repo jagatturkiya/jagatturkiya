@@ -200,15 +200,12 @@ export default function TestimonialsAdmin() {
         </button>
       </div>
 
-      {/* Segmented Control Tabs */}
+      {/* Minimal Underline Tabs (NO capsule box) */}
       <div style={{
-        display: 'inline-flex',
-        backgroundColor: '#0a0a0a',
-        border: '1px solid rgba(255, 255, 255, 0.1)',
-        padding: '4px',
-        borderRadius: '10px',
-        marginBottom: '1.75rem',
-        gap: '4px'
+        display: 'flex',
+        borderBottom: '1px solid rgba(255, 255, 255, 0.08)',
+        marginBottom: '2rem',
+        gap: '2rem'
       }}>
         <button
           type="button"
@@ -217,18 +214,18 @@ export default function TestimonialsAdmin() {
             display: 'flex',
             alignItems: 'center',
             gap: '0.5rem',
-            padding: '0.55rem 1.15rem',
-            borderRadius: '8px',
+            padding: '0.85rem 0',
             border: 'none',
-            backgroundColor: activeTab === 'video' ? '#ffffff' : 'transparent',
-            color: activeTab === 'video' ? '#000000' : '#888888',
-            fontSize: '0.84rem',
+            borderBottom: activeTab === 'video' ? '2px solid #ffffff' : '2px solid transparent',
+            backgroundColor: 'transparent',
+            color: activeTab === 'video' ? '#ffffff' : '#666666',
+            fontSize: '0.9rem',
             fontWeight: activeTab === 'video' ? 700 : 500,
             cursor: 'pointer',
             transition: 'all 0.15s ease'
           }}
         >
-          <Video size={15} />
+          <Video size={16} />
           <span>Video Testimonials ({data.videos.length})</span>
         </button>
 
@@ -239,18 +236,18 @@ export default function TestimonialsAdmin() {
             display: 'flex',
             alignItems: 'center',
             gap: '0.5rem',
-            padding: '0.55rem 1.15rem',
-            borderRadius: '8px',
+            padding: '0.85rem 0',
             border: 'none',
-            backgroundColor: activeTab === 'reviews' ? '#ffffff' : 'transparent',
-            color: activeTab === 'reviews' ? '#000000' : '#888888',
-            fontSize: '0.84rem',
+            borderBottom: activeTab === 'reviews' ? '2px solid #ffffff' : '2px solid transparent',
+            backgroundColor: 'transparent',
+            color: activeTab === 'reviews' ? '#ffffff' : '#666666',
+            fontSize: '0.9rem',
             fontWeight: activeTab === 'reviews' ? 700 : 500,
             cursor: 'pointer',
             transition: 'all 0.15s ease'
           }}
         >
-          <MessageSquare size={15} />
+          <MessageSquare size={16} />
           <span>Written Reviews ({data.reviews.length})</span>
         </button>
       </div>
@@ -319,19 +316,6 @@ export default function TestimonialsAdmin() {
                       marginLeft: '3px'
                     }} />
                   </div>
-                </div>
-                <div style={{
-                  position: 'absolute',
-                  bottom: '10px',
-                  left: '12px',
-                  backgroundColor: 'rgba(0, 0, 0, 0.8)',
-                  padding: '3px 8px',
-                  borderRadius: '4px',
-                  fontSize: '0.72rem',
-                  color: '#ffffff',
-                  fontWeight: 600
-                }}>
-                  {vid.outcome}
                 </div>
               </div>
 

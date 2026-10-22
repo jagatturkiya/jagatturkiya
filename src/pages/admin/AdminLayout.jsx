@@ -4,53 +4,42 @@ import {
   BookOpen,
   Star,
   Users,
-  LogOut,
   Menu,
   X,
-  ExternalLink,
-  Sparkles
+  ExternalLink
 } from 'lucide-react';
 
 export default function AdminLayout() {
   const [sidebarOpen, setSidebarOpen] = useState(false);
-  const navigate = useNavigate();
   const location = useLocation();
-
-  const handleLogout = () => {
-    localStorage.removeItem('jt_admin_authenticated');
-    navigate('/admin/login');
-  };
 
   const navItems = [
     {
-      label: 'Success Stories CMS',
+      label: 'Success Stories',
       path: '/admin/stories',
-      icon: BookOpen,
-      desc: 'Edit website transformation articles'
+      icon: BookOpen
     },
     {
-      label: 'Client Testimonials CMS',
+      label: 'Client Testimonials',
       path: '/admin/testimonials',
-      icon: Star,
-      desc: 'Edit video & written reviews'
+      icon: Star
     },
     {
-      label: 'Leads & Inquiries CRM',
+      label: 'Leads & Inquiries',
       path: '/admin/leads',
-      icon: Users,
-      desc: 'Optin funnel & contact leads'
+      icon: Users
     }
   ];
 
   const getPageTitle = () => {
     const path = location.pathname;
-    if (path.includes('testimonials')) return 'Client Testimonials CMS';
+    if (path.includes('testimonials')) return 'Client Testimonials';
     if (path.includes('leads')) return 'Leads & Inquiries CRM';
-    return 'Success Stories CMS';
+    return 'Success Stories';
   };
 
   return (
-    <div className="admin-portal-root" style={{
+    <div style={{
       display: 'flex',
       minHeight: '100vh',
       backgroundColor: '#050505',
@@ -71,9 +60,9 @@ export default function AdminLayout() {
         />
       )}
 
-      {/* Dark Luxury Website-Matching Sidebar */}
+      {/* Clean Minimalist Dark Luxury Sidebar */}
       <aside style={{
-        width: '270px',
+        width: '260px',
         backgroundColor: '#000000',
         color: '#94a3b8',
         display: 'flex',
@@ -91,49 +80,31 @@ export default function AdminLayout() {
       >
         {/* Brand Header */}
         <div style={{
-          padding: '1.5rem 1.4rem',
+          padding: '1.75rem 1.75rem 1.5rem',
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'space-between',
-          borderBottom: '1px solid rgba(255, 255, 255, 0.08)'
+          borderBottom: '1px solid rgba(255, 255, 255, 0.06)'
         }}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '0.85rem' }}>
-            <span style={{
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              width: '36px',
-              height: '36px',
-              borderRadius: '8px',
-              background: '#0a0a0a',
-              border: '1px solid rgba(255, 255, 255, 0.2)',
+          <div>
+            <div style={{
               color: '#ffffff',
-              fontSize: '0.88rem',
+              fontSize: '1rem',
               fontWeight: 800,
-              letterSpacing: '0.04em'
+              letterSpacing: '0.04em',
+              fontFamily: "'Instrument Sans', sans-serif"
             }}>
-              JT
-            </span>
-            <div>
-              <div style={{
-                color: '#ffffff',
-                fontSize: '0.95rem',
-                fontWeight: 800,
-                letterSpacing: '0.04em',
-                fontFamily: "'Instrument Sans', sans-serif"
-              }}>
-                JAGAT TURKIYA
-              </div>
-              <div style={{
-                fontSize: '0.66rem',
-                color: '#888888',
-                letterSpacing: '0.08em',
-                textTransform: 'uppercase',
-                fontWeight: 600,
-                marginTop: '1px'
-              }}>
-                Admin &amp; CMS
-              </div>
+              JAGAT TURKIYA
+            </div>
+            <div style={{
+              fontSize: '0.68rem',
+              color: '#666666',
+              letterSpacing: '0.08em',
+              textTransform: 'uppercase',
+              fontWeight: 600,
+              marginTop: '3px'
+            }}>
+              Content Management
             </div>
           </div>
 
@@ -152,46 +123,24 @@ export default function AdminLayout() {
           </button>
         </div>
 
-        {/* Live Website Status Pill */}
-        <div style={{ padding: '1rem 1.25rem 0.5rem' }}>
-          <div style={{
-            padding: '0.65rem 0.85rem',
-            borderRadius: '8px',
-            backgroundColor: '#0a0a0a',
-            border: '1px solid rgba(255, 255, 255, 0.06)',
-            display: 'flex',
-            alignItems: 'center',
-            gap: '0.6rem'
-          }}>
-            <span style={{
-              width: '7px',
-              height: '7px',
-              borderRadius: '50%',
-              backgroundColor: '#10b981',
-              boxShadow: '0 0 8px #10b981'
-            }} />
-            <span style={{ fontSize: '0.74rem', color: '#e2e8f0', fontWeight: 600 }}>
-              Live Frontend Sync Active
-            </span>
-          </div>
-        </div>
-
-        {/* Focused 3-Item Navigation */}
-        <div style={{
+        {/* Minimal Navigation: Pure clean typography links, NO capsule boxes */}
+        <nav style={{
           flex: 1,
-          overflowY: 'auto',
-          padding: '1rem 0.85rem'
+          padding: '1.75rem 1.25rem',
+          display: 'flex',
+          flexDirection: 'column',
+          gap: '0.35rem'
         }}>
           <div style={{
-            fontSize: '0.65rem',
+            fontSize: '0.66rem',
             fontWeight: 700,
-            color: '#666666',
+            color: '#555555',
             letterSpacing: '0.12em',
-            padding: '0.3rem 0.85rem',
-            marginBottom: '0.5rem',
-            textTransform: 'uppercase'
+            textTransform: 'uppercase',
+            padding: '0 0.75rem',
+            marginBottom: '0.75rem'
           }}>
-            Website Management
+            Website Editors
           </div>
 
           {navItems.map((item, idx) => {
@@ -208,118 +157,51 @@ export default function AdminLayout() {
                   display: 'flex',
                   alignItems: 'center',
                   gap: '0.85rem',
-                  padding: '0.85rem 1rem',
-                  borderRadius: '10px',
-                  color: isActive ? '#ffffff' : '#94a3b8',
-                  backgroundColor: isActive ? 'rgba(255, 255, 255, 0.08)' : 'transparent',
-                  border: isActive ? '1px solid rgba(255, 255, 255, 0.15)' : '1px solid transparent',
+                  padding: '0.75rem 0.85rem',
+                  color: isActive ? '#ffffff' : '#888888',
                   textDecoration: 'none',
-                  fontSize: '0.88rem',
+                  fontSize: '0.9rem',
                   fontWeight: isActive ? 700 : 500,
-                  transition: 'all 0.15s ease',
-                  marginBottom: '0.5rem'
+                  transition: 'color 0.15s ease',
+                  borderLeft: isActive ? '2px solid #ffffff' : '2px solid transparent',
+                  paddingLeft: isActive ? '0.75rem' : '0.85rem'
                 }}
               >
-                <div style={{
-                  width: '32px',
-                  height: '32px',
-                  borderRadius: '6px',
-                  backgroundColor: isActive ? '#ffffff' : '#0a0a0a',
-                  color: isActive ? '#000000' : '#888888',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  border: '1px solid rgba(255, 255, 255, 0.1)'
-                }}>
-                  <Icon size={16} />
-                </div>
-                <div style={{ flex: 1, minWidth: 0 }}>
-                  <div style={{ lineHeight: 1.2 }}>{item.label}</div>
-                  <div style={{
-                    fontSize: '0.68rem',
-                    color: isActive ? '#d4d4d8' : '#666666',
-                    marginTop: '2px',
-                    whiteSpace: 'nowrap',
-                    overflow: 'hidden',
-                    textOverflow: 'ellipsis'
-                  }}>
-                    {item.desc}
-                  </div>
-                </div>
+                <Icon size={17} color={isActive ? '#ffffff' : '#666666'} />
+                <span>{item.label}</span>
               </NavLink>
             );
           })}
 
-          {/* Quick link to public website */}
-          <div style={{ marginTop: '1.5rem', paddingTop: '1rem', borderTop: '1px solid rgba(255, 255, 255, 0.06)' }}>
+          {/* Direct link to public website */}
+          <div style={{ marginTop: 'auto', paddingTop: '1.5rem', borderTop: '1px solid rgba(255, 255, 255, 0.06)' }}>
             <Link
               to="/"
               target="_blank"
               style={{
                 display: 'flex',
                 alignItems: 'center',
-                gap: '0.65rem',
-                padding: '0.7rem 0.85rem',
-                borderRadius: '8px',
-                color: '#94a3b8',
-                backgroundColor: 'rgba(255, 255, 255, 0.02)',
-                border: '1px solid rgba(255, 255, 255, 0.05)',
-                fontSize: '0.8rem',
+                gap: '0.75rem',
+                padding: '0.65rem 0.85rem',
+                color: '#777777',
+                fontSize: '0.82rem',
                 textDecoration: 'none',
-                transition: 'color 0.15s'
+                transition: 'color 0.15s ease'
               }}
+              onMouseEnter={e => e.currentTarget.style.color = '#ffffff'}
+              onMouseLeave={e => e.currentTarget.style.color = '#777777'}
             >
               <ExternalLink size={15} />
-              <span>Preview Live Website</span>
+              <span>View Website</span>
             </Link>
           </div>
-        </div>
-
-        {/* User footer & logout */}
-        <div style={{
-          padding: '1rem 1.25rem',
-          borderTop: '1px solid rgba(255, 255, 255, 0.08)',
-          backgroundColor: '#050505',
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'space-between'
-        }}>
-          <div>
-            <div style={{ color: '#ffffff', fontSize: '0.85rem', fontWeight: 700 }}>
-              Jagat Turkiya
-            </div>
-            <div style={{ color: '#888888', fontSize: '0.68rem', marginTop: '1px' }}>
-              Administrator
-            </div>
-          </div>
-
-          <button
-            onClick={handleLogout}
-            title="Log Out"
-            style={{
-              background: 'none',
-              border: '1px solid rgba(255, 255, 255, 0.12)',
-              color: '#ef4444',
-              borderRadius: '8px',
-              padding: '0.45rem 0.65rem',
-              display: 'flex',
-              alignItems: 'center',
-              gap: '0.35rem',
-              cursor: 'pointer',
-              fontSize: '0.74rem',
-              fontWeight: 600
-            }}
-          >
-            <LogOut size={14} />
-            <span>Logout</span>
-          </button>
-        </div>
+        </nav>
       </aside>
 
-      {/* Main Workspace with matching #050505 theme */}
+      {/* Main Workspace */}
       <div style={{
         flex: 1,
-        marginLeft: '270px',
+        marginLeft: '260px',
         display: 'flex',
         flexDirection: 'column',
         minWidth: 0,
@@ -329,14 +211,13 @@ export default function AdminLayout() {
       >
         {/* Top Navbar */}
         <header style={{
-          height: '64px',
-          backgroundColor: 'rgba(5, 5, 5, 0.85)',
-          backdropFilter: 'blur(10px)',
+          height: '60px',
+          backgroundColor: '#050505',
           borderBottom: '1px solid rgba(255, 255, 255, 0.08)',
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'space-between',
-          padding: '0 2rem',
+          padding: '0 2.5rem',
           position: 'sticky',
           top: 0,
           zIndex: 100
@@ -357,38 +238,37 @@ export default function AdminLayout() {
               <Menu size={22} />
             </button>
 
-            <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', fontSize: '0.85rem', color: '#666666' }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', fontSize: '0.85rem', color: '#555555' }}>
               <span>Admin</span>
               <span>/</span>
-              <span style={{ color: '#ffffff', fontWeight: 700 }}>{getPageTitle()}</span>
+              <span style={{ color: '#ffffff', fontWeight: 600 }}>{getPageTitle()}</span>
             </div>
           </div>
 
-          <div style={{ display: 'flex', alignItems: 'center', gap: '0.85rem' }}>
+          <div>
             <Link
               to="/"
               target="_blank"
-              className="btn btn-outline"
               style={{
-                fontSize: '0.78rem',
-                padding: '0.45rem 0.95rem',
-                borderRadius: '9999px',
+                fontSize: '0.82rem',
+                color: '#888888',
+                textDecoration: 'none',
                 display: 'inline-flex',
                 alignItems: 'center',
-                gap: '0.4rem',
-                color: '#ffffff',
-                borderColor: 'rgba(255, 255, 255, 0.2)'
+                gap: '0.35rem'
               }}
+              onMouseEnter={e => e.currentTarget.style.color = '#ffffff'}
+              onMouseLeave={e => e.currentTarget.style.color = '#888888'}
             >
+              <span>Live Site</span>
               <ExternalLink size={13} />
-              <span>View Website</span>
             </Link>
           </div>
         </header>
 
         {/* Content Area */}
         <main style={{
-          padding: '2.25rem 2rem 4rem',
+          padding: '2.5rem 2.5rem 4rem',
           flex: 1,
           overflowY: 'auto'
         }}>

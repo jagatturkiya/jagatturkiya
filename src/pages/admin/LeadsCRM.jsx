@@ -162,77 +162,85 @@ export default function LeadsCRM() {
         </div>
       </div>
 
-      {/* Metrics Counters Bar */}
-      <div style={{
-        display: 'grid',
-        gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))',
-        gap: '1rem',
-        marginBottom: '1.75rem'
-      }}>
-        <div style={{
-          backgroundColor: '#0a0a0a',
-          border: '1px solid rgba(255, 255, 255, 0.08)',
-          borderRadius: '10px',
-          padding: '1.1rem 1.25rem'
-        }}>
-          <div style={{ fontSize: '0.74rem', color: '#888888', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.04em' }}>
-            Total Inquiries
-          </div>
-          <div style={{ fontSize: '1.85rem', fontWeight: 800, color: '#ffffff', marginTop: '0.25rem' }}>
-            {leads.length}
-          </div>
-        </div>
-
-        <div style={{
-          backgroundColor: '#0a0a0a',
-          border: '1px solid rgba(255, 255, 255, 0.08)',
-          borderRadius: '10px',
-          padding: '1.1rem 1.25rem'
-        }}>
-          <div style={{ fontSize: '0.74rem', color: '#10b981', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.04em' }}>
-            Optin Funnel Leads
-          </div>
-          <div style={{ fontSize: '1.85rem', fontWeight: 800, color: '#ffffff', marginTop: '0.25rem' }}>
-            {optinCount}
-          </div>
-        </div>
-
-        <div style={{
-          backgroundColor: '#0a0a0a',
-          border: '1px solid rgba(255, 255, 255, 0.08)',
-          borderRadius: '10px',
-          padding: '1.1rem 1.25rem'
-        }}>
-          <div style={{ fontSize: '0.74rem', color: '#38bdf8', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.04em' }}>
-            Contact Us Inquiries
-          </div>
-          <div style={{ fontSize: '1.85rem', fontWeight: 800, color: '#ffffff', marginTop: '0.25rem' }}>
-            {contactCount}
-          </div>
-        </div>
-      </div>
-
       {/* Filter and Search Bar */}
       <div style={{
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'space-between',
         flexWrap: 'wrap',
-        gap: '1rem',
-        marginBottom: '1.25rem'
+        gap: '1.5rem',
+        marginBottom: '1.75rem',
+        paddingBottom: '1rem',
+        borderBottom: '1px solid rgba(255, 255, 255, 0.08)'
       }}>
+        {/* Source Filter Text Tabs */}
+        <div style={{
+          display: 'flex',
+          gap: '1.75rem',
+          alignItems: 'center'
+        }}>
+          <button
+            type="button"
+            onClick={() => setSourceFilter('ALL')}
+            style={{
+              padding: '0.4rem 0',
+              border: 'none',
+              borderBottom: sourceFilter === 'ALL' ? '2px solid #ffffff' : '2px solid transparent',
+              backgroundColor: 'transparent',
+              color: sourceFilter === 'ALL' ? '#ffffff' : '#666666',
+              fontSize: '0.88rem',
+              fontWeight: sourceFilter === 'ALL' ? 700 : 500,
+              cursor: 'pointer'
+            }}
+          >
+            All Inquiries ({leads.length})
+          </button>
+          <button
+            type="button"
+            onClick={() => setSourceFilter('OPTIN')}
+            style={{
+              padding: '0.4rem 0',
+              border: 'none',
+              borderBottom: sourceFilter === 'OPTIN' ? '2px solid #ffffff' : '2px solid transparent',
+              backgroundColor: 'transparent',
+              color: sourceFilter === 'OPTIN' ? '#ffffff' : '#666666',
+              fontSize: '0.88rem',
+              fontWeight: sourceFilter === 'OPTIN' ? 700 : 500,
+              cursor: 'pointer'
+            }}
+          >
+            Optin Funnel ({optinCount})
+          </button>
+          <button
+            type="button"
+            onClick={() => setSourceFilter('CONTACT')}
+            style={{
+              padding: '0.4rem 0',
+              border: 'none',
+              borderBottom: sourceFilter === 'CONTACT' ? '2px solid #ffffff' : '2px solid transparent',
+              backgroundColor: 'transparent',
+              color: sourceFilter === 'CONTACT' ? '#ffffff' : '#666666',
+              fontSize: '0.88rem',
+              fontWeight: sourceFilter === 'CONTACT' ? 700 : 500,
+              cursor: 'pointer'
+            }}
+          >
+            Contact Us ({contactCount})
+          </button>
+        </div>
+
         {/* Search */}
         <div style={{
           position: 'relative',
-          flex: '1',
-          maxWidth: '400px'
+          width: '100%',
+          maxWidth: '340px'
         }}>
           <Search size={15} style={{ position: 'absolute', left: '12px', top: '50%', transform: 'translateY(-50%)', color: '#666666' }} />
           <input
             type="text"
             value={searchQuery}
             onChange={e => setSearchQuery(e.target.value)}
-            placeholder="Search leads by name, email, phone..."
+            placeholder="Search by name, email, phone..."
             style={{
               width: '100%',
               padding: '0.65rem 1rem 0.65rem 2.4rem',
@@ -244,62 +252,6 @@ export default function LeadsCRM() {
               outline: 'none'
             }}
           />
-        </div>
-
-        {/* Source Filter Buttons */}
-        <div style={{
-          display: 'inline-flex',
-          backgroundColor: '#0a0a0a',
-          border: '1px solid rgba(255, 255, 255, 0.1)',
-          padding: '3px',
-          borderRadius: '8px',
-          gap: '3px'
-        }}>
-          <button
-            onClick={() => setSourceFilter('ALL')}
-            style={{
-              padding: '0.45rem 0.85rem',
-              borderRadius: '6px',
-              border: 'none',
-              backgroundColor: sourceFilter === 'ALL' ? '#ffffff' : 'transparent',
-              color: sourceFilter === 'ALL' ? '#000000' : '#888888',
-              fontSize: '0.78rem',
-              fontWeight: sourceFilter === 'ALL' ? 700 : 500,
-              cursor: 'pointer'
-            }}
-          >
-            All ({leads.length})
-          </button>
-          <button
-            onClick={() => setSourceFilter('OPTIN')}
-            style={{
-              padding: '0.45rem 0.85rem',
-              borderRadius: '6px',
-              border: 'none',
-              backgroundColor: sourceFilter === 'OPTIN' ? '#ffffff' : 'transparent',
-              color: sourceFilter === 'OPTIN' ? '#000000' : '#888888',
-              fontSize: '0.78rem',
-              fontWeight: sourceFilter === 'OPTIN' ? 700 : 500,
-              cursor: 'pointer'
-            }}
-          >
-            Optin ({optinCount})
-          </button>
-          <button
-            onClick={() => setSourceFilter('CONTACT')}
-            style={{
-              padding: '0.45rem 0.85rem',
-              borderRadius: '6px',
-              border: 'none',
-              backgroundColor: sourceFilter === 'CONTACT' ? '#ffffff' : 'transparent',
-              color: sourceFilter === 'CONTACT' ? '#000000' : '#888888',
-              fontSize: '0.78rem',
-              fontWeight: sourceFilter === 'CONTACT' ? 700 : 500,
-              cursor: 'pointer'
-            }}
-          >
-            Contact ({contactCount})
-          </button>
         </div>
       </div>
 
@@ -412,14 +364,9 @@ export default function LeadsCRM() {
                       {/* Source */}
                       <td style={{ padding: '1rem 1.25rem' }}>
                         <span style={{
-                          display: 'inline-block',
-                          padding: '0.2rem 0.55rem',
-                          borderRadius: '4px',
-                          fontSize: '0.7rem',
-                          fontWeight: 700,
-                          backgroundColor: isOptin ? 'rgba(16, 185, 129, 0.12)' : 'rgba(56, 189, 248, 0.12)',
-                          color: isOptin ? '#10b981' : '#38bdf8',
-                          border: isOptin ? '1px solid rgba(16, 185, 129, 0.25)' : '1px solid rgba(56, 189, 248, 0.25)'
+                          fontSize: '0.82rem',
+                          fontWeight: 600,
+                          color: isOptin ? '#10b981' : '#38bdf8'
                         }}>
                           {lead.source}
                         </span>
