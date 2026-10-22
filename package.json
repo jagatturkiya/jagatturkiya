@@ -6,11 +6,11 @@
   "scripts": {
     "dev": "vite --port 3000 --host",
     "start": "vite --port 3000 --host",
-    "serve": "node server.js",
     "build": "vite build && node scripts/prepare-gh-pages.js",
     "preview": "vite preview"
   },
   "dependencies": {
+    "@supabase/supabase-js": "^2.118.0",
     "hls.js": "^1.7.3",
     "lucide-react": "^1.61.0",
     "react": "^19.0.0",

@@ -44,15 +44,7 @@ if (fs.existsSync(compiledHtmlPath)) {
   fs.writeFileSync(path.join(rootDir, '404.html'), spa404Content);
   fs.writeFileSync(path.join(rootDir, '.nojekyll'), '');
 
-  // Copy standalone html redirects to dist
-  const redirectFiles = ['optin.html', 'form.html', 'forms.html', 'apply.html', 'vsl.html', 'thank-you.html', 'success-stories.html', 'testimonials.html'];
-  for (const f of redirectFiles) {
-    const srcPath = path.join(rootDir, f);
-    if (fs.existsSync(srcPath)) {
-      fs.copyFileSync(srcPath, path.join(distDir, f));
-      console.log(`[prepare-gh-pages] Copied ${f} to dist/`);
-    }
-  }
+  // Standalone routes are handled dynamically by SPA 404.html redirect shim
 
   // Copy all favicon formats to dist & root
   const faviconFiles = ['favicon.ico', 'favicon.png', 'favicon.svg', 'favicon-32x32.png', 'favicon-16x16.png', 'favicon-64x64.png', 'apple-touch-icon.png'];
