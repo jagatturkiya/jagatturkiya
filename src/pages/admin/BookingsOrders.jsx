@@ -1,16 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { 
-  ShoppingBag, 
-  Search, 
-  Calendar, 
-  CheckCircle, 
-  Clock, 
-  Phone, 
-  Mail, 
-  ExternalLink,
-  MessageCircle,
-  FileSpreadsheet
-} from 'lucide-react';
+import { ShoppingBag, Search, Calendar, Phone, Mail, MessageCircle } from 'lucide-react';
 import { getOrders } from '../../lib/supabase';
 
 export default function BookingsOrders() {
@@ -41,107 +30,59 @@ export default function BookingsOrders() {
     return matchesFilter && matchesSearch;
   });
 
-  return (
-    <div className="bookings-orders-view" style={{ maxWidth: '1200px', margin: '0 auto' }}>
-      {/* Page Title */}
-      <div style={{ marginBottom: '1.75rem' }}>
-        <h1 style={{
-          fontSize: '1.65rem',
-          fontWeight: 800,
-          margin: '0 0 0.35rem',
-          color: '#0f172a',
-          fontFamily: "'Instrument Sans', sans-serif"
-        }}>
-          Sales & Bookings Log
-        </h1>
-        <p style={{ margin: 0, color: '#64748b', fontSize: '0.88rem' }}>
-          <strong>Bookings & Orders Hub:</strong> Track all system registrations, consulting slots, and Razorpay course payments.
-        </p>
-      </div>
+  const totalRevenue = orders.reduce((sum, o) => sum + (Number(o.amount) || 0), 0);
 
-      {/* 4 Stat Cards matching screenshot media_1792664289414.jpg */}
+  return (
+    <div className="dark-orders-view" style={{ maxWidth: '1200px', margin: '0 auto' }}>
       <div style={{
-        display: 'grid',
-        gridTemplateColumns: 'repeat(auto-fit, minmax(230px, 1fr))',
-        gap: '1.25rem',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'space-between',
+        flexWrap: 'wrap',
+        gap: '1rem',
         marginBottom: '1.75rem'
       }}>
-        <div style={{
-          backgroundColor: '#ffffff',
-          borderRadius: '12px',
-          padding: '1.25rem 1.4rem',
-          border: '1px solid #e2e8f0'
-        }}>
-          <div style={{ fontSize: '0.72rem', fontWeight: 700, color: '#64748b', letterSpacing: '0.05em' }}>
-            TOTAL REVENUE
-          </div>
-          <div style={{ fontSize: '1.65rem', fontWeight: 800, color: '#0f172a', margin: '0.4rem 0 0.2rem' }}>
-            ₹20,993.67
-          </div>
-          <div style={{ fontSize: '0.72rem', color: '#16a34a', display: 'flex', alignItems: 'center', gap: '0.35rem', fontWeight: 600 }}>
-            <span style={{ width: '6px', height: '6px', borderRadius: '50%', backgroundColor: '#16a34a' }} />
-            From Successful Sales
-          </div>
+        <div>
+          <h1 style={{
+            fontSize: '1.75rem',
+            fontWeight: 800,
+            margin: '0 0 0.35rem',
+            color: '#ffffff',
+            fontFamily: "'Instrument Sans', sans-serif"
+          }}>
+            Orders & Bookings
+          </h1>
+          <p style={{ margin: 0, color: '#94a3b8', fontSize: '0.85rem' }}>
+            Paid coaching sessions, digital products, and Razorpay transaction records.
+          </p>
         </div>
 
         <div style={{
-          backgroundColor: '#ffffff',
-          borderRadius: '12px',
-          padding: '1.25rem 1.4rem',
-          border: '1px solid #e2e8f0'
+          backgroundColor: '#0b0f19',
+          border: '1px solid rgba(255, 255, 255, 0.08)',
+          borderRadius: '10px',
+          padding: '0.5rem 1.15rem',
+          display: 'flex',
+          alignItems: 'center',
+          gap: '1rem'
         }}>
-          <div style={{ fontSize: '0.72rem', fontWeight: 700, color: '#64748b', letterSpacing: '0.05em' }}>
-            SUCCESSFUL ORDERS
-          </div>
-          <div style={{ fontSize: '1.65rem', fontWeight: 800, color: '#0f172a', margin: '0.4rem 0 0.2rem' }}>
-            9
-          </div>
-          <div style={{ fontSize: '0.72rem', color: '#64748b' }}>
-            Paid & Slot Confirmed
-          </div>
-        </div>
-
-        <div style={{
-          backgroundColor: '#ffffff',
-          borderRadius: '12px',
-          padding: '1.25rem 1.4rem',
-          border: '1px solid #e2e8f0'
-        }}>
-          <div style={{ fontSize: '0.72rem', fontWeight: 700, color: '#64748b', letterSpacing: '0.05em' }}>
-            ABANDONED / PENDING
-          </div>
-          <div style={{ fontSize: '1.65rem', fontWeight: 800, color: '#d97706', margin: '0.4rem 0 0.2rem' }}>
-            10
-          </div>
-          <div style={{ fontSize: '0.72rem', color: '#d97706' }}>
-            Checkout Initiated
-          </div>
-        </div>
-
-        <div style={{
-          backgroundColor: '#ffffff',
-          borderRadius: '12px',
-          padding: '1.25rem 1.4rem',
-          border: '1px solid #e2e8f0'
-        }}>
-          <div style={{ fontSize: '0.72rem', fontWeight: 700, color: '#64748b', letterSpacing: '0.05em' }}>
-            TOTAL HITS
-          </div>
-          <div style={{ fontSize: '1.65rem', fontWeight: 800, color: '#0f172a', margin: '0.4rem 0 0.2rem' }}>
-            19
-          </div>
-          <div style={{ fontSize: '0.72rem', color: '#64748b' }}>
-            Overall traffic log
+          <div>
+            <div style={{ fontSize: '0.65rem', color: '#64748b', fontWeight: 700, letterSpacing: '0.08em' }}>
+              TOTAL REVENUE
+            </div>
+            <div style={{ fontSize: '1.25rem', fontWeight: 800, color: '#ffffff' }}>
+              ₹{totalRevenue.toLocaleString('en-IN')}
+            </div>
           </div>
         </div>
       </div>
 
       {/* Filter and Search Bar */}
       <div style={{
-        backgroundColor: '#ffffff',
+        backgroundColor: '#0b0f19',
         borderRadius: '12px',
-        padding: '0.85rem 1.25rem',
-        border: '1px solid #e2e8f0',
+        padding: '0.75rem 1rem',
+        border: '1px solid rgba(255, 255, 255, 0.08)',
         marginBottom: '1.5rem',
         display: 'flex',
         alignItems: 'center',
@@ -149,19 +90,19 @@ export default function BookingsOrders() {
         flexWrap: 'wrap',
         gap: '1rem'
       }}>
-        <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-          {['All', 'Paid', 'Pending', 'Failed'].map(tab => (
+        <div style={{ display: 'flex', alignItems: 'center', gap: '0.4rem' }}>
+          {['All', 'Paid', 'Pending'].map(tab => (
             <button
               key={tab}
               onClick={() => setFilter(tab)}
               style={{
                 padding: '0.4rem 0.85rem',
                 borderRadius: '6px',
-                fontSize: '0.8rem',
+                fontSize: '0.78rem',
                 fontWeight: 600,
                 border: 'none',
-                backgroundColor: filter === tab ? '#0f172a' : '#f1f5f9',
-                color: filter === tab ? '#ffffff' : '#64748b',
+                backgroundColor: filter === tab ? '#ffffff' : 'rgba(255, 255, 255, 0.04)',
+                color: filter === tab ? '#050505' : '#94a3b8',
                 cursor: 'pointer'
               }}
             >
@@ -170,62 +111,58 @@ export default function BookingsOrders() {
           ))}
         </div>
 
-        <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', flex: '1 1 280px', maxWidth: '380px' }}>
+        <div style={{
+          display: 'flex',
+          alignItems: 'center',
+          gap: '0.6rem',
+          backgroundColor: 'rgba(255, 255, 255, 0.03)',
+          border: '1px solid rgba(255, 255, 255, 0.08)',
+          borderRadius: '8px',
+          padding: '0.45rem 0.85rem',
+          flex: '1 1 280px',
+          maxWidth: '380px'
+        }}>
+          <Search size={15} color="#64748b" />
           <input
             type="text"
-            placeholder="Search name, phone, email..."
+            placeholder="Search by customer, order ID, phone..."
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
             style={{
-              flex: 1,
-              padding: '0.45rem 0.85rem',
-              borderRadius: '8px',
-              border: '1px solid #cbd5e1',
-              fontSize: '0.84rem',
-              outline: 'none'
+              border: 'none',
+              backgroundColor: 'transparent',
+              outline: 'none',
+              fontSize: '0.85rem',
+              width: '100%',
+              color: '#ffffff'
             }}
           />
-          <button
-            style={{
-              backgroundColor: '#0f172a',
-              color: '#ffffff',
-              border: 'none',
-              padding: '0.45rem 0.95rem',
-              borderRadius: '8px',
-              fontSize: '0.82rem',
-              fontWeight: 600,
-              cursor: 'pointer'
-            }}
-          >
-            Find
-          </button>
         </div>
       </div>
 
-      {/* Orders Table matching media_1792664289414.jpg */}
+      {/* Orders Table */}
       <div style={{
-        backgroundColor: '#ffffff',
+        backgroundColor: '#0b0f19',
         borderRadius: '14px',
-        border: '1px solid #e2e8f0',
-        overflow: 'hidden',
-        boxShadow: '0 1px 3px rgba(0,0,0,0.03)'
+        border: '1px solid rgba(255, 255, 255, 0.08)',
+        overflow: 'hidden'
       }}>
         <div style={{ overflowX: 'auto' }}>
           <table style={{ width: '100%', borderCollapse: 'collapse', textAlign: 'left', fontSize: '0.84rem' }}>
             <thead>
               <tr style={{
-                backgroundColor: '#f8fafc',
-                borderBottom: '1px solid #e2e8f0',
+                backgroundColor: 'rgba(255, 255, 255, 0.02)',
+                borderBottom: '1px solid rgba(255, 255, 255, 0.08)',
                 color: '#64748b',
                 fontSize: '0.72rem',
                 fontWeight: 700,
-                letterSpacing: '0.06em'
+                letterSpacing: '0.08em'
               }}>
-                <th style={{ padding: '0.95rem 1.25rem' }}>ORDER ID & DATE</th>
-                <th style={{ padding: '0.95rem 1.25rem' }}>CUSTOMER DETAILS</th>
-                <th style={{ padding: '0.95rem 1.25rem' }}>PROGRAM / PRODUCT</th>
-                <th style={{ padding: '0.95rem 1.25rem' }}>SLOT DETAILS</th>
-                <th style={{ padding: '0.95rem 1.25rem' }}>AMOUNT</th>
+                <th style={{ padding: '1rem 1.25rem' }}>TRANSACTION & DATE</th>
+                <th style={{ padding: '1rem 1.25rem' }}>CLIENT DETAILS</th>
+                <th style={{ padding: '1rem 1.25rem' }}>PROGRAM PURCHASED</th>
+                <th style={{ padding: '1rem 1.25rem' }}>SLOT / ACCESS</th>
+                <th style={{ padding: '1rem 1.25rem', textAlign: 'right' }}>AMOUNT</th>
               </tr>
             </thead>
             <tbody>
@@ -237,60 +174,61 @@ export default function BookingsOrders() {
                   <tr
                     key={idx}
                     style={{
-                      borderBottom: '1px solid #f1f5f9',
-                      transition: 'background-color 0.1s ease'
+                      borderBottom: '1px solid rgba(255, 255, 255, 0.04)',
+                      transition: 'background-color 0.1s'
                     }}
-                    onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#fafafa'}
+                    onMouseEnter={(e) => e.currentTarget.style.backgroundColor = 'rgba(255, 255, 255, 0.02)'}
                     onMouseLeave={(e) => e.currentTarget.style.backgroundColor = 'transparent'}
                   >
-                    <td style={{ padding: '1rem 1.25rem' }}>
-                      <div style={{ fontWeight: 700, color: '#0f172a', fontSize: '0.84rem' }}>
+                    <td style={{ padding: '1.15rem 1.25rem' }}>
+                      <div style={{ fontWeight: 700, color: '#ffffff', fontSize: '0.86rem' }}>
                         {ord.order_id}
                       </div>
-                      <div style={{ fontSize: '0.72rem', color: '#94a3b8', marginTop: '0.2rem' }}>
+                      <div style={{ fontSize: '0.72rem', color: '#64748b', marginTop: '0.2rem' }}>
                         {ord.date}
                       </div>
                     </td>
 
-                    <td style={{ padding: '1rem 1.25rem' }}>
-                      <div style={{ fontWeight: 600, color: '#1e293b' }}>
+                    <td style={{ padding: '1.15rem 1.25rem' }}>
+                      <div style={{ fontWeight: 600, color: '#ffffff' }}>
                         {ord.customer_name}
                       </div>
-                      <div style={{ fontSize: '0.75rem', color: '#64748b', marginTop: '0.15rem' }}>
+                      <div style={{ fontSize: '0.74rem', color: '#94a3b8', marginTop: '0.15rem' }}>
                         {ord.customer_email}
                       </div>
-                      <div style={{ display: 'flex', alignItems: 'center', gap: '0.35rem', marginTop: '0.2rem' }}>
+                      {ord.customer_phone && (
                         <a
                           href={waUrl}
                           target="_blank"
                           rel="noopener noreferrer"
                           style={{
-                            fontSize: '0.75rem',
-                            color: '#059669',
+                            fontSize: '0.74rem',
+                            color: '#10b981',
                             textDecoration: 'none',
                             fontWeight: 600,
-                            display: 'flex',
+                            display: 'inline-flex',
                             alignItems: 'center',
-                            gap: '0.25rem'
+                            gap: '0.25rem',
+                            marginTop: '0.2rem'
                           }}
                         >
                           <MessageCircle size={12} />
                           <span>{ord.customer_phone}</span>
                         </a>
-                      </div>
+                      )}
                     </td>
 
-                    <td style={{ padding: '1rem 1.25rem' }}>
-                      <div style={{ fontWeight: 600, color: '#0f172a' }}>
+                    <td style={{ padding: '1.15rem 1.25rem' }}>
+                      <div style={{ fontWeight: 600, color: '#ffffff' }}>
                         {ord.item_title}
                       </div>
                       <span style={{
-                        fontSize: '0.68rem',
+                        fontSize: '0.65rem',
                         fontWeight: 700,
-                        padding: '0.15rem 0.45rem',
+                        padding: '0.12rem 0.45rem',
                         borderRadius: '4px',
-                        backgroundColor: '#f1f5f9',
-                        color: '#475569',
+                        backgroundColor: 'rgba(255, 255, 255, 0.06)',
+                        color: '#94a3b8',
                         display: 'inline-block',
                         marginTop: '0.25rem'
                       }}>
@@ -298,21 +236,21 @@ export default function BookingsOrders() {
                       </span>
                     </td>
 
-                    <td style={{ padding: '1rem 1.25rem' }}>
-                      <div style={{ display: 'flex', alignItems: 'center', gap: '0.4rem', color: '#475569', fontSize: '0.8rem' }}>
-                        <Calendar size={13} color="#6366f1" />
+                    <td style={{ padding: '1.15rem 1.25rem', color: '#94a3b8' }}>
+                      <div style={{ display: 'flex', alignItems: 'center', gap: '0.4rem', fontSize: '0.8rem' }}>
+                        <Calendar size={13} color="#94a3b8" />
                         <span>{ord.slot}</span>
                       </div>
                     </td>
 
-                    <td style={{ padding: '1rem 1.25rem' }}>
-                      <div style={{ fontWeight: 700, color: '#0f172a', fontSize: '0.92rem' }}>
-                        ₹{ord.amount}
+                    <td style={{ padding: '1.15rem 1.25rem', textAlign: 'right' }}>
+                      <div style={{ fontWeight: 800, color: '#ffffff', fontSize: '0.95rem' }}>
+                        ₹{Number(ord.amount).toLocaleString('en-IN')}
                       </div>
                       <span style={{
                         fontSize: '0.68rem',
                         fontWeight: 700,
-                        color: ord.status === 'Paid' ? '#16a34a' : '#d97706'
+                        color: ord.status === 'Paid' ? '#34d399' : '#fbbf24'
                       }}>
                         • {ord.status}
                       </span>

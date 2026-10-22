@@ -1,32 +1,12 @@
 import React, { useState, useEffect } from 'react';
-import { 
-  Layers, 
-  Plus, 
-  Folder, 
-  Edit3, 
-  ExternalLink, 
-  Check, 
-  X,
-  Sparkles,
-  ToggleLeft,
-  ToggleRight
-} from 'lucide-react';
-import { getPrograms, toggleProgramStatus } from '../../lib/supabase';
+import { Layers, Plus, Edit3, Trash2, Check, X, Folder, Sparkles } from 'lucide-react';
+import { getPrograms, saveProgram, toggleProgramStatus, deleteProgram } from '../../lib/supabase';
 
 export default function ProgramsCatalog() {
   const [programs, setPrograms] = useState([]);
   const [filter, setFilter] = useState('All');
-  const [isAddModalOpen, setIsAddModalOpen] = useState(false);
-  const [newProgram, setNewProgram] = useState({
-    title: '',
-    slug: '',
-    type: 'SESSION',
-    tag: 'Transformation',
-    price: 999,
-    original_price: 2999,
-    status: 'Active',
-    description: ''
-  });
+  const [editingProgram, setEditingProgram] = useState(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   useEffect(() => {
     loadPrograms();
@@ -37,26 +17,9 @@ export default function ProgramsCatalog() {
     setPrograms(data);
   };
 
-  const handleToggle = async (id) => {
-    const updated = await toggleProgramStatus(id);
-    setPrograms(updated);
-  };
-
-  const handleCreate = (e) => {
-    e.preventDefault();
-    const created = {
-      ...newProgram,
-      id: 'prog-' + Date.now(),
-      price: Number(newProgram.price),
-      original_price: Number(newProgram.original_price)
-    };
-    const updated = [created, ...programs];
-    setPrograms(updated);
-    try {
-      localStorage.setItem('jt_admin_programs', JSON.stringify(updated));
-    } catch {}
-    setIsAddModalOpen(false);
-    setNewProgram({
+  const handleOpenAdd = () => {
+    setEditingProgram({
+      id: '',
       title: '',
       slug: '',
       type: 'SESSION',
@@ -66,6 +29,32 @@ export default function ProgramsCatalog() {
       status: 'Active',
       description: ''
     });
+    setIsModalOpen(true);
+  };
+
+  const handleOpenEdit = (prog) => {
+    setEditingProgram({ ...prog });
+    setIsModalOpen(true);
+  };
+
+  const handleSave = async (e) => {
+    e.preventDefault();
+    if (!editingProgram.title) return;
+    const updated = await saveProgram(editingProgram);
+    setPrograms(updated);
+    setIsModalOpen(false);
+  };
+
+  const handleToggle = async (id) => {
+    const updated = await toggleProgramStatus(id);
+    setPrograms(updated);
+  };
+
+  const handleDelete = async (id) => {
+    if (window.confirm('Delete this program from catalog?')) {
+      const updated = await deleteProgram(id);
+      setPrograms(updated);
+    }
   };
 
   const filtered = programs.filter(p => {
@@ -78,8 +67,7 @@ export default function ProgramsCatalog() {
   });
 
   return (
-    <div className="programs-catalog-view" style={{ maxWidth: '1200px', margin: '0 auto' }}>
-      {/* Page Header */}
+    <div className="dark-programs-catalog" style={{ maxWidth: '1200px', margin: '0 auto' }}>
       <div style={{
         display: 'flex',
         alignItems: 'center',
@@ -90,27 +78,27 @@ export default function ProgramsCatalog() {
       }}>
         <div>
           <h1 style={{
-            fontSize: '1.65rem',
+            fontSize: '1.75rem',
             fontWeight: 800,
             margin: '0 0 0.35rem',
-            color: '#0f172a',
+            color: '#ffffff',
             fontFamily: "'Instrument Sans', sans-serif"
           }}>
-            Manage Programs & Courses
+            Programs & Pricing Catalog
           </h1>
-          <p style={{ margin: 0, color: '#64748b', fontSize: '0.88rem' }}>
-            <strong>Products Catalog:</strong> Manage your sessions, courses, bundles, and digital products.
+          <p style={{ margin: 0, color: '#94a3b8', fontSize: '0.85rem' }}>
+            Live coaching programs, strategy sessions, and digital blueprints. Real-time editable.
           </p>
         </div>
 
         <button
-          onClick={() => setIsAddModalOpen(true)}
+          onClick={handleOpenAdd}
           style={{
             display: 'flex',
             alignItems: 'center',
             gap: '0.5rem',
-            backgroundColor: '#0f172a',
-            color: '#ffffff',
+            backgroundColor: '#ffffff',
+            color: '#050505',
             border: 'none',
             padding: '0.62rem 1.25rem',
             borderRadius: '8px',
@@ -120,32 +108,31 @@ export default function ProgramsCatalog() {
           }}
         >
           <Plus size={16} />
-          <span>Add New Product</span>
+          <span>Add Program</span>
         </button>
       </div>
 
-      {/* Filter Tabs matching media_1792664221606.jpg */}
+      {/* Filter Tabs */}
       <div style={{
         display: 'flex',
         alignItems: 'center',
-        gap: '0.5rem',
+        gap: '0.4rem',
         marginBottom: '1.5rem',
         flexWrap: 'wrap'
       }}>
-        {['All Products', '1:1 Sessions', 'Courses', 'Bundles', 'Digital Products'].map((tab) => (
+        {['All', '1:1 Sessions', 'Courses', 'Bundles', 'Digital Products'].map((tab) => (
           <button
             key={tab}
             onClick={() => setFilter(tab)}
             style={{
-              padding: '0.45rem 0.95rem',
-              borderRadius: '8px',
-              fontSize: '0.82rem',
+              padding: '0.42rem 0.9rem',
+              borderRadius: '6px',
+              fontSize: '0.8rem',
               fontWeight: 600,
-              border: filter === tab ? '1px solid #cbd5e1' : '1px solid transparent',
-              backgroundColor: filter === tab ? '#ffffff' : '#f1f5f9',
-              color: filter === tab ? '#0f172a' : '#64748b',
-              cursor: 'pointer',
-              boxShadow: filter === tab ? '0 1px 3px rgba(0,0,0,0.06)' : 'none'
+              border: 'none',
+              backgroundColor: filter === tab ? '#ffffff' : 'rgba(255, 255, 255, 0.04)',
+              color: filter === tab ? '#050505' : '#94a3b8',
+              cursor: 'pointer'
             }}
           >
             {tab}
@@ -153,30 +140,29 @@ export default function ProgramsCatalog() {
         ))}
       </div>
 
-      {/* Products Table matching screenshot */}
+      {/* Dark Table */}
       <div style={{
-        backgroundColor: '#ffffff',
+        backgroundColor: '#0b0f19',
         borderRadius: '14px',
-        border: '1px solid #e2e8f0',
-        overflow: 'hidden',
-        boxShadow: '0 1px 3px rgba(0,0,0,0.03)'
+        border: '1px solid rgba(255, 255, 255, 0.08)',
+        overflow: 'hidden'
       }}>
         <div style={{ overflowX: 'auto' }}>
           <table style={{ width: '100%', borderCollapse: 'collapse', textAlign: 'left', fontSize: '0.84rem' }}>
             <thead>
               <tr style={{
-                backgroundColor: '#f8fafc',
-                borderBottom: '1px solid #e2e8f0',
+                backgroundColor: 'rgba(255, 255, 255, 0.02)',
+                borderBottom: '1px solid rgba(255, 255, 255, 0.08)',
                 color: '#64748b',
                 fontSize: '0.72rem',
                 fontWeight: 700,
-                letterSpacing: '0.06em'
+                letterSpacing: '0.08em'
               }}>
-                <th style={{ padding: '0.95rem 1.25rem' }}>PRODUCT NAME</th>
-                <th style={{ padding: '0.95rem 1.25rem' }}>TYPE & CATEGORY</th>
-                <th style={{ padding: '0.95rem 1.25rem' }}>PRICING</th>
-                <th style={{ padding: '0.95rem 1.25rem' }}>STATUS</th>
-                <th style={{ padding: '0.95rem 1.25rem', textAlign: 'right' }}>ACTION</th>
+                <th style={{ padding: '1rem 1.25rem' }}>PROGRAM & DETAILS</th>
+                <th style={{ padding: '1rem 1.25rem' }}>TYPE & TAG</th>
+                <th style={{ padding: '1rem 1.25rem' }}>PRICING</th>
+                <th style={{ padding: '1rem 1.25rem' }}>STATUS</th>
+                <th style={{ padding: '1rem 1.25rem', textAlign: 'right' }}>ACTIONS</th>
               </tr>
             </thead>
             <tbody>
@@ -184,108 +170,118 @@ export default function ProgramsCatalog() {
                 <tr
                   key={prod.id}
                   style={{
-                    borderBottom: '1px solid #f1f5f9',
-                    transition: 'background-color 0.1s ease'
+                    borderBottom: '1px solid rgba(255, 255, 255, 0.04)',
+                    transition: 'background-color 0.1s'
                   }}
-                  onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#fafafa'}
+                  onMouseEnter={(e) => e.currentTarget.style.backgroundColor = 'rgba(255, 255, 255, 0.02)'}
                   onMouseLeave={(e) => e.currentTarget.style.backgroundColor = 'transparent'}
                 >
-                  <td style={{ padding: '1rem 1.25rem' }}>
-                    <div style={{ display: 'flex', alignItems: 'center', gap: '0.85rem' }}>
-                      <div style={{
-                        width: '42px',
-                        height: '42px',
-                        borderRadius: '8px',
-                        backgroundColor: '#f1f5f9',
-                        border: '1px solid #e2e8f0',
-                        display: 'flex',
-                        alignItems: 'center',
-                        justifyContent: 'center',
-                        fontSize: '1.1rem'
-                      }}>
-                        📦
-                      </div>
-                      <div>
-                        <div style={{ fontWeight: 700, color: '#0f172a', fontSize: '0.86rem' }}>
-                          {prod.title}
-                        </div>
-                        <div style={{ fontSize: '0.72rem', color: '#94a3b8', marginTop: '0.15rem' }}>
-                          /program/{prod.slug || prod.id}
-                        </div>
-                      </div>
+                  <td style={{ padding: '1.15rem 1.25rem' }}>
+                    <div style={{ fontWeight: 700, color: '#ffffff', fontSize: '0.9rem' }}>
+                      {prod.title}
                     </div>
-                  </td>
-
-                  <td style={{ padding: '1rem 1.25rem' }}>
-                    <span style={{
-                      fontSize: '0.68rem',
-                      fontWeight: 700,
-                      padding: '0.15rem 0.5rem',
-                      borderRadius: '4px',
-                      backgroundColor: prod.type === 'SESSION' ? '#eff6ff' : prod.type === 'BUNDLE' ? '#fef3c7' : '#f5f3ff',
-                      color: prod.type === 'SESSION' ? '#2563eb' : prod.type === 'BUNDLE' ? '#d97706' : '#7c3aed',
-                      display: 'inline-block',
-                      marginBottom: '0.3rem'
-                    }}>
-                      {prod.type}
-                    </span>
-                    <div style={{ display: 'flex', alignItems: 'center', gap: '0.35rem', color: '#64748b', fontSize: '0.75rem' }}>
-                      <Folder size={12} />
-                      <span>{prod.tag}</span>
-                    </div>
-                  </td>
-
-                  <td style={{ padding: '1rem 1.25rem' }}>
-                    <div style={{ fontWeight: 700, color: '#0f172a', fontSize: '0.9rem' }}>
-                      ₹{prod.price}
-                    </div>
-                    {prod.original_price && (
-                      <div style={{ fontSize: '0.72rem', color: '#94a3b8', textDecoration: 'line-through' }}>
-                        ₹{prod.original_price}
+                    {prod.description && (
+                      <div style={{ fontSize: '0.74rem', color: '#94a3b8', marginTop: '0.2rem', maxWidth: '420px' }}>
+                        {prod.description}
                       </div>
                     )}
                   </td>
 
-                  <td style={{ padding: '1rem 1.25rem' }}>
+                  <td style={{ padding: '1.15rem 1.25rem' }}>
+                    <div style={{
+                      display: 'inline-block',
+                      fontSize: '0.68rem',
+                      fontWeight: 700,
+                      padding: '0.15rem 0.5rem',
+                      borderRadius: '4px',
+                      backgroundColor: 'rgba(255, 255, 255, 0.06)',
+                      color: '#ffffff',
+                      marginBottom: '0.25rem'
+                    }}>
+                      {prod.type}
+                    </div>
+                    <div style={{ fontSize: '0.74rem', color: '#64748b' }}>
+                      {prod.tag}
+                    </div>
+                  </td>
+
+                  <td style={{ padding: '1.15rem 1.25rem' }}>
+                    <div style={{ fontWeight: 800, color: '#ffffff', fontSize: '0.95rem' }}>
+                      ₹{Number(prod.price).toLocaleString('en-IN')}
+                    </div>
+                    {prod.original_price > 0 && (
+                      <div style={{ fontSize: '0.72rem', color: '#64748b', textDecoration: 'line-through' }}>
+                        ₹{Number(prod.original_price).toLocaleString('en-IN')}
+                      </div>
+                    )}
+                  </td>
+
+                  <td style={{ padding: '1.15rem 1.25rem' }}>
                     <button
                       onClick={() => handleToggle(prod.id)}
+                      title="Click to toggle status"
                       style={{
+                        background: 'none',
+                        border: '1px solid rgba(255, 255, 255, 0.1)',
+                        padding: '0.25rem 0.65rem',
+                        borderRadius: '6px',
+                        fontSize: '0.72rem',
+                        fontWeight: 700,
+                        color: prod.status === 'Active' ? '#34d399' : '#94a3b8',
+                        cursor: 'pointer',
                         display: 'inline-flex',
                         alignItems: 'center',
-                        gap: '0.35rem',
-                        padding: '0.25rem 0.65rem',
-                        borderRadius: '999px',
-                        border: 'none',
-                        fontSize: '0.75rem',
-                        fontWeight: 700,
-                        backgroundColor: prod.status === 'Active' ? '#dcfce7' : '#f1f5f9',
-                        color: prod.status === 'Active' ? '#15803d' : '#64748b',
-                        cursor: 'pointer'
+                        gap: '0.35rem'
                       }}
                     >
                       <span style={{
                         width: '6px',
                         height: '6px',
                         borderRadius: '50%',
-                        backgroundColor: prod.status === 'Active' ? '#16a34a' : '#94a3b8'
+                        backgroundColor: prod.status === 'Active' ? '#10b981' : '#64748b'
                       }} />
                       <span>{prod.status}</span>
                     </button>
                   </td>
 
-                  <td style={{ padding: '1rem 1.25rem', textAlign: 'right' }}>
-                    <button
-                      title="Edit Product"
-                      style={{
-                        background: 'none',
-                        border: 'none',
-                        color: '#64748b',
-                        cursor: 'pointer',
-                        padding: '0.35rem'
-                      }}
-                    >
-                      <Edit3 size={16} />
-                    </button>
+                  <td style={{ padding: '1.15rem 1.25rem', textAlign: 'right' }}>
+                    <div style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5rem' }}>
+                      <button
+                        onClick={() => handleOpenEdit(prod)}
+                        title="Edit Program"
+                        style={{
+                          backgroundColor: 'rgba(255, 255, 255, 0.05)',
+                          border: '1px solid rgba(255, 255, 255, 0.1)',
+                          color: '#ffffff',
+                          padding: '0.35rem 0.65rem',
+                          borderRadius: '6px',
+                          fontSize: '0.75rem',
+                          fontWeight: 600,
+                          cursor: 'pointer',
+                          display: 'flex',
+                          alignItems: 'center',
+                          gap: '0.3rem'
+                        }}
+                      >
+                        <Edit3 size={13} />
+                        <span>Edit</span>
+                      </button>
+
+                      <button
+                        onClick={() => handleDelete(prod.id)}
+                        title="Delete Program"
+                        style={{
+                          backgroundColor: 'rgba(239, 68, 68, 0.1)',
+                          border: '1px solid rgba(239, 68, 68, 0.2)',
+                          color: '#f87171',
+                          padding: '0.35rem',
+                          borderRadius: '6px',
+                          cursor: 'pointer'
+                        }}
+                      >
+                        <Trash2 size={14} />
+                      </button>
+                    </div>
                   </td>
                 </tr>
               ))}
@@ -294,12 +290,13 @@ export default function ProgramsCatalog() {
         </div>
       </div>
 
-      {/* Add New Product Modal */}
-      {isAddModalOpen && (
+      {/* Edit / Create Modal */}
+      {isModalOpen && editingProgram && (
         <div style={{
           position: 'fixed',
           inset: 0,
-          backgroundColor: 'rgba(0, 0, 0, 0.65)',
+          backgroundColor: 'rgba(0, 0, 0, 0.85)',
+          backdropFilter: 'blur(4px)',
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
@@ -307,53 +304,57 @@ export default function ProgramsCatalog() {
           zIndex: 1000
         }}>
           <div style={{
-            backgroundColor: '#ffffff',
+            backgroundColor: '#0b0f19',
             borderRadius: '16px',
+            border: '1px solid rgba(255, 255, 255, 0.12)',
             width: '100%',
-            maxWidth: '480px',
-            padding: '1.75rem',
-            boxShadow: '0 20px 40px rgba(0, 0, 0, 0.25)'
+            maxWidth: '500px',
+            padding: '2rem',
+            color: '#ffffff'
           }}>
-            <h2 style={{ fontSize: '1.25rem', fontWeight: 800, margin: '0 0 1.25rem', color: '#0f172a' }}>
-              Add New Product / Session
+            <h2 style={{ fontSize: '1.3rem', fontWeight: 800, margin: '0 0 1.25rem' }}>
+              {editingProgram.id ? 'Edit Program Details' : 'Create New Program'}
             </h2>
 
-            <form onSubmit={handleCreate} style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+            <form onSubmit={handleSave} style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
               <div>
-                <label style={{ fontSize: '0.8rem', fontWeight: 600, color: '#334155', display: 'block', marginBottom: '0.3rem' }}>
-                  Title *
+                <label style={{ fontSize: '0.78rem', color: '#94a3b8', display: 'block', marginBottom: '0.35rem' }}>
+                  Program Title *
                 </label>
                 <input
                   type="text"
                   required
-                  placeholder="e.g. Wealth Mastery Mentorship"
-                  value={newProgram.title}
-                  onChange={(e) => setNewProgram({ ...newProgram, title: e.target.value })}
+                  value={editingProgram.title}
+                  onChange={(e) => setEditingProgram({ ...editingProgram, title: e.target.value })}
                   style={{
                     width: '100%',
-                    padding: '0.6rem 0.85rem',
+                    backgroundColor: 'rgba(255, 255, 255, 0.04)',
+                    border: '1px solid rgba(255, 255, 255, 0.12)',
+                    color: '#ffffff',
+                    padding: '0.65rem 0.85rem',
                     borderRadius: '8px',
-                    border: '1px solid #cbd5e1',
-                    fontSize: '0.85rem'
+                    fontSize: '0.85rem',
+                    outline: 'none'
                   }}
                 />
               </div>
 
               <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '0.75rem' }}>
                 <div>
-                  <label style={{ fontSize: '0.8rem', fontWeight: 600, color: '#334155', display: 'block', marginBottom: '0.3rem' }}>
+                  <label style={{ fontSize: '0.78rem', color: '#94a3b8', display: 'block', marginBottom: '0.35rem' }}>
                     Type
                   </label>
                   <select
-                    value={newProgram.type}
-                    onChange={(e) => setNewProgram({ ...newProgram, type: e.target.value })}
+                    value={editingProgram.type}
+                    onChange={(e) => setEditingProgram({ ...editingProgram, type: e.target.value })}
                     style={{
                       width: '100%',
-                      padding: '0.6rem 0.85rem',
+                      backgroundColor: '#0f172a',
+                      border: '1px solid rgba(255, 255, 255, 0.12)',
+                      color: '#ffffff',
+                      padding: '0.65rem 0.85rem',
                       borderRadius: '8px',
-                      border: '1px solid #cbd5e1',
-                      fontSize: '0.85rem',
-                      backgroundColor: '#ffffff'
+                      fontSize: '0.85rem'
                     }}
                   >
                     <option value="SESSION">1:1 Session</option>
@@ -364,19 +365,20 @@ export default function ProgramsCatalog() {
                 </div>
 
                 <div>
-                  <label style={{ fontSize: '0.8rem', fontWeight: 600, color: '#334155', display: 'block', marginBottom: '0.3rem' }}>
+                  <label style={{ fontSize: '0.78rem', color: '#94a3b8', display: 'block', marginBottom: '0.35rem' }}>
                     Category Tag
                   </label>
                   <input
                     type="text"
-                    placeholder="e.g. Transformation"
-                    value={newProgram.tag}
-                    onChange={(e) => setNewProgram({ ...newProgram, tag: e.target.value })}
+                    value={editingProgram.tag}
+                    onChange={(e) => setEditingProgram({ ...editingProgram, tag: e.target.value })}
                     style={{
                       width: '100%',
-                      padding: '0.6rem 0.85rem',
+                      backgroundColor: 'rgba(255, 255, 255, 0.04)',
+                      border: '1px solid rgba(255, 255, 255, 0.12)',
+                      color: '#ffffff',
+                      padding: '0.65rem 0.85rem',
                       borderRadius: '8px',
-                      border: '1px solid #cbd5e1',
                       fontSize: '0.85rem'
                     }}
                   />
@@ -385,57 +387,80 @@ export default function ProgramsCatalog() {
 
               <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '0.75rem' }}>
                 <div>
-                  <label style={{ fontSize: '0.8rem', fontWeight: 600, color: '#334155', display: 'block', marginBottom: '0.3rem' }}>
-                    Price (₹) *
+                  <label style={{ fontSize: '0.78rem', color: '#94a3b8', display: 'block', marginBottom: '0.35rem' }}>
+                    Selling Price (₹) *
                   </label>
                   <input
                     type="number"
                     required
-                    placeholder="e.g. 999"
-                    value={newProgram.price}
-                    onChange={(e) => setNewProgram({ ...newProgram, price: e.target.value })}
+                    value={editingProgram.price}
+                    onChange={(e) => setEditingProgram({ ...editingProgram, price: e.target.value })}
                     style={{
                       width: '100%',
-                      padding: '0.6rem 0.85rem',
+                      backgroundColor: 'rgba(255, 255, 255, 0.04)',
+                      border: '1px solid rgba(255, 255, 255, 0.12)',
+                      color: '#ffffff',
+                      padding: '0.65rem 0.85rem',
                       borderRadius: '8px',
-                      border: '1px solid #cbd5e1',
                       fontSize: '0.85rem'
                     }}
                   />
                 </div>
 
                 <div>
-                  <label style={{ fontSize: '0.8rem', fontWeight: 600, color: '#334155', display: 'block', marginBottom: '0.3rem' }}>
+                  <label style={{ fontSize: '0.78rem', color: '#94a3b8', display: 'block', marginBottom: '0.35rem' }}>
                     Original Price (₹)
                   </label>
                   <input
                     type="number"
-                    placeholder="e.g. 2999"
-                    value={newProgram.original_price}
-                    onChange={(e) => setNewProgram({ ...newProgram, original_price: e.target.value })}
+                    value={editingProgram.original_price}
+                    onChange={(e) => setEditingProgram({ ...editingProgram, original_price: e.target.value })}
                     style={{
                       width: '100%',
-                      padding: '0.6rem 0.85rem',
+                      backgroundColor: 'rgba(255, 255, 255, 0.04)',
+                      border: '1px solid rgba(255, 255, 255, 0.12)',
+                      color: '#ffffff',
+                      padding: '0.65rem 0.85rem',
                       borderRadius: '8px',
-                      border: '1px solid #cbd5e1',
                       fontSize: '0.85rem'
                     }}
                   />
                 </div>
               </div>
 
+              <div>
+                <label style={{ fontSize: '0.78rem', color: '#94a3b8', display: 'block', marginBottom: '0.35rem' }}>
+                  Brief Description
+                </label>
+                <textarea
+                  rows={2}
+                  value={editingProgram.description || ''}
+                  onChange={(e) => setEditingProgram({ ...editingProgram, description: e.target.value })}
+                  style={{
+                    width: '100%',
+                    backgroundColor: 'rgba(255, 255, 255, 0.04)',
+                    border: '1px solid rgba(255, 255, 255, 0.12)',
+                    color: '#ffffff',
+                    padding: '0.65rem 0.85rem',
+                    borderRadius: '8px',
+                    fontSize: '0.85rem',
+                    resize: 'vertical'
+                  }}
+                />
+              </div>
+
               <div style={{ display: 'flex', gap: '0.75rem', marginTop: '0.5rem' }}>
                 <button
                   type="button"
-                  onClick={() => setIsAddModalOpen(false)}
+                  onClick={() => setIsModalOpen(false)}
                   style={{
                     flex: 1,
-                    backgroundColor: '#f1f5f9',
-                    border: 'none',
+                    backgroundColor: 'transparent',
+                    border: '1px solid rgba(255, 255, 255, 0.15)',
+                    color: '#94a3b8',
                     padding: '0.65rem',
                     borderRadius: '8px',
                     fontWeight: 600,
-                    color: '#475569',
                     cursor: 'pointer'
                   }}
                 >
@@ -445,16 +470,16 @@ export default function ProgramsCatalog() {
                   type="submit"
                   style={{
                     flex: 1,
-                    backgroundColor: '#0f172a',
+                    backgroundColor: '#ffffff',
+                    color: '#050505',
                     border: 'none',
                     padding: '0.65rem',
                     borderRadius: '8px',
                     fontWeight: 700,
-                    color: '#ffffff',
                     cursor: 'pointer'
                   }}
                 >
-                  Save Product
+                  Save Changes
                 </button>
               </div>
             </form>

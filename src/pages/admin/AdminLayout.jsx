@@ -15,9 +15,7 @@ import {
   Menu,
   X,
   ExternalLink,
-  ChevronDown,
-  ShieldCheck,
-  Bell
+  ChevronDown
 } from 'lucide-react';
 
 export default function AdminLayout() {
@@ -32,64 +30,61 @@ export default function AdminLayout() {
 
   const navGroups = [
     {
-      group: 'OVERVIEW',
+      group: 'OPERATIONS',
       items: [
-        { label: 'Dashboard', path: '/admin', icon: LayoutDashboard, exact: true }
+        { label: 'Overview', path: '/admin', icon: LayoutDashboard, exact: true }
       ]
     },
     {
-      group: 'SALES & CRM',
+      group: 'CLIENTS & SALES',
       items: [
-        { label: 'Bookings & Orders', path: '/admin/bookings', icon: ShoppingBag },
-        { label: 'Leads CRM', path: '/admin/leads', icon: Users, badge: 'Live' }
+        { label: 'Leads CRM', path: '/admin/leads', icon: Users, badge: 'Live' },
+        { label: 'Bookings & Orders', path: '/admin/bookings', icon: ShoppingBag }
       ]
     },
     {
       group: 'CATALOG',
       items: [
-        { label: 'Programs & Courses', path: '/admin/programs', icon: Layers }
+        { label: 'Programs & Sessions', path: '/admin/programs', icon: Layers }
       ]
     },
     {
-      group: 'CONTENT',
+      group: 'CONTENT & COMMUNITY',
       items: [
         { label: 'Success Stories', path: '/admin/stories', icon: BookOpen },
-        { label: 'Testimonials', path: '/admin/testimonials', icon: Star },
-        { label: 'Blogs & Articles', path: '/admin/blogs', icon: FileText },
-        { label: 'Comments Inbox', path: '/admin/comments', icon: MessageSquare },
-        { label: 'Subscribers', path: '/admin/subscribers', icon: Mail }
+        { label: 'Audience Discussions', path: '/admin/comments', icon: MessageSquare },
+        { label: 'Client Testimonials', path: '/admin/testimonials', icon: Star },
+        { label: 'Articles & Insights', path: '/admin/blogs', icon: FileText }
       ]
     },
     {
       group: 'SYSTEM',
       items: [
-        { label: 'Web Settings', path: '/admin/settings', icon: Settings }
+        { label: 'Database & Settings', path: '/admin/settings', icon: Settings }
       ]
     }
   ];
 
-  // Helper for active breadcrumbs title
   const getPageTitle = () => {
     const path = location.pathname;
-    if (path === '/admin') return 'Admin Dashboard';
+    if (path === '/admin') return 'Executive Overview';
     if (path.includes('leads')) return 'Leads CRM';
-    if (path.includes('bookings')) return 'Sales & Bookings Log';
-    if (path.includes('programs')) return 'Manage Programs & Courses';
-    if (path.includes('comments')) return 'Comments Inbox';
-    if (path.includes('stories')) return 'Success Stories Management';
-    if (path.includes('testimonials')) return 'Manage Testimonials';
-    if (path.includes('blogs')) return 'Blogs & Articles Management';
-    if (path.includes('subscribers')) return 'Audience Subscribers';
-    if (path.includes('settings')) return 'System Settings';
-    return 'Admin Dashboard';
+    if (path.includes('bookings')) return 'Orders & Transactions';
+    if (path.includes('programs')) return 'Programs & Pricing Catalog';
+    if (path.includes('comments')) return 'Audience Discussions & Replies';
+    if (path.includes('stories')) return 'Stories & Case Studies';
+    if (path.includes('testimonials')) return 'Client Testimonials';
+    if (path.includes('blogs')) return 'Articles & Essays';
+    if (path.includes('settings')) return 'Database & Web Settings';
+    return 'Executive Overview';
   };
 
   return (
-    <div className="admin-portal-root" style={{
+    <div className="admin-portal-dark-root" style={{
       display: 'flex',
       minHeight: '100vh',
-      backgroundColor: '#f3f4f6',
-      color: '#1f2937',
+      backgroundColor: '#05070e',
+      color: '#e2e8f0',
       fontFamily: "'Inter', -apple-system, BlinkMacSystemFont, sans-serif"
     }}>
       {/* Mobile Sidebar Overlay */}
@@ -99,17 +94,17 @@ export default function AdminLayout() {
           style={{
             position: 'fixed',
             inset: 0,
-            backgroundColor: 'rgba(0, 0, 0, 0.65)',
+            backgroundColor: 'rgba(0, 0, 0, 0.8)',
             zIndex: 998,
-            backdropFilter: 'blur(3px)'
+            backdropFilter: 'blur(4px)'
           }}
         />
       )}
 
-      {/* Dark Sidebar matching Jagat Turkiya Screenshots */}
+      {/* Dark Luxury Executive Sidebar */}
       <aside style={{
         width: '260px',
-        backgroundColor: '#0a0d18',
+        backgroundColor: '#070a12',
         color: '#94a3b8',
         display: 'flex',
         flexDirection: 'column',
@@ -120,20 +115,20 @@ export default function AdminLayout() {
         zIndex: 999,
         transform: sidebarOpen ? 'translateX(0)' : 'none',
         transition: 'transform 0.25s ease',
-        borderRight: '1px solid rgba(255, 255, 255, 0.06)',
-        boxShadow: '4px 0 24px rgba(0, 0, 0, 0.35)'
+        borderRight: '1px solid rgba(255, 255, 255, 0.08)',
+        boxShadow: '4px 0 30px rgba(0, 0, 0, 0.5)'
       }}
       className={sidebarOpen ? 'sidebar-mobile-open' : 'sidebar-desktop'}
       >
-        {/* Brand Logo Header */}
+        {/* Brand Header */}
         <div style={{
           padding: '1.4rem 1.5rem',
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'space-between',
-          borderBottom: '1px solid rgba(255, 255, 255, 0.05)'
+          borderBottom: '1px solid rgba(255, 255, 255, 0.06)'
         }}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '0.65rem' }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
             <span style={{
               display: 'flex',
               alignItems: 'center',
@@ -141,25 +136,37 @@ export default function AdminLayout() {
               width: '32px',
               height: '32px',
               borderRadius: '8px',
-              background: 'linear-gradient(135deg, #f59e0b, #d97706)',
+              background: '#0d121f',
+              border: '1px solid rgba(255, 255, 255, 0.15)',
               color: '#ffffff',
-              fontSize: '1.05rem',
-              fontWeight: 800
-            }}>
-              ⚡
-            </span>
-            <span style={{
-              color: '#ffffff',
-              fontSize: '1.15rem',
+              fontSize: '0.82rem',
               fontWeight: 800,
-              letterSpacing: '0.08em',
-              fontFamily: "'Instrument Sans', sans-serif"
+              letterSpacing: '0.04em'
             }}>
-              ADMIN
+              JT
             </span>
+            <div>
+              <div style={{
+                color: '#ffffff',
+                fontSize: '0.92rem',
+                fontWeight: 800,
+                letterSpacing: '0.06em',
+                fontFamily: "'Instrument Sans', sans-serif"
+              }}>
+                JAGAT TURKIYA
+              </div>
+              <div style={{
+                fontSize: '0.62rem',
+                color: '#94a3b8',
+                letterSpacing: '0.08em',
+                textTransform: 'uppercase',
+                fontWeight: 600
+              }}>
+                Executive Portal
+              </div>
+            </div>
           </div>
 
-          {/* Close for mobile */}
           <button
             onClick={() => setSidebarOpen(false)}
             style={{
@@ -175,7 +182,7 @@ export default function AdminLayout() {
           </button>
         </div>
 
-        {/* Scrollable Navigation Items */}
+        {/* Scrollable Nav List */}
         <div style={{
           flex: 1,
           overflowY: 'auto',
@@ -184,10 +191,10 @@ export default function AdminLayout() {
           {navGroups.map((group, gIdx) => (
             <div key={gIdx} style={{ marginBottom: '1.4rem' }}>
               <div style={{
-                fontSize: '0.68rem',
+                fontSize: '0.65rem',
                 fontWeight: 700,
-                color: '#475569',
-                letterSpacing: '0.08em',
+                color: '#64748b',
+                letterSpacing: '0.1em',
                 padding: '0.3rem 0.85rem',
                 marginBottom: '0.35rem'
               }}>
@@ -212,27 +219,26 @@ export default function AdminLayout() {
                       gap: '0.75rem',
                       padding: '0.62rem 0.85rem',
                       borderRadius: '8px',
-                      color: isActive ? '#ffffff' : '#8b9bb4',
-                      backgroundColor: isActive ? 'rgba(79, 70, 229, 0.22)' : 'transparent',
-                      borderLeft: isActive ? '3px solid #6366f1' : '3px solid transparent',
+                      color: isActive ? '#ffffff' : '#94a3b8',
+                      backgroundColor: isActive ? 'rgba(255, 255, 255, 0.08)' : 'transparent',
+                      borderLeft: isActive ? '3px solid #ffffff' : '3px solid transparent',
                       textDecoration: 'none',
-                      fontSize: '0.86rem',
+                      fontSize: '0.84rem',
                       fontWeight: isActive ? 600 : 500,
                       transition: 'all 0.15s ease',
-                      marginBottom: '0.2rem'
+                      marginBottom: '0.15rem'
                     }}
                   >
-                    <Icon size={17} style={{ color: isActive ? '#818cf8' : '#64748b' }} />
+                    <Icon size={16} style={{ color: isActive ? '#ffffff' : '#64748b' }} />
                     <span style={{ flex: 1 }}>{item.label}</span>
                     {item.badge && (
                       <span style={{
                         backgroundColor: '#10b981',
                         color: '#ffffff',
-                        fontSize: '0.62rem',
+                        fontSize: '0.6rem',
                         fontWeight: 700,
-                        padding: '0.12rem 0.45rem',
-                        borderRadius: '999px',
-                        letterSpacing: '0.04em'
+                        padding: '0.1rem 0.45rem',
+                        borderRadius: '4px'
                       }}>
                         {item.badge}
                       </span>
@@ -243,7 +249,6 @@ export default function AdminLayout() {
             </div>
           ))}
 
-          {/* Quick link to live public site */}
           <div style={{ padding: '0.5rem 0.85rem' }}>
             <a
               href="#/"
@@ -257,7 +262,8 @@ export default function AdminLayout() {
                 borderRadius: '8px',
                 color: '#64748b',
                 backgroundColor: 'rgba(255, 255, 255, 0.03)',
-                fontSize: '0.8rem',
+                border: '1px solid rgba(255, 255, 255, 0.05)',
+                fontSize: '0.78rem',
                 textDecoration: 'none',
                 transition: 'color 0.15s'
               }}
@@ -268,36 +274,37 @@ export default function AdminLayout() {
           </div>
         </div>
 
-        {/* Bottom SuperAdmin Pill Profile matching screenshots */}
+        {/* Profile Lockup at bottom */}
         <div style={{
           padding: '1rem',
-          borderTop: '1px solid rgba(255, 255, 255, 0.05)',
-          backgroundColor: '#070a14',
+          borderTop: '1px solid rgba(255, 255, 255, 0.06)',
+          backgroundColor: '#05070e',
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'space-between'
         }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
             <div style={{
-              width: '36px',
-              height: '36px',
-              borderRadius: '9px',
-              backgroundColor: '#6366f1',
+              width: '34px',
+              height: '34px',
+              borderRadius: '8px',
+              backgroundColor: '#1e293b',
+              border: '1px solid rgba(255, 255, 255, 0.12)',
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
               color: '#ffffff',
               fontWeight: 700,
-              fontSize: '1rem'
+              fontSize: '0.9rem'
             }}>
               J
             </div>
             <div>
-              <div style={{ color: '#ffffff', fontSize: '0.84rem', fontWeight: 600 }}>
+              <div style={{ color: '#ffffff', fontSize: '0.82rem', fontWeight: 600 }}>
                 Jagat Turkiya
               </div>
-              <div style={{ color: '#6366f1', fontSize: '0.65rem', fontWeight: 700, letterSpacing: '0.06em' }}>
-                SUPERADMIN
+              <div style={{ color: '#94a3b8', fontSize: '0.64rem', fontWeight: 600, letterSpacing: '0.04em' }}>
+                Principal Coach
               </div>
             </div>
           </div>
@@ -311,11 +318,9 @@ export default function AdminLayout() {
               color: '#64748b',
               cursor: 'pointer',
               padding: '0.4rem',
-              borderRadius: '6px',
               display: 'flex',
               alignItems: 'center',
-              justifyContent: 'center',
-              transition: 'color 0.15s'
+              justifyContent: 'center'
             }}
           >
             <LogOut size={16} />
@@ -323,30 +328,30 @@ export default function AdminLayout() {
         </div>
       </aside>
 
-      {/* Main Administrative Workspace */}
+      {/* Main Workspace */}
       <div style={{
         flex: 1,
         marginLeft: '260px',
         display: 'flex',
         flexDirection: 'column',
-        minWidth: 0
+        minWidth: 0,
+        backgroundColor: '#05070e'
       }}
       className="admin-main-wrap"
       >
         {/* Top Navbar */}
         <header style={{
-          height: '62px',
-          backgroundColor: '#ffffff',
-          borderBottom: '1px solid #e5e7eb',
+          height: '60px',
+          backgroundColor: '#070a12',
+          borderBottom: '1px solid rgba(255, 255, 255, 0.07)',
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'space-between',
-          padding: '0 1.75rem',
+          padding: '0 2rem',
           position: 'sticky',
           top: 0,
           zIndex: 100
         }}>
-          {/* Left: Mobile hamburger & Breadcrumb */}
           <div style={{ display: 'flex', alignItems: 'center', gap: '0.85rem' }}>
             <button
               onClick={() => setSidebarOpen(true)}
@@ -354,46 +359,43 @@ export default function AdminLayout() {
                 display: 'none',
                 background: 'none',
                 border: 'none',
-                color: '#374151',
+                color: '#ffffff',
                 cursor: 'pointer',
                 padding: '0.3rem'
               }}
               className="admin-mobile-toggle"
             >
-              <Menu size={22} />
+              <Menu size={20} />
             </button>
 
-            <div style={{ display: 'flex', alignItems: 'center', gap: '0.4rem', fontSize: '0.85rem', color: '#6b7280' }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '0.45rem', fontSize: '0.82rem', color: '#64748b' }}>
               <span>Admin</span>
               <span>/</span>
-              <span style={{ color: '#111827', fontWeight: 600 }}>{getPageTitle()}</span>
+              <span style={{ color: '#ffffff', fontWeight: 600 }}>{getPageTitle()}</span>
             </div>
           </div>
 
-          {/* Right User menu badge */}
-          <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
             <div style={{
               display: 'flex',
               alignItems: 'center',
               gap: '0.4rem',
-              backgroundColor: '#f9fafb',
-              border: '1px solid #e5e7eb',
+              backgroundColor: 'rgba(255, 255, 255, 0.04)',
+              border: '1px solid rgba(255, 255, 255, 0.08)',
               padding: '0.35rem 0.75rem',
-              borderRadius: '8px',
-              fontSize: '0.82rem',
-              fontWeight: 500,
-              color: '#374151',
-              cursor: 'pointer'
+              borderRadius: '6px',
+              fontSize: '0.8rem',
+              color: '#e2e8f0'
             }}>
-              <span>Jagat Turkiya</span>
-              <ChevronDown size={14} color="#6b7280" />
+              <span style={{ width: '6px', height: '6px', borderRadius: '50%', backgroundColor: '#10b981' }} />
+              <span>Supabase Connected</span>
             </div>
           </div>
         </header>
 
-        {/* Dynamic Inner Page Content */}
+        {/* Inner Content */}
         <main style={{
-          padding: '1.75rem',
+          padding: '2rem',
           flex: 1,
           overflowY: 'auto'
         }}>

@@ -7,13 +7,9 @@ import {
   Clock, 
   Trash2, 
   Plus, 
-  ExternalLink,
-  ChevronDown,
-  CheckCircle,
-  MessageCircle,
   RefreshCw,
-  Sparkles,
-  Filter
+  MessageCircle,
+  ExternalLink
 } from 'lucide-react';
 import { getLeads, updateLeadStatus, deleteLead, submitLead } from '../../lib/supabase';
 
@@ -47,7 +43,7 @@ export default function LeadsCRM() {
   };
 
   const handleDelete = async (id) => {
-    if (window.confirm('Are you sure you want to delete this lead?')) {
+    if (window.confirm('Delete this lead record?')) {
       const updated = await deleteLead(id);
       setLeads(updated);
     }
@@ -56,7 +52,7 @@ export default function LeadsCRM() {
   const handleCreateLead = async (e) => {
     e.preventDefault();
     if (!newLeadForm.name || !newLeadForm.phone) {
-      alert('Please provide name and phone number.');
+      alert('Please provide client name and phone number.');
       return;
     }
     setIsSubmittingNew(true);
@@ -73,7 +69,6 @@ export default function LeadsCRM() {
     });
   };
 
-  // Filter & Search
   const filteredLeads = leads.filter(lead => {
     const matchesFilter = 
       filter === 'All' ? true :
@@ -92,7 +87,7 @@ export default function LeadsCRM() {
   });
 
   return (
-    <div className="leads-crm-view" style={{ maxWidth: '1200px', margin: '0 auto' }}>
+    <div className="dark-leads-crm" style={{ maxWidth: '1200px', margin: '0 auto' }}>
       {/* Top Header */}
       <div style={{
         display: 'flex',
@@ -104,34 +99,33 @@ export default function LeadsCRM() {
       }}>
         <div>
           <h1 style={{
-            fontSize: '1.65rem',
+            fontSize: '1.75rem',
             fontWeight: 800,
             margin: '0 0 0.35rem',
-            color: '#0f172a',
+            color: '#ffffff',
             fontFamily: "'Instrument Sans', sans-serif"
           }}>
-            Leads CRM
+            Leads & Clients CRM
           </h1>
-          <p style={{ margin: 0, color: '#64748b', fontSize: '0.88rem' }}>
-            Review inquiries, track consultation pipelines, and initiate 1-click WhatsApp conversations.
+          <p style={{ margin: 0, color: '#94a3b8', fontSize: '0.85rem' }}>
+            Live client inquiries from website forms with 1-click direct WhatsApp conversation links.
           </p>
         </div>
 
         <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
           <button
             onClick={loadLeads}
-            title="Refresh Leads"
             style={{
               display: 'flex',
               alignItems: 'center',
               gap: '0.45rem',
-              backgroundColor: '#ffffff',
-              border: '1px solid #e2e8f0',
-              padding: '0.55rem 0.85rem',
+              backgroundColor: '#0b0f19',
+              border: '1px solid rgba(255, 255, 255, 0.1)',
+              padding: '0.6rem 0.95rem',
               borderRadius: '8px',
               fontSize: '0.82rem',
               fontWeight: 600,
-              color: '#475569',
+              color: '#94a3b8',
               cursor: 'pointer'
             }}
           >
@@ -145,29 +139,28 @@ export default function LeadsCRM() {
               display: 'flex',
               alignItems: 'center',
               gap: '0.5rem',
-              backgroundColor: '#4338ca',
-              color: '#ffffff',
+              backgroundColor: '#ffffff',
+              color: '#050505',
               border: 'none',
-              padding: '0.58rem 1.15rem',
+              padding: '0.62rem 1.25rem',
               borderRadius: '8px',
               fontSize: '0.84rem',
-              fontWeight: 600,
-              cursor: 'pointer',
-              boxShadow: '0 2px 8px rgba(67, 56, 202, 0.25)'
+              fontWeight: 700,
+              cursor: 'pointer'
             }}
           >
             <Plus size={16} />
-            <span>Add Manual Lead</span>
+            <span>Add Inquired Client</span>
           </button>
         </div>
       </div>
 
       {/* Filter and Search Bar */}
       <div style={{
-        backgroundColor: '#ffffff',
+        backgroundColor: '#0b0f19',
         borderRadius: '12px',
-        padding: '0.85rem 1rem',
-        border: '1px solid #e2e8f0',
+        padding: '0.75rem 1rem',
+        border: '1px solid rgba(255, 255, 255, 0.08)',
         marginBottom: '1.5rem',
         display: 'flex',
         alignItems: 'center',
@@ -175,22 +168,21 @@ export default function LeadsCRM() {
         flexWrap: 'wrap',
         gap: '1rem'
       }}>
-        {/* Search Input */}
         <div style={{
           display: 'flex',
           alignItems: 'center',
           gap: '0.6rem',
-          backgroundColor: '#f8fafc',
-          border: '1px solid #e2e8f0',
+          backgroundColor: 'rgba(255, 255, 255, 0.03)',
+          border: '1px solid rgba(255, 255, 255, 0.08)',
           borderRadius: '8px',
           padding: '0.45rem 0.85rem',
           flex: '1 1 280px',
-          maxWidth: '420px'
+          maxWidth: '380px'
         }}>
-          <Search size={16} color="#94a3b8" />
+          <Search size={15} color="#64748b" />
           <input
             type="text"
-            placeholder="Search by name, email, phone..."
+            placeholder="Search by name, phone, notes..."
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
             style={{
@@ -199,12 +191,11 @@ export default function LeadsCRM() {
               outline: 'none',
               fontSize: '0.85rem',
               width: '100%',
-              color: '#0f172a'
+              color: '#ffffff'
             }}
           />
         </div>
 
-        {/* Status Filters */}
         <div style={{ display: 'flex', alignItems: 'center', gap: '0.4rem', flexWrap: 'wrap' }}>
           {['All', 'New', 'In Conversation', 'Closed'].map((tab) => {
             const isActive = filter === tab;
@@ -215,23 +206,22 @@ export default function LeadsCRM() {
                 style={{
                   padding: '0.4rem 0.85rem',
                   borderRadius: '6px',
-                  fontSize: '0.8rem',
+                  fontSize: '0.78rem',
                   fontWeight: 600,
                   border: 'none',
-                  backgroundColor: isActive ? '#4338ca' : '#f1f5f9',
-                  color: isActive ? '#ffffff' : '#64748b',
-                  cursor: 'pointer',
-                  transition: 'all 0.15s ease'
+                  backgroundColor: isActive ? '#ffffff' : 'transparent',
+                  color: isActive ? '#050505' : '#94a3b8',
+                  cursor: 'pointer'
                 }}
               >
-                {tab === 'All' ? `All Leads (${leads.length})` : tab}
+                {tab === 'All' ? `All Inquiries (${leads.length})` : tab}
               </button>
             );
           })}
         </div>
       </div>
 
-      {/* Leads 2-Column Grid matching user's screenshot media_1792664309970.jpg */}
+      {/* 2-Column Dark Luxury Leads Grid */}
       <div style={{
         display: 'grid',
         gridTemplateColumns: 'repeat(auto-fill, minmax(360px, 1fr))',
@@ -241,151 +231,106 @@ export default function LeadsCRM() {
           const isExpanded = expandedMessageId === lead.id;
           const cleanPhone = (lead.phone || '').replace(/[^0-9]/g, '');
           const waNumber = cleanPhone.length === 10 ? `91${cleanPhone}` : cleanPhone;
-          const waMessage = encodeURIComponent(`Hi ${lead.name || 'there'}, this is Jagat Turkiya Team. We received your consultation request regarding the Mastermind program.`);
+          const waMessage = encodeURIComponent(`Hi ${lead.name || 'there'}, this is Jagat Turkiya Team. We received your consultation inquiry.`);
           const waUrl = `https://wa.me/${waNumber}?text=${waMessage}`;
 
           return (
             <div
               key={lead.id}
               style={{
-                backgroundColor: '#ffffff',
+                backgroundColor: '#0b0f19',
                 borderRadius: '14px',
-                border: '1px solid #e2e8f0',
-                padding: '1.25rem',
+                border: '1px solid rgba(255, 255, 255, 0.08)',
+                padding: '1.4rem',
                 display: 'flex',
                 flexDirection: 'column',
-                boxShadow: '0 1px 3px rgba(0,0,0,0.03)',
-                position: 'relative'
+                boxShadow: '0 4px 20px rgba(0, 0, 0, 0.25)'
               }}
             >
-              {/* Card Header */}
-              <div style={{
-                display: 'flex',
-                alignItems: 'flex-start',
-                justifyContent: 'space-between',
-                marginBottom: '0.85rem'
-              }}>
+              {/* Header */}
+              <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', marginBottom: '0.85rem' }}>
                 <div>
-                  <h3 style={{
-                    fontSize: '1.08rem',
-                    fontWeight: 700,
-                    margin: '0 0 0.25rem',
-                    color: '#0f172a'
-                  }}>
+                  <h3 style={{ fontSize: '1.1rem', fontWeight: 700, margin: '0 0 0.25rem', color: '#ffffff' }}>
                     {lead.name}
                   </h3>
-                  <div style={{
-                    display: 'flex',
-                    alignItems: 'center',
-                    gap: '0.35rem',
-                    fontSize: '0.72rem',
-                    color: '#64748b'
-                  }}>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '0.35rem', fontSize: '0.72rem', color: '#64748b' }}>
                     <Clock size={12} />
                     <span>{lead.created_at || 'Recently'}</span>
                   </div>
                 </div>
 
-                <input
-                  type="checkbox"
-                  style={{ width: '16px', height: '16px', cursor: 'pointer', accentColor: '#4338ca' }}
-                />
-              </div>
-
-              {/* Status Dropdown Pill */}
-              <div style={{ marginBottom: '1rem' }}>
                 <select
                   value={lead.status}
                   onChange={(e) => handleStatusChange(lead.id, e.target.value)}
                   style={{
-                    backgroundColor: lead.status.includes('Closed') 
-                      ? '#ecfdf5' 
-                      : lead.status === 'New' 
-                      ? '#eff6ff' 
-                      : '#fef3c7',
-                    color: lead.status.includes('Closed')
-                      ? '#065f46'
-                      : lead.status === 'New'
-                      ? '#1e40af'
-                      : '#92400e',
-                    border: '1px solid',
-                    borderColor: lead.status.includes('Closed')
-                      ? '#a7f3d0'
-                      : lead.status === 'New'
-                      ? '#bfdbfe'
-                      : '#fde68a',
+                    backgroundColor: lead.status === 'New' 
+                      ? 'rgba(239, 68, 68, 0.15)' 
+                      : lead.status.includes('Closed')
+                      ? 'rgba(16, 185, 129, 0.15)'
+                      : 'rgba(245, 158, 11, 0.15)',
+                    color: lead.status === 'New' 
+                      ? '#f87171' 
+                      : lead.status.includes('Closed')
+                      ? '#34d399'
+                      : '#fbbf24',
+                    border: '1px solid rgba(255, 255, 255, 0.1)',
                     padding: '0.3rem 0.65rem',
-                    borderRadius: '999px',
-                    fontSize: '0.74rem',
+                    borderRadius: '6px',
+                    fontSize: '0.72rem',
                     fontWeight: 700,
-                    cursor: 'pointer',
-                    outline: 'none'
+                    outline: 'none',
+                    cursor: 'pointer'
                   }}
                 >
-                  <option value="New">New (Pending)</option>
-                  <option value="In Conversation">In Conversation</option>
-                  <option value="Follow-up">Follow-up</option>
-                  <option value="Closed (Resolved)">Closed (Resolved)</option>
+                  <option value="New" style={{ background: '#0f172a', color: '#fff' }}>New (Pending)</option>
+                  <option value="In Conversation" style={{ background: '#0f172a', color: '#fff' }}>In Conversation</option>
+                  <option value="Follow-up" style={{ background: '#0f172a', color: '#fff' }}>Follow-up</option>
+                  <option value="Closed (Resolved)" style={{ background: '#0f172a', color: '#fff' }}>Closed</option>
                 </select>
               </div>
 
-              {/* Contact Box */}
+              {/* Contact Information */}
               <div style={{
-                backgroundColor: '#f8fafc',
+                backgroundColor: 'rgba(255, 255, 255, 0.02)',
                 borderRadius: '8px',
-                padding: '0.75rem',
-                border: '1px solid #f1f5f9',
+                padding: '0.75rem 0.85rem',
+                border: '1px solid rgba(255, 255, 255, 0.05)',
                 marginBottom: '0.85rem',
+                fontSize: '0.82rem',
                 display: 'flex',
                 flexDirection: 'column',
-                gap: '0.5rem',
-                fontSize: '0.82rem'
+                gap: '0.45rem'
               }}>
-                <div style={{ display: 'flex', alignItems: 'center', gap: '0.55rem', color: '#334155' }}>
-                  <Mail size={14} color="#64748b" />
-                  <a
-                    href={`mailto:${lead.email}`}
-                    style={{ color: '#334155', textDecoration: 'none', wordBreak: 'break-all' }}
-                  >
-                    {lead.email || 'No email provided'}
-                  </a>
-                </div>
-
-                <div style={{ display: 'flex', alignItems: 'center', gap: '0.55rem', color: '#334155' }}>
-                  <Phone size={14} color="#64748b" />
-                  <a
-                    href={`tel:${lead.phone}`}
-                    style={{ color: '#334155', textDecoration: 'none', fontWeight: 600 }}
-                  >
+                <div style={{ display: 'flex', alignItems: 'center', gap: '0.55rem', color: '#cbd5e1' }}>
+                  <Phone size={13} color="#94a3b8" />
+                  <a href={`tel:${lead.phone}`} style={{ color: '#ffffff', fontWeight: 600, textDecoration: 'none' }}>
                     {lead.phone || 'No phone'}
                   </a>
                 </div>
+
+                {lead.email && (
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '0.55rem', color: '#94a3b8' }}>
+                    <Mail size={13} color="#64748b" />
+                    <span style={{ wordBreak: 'break-all' }}>{lead.email}</span>
+                  </div>
+                )}
               </div>
 
-              {/* Preferred Time Pill */}
+              {/* Preferred Slot */}
               <div style={{
-                backgroundColor: '#eff6ff',
-                borderRadius: '6px',
-                padding: '0.35rem 0.65rem',
                 fontSize: '0.72rem',
-                color: '#1e40af',
-                fontWeight: 600,
-                display: 'inline-flex',
-                alignItems: 'center',
-                gap: '0.4rem',
-                marginBottom: '0.85rem',
-                width: 'fit-content'
+                color: '#94a3b8',
+                marginBottom: '0.85rem'
               }}>
-                <Clock size={12} />
-                <span>PREF. TIME: {lead.preferred_time || 'MORNING'}</span>
+                <span style={{ color: '#64748b' }}>Preferred Slot:</span> <strong style={{ color: '#e2e8f0' }}>{lead.preferred_time || 'Morning'}</strong>
               </div>
 
               {/* Message Snippet */}
               <div style={{ flex: 1, marginBottom: '1.25rem' }}>
                 <p style={{
                   fontSize: '0.82rem',
-                  color: '#475569',
-                  lineHeight: 1.5,
+                  color: 'rgba(255, 255, 255, 0.75)',
+                  lineHeight: 1.55,
                   margin: '0 0 0.35rem',
                   display: isExpanded ? 'block' : '-webkit-box',
                   WebkitLineClamp: isExpanded ? 'none' : 2,
@@ -400,18 +345,19 @@ export default function LeadsCRM() {
                   style={{
                     background: 'none',
                     border: 'none',
-                    color: '#4338ca',
-                    fontSize: '0.75rem',
+                    color: '#94a3b8',
+                    fontSize: '0.74rem',
                     fontWeight: 600,
                     cursor: 'pointer',
-                    padding: 0
+                    padding: 0,
+                    textDecoration: 'underline'
                   }}
                 >
-                  {isExpanded ? 'Hide Message' : 'Read Full Message'}
+                  {isExpanded ? 'Hide' : 'Read Full Message'}
                 </button>
               </div>
 
-              {/* Bottom 1-Click WhatsApp & Delete Button */}
+              {/* Actions: Direct WhatsApp & Delete */}
               <div style={{ display: 'flex', alignItems: 'center', gap: '0.65rem' }}>
                 <a
                   href={waUrl}
@@ -423,32 +369,28 @@ export default function LeadsCRM() {
                     color: '#ffffff',
                     padding: '0.6rem 1rem',
                     borderRadius: '8px',
-                    fontSize: '0.85rem',
+                    fontSize: '0.82rem',
                     fontWeight: 700,
                     display: 'flex',
                     alignItems: 'center',
                     justifyContent: 'center',
                     gap: '0.5rem',
-                    textDecoration: 'none',
-                    boxShadow: '0 2px 6px rgba(16, 185, 129, 0.25)',
-                    transition: 'background-color 0.15s ease'
+                    textDecoration: 'none'
                   }}
-                  onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#059669'}
-                  onMouseLeave={(e) => e.currentTarget.style.backgroundColor = '#10b981'}
                 >
-                  <MessageCircle size={16} />
-                  <span>WhatsApp</span>
+                  <MessageCircle size={15} />
+                  <span>Direct WhatsApp</span>
                 </a>
 
                 <button
                   onClick={() => handleDelete(lead.id)}
-                  title="Delete Lead"
+                  title="Delete Record"
                   style={{
-                    backgroundColor: '#fef2f2',
-                    border: '1px solid #fee2e2',
-                    color: '#ef4444',
-                    width: '38px',
-                    height: '38px',
+                    backgroundColor: 'rgba(239, 68, 68, 0.1)',
+                    border: '1px solid rgba(239, 68, 68, 0.2)',
+                    color: '#f87171',
+                    width: '36px',
+                    height: '36px',
                     borderRadius: '8px',
                     display: 'flex',
                     alignItems: 'center',
@@ -456,7 +398,7 @@ export default function LeadsCRM() {
                     cursor: 'pointer'
                   }}
                 >
-                  <Trash2 size={16} />
+                  <Trash2 size={15} />
                 </button>
               </div>
             </div>
@@ -464,27 +406,13 @@ export default function LeadsCRM() {
         })}
       </div>
 
-      {filteredLeads.length === 0 && (
-        <div style={{
-          textAlign: 'center',
-          padding: '4rem 1rem',
-          backgroundColor: '#ffffff',
-          borderRadius: '12px',
-          border: '1px solid #e2e8f0',
-          color: '#64748b'
-        }}>
-          <Users size={40} style={{ opacity: 0.35, marginBottom: '0.75rem' }} />
-          <h3 style={{ margin: '0 0 0.35rem', color: '#1e293b' }}>No leads found</h3>
-          <p style={{ margin: 0, fontSize: '0.85rem' }}>Try clearing your search query or filter tab.</p>
-        </div>
-      )}
-
-      {/* Add Manual Lead Modal */}
+      {/* Add Lead Modal */}
       {isAddModalOpen && (
         <div style={{
           position: 'fixed',
           inset: 0,
-          backgroundColor: 'rgba(0, 0, 0, 0.65)',
+          backgroundColor: 'rgba(0, 0, 0, 0.8)',
+          backdropFilter: 'blur(4px)',
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
@@ -492,21 +420,22 @@ export default function LeadsCRM() {
           zIndex: 1000
         }}>
           <div style={{
-            backgroundColor: '#ffffff',
+            backgroundColor: '#0b0f19',
             borderRadius: '16px',
+            border: '1px solid rgba(255, 255, 255, 0.12)',
             width: '100%',
-            maxWidth: '480px',
+            maxWidth: '460px',
             padding: '1.75rem',
-            boxShadow: '0 20px 40px rgba(0, 0, 0, 0.25)'
+            color: '#ffffff'
           }}>
-            <h2 style={{ fontSize: '1.25rem', fontWeight: 800, margin: '0 0 1.25rem', color: '#0f172a' }}>
-              Add New Lead Manually
+            <h2 style={{ fontSize: '1.25rem', fontWeight: 800, margin: '0 0 1.25rem' }}>
+              Add Client Inquiry
             </h2>
 
             <form onSubmit={handleCreateLead} style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
               <div>
-                <label style={{ fontSize: '0.8rem', fontWeight: 600, color: '#334155', display: 'block', marginBottom: '0.3rem' }}>
-                  Full Name *
+                <label style={{ fontSize: '0.78rem', color: '#94a3b8', display: 'block', marginBottom: '0.35rem' }}>
+                  Client Full Name *
                 </label>
                 <input
                   type="text"
@@ -516,17 +445,20 @@ export default function LeadsCRM() {
                   onChange={(e) => setNewLeadForm({ ...newLeadForm, name: e.target.value })}
                   style={{
                     width: '100%',
-                    padding: '0.6rem 0.85rem',
+                    backgroundColor: 'rgba(255, 255, 255, 0.04)',
+                    border: '1px solid rgba(255, 255, 255, 0.12)',
+                    color: '#ffffff',
+                    padding: '0.65rem 0.85rem',
                     borderRadius: '8px',
-                    border: '1px solid #cbd5e1',
-                    fontSize: '0.85rem'
+                    fontSize: '0.85rem',
+                    outline: 'none'
                   }}
                 />
               </div>
 
               <div>
-                <label style={{ fontSize: '0.8rem', fontWeight: 600, color: '#334155', display: 'block', marginBottom: '0.3rem' }}>
-                  Phone Number (WhatsApp) *
+                <label style={{ fontSize: '0.78rem', color: '#94a3b8', display: 'block', marginBottom: '0.35rem' }}>
+                  WhatsApp Phone Number *
                 </label>
                 <input
                   type="tel"
@@ -536,70 +468,57 @@ export default function LeadsCRM() {
                   onChange={(e) => setNewLeadForm({ ...newLeadForm, phone: e.target.value })}
                   style={{
                     width: '100%',
-                    padding: '0.6rem 0.85rem',
+                    backgroundColor: 'rgba(255, 255, 255, 0.04)',
+                    border: '1px solid rgba(255, 255, 255, 0.12)',
+                    color: '#ffffff',
+                    padding: '0.65rem 0.85rem',
                     borderRadius: '8px',
-                    border: '1px solid #cbd5e1',
-                    fontSize: '0.85rem'
+                    fontSize: '0.85rem',
+                    outline: 'none'
                   }}
                 />
               </div>
 
               <div>
-                <label style={{ fontSize: '0.8rem', fontWeight: 600, color: '#334155', display: 'block', marginBottom: '0.3rem' }}>
+                <label style={{ fontSize: '0.78rem', color: '#94a3b8', display: 'block', marginBottom: '0.35rem' }}>
                   Email Address
                 </label>
                 <input
                   type="email"
-                  placeholder="e.g. rahul@example.com"
+                  placeholder="e.g. client@example.com"
                   value={newLeadForm.email}
                   onChange={(e) => setNewLeadForm({ ...newLeadForm, email: e.target.value })}
                   style={{
                     width: '100%',
-                    padding: '0.6rem 0.85rem',
+                    backgroundColor: 'rgba(255, 255, 255, 0.04)',
+                    border: '1px solid rgba(255, 255, 255, 0.12)',
+                    color: '#ffffff',
+                    padding: '0.65rem 0.85rem',
                     borderRadius: '8px',
-                    border: '1px solid #cbd5e1',
-                    fontSize: '0.85rem'
+                    fontSize: '0.85rem',
+                    outline: 'none'
                   }}
                 />
               </div>
 
               <div>
-                <label style={{ fontSize: '0.8rem', fontWeight: 600, color: '#334155', display: 'block', marginBottom: '0.3rem' }}>
-                  Preferred Call Time
-                </label>
-                <select
-                  value={newLeadForm.preferred_time}
-                  onChange={(e) => setNewLeadForm({ ...newLeadForm, preferred_time: e.target.value })}
-                  style={{
-                    width: '100%',
-                    padding: '0.6rem 0.85rem',
-                    borderRadius: '8px',
-                    border: '1px solid #cbd5e1',
-                    fontSize: '0.85rem',
-                    backgroundColor: '#ffffff'
-                  }}
-                >
-                  <option value="Morning (10:00 AM - 1:00 PM)">Morning (10:00 AM - 1:00 PM)</option>
-                  <option value="Afternoon (1:00 PM - 5:00 PM)">Afternoon (1:00 PM - 5:00 PM)</option>
-                  <option value="Evening (5:00 PM - 8:00 PM)">Evening (5:00 PM - 8:00 PM)</option>
-                </select>
-              </div>
-
-              <div>
-                <label style={{ fontSize: '0.8rem', fontWeight: 600, color: '#334155', display: 'block', marginBottom: '0.3rem' }}>
-                  Notes / Inquired Program
+                <label style={{ fontSize: '0.78rem', color: '#94a3b8', display: 'block', marginBottom: '0.35rem' }}>
+                  Inquiry Notes
                 </label>
                 <textarea
                   rows={3}
-                  placeholder="Notes about client requirements..."
+                  placeholder="Client background, goals, or program interest..."
                   value={newLeadForm.message}
                   onChange={(e) => setNewLeadForm({ ...newLeadForm, message: e.target.value })}
                   style={{
                     width: '100%',
-                    padding: '0.6rem 0.85rem',
+                    backgroundColor: 'rgba(255, 255, 255, 0.04)',
+                    border: '1px solid rgba(255, 255, 255, 0.12)',
+                    color: '#ffffff',
+                    padding: '0.65rem 0.85rem',
                     borderRadius: '8px',
-                    border: '1px solid #cbd5e1',
                     fontSize: '0.85rem',
+                    outline: 'none',
                     resize: 'vertical'
                   }}
                 />
@@ -611,12 +530,12 @@ export default function LeadsCRM() {
                   onClick={() => setIsAddModalOpen(false)}
                   style={{
                     flex: 1,
-                    backgroundColor: '#f1f5f9',
-                    border: 'none',
+                    backgroundColor: 'transparent',
+                    border: '1px solid rgba(255, 255, 255, 0.15)',
+                    color: '#94a3b8',
                     padding: '0.65rem',
                     borderRadius: '8px',
                     fontWeight: 600,
-                    color: '#475569',
                     cursor: 'pointer'
                   }}
                 >
@@ -627,12 +546,12 @@ export default function LeadsCRM() {
                   disabled={isSubmittingNew}
                   style={{
                     flex: 1,
-                    backgroundColor: '#4338ca',
+                    backgroundColor: '#ffffff',
+                    color: '#050505',
                     border: 'none',
                     padding: '0.65rem',
                     borderRadius: '8px',
                     fontWeight: 700,
-                    color: '#ffffff',
                     cursor: 'pointer'
                   }}
                 >

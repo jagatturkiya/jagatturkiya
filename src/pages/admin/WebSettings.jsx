@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Settings, Database, Key, Phone, Save, CheckCircle2, AlertCircle, RefreshCw } from 'lucide-react';
+import { Settings, Database, Phone, Save, CheckCircle2, RefreshCw } from 'lucide-react';
 import { supabaseUrl, supabaseAnonKey, isSupabaseConfigured, saveSupabaseConfig } from '../../lib/supabase';
 
 export default function WebSettings() {
@@ -24,7 +24,7 @@ export default function WebSettings() {
   const handleSaveWa = (e) => {
     e.preventDefault();
     localStorage.setItem('jt_wa_number', waNumber);
-    alert('WhatsApp number saved!');
+    alert('WhatsApp number updated.');
   };
 
   const handleClearCache = () => {
@@ -32,68 +32,68 @@ export default function WebSettings() {
       localStorage.removeItem('jt_admin_leads');
       localStorage.removeItem('jt_admin_orders');
       localStorage.removeItem('jt_admin_programs');
+      localStorage.removeItem('jt_admin_stories');
       localStorage.removeItem('jt_admin_comments');
       window.location.reload();
     }
   };
 
   return (
-    <div className="web-settings-view" style={{ maxWidth: '850px', margin: '0 auto' }}>
+    <div className="dark-web-settings" style={{ maxWidth: '850px', margin: '0 auto' }}>
       <div style={{ marginBottom: '1.75rem' }}>
         <h1 style={{
-          fontSize: '1.65rem',
+          fontSize: '1.75rem',
           fontWeight: 800,
           margin: '0 0 0.35rem',
-          color: '#0f172a',
+          color: '#ffffff',
           fontFamily: "'Instrument Sans', sans-serif"
         }}>
-          Web & Backend Settings
+          Database & System Configuration
         </h1>
-        <p style={{ margin: 0, color: '#64748b', fontSize: '0.88rem' }}>
-          Configure live Supabase database credentials, WhatsApp integration, and system options.
+        <p style={{ margin: 0, color: '#94a3b8', fontSize: '0.85rem' }}>
+          Live connection to Supabase PostgreSQL, WhatsApp hotline, and data synchronization.
         </p>
       </div>
 
-      {/* Supabase Integration Card */}
+      {/* Supabase Connection Card */}
       <div style={{
-        backgroundColor: '#ffffff',
-        borderRadius: '16px',
+        backgroundColor: '#0b0f19',
+        borderRadius: '14px',
         padding: '1.75rem',
-        border: '1px solid #e2e8f0',
-        marginBottom: '1.5rem',
-        boxShadow: '0 1px 3px rgba(0,0,0,0.03)'
+        border: '1px solid rgba(255, 255, 255, 0.08)',
+        marginBottom: '1.5rem'
       }}>
         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '1.25rem' }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
             <div style={{
               width: '38px',
               height: '38px',
-              borderRadius: '10px',
-              backgroundColor: '#ecfdf5',
-              color: '#059669',
+              borderRadius: '8px',
+              backgroundColor: 'rgba(16, 185, 129, 0.1)',
+              color: '#34d399',
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center'
             }}>
-              <Database size={20} />
+              <Database size={18} />
             </div>
             <div>
-              <h2 style={{ fontSize: '1.1rem', fontWeight: 700, margin: 0, color: '#0f172a' }}>
-                Supabase Database Connection
+              <h2 style={{ fontSize: '1.05rem', fontWeight: 700, margin: 0, color: '#ffffff' }}>
+                Supabase PostgreSQL Connection
               </h2>
-              <div style={{ fontSize: '0.75rem', color: '#64748b', marginTop: '0.15rem' }}>
-                PostgreSQL cloud database for instant leads sync and Razorpay logs.
+              <div style={{ fontSize: '0.74rem', color: '#64748b', marginTop: '0.15rem' }}>
+                Project: xzyezjhorrjlbkglmcqw.supabase.co
               </div>
             </div>
           </div>
 
           <span style={{
-            fontSize: '0.75rem',
+            fontSize: '0.72rem',
             fontWeight: 700,
-            padding: '0.25rem 0.65rem',
+            padding: '0.2rem 0.6rem',
             borderRadius: '999px',
-            backgroundColor: isSupabaseConfigured ? '#dcfce7' : '#fef3c7',
-            color: isSupabaseConfigured ? '#15803d' : '#b45309',
+            backgroundColor: isSupabaseConfigured ? 'rgba(16, 185, 129, 0.15)' : 'rgba(245, 158, 11, 0.15)',
+            color: isSupabaseConfigured ? '#34d399' : '#fbbf24',
             display: 'inline-flex',
             alignItems: 'center',
             gap: '0.35rem'
@@ -102,48 +102,50 @@ export default function WebSettings() {
               width: '6px',
               height: '6px',
               borderRadius: '50%',
-              backgroundColor: isSupabaseConfigured ? '#16a34a' : '#d97706'
+              backgroundColor: isSupabaseConfigured ? '#10b981' : '#f59e0b'
             }} />
-            <span>{isSupabaseConfigured ? 'Connected Live' : 'Using Local Cache'}</span>
+            <span>{isSupabaseConfigured ? 'Live Connected' : 'Offline Cache'}</span>
           </span>
         </div>
 
         <form onSubmit={handleSaveSupabase} style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
           <div>
-            <label style={{ fontSize: '0.82rem', fontWeight: 600, color: '#334155', display: 'block', marginBottom: '0.35rem' }}>
+            <label style={{ fontSize: '0.78rem', color: '#94a3b8', display: 'block', marginBottom: '0.35rem' }}>
               Project URL
             </label>
             <input
               type="text"
-              placeholder="https://xyzabcdefghijklm.supabase.co"
               value={url}
               onChange={(e) => setUrl(e.target.value)}
               style={{
                 width: '100%',
+                backgroundColor: 'rgba(255, 255, 255, 0.04)',
+                border: '1px solid rgba(255, 255, 255, 0.12)',
+                color: '#ffffff',
                 padding: '0.65rem 0.85rem',
                 borderRadius: '8px',
-                border: '1px solid #cbd5e1',
-                fontSize: '0.85rem',
+                fontSize: '0.84rem',
                 fontFamily: 'monospace'
               }}
             />
           </div>
 
           <div>
-            <label style={{ fontSize: '0.82rem', fontWeight: 600, color: '#334155', display: 'block', marginBottom: '0.35rem' }}>
-              Anon / Public Key
+            <label style={{ fontSize: '0.78rem', color: '#94a3b8', display: 'block', marginBottom: '0.35rem' }}>
+              Anon / Public API Key
             </label>
             <textarea
               rows={3}
-              placeholder="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..."
               value={anonKey}
               onChange={(e) => setAnonKey(e.target.value)}
               style={{
                 width: '100%',
+                backgroundColor: 'rgba(255, 255, 255, 0.04)',
+                border: '1px solid rgba(255, 255, 255, 0.12)',
+                color: '#ffffff',
                 padding: '0.65rem 0.85rem',
                 borderRadius: '8px',
-                border: '1px solid #cbd5e1',
-                fontSize: '0.82rem',
+                fontSize: '0.8rem',
                 fontFamily: 'monospace',
                 resize: 'vertical'
               }}
@@ -152,10 +154,10 @@ export default function WebSettings() {
 
           {savedSuccess && (
             <div style={{
-              backgroundColor: '#ecfdf5',
-              border: '1px solid #a7f3d0',
-              color: '#065f46',
-              padding: '0.65rem 0.85rem',
+              backgroundColor: 'rgba(16, 185, 129, 0.15)',
+              border: '1px solid rgba(16, 185, 129, 0.3)',
+              color: '#34d399',
+              padding: '0.6rem 0.85rem',
               borderRadius: '8px',
               fontSize: '0.82rem',
               display: 'flex',
@@ -163,7 +165,7 @@ export default function WebSettings() {
               gap: '0.5rem'
             }}>
               <CheckCircle2 size={16} />
-              <span>Credentials saved successfully! Reloading connection...</span>
+              <span>Credentials updated and re-verified.</span>
             </div>
           )}
 
@@ -171,10 +173,10 @@ export default function WebSettings() {
             <button
               type="submit"
               style={{
-                backgroundColor: '#0f172a',
-                color: '#ffffff',
+                backgroundColor: '#ffffff',
+                color: '#050505',
                 border: 'none',
-                padding: '0.65rem 1.4rem',
+                padding: '0.65rem 1.35rem',
                 borderRadius: '8px',
                 fontSize: '0.84rem',
                 fontWeight: 700,
@@ -184,55 +186,56 @@ export default function WebSettings() {
                 cursor: 'pointer'
               }}
             >
-              <Save size={16} />
-              <span>Save & Connect Supabase</span>
+              <Save size={15} />
+              <span>Save & Connect</span>
             </button>
           </div>
         </form>
       </div>
 
-      {/* WhatsApp Quick Follow-up Configuration */}
+      {/* WhatsApp Hotline */}
       <div style={{
-        backgroundColor: '#ffffff',
-        borderRadius: '16px',
+        backgroundColor: '#0b0f19',
+        borderRadius: '14px',
         padding: '1.75rem',
-        border: '1px solid #e2e8f0',
-        marginBottom: '1.5rem',
-        boxShadow: '0 1px 3px rgba(0,0,0,0.03)'
+        border: '1px solid rgba(255, 255, 255, 0.08)',
+        marginBottom: '1.5rem'
       }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '1.25rem' }}>
           <div style={{
             width: '38px',
             height: '38px',
-            borderRadius: '10px',
-            backgroundColor: '#ecfdf5',
+            borderRadius: '8px',
+            backgroundColor: 'rgba(16, 185, 129, 0.1)',
             color: '#10b981',
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center'
           }}>
-            <Phone size={20} />
+            <Phone size={18} />
           </div>
           <div>
-            <h2 style={{ fontSize: '1.1rem', fontWeight: 700, margin: 0, color: '#0f172a' }}>
-              Admin WhatsApp Contact
+            <h2 style={{ fontSize: '1.05rem', fontWeight: 700, margin: 0, color: '#ffffff' }}>
+              Advisory WhatsApp Line
             </h2>
-            <div style={{ fontSize: '0.75rem', color: '#64748b', marginTop: '0.15rem' }}>
-              Default number for public advisory and instant chat.
+            <div style={{ fontSize: '0.74rem', color: '#64748b', marginTop: '0.15rem' }}>
+              The number that receives direct client queries.
             </div>
           </div>
         </div>
 
-        <form onSubmit={handleSaveWa} style={{ display: 'flex', gap: '0.75rem', maxWidth: '420px' }}>
+        <form onSubmit={handleSaveWa} style={{ display: 'flex', gap: '0.75rem', maxWidth: '400px' }}>
           <input
             type="text"
             value={waNumber}
             onChange={(e) => setWaNumber(e.target.value)}
             style={{
               flex: 1,
-              padding: '0.65rem 0.85rem',
+              backgroundColor: 'rgba(255, 255, 255, 0.04)',
+              border: '1px solid rgba(255, 255, 255, 0.12)',
+              color: '#ffffff',
+              padding: '0.6rem 0.85rem',
               borderRadius: '8px',
-              border: '1px solid #cbd5e1',
               fontSize: '0.85rem'
             }}
           />
@@ -242,9 +245,9 @@ export default function WebSettings() {
               backgroundColor: '#10b981',
               color: '#ffffff',
               border: 'none',
-              padding: '0.65rem 1.25rem',
+              padding: '0.6rem 1.15rem',
               borderRadius: '8px',
-              fontSize: '0.84rem',
+              fontSize: '0.82rem',
               fontWeight: 700,
               cursor: 'pointer'
             }}
@@ -254,30 +257,29 @@ export default function WebSettings() {
         </form>
       </div>
 
-      {/* System Cache Maintenance */}
+      {/* Reset Diagnostic */}
       <div style={{
-        backgroundColor: '#ffffff',
-        borderRadius: '16px',
+        backgroundColor: '#0b0f19',
+        borderRadius: '14px',
         padding: '1.75rem',
-        border: '1px solid #e2e8f0',
-        boxShadow: '0 1px 3px rgba(0,0,0,0.03)'
+        border: '1px solid rgba(255, 255, 255, 0.08)'
       }}>
-        <h2 style={{ fontSize: '1.1rem', fontWeight: 700, margin: '0 0 0.35rem', color: '#0f172a' }}>
-          System Diagnostics & Reset
+        <h2 style={{ fontSize: '1.05rem', fontWeight: 700, margin: '0 0 0.35rem', color: '#ffffff' }}>
+          Database Cache Maintenance
         </h2>
-        <p style={{ color: '#64748b', fontSize: '0.84rem', margin: '0 0 1rem' }}>
-          Reset sample leads, orders, programs, and comments back to initial defaults.
+        <p style={{ color: '#64748b', fontSize: '0.82rem', margin: '0 0 1rem' }}>
+          Clears local browser cache and re-fetches latest clean records from Supabase.
         </p>
         <button
           onClick={handleClearCache}
           style={{
-            backgroundColor: '#fee2e2',
-            color: '#b91c1c',
-            border: '1px solid #fecaca',
-            padding: '0.6rem 1.15rem',
+            backgroundColor: 'rgba(239, 68, 68, 0.1)',
+            color: '#f87171',
+            border: '1px solid rgba(239, 68, 68, 0.2)',
+            padding: '0.55rem 1.15rem',
             borderRadius: '8px',
-            fontSize: '0.82rem',
-            fontWeight: 700,
+            fontSize: '0.8rem',
+            fontWeight: 600,
             cursor: 'pointer',
             display: 'inline-flex',
             alignItems: 'center',
@@ -285,7 +287,7 @@ export default function WebSettings() {
           }}
         >
           <RefreshCw size={14} />
-          <span>Reset Local Cache</span>
+          <span>Reset Browser Cache</span>
         </button>
       </div>
     </div>

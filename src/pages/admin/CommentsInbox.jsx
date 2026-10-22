@@ -1,16 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { 
-  MessageSquare, 
-  Search, 
-  Clock, 
-  Trash2, 
-  Edit3, 
-  Check, 
-  CheckCircle,
-  X,
-  Send
-} from 'lucide-react';
-import { getComments, updateCoachReply } from '../../lib/supabase';
+import { MessageSquare, Search, Trash2, Edit3, Check, Clock, Send, MessageCircle } from 'lucide-react';
+import { getComments, updateCoachReply, deleteComment } from '../../lib/supabase';
 
 export default function CommentsInbox() {
   const [comments, setComments] = useState([]);
@@ -34,18 +24,16 @@ export default function CommentsInbox() {
   };
 
   const handleSaveReply = async (id) => {
-    const updated = await updateCoachReply(id, replyText);
+    if (!replyText.trim()) return;
+    const updated = await updateCoachReply(id, replyText.trim());
     setComments(updated);
     setEditingId(null);
   };
 
-  const handleDelete = (id) => {
+  const handleDelete = async (id) => {
     if (window.confirm('Delete this comment?')) {
-      const updated = comments.filter(c => c.id !== id);
+      const updated = await deleteComment(id);
       setComments(updated);
-      try {
-        localStorage.setItem('jt_admin_comments', JSON.stringify(updated));
-      } catch {}
     }
   };
 
@@ -53,298 +41,210 @@ export default function CommentsInbox() {
     const q = searchQuery.toLowerCase().trim();
     const matchesSearch = 
       !q || 
-      c.author.toLowerCase().includes(q) || 
-      c.email.toLowerCase().includes(q) || 
-      c.text.toLowerCase().includes(q) ||
+      (c.author && c.author.toLowerCase().includes(q)) || 
+      (c.email && c.email.toLowerCase().includes(q)) || 
+      (c.text && c.text.toLowerCase().includes(q)) ||
       (c.article && c.article.toLowerCase().includes(q));
 
     const matchesFilter = 
       filter === 'All' ? true :
-      filter === 'Pending Review' ? c.status === 'Pending' :
-      c.status === 'Approved';
+      filter === 'Unreplied' ? !c.coach_reply :
+      Boolean(c.coach_reply);
 
     return matchesSearch && matchesFilter;
   });
 
   return (
-    <div className="comments-inbox-view" style={{ maxWidth: '1000px', margin: '0 auto' }}>
-      {/* Page Header */}
-      <div style={{ marginBottom: '1.75rem' }}>
-        <h1 style={{
-          fontSize: '1.65rem',
-          fontWeight: 800,
-          margin: '0 0 0.35rem',
-          color: '#0f172a',
-          fontFamily: "'Instrument Sans', sans-serif"
-        }}>
-          Comments Inbox
-        </h1>
-        <p style={{ margin: 0, color: '#64748b', fontSize: '0.88rem' }}>
-          Review, reply, and moderate audience feedback across all articles.
-        </p>
+    <div className="dark-comments-inbox" style={{ maxWidth: '1000px', margin: '0 auto' }}>
+      <div style={{
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'space-between',
+        flexWrap: 'wrap',
+        gap: '1rem',
+        marginBottom: '1.75rem'
+      }}>
+        <div>
+          <h1 style={{
+            fontSize: '1.75rem',
+            fontWeight: 800,
+            margin: '0 0 0.35rem',
+            color: '#ffffff',
+            fontFamily: "'Instrument Sans', sans-serif"
+          }}>
+            Audience Discussions & Replies
+          </h1>
+          <p style={{ margin: 0, color: '#94a3b8', fontSize: '0.85rem' }}>
+            Real reflections and questions from readers on success stories. Replies appear live on the website.
+          </p>
+        </div>
+
+        <div style={{ display: 'flex', gap: '0.4rem' }}>
+          {['All', 'Unreplied', 'Replied'].map((tab) => (
+            <button
+              key={tab}
+              onClick={() => setFilter(tab)}
+              style={{
+                padding: '0.42rem 0.85rem',
+                borderRadius: '6px',
+                fontSize: '0.78rem',
+                fontWeight: 600,
+                border: 'none',
+                backgroundColor: filter === tab ? '#ffffff' : 'rgba(255, 255, 255, 0.04)',
+                color: filter === tab ? '#050505' : '#94a3b8',
+                cursor: 'pointer'
+              }}
+            >
+              {tab === 'All' ? `All (${comments.length})` : tab}
+            </button>
+          ))}
+        </div>
       </div>
 
-      {/* Search Input matching screenshot */}
+      {/* Search Input */}
       <div style={{
-        backgroundColor: '#ffffff',
-        borderRadius: '12px',
+        backgroundColor: '#0b0f19',
+        borderRadius: '10px',
         padding: '0.65rem 1rem',
-        border: '1px solid #e2e8f0',
+        border: '1px solid rgba(255, 255, 255, 0.08)',
         marginBottom: '1.5rem',
         display: 'flex',
         alignItems: 'center',
         gap: '0.75rem'
       }}>
-        <Search size={18} color="#94a3b8" />
+        <Search size={16} color="#64748b" />
         <input
           type="text"
-          placeholder="Search by name, email or keyword..."
+          placeholder="Search by reader name, comment, or article title..."
           value={searchQuery}
           onChange={(e) => setSearchQuery(e.target.value)}
           style={{
             border: 'none',
             outline: 'none',
-            fontSize: '0.86rem',
+            fontSize: '0.85rem',
             width: '100%',
-            color: '#0f172a'
+            backgroundColor: 'transparent',
+            color: '#ffffff'
           }}
         />
       </div>
 
-      {/* Filter Tabs matching media_1792664195445.jpg */}
-      <div style={{
-        display: 'flex',
-        alignItems: 'center',
-        gap: '0.5rem',
-        marginBottom: '1.5rem'
-      }}>
-        <button
-          onClick={() => setFilter('Pending Review')}
-          style={{
-            display: 'flex',
-            alignItems: 'center',
-            gap: '0.4rem',
-            padding: '0.45rem 0.95rem',
-            borderRadius: '999px',
-            fontSize: '0.8rem',
-            fontWeight: 600,
-            border: '1px solid #e2e8f0',
-            backgroundColor: filter === 'Pending Review' ? '#0f172a' : '#ffffff',
-            color: filter === 'Pending Review' ? '#ffffff' : '#64748b',
-            cursor: 'pointer'
-          }}
-        >
-          <Clock size={13} />
-          <span>Pending Review (0)</span>
-        </button>
-
-        <button
-          onClick={() => setFilter('Approved')}
-          style={{
-            display: 'flex',
-            alignItems: 'center',
-            gap: '0.4rem',
-            padding: '0.45rem 0.95rem',
-            borderRadius: '999px',
-            fontSize: '0.8rem',
-            fontWeight: 600,
-            border: '1px solid #e2e8f0',
-            backgroundColor: filter === 'Approved' ? '#0f172a' : '#ffffff',
-            color: filter === 'Approved' ? '#ffffff' : '#64748b',
-            cursor: 'pointer'
-          }}
-        >
-          <Check size={13} />
-          <span>Approved ({comments.length})</span>
-        </button>
-
-        <button
-          onClick={() => setFilter('All')}
-          style={{
-            padding: '0.45rem 0.95rem',
-            borderRadius: '999px',
-            fontSize: '0.8rem',
-            fontWeight: 600,
-            border: '1px solid #e2e8f0',
-            backgroundColor: filter === 'All' ? '#0f172a' : '#ffffff',
-            color: filter === 'All' ? '#ffffff' : '#64748b',
-            cursor: 'pointer'
-          }}
-        >
-          <span>All Comments ({comments.length})</span>
-        </button>
-      </div>
-
-      {/* Comments List matching screenshot */}
+      {/* Comments List */}
       <div style={{ display: 'flex', flexDirection: 'column', gap: '1.25rem' }}>
         {filtered.map((comm) => (
           <div
             key={comm.id}
             style={{
-              backgroundColor: '#ffffff',
+              backgroundColor: '#0b0f19',
               borderRadius: '14px',
-              border: '1px solid #e2e8f0',
-              borderLeft: '4px solid #10b981',
+              border: '1px solid rgba(255, 255, 255, 0.08)',
               padding: '1.5rem',
-              boxShadow: '0 1px 3px rgba(0,0,0,0.03)'
+              boxShadow: '0 4px 20px rgba(0, 0, 0, 0.25)'
             }}
           >
-            {/* Header: Author + Actions */}
+            {/* Header */}
             <div style={{
               display: 'flex',
               alignItems: 'flex-start',
               justifyContent: 'space-between',
-              marginBottom: '1rem'
+              marginBottom: '0.85rem'
             }}>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '0.85rem' }}>
-                <div style={{
-                  width: '40px',
-                  height: '40px',
-                  borderRadius: '10px',
-                  backgroundColor: '#f1f5f9',
-                  color: '#4338ca',
-                  fontWeight: 800,
-                  fontSize: '1rem',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center'
-                }}>
-                  {comm.author[0]}
-                </div>
-                <div>
-                  <div style={{ fontWeight: 700, color: '#0f172a', fontSize: '0.92rem' }}>
+              <div>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem' }}>
+                  <span style={{ fontWeight: 700, color: '#ffffff', fontSize: '0.92rem' }}>
                     {comm.author}
-                  </div>
-                  <div style={{ fontSize: '0.75rem', color: '#64748b' }}>
-                    {comm.email}
-                  </div>
+                  </span>
+                  {comm.email && (
+                    <span style={{ fontSize: '0.74rem', color: '#64748b' }}>
+                      ({comm.email})
+                    </span>
+                  )}
+                </div>
+                <div style={{ fontSize: '0.72rem', color: '#94a3b8', marginTop: '0.2rem' }}>
+                  On: <strong style={{ color: '#ffffff' }}>{comm.article}</strong> • {comm.date || 'Recently'}
                 </div>
               </div>
 
-              <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-                <button
-                  onClick={() => handleDelete(comm.id)}
-                  title="Delete Comment"
-                  style={{
-                    background: 'none',
-                    border: 'none',
-                    color: '#94a3b8',
-                    cursor: 'pointer',
-                    padding: '0.35rem'
-                  }}
-                >
-                  <Trash2 size={16} />
-                </button>
-              </div>
-            </div>
-
-            {/* Commented On snippet */}
-            <div style={{
-              backgroundColor: '#f8fafc',
-              borderRadius: '8px',
-              padding: '0.65rem 0.85rem',
-              border: '1px solid #f1f5f9',
-              marginBottom: '1rem'
-            }}>
-              <div style={{ fontSize: '0.68rem', fontWeight: 700, color: '#94a3b8', letterSpacing: '0.04em' }}>
-                COMMENTED ON:
-              </div>
-              <div style={{ color: '#4338ca', fontWeight: 600, fontSize: '0.84rem', marginTop: '0.15rem' }}>
-                {comm.article}
-              </div>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '0.3rem', fontSize: '0.72rem', color: '#94a3b8', marginTop: '0.25rem' }}>
-                <Clock size={11} />
-                <span>{comm.date}</span>
-              </div>
-            </div>
-
-            {/* Status Pill */}
-            <div style={{ marginBottom: '0.75rem' }}>
-              <span style={{
-                fontSize: '0.68rem',
-                fontWeight: 700,
-                backgroundColor: '#ecfdf5',
-                color: '#059669',
-                padding: '0.2rem 0.55rem',
-                borderRadius: '4px',
-                letterSpacing: '0.04em'
-              }}>
-                APPROVED
-              </span>
+              <button
+                onClick={() => handleDelete(comm.id)}
+                title="Delete Comment"
+                style={{
+                  background: 'none',
+                  border: 'none',
+                  color: '#64748b',
+                  cursor: 'pointer',
+                  padding: '0.35rem'
+                }}
+              >
+                <Trash2 size={15} />
+              </button>
             </div>
 
             {/* Comment Text */}
             <p style={{
               fontSize: '0.88rem',
-              color: '#334155',
+              color: 'rgba(255, 255, 255, 0.85)',
               lineHeight: 1.6,
-              margin: '0 0 1.25rem'
+              margin: '0 0 1rem'
             }}>
-              {comm.text}
+              "{comm.text}"
             </p>
 
-            {/* Coach Reply Box matching screenshot */}
+            {/* Coach Reply Section */}
             <div style={{
-              backgroundColor: '#f5f3ff',
+              backgroundColor: 'rgba(255, 255, 255, 0.02)',
               borderRadius: '10px',
-              border: '1px solid #ede9fe',
+              border: '1px solid rgba(255, 255, 255, 0.06)',
               padding: '1rem 1.15rem'
             }}>
-              <div style={{
-                display: 'inline-block',
-                backgroundColor: '#4338ca',
-                color: '#ffffff',
-                fontSize: '0.65rem',
-                fontWeight: 800,
-                letterSpacing: '0.06em',
-                padding: '0.15rem 0.5rem',
-                borderRadius: '4px',
-                marginBottom: '0.6rem'
-              }}>
-                COACH REPLY
-              </div>
-
               {editingId === comm.id ? (
                 <div>
+                  <label style={{ fontSize: '0.74rem', fontWeight: 700, color: '#d97706', display: 'block', marginBottom: '0.4rem', letterSpacing: '0.06em' }}>
+                    REPLY AS COACH JAGAT TURKIYA
+                  </label>
                   <textarea
                     rows={3}
                     value={replyText}
                     onChange={(e) => setReplyText(e.target.value)}
+                    placeholder="Type your response to the reader..."
                     style={{
                       width: '100%',
-                      padding: '0.6rem',
-                      borderRadius: '6px',
-                      border: '1px solid #c7d2fe',
+                      backgroundColor: 'rgba(0, 0, 0, 0.4)',
+                      padding: '0.65rem',
+                      borderRadius: '8px',
+                      border: '1px solid rgba(255, 255, 255, 0.12)',
+                      color: '#ffffff',
                       fontSize: '0.84rem',
-                      marginBottom: '0.5rem',
-                      fontFamily: 'inherit'
+                      marginBottom: '0.65rem',
+                      outline: 'none',
+                      resize: 'vertical'
                     }}
                   />
                   <div style={{ display: 'flex', gap: '0.5rem' }}>
                     <button
                       onClick={() => handleSaveReply(comm.id)}
                       style={{
-                        backgroundColor: '#4338ca',
-                        color: '#ffffff',
+                        backgroundColor: '#ffffff',
+                        color: '#050505',
                         border: 'none',
-                        padding: '0.4rem 0.85rem',
+                        padding: '0.45rem 1rem',
                         borderRadius: '6px',
-                        fontSize: '0.78rem',
-                        fontWeight: 600,
+                        fontSize: '0.8rem',
+                        fontWeight: 700,
                         cursor: 'pointer'
                       }}
                     >
-                      Save Reply
+                      Post Reply to Website
                     </button>
                     <button
                       onClick={() => setEditingId(null)}
                       style={{
-                        backgroundColor: '#ffffff',
-                        border: '1px solid #cbd5e1',
-                        padding: '0.4rem 0.85rem',
+                        backgroundColor: 'transparent',
+                        border: '1px solid rgba(255, 255, 255, 0.12)',
+                        padding: '0.45rem 0.85rem',
                         borderRadius: '6px',
-                        fontSize: '0.78rem',
-                        color: '#475569',
+                        fontSize: '0.8rem',
+                        color: '#94a3b8',
                         cursor: 'pointer'
                       }}
                     >
@@ -352,33 +252,58 @@ export default function CommentsInbox() {
                     </button>
                   </div>
                 </div>
-              ) : (
+              ) : comm.coach_reply ? (
                 <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', gap: '1rem' }}>
-                  <p style={{
-                    margin: 0,
-                    fontSize: '0.85rem',
-                    color: '#312e81',
-                    lineHeight: 1.55
-                  }}>
-                    {comm.coach_reply || 'No reply yet.'}
-                  </p>
+                  <div>
+                    <div style={{ fontSize: '0.7rem', fontWeight: 800, color: '#d97706', letterSpacing: '0.06em', marginBottom: '0.3rem' }}>
+                      COACH JAGAT TURKIYA REPLY (LIVE ON SITE)
+                    </div>
+                    <p style={{ margin: 0, fontSize: '0.85rem', color: '#ffffff', lineHeight: 1.55 }}>
+                      {comm.coach_reply}
+                    </p>
+                  </div>
                   <button
                     onClick={() => handleStartEdit(comm)}
                     style={{
                       display: 'flex',
                       alignItems: 'center',
-                      gap: '0.35rem',
+                      gap: '0.3rem',
                       background: 'none',
                       border: 'none',
-                      color: '#4338ca',
-                      fontSize: '0.78rem',
+                      color: '#94a3b8',
+                      fontSize: '0.75rem',
                       fontWeight: 600,
                       cursor: 'pointer',
-                      padding: '0.2rem 0.4rem'
+                      flexShrink: 0
                     }}
                   >
                     <Edit3 size={13} />
                     <span>Edit Reply</span>
+                  </button>
+                </div>
+              ) : (
+                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+                  <span style={{ fontSize: '0.78rem', color: '#64748b' }}>
+                    No reply given yet.
+                  </span>
+                  <button
+                    onClick={() => handleStartEdit(comm)}
+                    style={{
+                      backgroundColor: 'rgba(255, 255, 255, 0.05)',
+                      border: '1px solid rgba(255, 255, 255, 0.1)',
+                      color: '#ffffff',
+                      padding: '0.4rem 0.85rem',
+                      borderRadius: '6px',
+                      fontSize: '0.78rem',
+                      fontWeight: 600,
+                      cursor: 'pointer',
+                      display: 'flex',
+                      alignItems: 'center',
+                      gap: '0.4rem'
+                    }}
+                  >
+                    <MessageSquare size={13} />
+                    <span>Reply as Coach Jagat</span>
                   </button>
                 </div>
               )}
