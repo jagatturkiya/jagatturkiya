@@ -208,7 +208,7 @@ export default function Contact() {
                       name="phone"
                       maxLength={15}
                       className="form-control"
-                      placeholder="e.g. +91 98765 43210"
+                      placeholder="+91 98765 43210"
                       value={formData.phone}
                       onChange={handleChange}
                       required
@@ -228,7 +228,7 @@ export default function Contact() {
                       maxLength={500}
                       className="form-control"
                       rows={5}
-                      placeholder="How can we help you? Share your message or inquiry here..."
+                      placeholder="Share your message or inquiry..."
                       value={formData.message}
                       onChange={handleChange}
                       required

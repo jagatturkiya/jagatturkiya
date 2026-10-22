@@ -640,7 +640,7 @@ export default function LeadsCRM() {
                   maxLength={60}
                   value={newLead.name}
                   onChange={e => setNewLead({ ...newLead, name: e.target.value })}
-                  placeholder="e.g. Vikramaditya Sharma"
+                  placeholder="Full name"
                   style={{
                     width: '100%',
                     padding: '0.75rem 1rem',
@@ -691,7 +691,7 @@ export default function LeadsCRM() {
                     maxLength={80}
                     value={newLead.email}
                     onChange={e => setNewLead({ ...newLead, email: e.target.value })}
-                    placeholder="e.g. vikram@enterprise.com"
+                    placeholder="name@email.com"
                     style={{
                       width: '100%',
                       padding: '0.75rem 1rem',
@@ -744,7 +744,7 @@ export default function LeadsCRM() {
                   maxLength={500}
                   value={newLead.message}
                   onChange={e => setNewLead({ ...newLead, message: e.target.value })}
-                  placeholder="e.g. Inquired about 1-on-1 wealth architecture & executive mindset coaching..."
+                  placeholder="Inquiry notes or message..."
                   style={{
                     width: '100%',
                     padding: '0.75rem 1rem',

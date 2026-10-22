@@ -554,28 +554,17 @@ export const defaultCurriculumWeeks = [
   }
 ];
 
-export const defaultCohortInfo = {
-  batchName: "Executive Mastermind Cohort",
-  startDate: "Upcoming Batch Starting Soon",
-  duration: "10-Week Intensive + 6 Months Handholding",
-  seatsRemaining: "Only 4 Seats Left",
-  totalSeats: "Strict 15-Member Cap",
-  status: "Admissions Open"
-};
-
 export function getMastermindDetails() {
   try {
     const cached = localStorage.getItem('jt_cms_mastermind');
     if (cached) return JSON.parse(cached);
     const initial = {
-      cohort: defaultCohortInfo,
       weeks: defaultCurriculumWeeks
     };
     localStorage.setItem('jt_cms_mastermind', JSON.stringify(initial));
     return initial;
   } catch {
     return {
-      cohort: defaultCohortInfo,
       weeks: defaultCurriculumWeeks
     };
   }

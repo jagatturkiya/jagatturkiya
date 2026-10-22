@@ -34,7 +34,7 @@ export default function AdminLayout() {
       icon: Users
     },
     {
-      label: 'Mastermind & Cohort',
+      label: 'Mastermind Curriculum',
       path: '/admin/mastermind',
       icon: Award
     },
@@ -59,7 +59,7 @@ export default function AdminLayout() {
     const path = location.pathname;
     if (path.includes('testimonials')) return 'Client Testimonials CMS';
     if (path.includes('leads')) return 'Leads & Inquiries CRM';
-    if (path.includes('mastermind')) return 'Mastermind Cohort & Curriculum CMS';
+    if (path.includes('mastermind')) return 'Mastermind Curriculum CMS';
     if (path.includes('faqs')) return 'Frequently Asked Questions CMS';
     if (path.includes('homepage')) return 'Homepage Hero & Stats CMS';
     if (path.includes('contact-info')) return 'Direct Contact & Advisory Info CMS';

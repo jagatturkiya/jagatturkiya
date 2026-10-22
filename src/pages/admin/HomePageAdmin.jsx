@@ -87,7 +87,7 @@ export default function HomePageAdmin() {
                 maxLength={80}
                 value={formData.heroTitle || ''}
                 onChange={e => handleChange('heroTitle', e.target.value)}
-                placeholder="e.g. Transform Your Perspective with"
+                placeholder="Headline Line 1"
                 style={{
                   width: '100%',
                   padding: '0.75rem 1rem',
@@ -112,7 +112,7 @@ export default function HomePageAdmin() {
                 maxLength={80}
                 value={formData.heroTitleHighlight || ''}
                 onChange={e => handleChange('heroTitleHighlight', e.target.value)}
-                placeholder="e.g. Clarity, Focus & Action"
+                placeholder="Headline highlight"
                 style={{
                   width: '100%',
                   padding: '0.75rem 1rem',
@@ -138,7 +138,7 @@ export default function HomePageAdmin() {
               maxLength={300}
               value={formData.heroLead || ''}
               onChange={e => handleChange('heroLead', e.target.value)}
-              placeholder="e.g. Overcome limiting beliefs, eliminate friction, and build an unshakeable direction for your career, wealth, and life with Jagat Turkiya."
+              placeholder="Sub-headline / lead paragraph..."
               style={{
                 width: '100%',
                 padding: '0.75rem 1rem',
@@ -165,7 +165,7 @@ export default function HomePageAdmin() {
                 maxLength={40}
                 value={formData.ctaPrimaryText || ''}
                 onChange={e => handleChange('ctaPrimaryText', e.target.value)}
-                placeholder="e.g. Explore Mastermind"
+                placeholder="Primary button label"
                 style={{
                   width: '100%',
                   padding: '0.7rem 1rem',
@@ -211,7 +211,7 @@ export default function HomePageAdmin() {
                 maxLength={40}
                 value={formData.ctaSecondaryText || ''}
                 onChange={e => handleChange('ctaSecondaryText', e.target.value)}
-                placeholder="e.g. Book Consultation"
+                placeholder="Secondary button label"
                 style={{
                   width: '100%',
                   padding: '0.7rem 1rem',
@@ -275,7 +275,7 @@ export default function HomePageAdmin() {
                 maxLength={100}
                 value={formData.timesSquareTitle || ''}
                 onChange={e => handleChange('timesSquareTitle', e.target.value)}
-                placeholder="Featured on Times Square, New York City"
+                placeholder="Section title"
                 style={{
                   width: '100%',
                   padding: '0.75rem 1rem',
@@ -298,7 +298,7 @@ export default function HomePageAdmin() {
                 maxLength={140}
                 value={formData.timesSquareSubtitle || ''}
                 onChange={e => handleChange('timesSquareSubtitle', e.target.value)}
-                placeholder="Spotlighted on the global digital marquee in Times Square, NYC..."
+                placeholder="Section subtitle"
                 style={{
                   width: '100%',
                   padding: '0.75rem 1rem',
@@ -322,7 +322,7 @@ export default function HomePageAdmin() {
               maxLength={120}
               value={formData.timesSquareStoryTitle || ''}
               onChange={e => handleChange('timesSquareStoryTitle', e.target.value)}
-              placeholder="From Walking 4 km Daily to the Heart of Manhattan"
+              placeholder="Narrative heading"
               style={{
                 width: '100%',
                 padding: '0.75rem 1rem',
@@ -346,7 +346,7 @@ export default function HomePageAdmin() {
                 maxLength={500}
                 value={formData.timesSquareStoryPara1 || ''}
                 onChange={e => handleChange('timesSquareStoryPara1', e.target.value)}
-                placeholder="In 2024, Jagat Singh Turkiya was spotlighted on the world-famous digital marquee in Times Square..."
+                placeholder="Story paragraph 1..."
                 style={{
                   width: '100%',
                   padding: '0.75rem 1rem',
@@ -371,7 +371,7 @@ export default function HomePageAdmin() {
                 maxLength={500}
                 value={formData.timesSquareStoryPara2 || ''}
                 onChange={e => handleChange('timesSquareStoryPara2', e.target.value)}
-                placeholder="For someone who once walked four kilometers every day simply to save ₹30 in bus fare..."
+                placeholder="Story paragraph 2..."
                 style={{
                   width: '100%',
                   padding: '0.75rem 1rem',
@@ -402,7 +402,7 @@ export default function HomePageAdmin() {
                   maxLength={30}
                   value={formData.stat1Val || ''}
                   onChange={e => handleChange('stat1Val', e.target.value)}
-                  placeholder="Times Sq."
+                  placeholder="Stat value"
                   style={{
                     width: '100%',
                     padding: '0.5rem',
@@ -421,7 +421,7 @@ export default function HomePageAdmin() {
                   maxLength={40}
                   value={formData.stat1Label || ''}
                   onChange={e => handleChange('stat1Label', e.target.value)}
-                  placeholder="New York City"
+                  placeholder="Stat label"
                   style={{
                     width: '100%',
                     padding: '0.5rem',
@@ -444,7 +444,7 @@ export default function HomePageAdmin() {
                   maxLength={30}
                   value={formData.stat2Val || ''}
                   onChange={e => handleChange('stat2Val', e.target.value)}
-                  placeholder="Topmate"
+                  placeholder="Stat value"
                   style={{
                     width: '100%',
                     padding: '0.5rem',
@@ -463,7 +463,7 @@ export default function HomePageAdmin() {
                   maxLength={40}
                   value={formData.stat2Label || ''}
                   onChange={e => handleChange('stat2Label', e.target.value)}
-                  placeholder="Creator Club"
+                  placeholder="Stat label"
                   style={{
                     width: '100%',
                     padding: '0.5rem',
@@ -486,7 +486,7 @@ export default function HomePageAdmin() {
                   maxLength={30}
                   value={formData.stat3Val || ''}
                   onChange={e => handleChange('stat3Val', e.target.value)}
-                  placeholder="15,000+"
+                  placeholder="Stat value"
                   style={{
                     width: '100%',
                     padding: '0.5rem',
@@ -505,7 +505,7 @@ export default function HomePageAdmin() {
                   maxLength={40}
                   value={formData.stat3Label || ''}
                   onChange={e => handleChange('stat3Label', e.target.value)}
-                  placeholder="Lives Impacted"
+                  placeholder="Stat label"
                   style={{
                     width: '100%',
                     padding: '0.5rem',

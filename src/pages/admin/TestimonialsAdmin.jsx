@@ -611,7 +611,7 @@ export default function TestimonialsAdmin() {
                         maxLength={60}
                         value={videoForm.name}
                         onChange={e => setVideoForm({ ...videoForm, name: e.target.value })}
-                        placeholder="e.g. Yogeta Shrivastav"
+                        placeholder="Client name"
                         style={{
                           width: '100%',
                           padding: '0.75rem 1rem',
@@ -635,7 +635,7 @@ export default function TestimonialsAdmin() {
                         maxLength={80}
                         value={videoForm.role}
                         onChange={e => setVideoForm({ ...videoForm, role: e.target.value })}
-                        placeholder="e.g. Senior Corporate Leader"
+                        placeholder="Role or profession"
                         style={{
                           width: '100%',
                           padding: '0.75rem 1rem',
@@ -661,7 +661,7 @@ export default function TestimonialsAdmin() {
                       maxLength={300}
                       value={videoForm.videoUrl}
                       onChange={e => setVideoForm({ ...videoForm, videoUrl: e.target.value })}
-                      placeholder="e.g. https://www.youtube.com/watch?v=... or direct video link"
+                      placeholder="Video URL (YouTube or direct link)"
                       style={{
                         width: '100%',
                         padding: '0.75rem 1rem',
@@ -696,7 +696,7 @@ export default function TestimonialsAdmin() {
                       maxLength={500}
                       value={videoForm.quote}
                       onChange={e => setVideoForm({ ...videoForm, quote: e.target.value })}
-                      placeholder="e.g. Coach Jagat's mentorship brought complete stillness to my decision-making and transformed how I steward our family wealth..."
+                      placeholder="Client quote or testimonial..."
                       style={{
                         width: '100%',
                         padding: '0.75rem 1rem',
@@ -727,7 +727,7 @@ export default function TestimonialsAdmin() {
                         maxLength={60}
                         value={reviewForm.name}
                         onChange={e => setReviewForm({ ...reviewForm, name: e.target.value })}
-                        placeholder="e.g. Rahul Singh"
+                        placeholder="Reviewer name"
                         style={{
                           width: '100%',
                           padding: '0.75rem 1rem',
@@ -751,7 +751,7 @@ export default function TestimonialsAdmin() {
                         maxLength={80}
                         value={reviewForm.role}
                         onChange={e => setReviewForm({ ...reviewForm, role: e.target.value })}
-                        placeholder="e.g. Senior Software Architect"
+                        placeholder="Role or designation"
                         style={{
                           width: '100%',
                           padding: '0.75rem 1rem',
@@ -778,7 +778,7 @@ export default function TestimonialsAdmin() {
                         maxLength={50}
                         value={reviewForm.source}
                         onChange={e => setReviewForm({ ...reviewForm, source: e.target.value })}
-                        placeholder="e.g. 1-on-1 Mentorship / Topmate"
+                        placeholder="Verification source"
                         style={{
                           width: '100%',
                           padding: '0.75rem 1rem',
@@ -839,7 +839,7 @@ export default function TestimonialsAdmin() {
                       maxLength={500}
                       value={reviewForm.quote}
                       onChange={e => setReviewForm({ ...reviewForm, quote: e.target.value })}
-                      placeholder="e.g. Jagat’s insights shifted my entire financial strategy. I went from constant overwhelm to having clear frameworks..."
+                      placeholder="Review experience text..."
                       style={{
                         width: '100%',
                         padding: '0.75rem 1rem',

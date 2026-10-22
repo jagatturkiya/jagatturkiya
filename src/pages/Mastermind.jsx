@@ -21,7 +21,6 @@ export default function Mastermind() {
     };
   }, []);
 
-  const cohort = mmData.cohort || {};
   const weeks = mmData.weeks || [];
 
   const qualifyingCriteria = [
@@ -61,45 +60,12 @@ export default function Mastermind() {
       <section className="hero-section text-center">
         <LiquidHero />
         <div className="container hero-container" style={{ maxWidth: '880px', margin: '0 auto' }}>
-          {/* Live Cohort Status Banner */}
-          {cohort.batchName && (
-            <div style={{
-              display: 'inline-flex',
-              alignItems: 'center',
-              gap: '10px',
-              padding: '0.45rem 1.15rem',
-              backgroundColor: 'rgba(255, 255, 255, 0.04)',
-              border: '1px solid rgba(255, 255, 255, 0.12)',
-              borderRadius: '9999px',
-              fontSize: '0.82rem',
-              color: '#d4d4d8',
-              marginBottom: '1.25rem'
-            }}>
-              <span style={{
-                width: '8px',
-                height: '8px',
-                borderRadius: '50%',
-                backgroundColor: cohort.status === 'Waitlist Only' ? '#f59e0b' : '#10b981',
-                display: 'inline-block'
-              }} />
-              <span style={{ fontWeight: 700, color: '#ffffff' }}>{cohort.batchName}</span>
-              <span style={{ color: '#666666' }}>•</span>
-              <span>{cohort.startDate}</span>
-              {cohort.seatsRemaining && (
-                <>
-                  <span style={{ color: '#666666' }}>•</span>
-                  <span style={{ color: '#fbbf24', fontWeight: 600 }}>{cohort.seatsRemaining}</span>
-                </>
-              )}
-            </div>
-          )}
-
-          <h1 className="hero-title" style={{ marginBottom: '0.85rem', fontSize: 'clamp(2.6rem, 5vw, 4rem)' }}>
+          <h1 className="hero-title" style={{ marginBottom: '1.25rem', fontSize: 'clamp(2.6rem, 5vw, 4rem)' }}>
             The Executive Mastermind
           </h1>
 
-          <p className="hero-lead" style={{ maxWidth: '720px', margin: '0 auto 2rem auto', fontSize: '1.15rem' }}>
-            {cohort.duration || '10-week intensive program followed by dedicated handholding support till 6 months.'} Direction, structure, and lasting peace of mind.
+          <p className="hero-lead" style={{ maxWidth: '720px', margin: '0 auto 2.5rem auto', fontSize: '1.15rem' }}>
+            10-week intensive program followed by dedicated handholding support till 6 months. Direction, structure, and lasting peace of mind.
           </p>
 
           <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap' }}>

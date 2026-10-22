@@ -334,7 +334,7 @@ export default function FaqsAdmin() {
                   maxLength={150}
                   value={editingFaq.question}
                   onChange={e => setEditingFaq({ ...editingFaq, question: e.target.value })}
-                  placeholder="e.g. How are the mentorship sessions conducted?"
+                  placeholder="Enter question"
                   style={{
                     width: '100%',
                     padding: '0.75rem 1rem',
@@ -360,7 +360,7 @@ export default function FaqsAdmin() {
                   maxLength={800}
                   value={editingFaq.answer}
                   onChange={e => setEditingFaq({ ...editingFaq, answer: e.target.value })}
-                  placeholder="e.g. You go through a structured 10-week intensive curriculum, paired with private 1-on-1 diagnostic sessions..."
+                  placeholder="Enter answer..."
                   style={{
                     width: '100%',
                     padding: '0.75rem 1rem',

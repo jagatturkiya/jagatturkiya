@@ -376,7 +376,7 @@ export default function SuccessStoriesAdmin() {
                   maxLength={100}
                   value={editingStory.title}
                   onChange={e => setEditingStory({ ...editingStory, title: e.target.value })}
-                  placeholder="e.g. Walking 4 km Daily to Save ₹30: The Delhi Days"
+                  placeholder="Story title"
                   style={{
                     width: '100%',
                     padding: '0.75rem 1rem',
@@ -402,7 +402,7 @@ export default function SuccessStoriesAdmin() {
                     maxLength={60}
                     value={editingStory.clientName || ''}
                     onChange={e => setEditingStory({ ...editingStory, clientName: e.target.value })}
-                    placeholder="e.g. Rahul Singh (Corporate Executive)"
+                    placeholder="Client name (optional)"
                     style={{
                       width: '100%',
                       padding: '0.75rem 1rem',
@@ -426,7 +426,7 @@ export default function SuccessStoriesAdmin() {
                     maxLength={20}
                     value={editingStory.readTime || ''}
                     onChange={e => setEditingStory({ ...editingStory, readTime: e.target.value })}
-                    placeholder="e.g. 5 min read"
+                    placeholder="5 min read"
                     style={{
                       width: '100%',
                       padding: '0.75rem 1rem',
@@ -460,7 +460,7 @@ export default function SuccessStoriesAdmin() {
                   maxLength={250}
                   value={editingStory.excerpt || ''}
                   onChange={e => setEditingStory({ ...editingStory, excerpt: e.target.value })}
-                  placeholder="e.g. How relentless discipline and psychological clarity turned early struggle into enduring executive leadership..."
+                  placeholder="Brief story excerpt or summary..."
                   style={{
                     width: '100%',
                     padding: '0.75rem 1rem',
@@ -528,7 +528,7 @@ export default function SuccessStoriesAdmin() {
                         maxLength={1000}
                         value={para}
                         onChange={e => handleParagraphChange(pIdx, e.target.value)}
-                        placeholder={`Paragraph ${pIdx + 1}: Share the journey, hurdles, and transformation...`}
+                        placeholder={`Write paragraph ${pIdx + 1} content here...`}
                         style={{
                           width: '100%',
                           padding: '0.75rem 1rem',
