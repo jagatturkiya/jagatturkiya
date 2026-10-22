@@ -441,11 +441,14 @@ export default function SuccessStoriesAdmin() {
                 </div>
               </div>
 
-              {/* Drag and Drop Image Dropzone (No link required) */}
+              {/* Drag and Drop Image Dropzone (With Cropper) */}
               <ImageDropzone
                 value={editingStory.image}
                 onChange={img => setEditingStory({ ...editingStory, image: img })}
                 label="Story Cover Photo (Drag & Drop image here)"
+                shape="rect"
+                aspectRatio={1.6}
+                crop={true}
               />
 
               {/* Short Excerpt */}

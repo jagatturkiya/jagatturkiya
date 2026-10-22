@@ -818,12 +818,15 @@ export default function TestimonialsAdmin() {
                     </div>
                   </div>
 
-                  {/* Drag and Drop Profile Photo */}
+                  {/* Drag and Drop Profile Photo (Circular with Cropper) */}
                   <div style={{ marginBottom: '1.25rem' }}>
                     <ImageDropzone
                       value={reviewForm.image}
                       onChange={(dataUrl) => setReviewForm({ ...reviewForm, image: dataUrl })}
-                      label="Drop Reviewer Profile Photo (Auto-compressed)"
+                      label="Reviewer Profile Photo"
+                      shape="circle"
+                      aspectRatio={1}
+                      crop={true}
                     />
                   </div>
 

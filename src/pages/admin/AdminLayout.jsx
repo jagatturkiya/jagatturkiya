@@ -34,19 +34,14 @@ export default function AdminLayout() {
       icon: Users
     },
     {
-      label: 'Mastermind Curriculum',
-      path: '/admin/mastermind',
-      icon: Award
+      label: 'Customize Website & Media',
+      path: '/admin/customize',
+      icon: Sparkles
     },
     {
       label: 'FAQs Management',
       path: '/admin/faqs',
       icon: HelpCircle
-    },
-    {
-      label: 'Homepage & Stats',
-      path: '/admin/homepage',
-      icon: Sparkles
     },
     {
       label: 'Contact & Advisory Info',
@@ -57,11 +52,10 @@ export default function AdminLayout() {
 
   const getPageTitle = () => {
     const path = location.pathname;
+    if (path.includes('customize')) return 'Customize Website & Media';
     if (path.includes('testimonials')) return 'Client Testimonials CMS';
     if (path.includes('leads')) return 'Leads & Inquiries CRM';
-    if (path.includes('mastermind')) return 'Mastermind Curriculum CMS';
     if (path.includes('faqs')) return 'Frequently Asked Questions CMS';
-    if (path.includes('homepage')) return 'Homepage Hero & Stats CMS';
     if (path.includes('contact-info')) return 'Direct Contact & Advisory Info CMS';
     return 'Success Stories CMS';
   };

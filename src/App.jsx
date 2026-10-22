@@ -27,6 +27,7 @@ import MastermindAdmin from './pages/admin/MastermindAdmin';
 import FaqsAdmin from './pages/admin/FaqsAdmin';
 import HomePageAdmin from './pages/admin/HomePageAdmin';
 import ContactInfoAdmin from './pages/admin/ContactInfoAdmin';
+import CustomizeWebsite from './pages/admin/CustomizeWebsite';
 import AdminLogin from './pages/admin/AdminLogin';
 
 export default function App() {
@@ -46,10 +47,12 @@ export default function App() {
             <Route path="stories" element={<SuccessStoriesAdmin />} />
             <Route path="testimonials" element={<TestimonialsAdmin />} />
             <Route path="leads" element={<LeadsCRM />} />
-            <Route path="mastermind" element={<MastermindAdmin />} />
+            <Route path="customize" element={<CustomizeWebsite />} />
             <Route path="faqs" element={<FaqsAdmin />} />
-            <Route path="homepage" element={<HomePageAdmin />} />
             <Route path="contact-info" element={<ContactInfoAdmin />} />
+            {/* Legacy tabs redirected to Customize Website & Media */}
+            <Route path="homepage" element={<Navigate to="/admin/customize" replace />} />
+            <Route path="mastermind" element={<Navigate to="/admin/customize" replace />} />
             <Route path="*" element={<Navigate to="/admin/stories" replace />} />
           </Route>
         </Routes>

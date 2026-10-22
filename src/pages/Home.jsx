@@ -65,14 +65,14 @@ export default function Home() {
           <div className="ts-showcase-grid">
             <div className="ts-image-card">
               <img
-                src="./assets/images/times-square-wide.webp"
+                src={heroStats.timesSquareImageWide || "./assets/images/times-square-wide.webp"}
                 alt="Jagat Turkiya featured on Times Square Billboard in New York City"
                 loading="lazy"
               />
             </div>
             <div className="ts-image-card">
               <img
-                src="./assets/images/times-square-close.webp"
+                src={heroStats.timesSquareImageClose || "./assets/images/times-square-close.webp"}
                 alt="Jagat Turkiya Times Square Billboard Close View"
                 loading="lazy"
               />
@@ -112,7 +112,11 @@ export default function Home() {
         <div className="container">
           <div className="story-split">
             <div className="story-image-wrap">
-              <img src="./assets/images/seminar.webp" alt="Jagat Turkiya Live Seminar" loading="lazy" />
+              <img 
+                src={heroStats.seminarImage || "./assets/images/seminar.webp"} 
+                alt="Jagat Turkiya Live Seminar" 
+                loading="lazy" 
+              />
             </div>
 
             <div className="story-text">
