@@ -52,8 +52,16 @@ export async function getLeads() {
         .select('*')
         .order('created_at', { ascending: false });
 
-      if (!error && data && data.length > 0) {
-        return data;
+      if (!error && data) {
+        const liveLeads = data.map(d => ({
+          ...d,
+          name: d.name || `${d.first_name || ''} ${d.last_name || ''}`.trim() || 'Client',
+          message: d.notes || d.message || '',
+          preferred_time: d.preferred_time || 'Morning',
+          created_at: d.created_at ? new Date(d.created_at).toLocaleDateString('en-GB', { day: '2-digit', month: 'short', year: 'numeric' }) + ' - ' + new Date(d.created_at).toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' }) : 'Recently'
+        }));
+        const sampleFiltered = initialLeads.filter(s => !liveLeads.some(l => l.email === s.email));
+        return [...liveLeads, ...sampleFiltered];
       }
     } catch (err) {
       console.warn('Supabase getLeads error, falling back to local cache:', err);
