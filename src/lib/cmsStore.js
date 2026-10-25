@@ -624,7 +624,7 @@ export const defaultHeroAndStats = {
   timesSquareTitle: "Featured on Times Square, New York City",
   timesSquareSubtitle: "Spotlighted on the global digital marquee in Times Square, NYC for excellence in transformational coaching.",
   timesSquareStoryTitle: "Global Recognition: Times Square, New York",
-  timesSquareStoryPara1: "In 2024, Jagat Singh Turkiya was spotlighted on the digital marquee in Times Square, NYC by Topmate’s Creator Club for excellence in life and mindset transformation.",
+  timesSquareStoryPara1: "In 2025, Jagat Singh Turkiya was spotlighted on the digital marquee in Times Square, NYC by Topmate’s Creator Club for excellence in life and mindset transformation.",
   timesSquareStoryPara2: "From overcoming acute personal adversity to having his work projected in the center of Manhattan, Jagat’s journey is living proof: authentic transformation and disciplined execution transcend all boundaries.",
   timesSquareImageWide: "./assets/images/times-square-wide.webp",
   timesSquareImageClose: "./assets/images/times-square-close.webp",
@@ -644,7 +644,7 @@ export function getHeroAndTimesSquare() {
     const cached = localStorage.getItem('jt_cms_home_stats');
     if (cached) {
       const parsed = JSON.parse(cached);
-      if (parsed.timesSquareStoryTitle === "From Walking 4 km Daily to the Heart of Manhattan") {
+      if (parsed.timesSquareStoryTitle === "From Walking 4 km Daily to the Heart of Manhattan" || (parsed.timesSquareStoryPara1 && parsed.timesSquareStoryPara1.includes('2024'))) {
         parsed.timesSquareStoryTitle = defaultHeroAndStats.timesSquareStoryTitle;
         parsed.timesSquareStoryPara1 = defaultHeroAndStats.timesSquareStoryPara1;
         parsed.timesSquareStoryPara2 = defaultHeroAndStats.timesSquareStoryPara2;

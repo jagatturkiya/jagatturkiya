@@ -168,10 +168,10 @@ export default function SuccessStories() {
                 Honored on the World Stage by Topmate's Creator Club
               </h3>
               <p style={{ color: 'var(--text-silver)', fontSize: '0.98rem', lineHeight: 1.68, marginBottom: '1rem' }}>
-                In 2024, Jagat Singh Turkiya was spotlighted on the world-famous digital marquee in Times Square, New York City as an exceptional transformation coach who has guided thousands through personal and financial sovereignty.
+                In 2025, Jagat Singh Turkiya was spotlighted on the digital marquee in Times Square, NYC by Topmate’s Creator Club for excellence in life and mindset transformation.
               </p>
               <p style={{ color: 'var(--text-silver)', fontSize: '0.98rem', lineHeight: 1.68 }}>
-                From walking 4 km daily through Delhi to save ₹30 in bus fare to standing tall in Manhattan, this recognition is a testament to the life-changing results delivered to his mentees.
+                From overcoming acute personal adversity to having his work projected in the center of Manhattan, Jagat’s journey is living proof: authentic transformation and disciplined execution transcend all boundaries.
               </p>
             </div>
 

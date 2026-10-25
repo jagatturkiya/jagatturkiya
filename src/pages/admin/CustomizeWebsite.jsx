@@ -478,7 +478,7 @@ export default function CustomizeWebsite() {
                     })}
                   >
                     <h3 style={{ fontSize: '1.25rem', fontWeight: 700, color: '#ffffff', margin: '0 0 1rem' }}>
-                      {homeData.timesSquareStoryTitle || 'From Walking 4 km Daily to the Heart of Manhattan'}
+                      {homeData.timesSquareStoryTitle || 'Global Recognition: Times Square, New York'}
                     </h3>
                     <p style={{ color: '#a1a1aa', fontSize: '0.88rem', lineHeight: 1.65, marginBottom: '0.85rem' }}>
                       {homeData.timesSquareStoryPara1}

@@ -83,7 +83,7 @@ export default function Home() {
             <div className="ts-narrative-text">
               <h3>{heroStats.timesSquareStoryTitle || 'Global Recognition: Times Square, New York'}</h3>
               <p>
-                {heroStats.timesSquareStoryPara1 || "In 2024, Jagat Singh Turkiya was spotlighted on the digital marquee in Times Square, NYC by Topmate’s Creator Club for excellence in life and mindset transformation."}
+                {(heroStats.timesSquareStoryPara1 ? heroStats.timesSquareStoryPara1.replace('2024', '2025') : "In 2025, Jagat Singh Turkiya was spotlighted on the digital marquee in Times Square, NYC by Topmate’s Creator Club for excellence in life and mindset transformation.")}
               </p>
               <p>
                 {heroStats.timesSquareStoryPara2 || "From overcoming acute personal adversity to having his work projected in the center of Manhattan, Jagat’s journey is living proof: authentic transformation and disciplined execution transcend all boundaries."}
