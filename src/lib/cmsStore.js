@@ -623,9 +623,9 @@ export const defaultHeroAndStats = {
   ctaSecondaryLink: "/contact",
   timesSquareTitle: "Featured on Times Square, New York City",
   timesSquareSubtitle: "Spotlighted on the global digital marquee in Times Square, NYC for excellence in transformational coaching.",
-  timesSquareStoryTitle: "From Walking 4 km Daily to the Heart of Manhattan",
-  timesSquareStoryPara1: "In 2024, Jagat Singh Turkiya was spotlighted on the world-famous digital marquee in Times Square, New York City by Topmate’s Creator Club. This recognition honored him as an \"incredible transformation coach\" who has helped thousands of individuals overcome internal roadblocks and create lasting clarity in their lives and careers.",
-  timesSquareStoryPara2: "For someone who once walked four kilometers every day simply to save ₹30 in bus fare, seeing his name and mission projected in the center of NYC stands as proof: with disciplined focus, genuine humility, and consistent execution, authentic work transcends every geographical boundary.",
+  timesSquareStoryTitle: "Global Recognition: Times Square, New York",
+  timesSquareStoryPara1: "In 2024, Jagat Singh Turkiya was spotlighted on the digital marquee in Times Square, NYC by Topmate’s Creator Club for excellence in life and mindset transformation.",
+  timesSquareStoryPara2: "From overcoming acute personal adversity to having his work projected in the center of Manhattan, Jagat’s journey is living proof: authentic transformation and disciplined execution transcend all boundaries.",
   timesSquareImageWide: "./assets/images/times-square-wide.webp",
   timesSquareImageClose: "./assets/images/times-square-close.webp",
   seminarImage: "./assets/images/coach/jagat-coach-seminar.jpg",
@@ -642,7 +642,16 @@ export const defaultHeroAndStats = {
 export function getHeroAndTimesSquare() {
   try {
     const cached = localStorage.getItem('jt_cms_home_stats');
-    if (cached) return { ...defaultHeroAndStats, ...JSON.parse(cached) };
+    if (cached) {
+      const parsed = JSON.parse(cached);
+      if (parsed.timesSquareStoryTitle === "From Walking 4 km Daily to the Heart of Manhattan") {
+        parsed.timesSquareStoryTitle = defaultHeroAndStats.timesSquareStoryTitle;
+        parsed.timesSquareStoryPara1 = defaultHeroAndStats.timesSquareStoryPara1;
+        parsed.timesSquareStoryPara2 = defaultHeroAndStats.timesSquareStoryPara2;
+        localStorage.setItem('jt_cms_home_stats', JSON.stringify(parsed));
+      }
+      return { ...defaultHeroAndStats, ...parsed };
+    }
     localStorage.setItem('jt_cms_home_stats', JSON.stringify(defaultHeroAndStats));
     return defaultHeroAndStats;
   } catch {

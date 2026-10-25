@@ -79,26 +79,26 @@ export default function Home() {
             </div>
           </div>
 
-          <div className="ts-narrative-box">
-            <div>
-              <h3>{heroStats.timesSquareStoryTitle || 'From Walking 4 km Daily to the Heart of Manhattan'}</h3>
+          <div className="ts-narrative-split">
+            <div className="ts-narrative-text">
+              <h3>{heroStats.timesSquareStoryTitle || 'Global Recognition: Times Square, New York'}</h3>
               <p>
-                {heroStats.timesSquareStoryPara1 || "In 2024, Jagat Singh Turkiya was spotlighted on the digital marquee in Times Square, NYC by Topmate’s Creator Club as an exceptional transformation coach who has guided thousands to lasting life clarity."}
+                {heroStats.timesSquareStoryPara1 || "In 2024, Jagat Singh Turkiya was spotlighted on the digital marquee in Times Square, NYC by Topmate’s Creator Club for excellence in life and mindset transformation."}
               </p>
               <p>
-                {heroStats.timesSquareStoryPara2 || "From walking 4 km daily to save ₹30 bus fare to seeing his mission projected in Manhattan, it stands as proof: disciplined focus and authentic execution transcend every boundary."}
+                {heroStats.timesSquareStoryPara2 || "From overcoming acute personal adversity to having his work projected in the center of Manhattan, Jagat’s journey is living proof: authentic transformation and disciplined execution transcend all boundaries."}
               </p>
             </div>
-            <div className="ts-narrative-stats">
-              <div className="ts-stat-badge">
+            <div className="ts-stats-row">
+              <div className="ts-stat-item">
                 <h4>{heroStats.stat1Val || 'Times Sq.'}</h4>
                 <p>{heroStats.stat1Label || 'New York City'}</p>
               </div>
-              <div className="ts-stat-badge">
+              <div className="ts-stat-item">
                 <h4>{heroStats.stat2Val || 'Topmate'}</h4>
                 <p>{heroStats.stat2Label || 'Creator Club'}</p>
               </div>
-              <div className="ts-stat-badge">
+              <div className="ts-stat-item">
                 <h4>{heroStats.stat3Val || '15,000+'}</h4>
                 <p>{heroStats.stat3Label || 'Lives Impacted'}</p>
               </div>
@@ -249,15 +249,15 @@ export default function Home() {
       </section>
 
       {/* Final Callout with Dynamic Coach Portrait */}
-      <section className="section section-dark" style={{ padding: '5.5rem 0' }}>
-        <div className="container" style={{ maxWidth: '960px', margin: '0 auto' }}>
-          <div className="home-cta-box">
-            <div>
-              <h2 style={{ fontSize: 'clamp(2rem, 3.5vw, 2.7rem)', marginBottom: '1rem', color: '#ffffff', lineHeight: 1.2 }}>
+      <section className="section section-dark home-final-cta-section" style={{ padding: '6.5rem 0', borderTop: '1px solid var(--border-subtle)' }}>
+        <div className="container" style={{ maxWidth: '1050px', margin: '0 auto' }}>
+          <div className="home-cta-split">
+            <div className="home-cta-text-side">
+              <h2 style={{ fontSize: 'clamp(2.2rem, 3.8vw, 3.2rem)', marginBottom: '1.25rem', color: '#ffffff', lineHeight: 1.15 }}>
                 Ready to Break Your Internal Ceiling? <br />
                 <span className="serif-font">Book Your Private Clarity Call.</span>
               </h2>
-              <p style={{ color: 'var(--text-silver)', fontSize: '1.02rem', marginBottom: '2rem', lineHeight: 1.7 }}>
+              <p style={{ color: 'var(--text-silver)', fontSize: '1.08rem', marginBottom: '2.25rem', lineHeight: 1.7, maxWidth: '580px' }}>
                 In this confidential 45-minute call, Jagat Turkiya will audit your bottlenecks, identify subconscious friction, and build your actionable transformation roadmap.
               </p>
               <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap' }}>
