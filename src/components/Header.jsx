@@ -41,7 +41,7 @@ export default function Header() {
 
           <div className="header-cta-wrap">
             <Link to="/contact" className="btn btn-white">
-              Book Consultation
+              Book Clarity Call
             </Link>
             <button
               type="button"

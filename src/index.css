@@ -842,8 +842,8 @@ h1, h2, h3, h4, h5, h6 {
   border-radius: var(--radius-md);
   overflow: hidden;
   border: 1px solid rgba(255, 255, 255, 0.12);
-  background: #000000;
-  height: 420px;
+  background: #0d0d10;
+  height: 440px;
   box-shadow: 0 16px 40px rgba(0, 0, 0, 0.6);
 }
 
@@ -851,7 +851,7 @@ h1, h2, h3, h4, h5, h6 {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: center;
+  object-position: top center;
   display: block;
 }
 
@@ -1301,7 +1301,7 @@ h1, h2, h3, h4, h5, h6 {
   overflow: hidden;
   border: 1px solid rgba(255, 255, 255, 0.12);
   background: var(--bg-card);
-  height: 400px;
+  height: 450px;
   box-shadow: 0 16px 36px rgba(0, 0, 0, 0.6);
 }
 
@@ -1309,7 +1309,7 @@ h1, h2, h3, h4, h5, h6 {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: center;
+  object-position: top center;
   display: block;
 }
 
@@ -3178,3 +3178,300 @@ select.form-control {
     justify-content: center;
   }
 }
+
+/* ==========================================================================
+   MASTERMIND EXECUTIVE C-SUITE STACKING CARDS (Scroll Overlap Effect)
+   ========================================================================== */
+
+.mm-team-section {
+  padding: 6rem 0 7rem;
+  background: #050505;
+  position: relative;
+  border-top: 1px solid var(--border-subtle);
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.mm-stack-container {
+  position: relative;
+  max-width: 960px;
+  margin: 3.5rem auto 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.mm-stack-card {
+  position: sticky;
+  top: 110px;
+  background: #0c0c11;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 20px;
+  padding: clamp(1.75rem, 3.5vw, 2.75rem);
+  box-shadow: 0 -16px 45px rgba(0, 0, 0, 0.85), 0 24px 60px rgba(0, 0, 0, 0.9);
+  margin-bottom: 280px;
+  display: grid;
+  grid-template-columns: 240px 1fr;
+  gap: 2.25rem;
+  align-items: center;
+  transition: transform 0.15s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.15s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: transform, opacity;
+  overflow: hidden;
+}
+
+.mm-stack-card:last-child {
+  margin-bottom: 3.5rem;
+}
+
+@media (max-width: 768px) {
+  .mm-stack-card {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    padding: 1.5rem;
+    margin-bottom: 200px;
+    top: 90px;
+  }
+}
+
+.mm-stack-visual-col {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.mm-stack-photo-wrap {
+  position: relative;
+  border-radius: 16px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  aspect-ratio: 1 / 1;
+  background: #0d0d10;
+  width: 100%;
+  max-width: 240px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+.mm-stack-photo-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
+  display: block;
+}
+
+.mm-stack-avatar-box {
+  width: 100%;
+  max-width: 240px;
+  aspect-ratio: 1 / 1;
+  border-radius: 16px;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0.02) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+}
+
+.mm-stack-monogram {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: clamp(2.5rem, 5vw, 3.5rem);
+  color: #ffffff;
+  letter-spacing: 0.04em;
+}
+
+.mm-stack-content-col {
+  display: flex;
+  flex-direction: column;
+}
+
+.mm-stack-name {
+  font-family: var(--font-heading);
+  font-size: clamp(1.6rem, 2.8vw, 2.1rem);
+  font-weight: 700;
+  color: #ffffff;
+  margin-bottom: 0.25rem;
+  letter-spacing: -0.015em;
+}
+
+.mm-team-role-line {
+  font-size: 0.96rem;
+  color: rgba(255, 255, 255, 0.65);
+  font-weight: 500;
+  margin-bottom: 1rem;
+  letter-spacing: 0.01em;
+}
+
+.mm-stack-desc {
+  font-size: 0.94rem;
+  color: var(--text-silver);
+  line-height: 1.7;
+  margin-bottom: 1.25rem;
+}
+
+.mm-stack-points {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.07);
+  padding-top: 1.1rem;
+}
+
+.mm-stack-points li {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  font-size: 0.86rem;
+  color: var(--text-silver);
+  line-height: 1.5;
+}
+
+.mm-stack-points li span.bullet {
+  color: #ffffff;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+.mm-csuite-banner {
+  margin-top: 3rem;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px dashed rgba(255, 255, 255, 0.14);
+  border-radius: var(--radius-md);
+  padding: 1.75rem 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.mm-csuite-banner p {
+  margin: 0;
+  font-size: 0.96rem;
+  color: var(--text-silver);
+  line-height: 1.6;
+}
+
+.mm-csuite-banner strong {
+  color: #ffffff;
+}
+
+/* ==========================================================================
+   HOME PROOF & REAL COACHING GALLERY
+   ========================================================================== */
+
+.home-proof-gallery {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.25rem;
+  margin: 2.5rem 0 3.5rem;
+}
+
+@media (max-width: 992px) {
+  .home-proof-gallery {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 540px) {
+  .home-proof-gallery {
+    grid-template-columns: 1fr;
+  }
+}
+
+.home-proof-card {
+  background: rgba(255, 255, 255, 0.025);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  display: flex;
+  flex-direction: column;
+}
+
+.home-proof-card:hover {
+  background: rgba(255, 255, 255, 0.045);
+  border-color: rgba(255, 255, 255, 0.2);
+  transform: translateY(-4px);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.5);
+}
+
+.home-proof-img-wrap {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 11;
+  overflow: hidden;
+  background: #0d0d10;
+}
+
+.home-proof-img-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
+  transition: transform 0.4s ease;
+}
+
+.home-proof-card:hover .home-proof-img-wrap img {
+  transform: scale(1.04);
+}
+
+.home-proof-info {
+  padding: 1rem 1.15rem;
+}
+
+.home-proof-info h4 {
+  font-size: 0.95rem;
+  color: #ffffff;
+  margin-bottom: 0.25rem;
+  font-weight: 600;
+}
+
+.home-proof-info p {
+  font-size: 0.8rem;
+  color: var(--text-silver);
+  line-height: 1.5;
+  margin: 0;
+}
+
+/* Home CTA Banner with Real Coach Energy */
+.home-cta-box {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.04) 0%, rgba(255, 255, 255, 0.015) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: var(--radius-lg);
+  padding: 3.5rem 2.5rem;
+  display: grid;
+  grid-template-columns: 1fr 320px;
+  gap: 2.5rem;
+  align-items: center;
+  text-align: left;
+}
+
+@media (max-width: 860px) {
+  .home-cta-box {
+    grid-template-columns: 1fr;
+    text-align: center;
+    padding: 2.5rem 1.5rem;
+  }
+}
+
+.home-cta-img-wrap {
+  width: 100%;
+  max-width: 320px;
+  aspect-ratio: 4 / 5;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  margin: 0 auto;
+}
+
+.home-cta-img-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
+}
+
+

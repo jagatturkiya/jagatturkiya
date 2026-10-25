@@ -67,20 +67,16 @@ const distAssetsDir = path.join(distDir, 'assets');
 const rootAssetsDir = path.join(rootDir, 'assets');
 
 if (fs.existsSync(distAssetsDir)) {
-  if (!fs.existsSync(rootAssetsDir)) {
-    fs.mkdirSync(rootAssetsDir, { recursive: true });
-  }
+  fs.cpSync(distAssetsDir, rootAssetsDir, { recursive: true });
+  console.log('[prepare-gh-pages] Copied all compiled assets and subdirectories to root/assets/');
+}
 
-  const files = fs.readdirSync(distAssetsDir);
-  for (const file of files) {
-    const srcFile = path.join(distAssetsDir, file);
-    const destFile = path.join(rootAssetsDir, file);
-    const stat = fs.statSync(srcFile);
-    if (!stat.isDirectory()) {
-      fs.copyFileSync(srcFile, destFile);
-      console.log(`[prepare-gh-pages] Copied asset: ${file} -> root/assets/${file}`);
-    }
-  }
+// 3. Ensure public/assets/images/coach is synced to root/assets/images/coach
+const publicCoachDir = path.join(rootDir, 'public', 'assets', 'images', 'coach');
+const rootCoachDir = path.join(rootDir, 'assets', 'images', 'coach');
+if (fs.existsSync(publicCoachDir)) {
+  fs.cpSync(publicCoachDir, rootCoachDir, { recursive: true });
+  console.log('[prepare-gh-pages] Synced coach images to root/assets/images/coach/');
 }
 
 console.log('[prepare-gh-pages] Production deployment bundle ready!');

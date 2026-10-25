@@ -61,7 +61,7 @@ export default function About() {
         <div className="container">
           <div className="story-split">
             <div className="story-image-wrap">
-              <img src="./assets/images/seminar.webp" alt="Jagat Turkiya Live Seminar" loading="lazy" />
+              <img src="./assets/images/coach/jagat-coach-seminar.jpg" alt="Jagat Turkiya Live Seminar & Coach Cohort" loading="lazy" />
             </div>
 
             <div className="story-text">
@@ -69,10 +69,10 @@ export default function About() {
                 Meet the Mind Behind Thousands of Transformations
               </h2>
               <p>
-                Jagat Turkiya is a globally recognized transformational coach, corporate mentor, and author dedicated to helping high-performing executives, founders, and ambitious professionals unlock their highest potential.
+                Jagat Turkiya is a globally recognized Life &amp; Mindset Transformation Coach, author of 5 books, and founder of Aapka Coach. He helps executives and high-earners break through self-imposed ceilings to live with clarity and purpose.
               </p>
               <p>
-                Over the past 15+ years, he has conducted 200+ workshops and empowered more than 15,000 individuals across 9 countries to eliminate limiting beliefs, conquer self-doubt, and master absolute clarity in their careers, wealth, and relationships.
+                Over 15+ years, he has conducted 200+ workshops and empowered 15,000+ individuals across 9 countries to eliminate limiting beliefs, conquer fear, and align their life direction.
               </p>
 
               <div className="editorial-quote">
@@ -81,7 +81,7 @@ export default function About() {
               </div>
 
               <p>
-                He doesn't teach theoretical motivation or textbook platitudes. Every framework he delivers is battle-tested through 1,500+ private one-on-one sessions, executive advisory, and corporate leadership trenches—engineered to produce measurable, lasting results.
+                Every framework he delivers is battle-tested through 1,500+ private consultations and executive advisory—engineered to produce permanent shifts in human perspective.
               </p>
             </div>
           </div>
@@ -97,18 +97,18 @@ export default function About() {
                 15+ Years in the Corporate Trenches
               </h2>
               <p>
-                For over 15 years, Jagat worked inside demanding enterprise IT environments alongside brilliant engineers, project leaders, and executives.
+                For over 15 years, Jagat worked inside demanding enterprise IT environments alongside top engineers and corporate leaders.
               </p>
               <p>
-                During that time, he observed a painful contradiction: people were earning high salaries and climbing corporate ladders, yet privately battling crippling anxiety, burnout, relationship strain at home, and a complete lack of financial direction.
+                He observed a painful paradox: people were achieving external status while battling burnout, anxiety, and relationship strain at home.
               </p>
               <p>
-                He realized that technical intelligence alone is not enough to live well. You need emotional grounding, defensive financial habits, and inner peace. That realization led to the founding of his mentorship practice, where he has now conducted over 1,500 private one-on-one sessions and guided 15,000+ individuals across 9 countries.
+                Realizing that technical acumen is meaningless without emotional grounding and inner peace, he founded his transformation practice—now trusted by over 15,000 people globally.
               </p>
             </div>
 
             <div className="story-image-wrap">
-              <img src="./assets/images/jagat-portrait.webp" alt="Jagat Turkiya Portrait" loading="lazy" />
+              <img src="./assets/images/coach/jagat-hero-portrait.png" alt="Jagat Turkiya Studio Portrait" loading="lazy" />
             </div>
           </div>
         </div>

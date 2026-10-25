@@ -20,3 +20,6 @@ desktop.ini
 *.tmp
 .temp/
 *.local
+
+# Raw upload folders
+new images for upload/

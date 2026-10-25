@@ -134,7 +134,7 @@ export default function StoryReaderModal({
                 className="story-author-photo"
                 onError={(e) => {
                   e.currentTarget.onerror = null;
-                  e.currentTarget.src = './assets/images/jagat-portrait.webp';
+                  e.currentTarget.src = './assets/images/coach/jagat-hero-portrait.png';
                 }}
               />
               <div className="story-author-details">

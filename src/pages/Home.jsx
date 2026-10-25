@@ -31,22 +31,22 @@ export default function Home() {
       {/* Hero Section */}
       <section className="hero-section text-center">
         <LiquidHero />
-        <div className="container hero-container" style={{ maxWidth: '900px', margin: '0 auto' }}>
-          <h1 className="hero-title" style={{ marginBottom: '1.25rem' }}>
-            {heroStats.heroTitle || 'Transform Your Perspective with'} <br />
-            <span className="serif-font">{heroStats.heroTitleHighlight || 'Clarity, Focus & Action'}</span>
+        <div className="container hero-container" style={{ maxWidth: '920px', margin: '0 auto' }}>
+          <h1 className="hero-title" style={{ marginBottom: '1.25rem', fontSize: 'clamp(2.4rem, 4.8vw, 3.9rem)' }}>
+            For High-Performing Executives, Founders &amp; Leaders: <br />
+            <span className="serif-font">Break Internal Bottlenecks. Master Decisive Clarity.</span>
           </h1>
 
           <p className="hero-lead" style={{ maxWidth: '720px', margin: '0 auto 2.25rem auto' }}>
-            {heroStats.heroLead || 'Overcome limiting beliefs, eliminate friction, and build an unshakeable direction for your career, wealth, and life with Jagat Turkiya.'}
+            Battle-tested 1-on-1 and cohort advisory with Jagat Turkiya. Dismantle internal bottlenecks, align high-stakes decisions, and install permanent peace of mind.
           </p>
 
           <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap' }}>
-            <Link to={heroStats.ctaPrimaryLink || '/mastermind'} className="btn btn-white">
-              {heroStats.ctaPrimaryText || 'Explore Mastermind'}
+            <Link to="/contact" className="btn btn-white">
+              Book Your Clarity Call
             </Link>
-            <Link to={heroStats.ctaSecondaryLink || '/contact'} className="btn btn-glass">
-              {heroStats.ctaSecondaryText || 'Book Consultation'}
+            <Link to="/mastermind" className="btn btn-glass">
+              Explore Mastermind
             </Link>
           </div>
         </div>
@@ -83,10 +83,10 @@ export default function Home() {
             <div>
               <h3>{heroStats.timesSquareStoryTitle || 'From Walking 4 km Daily to the Heart of Manhattan'}</h3>
               <p>
-                {heroStats.timesSquareStoryPara1 || "In 2024, Jagat Singh Turkiya was spotlighted on the world-famous digital marquee in Times Square, New York City by Topmate’s Creator Club. This recognition honored him as an 'incredible transformation coach' who has helped thousands of individuals overcome internal roadblocks and create lasting clarity in their lives and careers."}
+                {heroStats.timesSquareStoryPara1 || "In 2024, Jagat Singh Turkiya was spotlighted on the digital marquee in Times Square, NYC by Topmate’s Creator Club as an exceptional transformation coach who has guided thousands to lasting life clarity."}
               </p>
               <p>
-                {heroStats.timesSquareStoryPara2 || "For someone who once walked four kilometers every day simply to save ₹30 in bus fare, seeing his name and mission projected in the center of NYC stands as proof: with disciplined focus, genuine humility, and consistent execution, authentic work transcends every geographical boundary."}
+                {heroStats.timesSquareStoryPara2 || "From walking 4 km daily to save ₹30 bus fare to seeing his mission projected in Manhattan, it stands as proof: disciplined focus and authentic execution transcend every boundary."}
               </p>
             </div>
             <div className="ts-narrative-stats">
@@ -107,31 +107,100 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Story Split Section */}
+      {/* Ground-Level Proof & Transformational Impact Gallery */}
       <section className="section section-dark">
         <div className="container">
-          <div className="story-split">
+          <div className="section-header text-center">
+            <h2 className="section-title">
+              How Jagat Turkiya <br />
+              <span className="serif-font">Transforms Lives &amp; Shifts Perspectives</span>
+            </h2>
+            <p className="section-subtitle" style={{ margin: '0 auto', maxWidth: '640px' }}>
+              Real transformation happens in live coaching trenches—breaking decades of self-doubt through deep 1-on-1 human conversations.
+            </p>
+          </div>
+
+          <div className="home-proof-gallery">
+            <div className="home-proof-card">
+              <div className="home-proof-img-wrap">
+                <img 
+                  src="./assets/images/coach/jagat-coach-seminar.jpg" 
+                  alt="Coach Training Seminar Cohort" 
+                  loading="lazy" 
+                />
+              </div>
+              <div className="home-proof-info">
+                <h4>Transformative Coach Training</h4>
+                <p>Equipping mentors and mentees with deep psychological frameworks and self-mastery tools.</p>
+              </div>
+            </div>
+
+            <div className="home-proof-card">
+              <div className="home-proof-img-wrap">
+                <img 
+                  src="./assets/images/coach/jagat-podcast-talk.jpg" 
+                  alt="Victory Success Talk with Kaushal" 
+                  loading="lazy" 
+                />
+              </div>
+              <div className="home-proof-info">
+                <h4>Media &amp; Public Dialogue</h4>
+                <p>Featured on 'Victory Success Talk' sharing vulnerable truths on overcoming failure and fear.</p>
+              </div>
+            </div>
+
+            <div className="home-proof-card">
+              <div className="home-proof-img-wrap">
+                <img 
+                  src="./assets/images/coach/jagat-community-felicitation.jpg" 
+                  alt="Grassroots Community Felicitation" 
+                  loading="lazy" 
+                />
+              </div>
+              <div className="home-proof-info">
+                <h4>Community &amp; Youth Impact</h4>
+                <p>Honored at grassroots community walks for uplifting underprivileged families and guiding youth.</p>
+              </div>
+            </div>
+
+            <div className="home-proof-card">
+              <div className="home-proof-img-wrap">
+                <img 
+                  src="./assets/images/coach/jagat-hero-portrait.png" 
+                  alt="Jagat Turkiya 1-on-1 Mentorship" 
+                  loading="lazy" 
+                />
+              </div>
+              <div className="home-proof-info">
+                <h4>Confidential 1-on-1 Sessions</h4>
+                <p>1,500+ private consultations uncovering deep subconscious bottlenecks and family alignment.</p>
+              </div>
+            </div>
+          </div>
+
+          {/* Deep Narrative Split */}
+          <div className="story-split" style={{ marginTop: '3rem' }}>
             <div className="story-image-wrap">
               <img 
-                src={heroStats.seminarImage || "./assets/images/seminar.webp"} 
-                alt="Jagat Turkiya Live Seminar" 
+                src="./assets/images/coach/jagat-hero-portrait.png" 
+                alt="Jagat Turkiya Executive Coach" 
                 loading="lazy" 
               />
             </div>
 
             <div className="story-text">
-              <h2 style={{ fontSize: 'clamp(1.8rem, 3vw, 2.4rem)', marginBottom: '1.25rem' }}>
-                Transformation That Lasts a Lifetime
-              </h2>
+              <h3 style={{ fontSize: 'clamp(1.75rem, 2.8vw, 2.2rem)', marginBottom: '1.25rem', color: '#ffffff' }}>
+                "When your perspective shifts, your entire reality responds."
+              </h3>
               <p>
-                Jagat Turkiya is an internationally recognized transformational coach and mentor dedicated to helping high earners, founders, and leaders eliminate friction and master unshakeable direction.
+                Over 15 years in enterprise IT, Jagat witnessed brilliant leaders achieve external status yet battle internal anxiety, self-doubt, and emotional isolation.
               </p>
               <p>
-                With over 15 years of coaching experience, 200+ workshops, and 15,000+ lives transformed across 9 countries, his battle-tested frameworks turn confusion into decisive action.
+                His coaching delivers what conventional education never taught: emotional resilience, unlearning fear, and designing a disciplined personal operating system for permanent peace of mind.
               </p>
-              <div style={{ marginTop: '1.5rem' }}>
+              <div style={{ marginTop: '1.75rem' }}>
                 <Link to="/about" className="btn btn-outline">
-                  Learn More About Jagat →
+                  Read Jagat's Full Transformation Journey →
                 </Link>
               </div>
             </div>
@@ -179,22 +248,35 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Final Callout */}
-      <section className="section section-dark text-center" style={{ padding: '5.5rem 0' }}>
-        <div className="container" style={{ maxWidth: '740px', margin: '0 auto' }}>
-          <h2 style={{ fontSize: 'clamp(2rem, 3.5vw, 2.7rem)', marginBottom: '1rem' }}>
-            Ready to Start Your <span className="serif-font">Transformation?</span>
-          </h2>
-          <p style={{ color: 'var(--text-silver)', fontSize: '1.05rem', marginBottom: '2rem', lineHeight: 1.6 }}>
-            Connect with Jagat Turkiya and his team for personalized mentorship, mastermind programs, or speaking engagements.
-          </p>
-          <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap' }}>
-            <Link to="/contact" className="btn btn-white" style={{ padding: '0.95rem 2.25rem', fontSize: '1rem' }}>
-              Book Consultation
-            </Link>
-            <Link to="/mastermind" className="btn btn-glass" style={{ padding: '0.95rem 2.25rem', fontSize: '1rem' }}>
-              Explore Mastermind
-            </Link>
+      {/* Final Callout with Dynamic Coach Portrait */}
+      <section className="section section-dark" style={{ padding: '5.5rem 0' }}>
+        <div className="container" style={{ maxWidth: '960px', margin: '0 auto' }}>
+          <div className="home-cta-box">
+            <div>
+              <h2 style={{ fontSize: 'clamp(2rem, 3.5vw, 2.7rem)', marginBottom: '1rem', color: '#ffffff', lineHeight: 1.2 }}>
+                Ready to Break Your Internal Ceiling? <br />
+                <span className="serif-font">Book Your Private Clarity Call.</span>
+              </h2>
+              <p style={{ color: 'var(--text-silver)', fontSize: '1.02rem', marginBottom: '2rem', lineHeight: 1.7 }}>
+                In this confidential 45-minute call, Jagat Turkiya will audit your bottlenecks, identify subconscious friction, and build your actionable transformation roadmap.
+              </p>
+              <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap' }}>
+                <Link to="/contact" className="btn btn-white" style={{ padding: '0.95rem 2.25rem', fontSize: '1rem' }}>
+                  Book Your Clarity Call
+                </Link>
+                <Link to="/mastermind" className="btn btn-glass" style={{ padding: '0.95rem 2.25rem', fontSize: '1rem' }}>
+                  Explore Mastermind
+                </Link>
+              </div>
+            </div>
+
+            <div className="home-cta-img-wrap">
+              <img 
+                src="./assets/images/coach/jagat-cta-energy.jpg" 
+                alt="Jagat Turkiya Transformation Coach" 
+                loading="lazy" 
+              />
+            </div>
           </div>
         </div>
       </section>

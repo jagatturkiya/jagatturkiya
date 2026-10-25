@@ -62,7 +62,7 @@ export default function Footer() {
             <ul className="footer-links">
               <li><a href={`mailto:${contact.email || 'hello@apkacoach.com'}`}>{contact.email || 'hello@apkacoach.com'}</a></li>
               {contact.phone && <li><a href={`tel:${contact.phone}`}>{contact.phone}</a></li>}
-              <li><Link to="/contact">Book Consultation</Link></li>
+              <li><Link to="/contact">Book Clarity Call</Link></li>
               {contact.wealthCompassUrl && (
                 <li>
                   <a href={contact.wealthCompassUrl} target="_blank" rel="noopener noreferrer">

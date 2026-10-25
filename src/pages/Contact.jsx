@@ -55,10 +55,6 @@ export default function Contact() {
     setSubmitting(false);
     setSubmitted(true);
   };
-
-  const waNumber = (contactInfo.whatsapp || '').replace(/\D/g, '');
-  const waUrl = waNumber ? `https://wa.me/${waNumber.length === 10 ? `91${waNumber}` : waNumber}` : '';
-
   return (
     <div className="contact-page">
       {/* Page Header */}
@@ -95,35 +91,6 @@ export default function Contact() {
                 </p>
               </div>
 
-              {contactInfo.phone && (
-                <div style={{ marginTop: '1.25rem' }}>
-                  <h5 style={{ fontSize: '0.95rem', color: '#ffffff', margin: '0 0 4px', fontWeight: 700 }}>Direct Advisory Helpline</h5>
-                  <a href={`tel:${contactInfo.phone}`} style={{ color: 'var(--text-silver)', textDecoration: 'none', fontSize: '0.95rem' }}>
-                    {contactInfo.phone}
-                  </a>
-                </div>
-              )}
-
-              {waUrl && (
-                <div style={{ marginTop: '1.25rem' }}>
-                  <a
-                    href={waUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    style={{
-                      display: 'inline-flex',
-                      alignItems: 'center',
-                      gap: '8px',
-                      color: '#10b981',
-                      fontSize: '0.92rem',
-                      fontWeight: 600,
-                      textDecoration: 'none'
-                    }}
-                  >
-                    <span>💬 Message on WhatsApp ({contactInfo.whatsapp})</span>
-                  </a>
-                </div>
-              )}
 
               <div style={{ marginTop: '2rem', padding: '1.25rem', background: 'rgba(255,255,255,0.02)', border: '1px solid var(--border-subtle)', borderRadius: 'var(--radius-sm)' }}>
                 <p style={{ fontSize: '0.9rem', color: 'var(--text-silver)', margin: 0, lineHeight: '1.6' }}>
@@ -208,7 +175,7 @@ export default function Contact() {
                       name="phone"
                       maxLength={15}
                       className="form-control"
-                      placeholder="+91 98765 43210"
+                      placeholder="+91 98XXXXXXXX"
                       value={formData.phone}
                       onChange={handleChange}
                       required

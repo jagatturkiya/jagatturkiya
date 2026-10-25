@@ -9,7 +9,16 @@ export default defineConfig({
       name: 'dev-html-rewrite',
       configureServer(server) {
         server.middlewares.use((req, res, next) => {
-          if (req.url === '/' || req.url === '/index.html') {
+          const rawUrl = req.url || '';
+          const cleanUrl = rawUrl.split('?')[0];
+          const isInternal = cleanUrl.startsWith('/@') || 
+                             cleanUrl.startsWith('/src') || 
+                             cleanUrl.startsWith('/node_modules') || 
+                             cleanUrl.startsWith('/assets') ||
+                             cleanUrl.startsWith('/public');
+          const hasExtension = /\.[a-zA-Z0-9]+$/.test(cleanUrl);
+          
+          if (!hasExtension && !isInternal) {
             req.url = '/dev.html';
           }
           next();

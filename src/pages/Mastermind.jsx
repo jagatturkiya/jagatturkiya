@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import LiquidHero from '../components/LiquidHero';
 import FaqAccordion from '../components/FaqAccordion';
@@ -7,6 +7,7 @@ import { getMastermindDetails, getFaqs } from '../lib/cmsStore';
 export default function Mastermind() {
   const [mmData, setMmData] = useState(() => getMastermindDetails());
   const [faqItems, setFaqItems] = useState(() => getFaqs().mastermind || []);
+  const stackCardsRef = useRef([]);
 
   useEffect(() => {
     const handleUpdate = () => {
@@ -18,6 +19,66 @@ export default function Mastermind() {
     return () => {
       window.removeEventListener('jt_cms_updated', handleUpdate);
       window.removeEventListener('storage', handleUpdate);
+    };
+  }, []);
+
+  useEffect(() => {
+    let ticking = false;
+
+    const handleScroll = () => {
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          const cards = stackCardsRef.current;
+          if (!cards || cards.length === 0) {
+            ticking = false;
+            return;
+          }
+
+          const STICKY_TOP = window.innerWidth <= 768 ? 90 : 110;
+          const FADE_DISTANCE = window.innerWidth <= 768 ? 180 : 240;
+
+          for (let i = 0; i < cards.length; i++) {
+            const currentCard = cards[i];
+            if (!currentCard) continue;
+
+            const nextCard = cards[i + 1];
+            if (nextCard) {
+              const nextRect = nextCard.getBoundingClientRect();
+              const distance = nextRect.top - STICKY_TOP;
+
+              if (distance > FADE_DISTANCE) {
+                // Next card is far below -> current card is fully visible
+                currentCard.style.opacity = '1';
+                currentCard.style.transform = 'scale(1)';
+              } else if (distance > 0) {
+                // Next card is approaching -> current card dissolves smoothly
+                const progress = Math.max(0, Math.min(1, distance / FADE_DISTANCE));
+                currentCard.style.opacity = String(progress);
+                const scale = 0.95 + 0.05 * progress;
+                currentCard.style.transform = `scale(${scale.toFixed(3)})`;
+              } else {
+                // Next card has covered it -> completely disappear
+                currentCard.style.opacity = '0';
+                currentCard.style.transform = 'scale(0.95)';
+              }
+            } else {
+              // Last card stays fully visible
+              currentCard.style.opacity = '1';
+              currentCard.style.transform = 'scale(1)';
+            }
+          }
+
+          ticking = false;
+        });
+        ticking = true;
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    handleScroll();
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
     };
   }, []);
 
@@ -54,36 +115,92 @@ export default function Mastermind() {
     "Your Lifetime Wealth & Mental Operating System"
   ];
 
+  const leadershipTeam = [
+    {
+      id: 'jagat',
+      name: 'Jagat Turkiya',
+      role: 'Founder & CEO',
+      featured: true,
+      image: './assets/images/coach/jagat-hero-portrait.png',
+      desc: 'Author of 5 books and Times Square featured coach. Jagat conducts private 1-on-1 diagnostics to rewire self-doubt and install decisive mental clarity.',
+      points: [
+        '1-on-1 Mindset & Life Diagnostic',
+        'Rewiring Career & Wealth Friction',
+        'Permanent Peace of Mind Blueprint'
+      ]
+    },
+    {
+      id: 'raunak',
+      name: 'Kumar Raunak',
+      role: 'Chief of Marketing & Tech',
+      monogram: 'KR',
+      desc: 'Architect of high-converting growth funnels, tech infrastructure, and brand distribution pipelines across the ecosystem.',
+      points: [
+        'High-Conversion Growth Funnels',
+        'Strategic Brand Distribution',
+        'Tech Stack & Automation'
+      ]
+    },
+    {
+      id: 'savita',
+      name: 'Savita Turkiya',
+      role: 'Operations',
+      monogram: 'ST',
+      desc: 'Operational anchor managing seamless cohort onboarding, schedule alignment, and continuous 6-month mentee care.',
+      points: [
+        'Cohort Coordination & Logistics',
+        '6-Month Mentee Handholding',
+        'Accountability & Execution Cadence'
+      ]
+    },
+    {
+      id: 'manish',
+      name: 'Manish Sharma',
+      role: 'Finance & Team Lead',
+      monogram: 'MS',
+      desc: 'Drives financial governance, capital protection frameworks, and team execution discipline.',
+      points: [
+        'Fiscal Governance & Risk Defense',
+        'Resource & Capital Allocation',
+        'Cross-Functional Team Alignment'
+      ]
+    },
+    {
+      id: 'neelofar',
+      name: 'Neelofar',
+      role: 'Editing & Social Media Management',
+      monogram: 'NL',
+      desc: 'Drives creative media production, high-impact video storytelling, and digital content distribution.',
+      points: [
+        'Cinematic Video Storytelling',
+        'High-Engagement Brand Content',
+        'Multi-Platform Media Strategy'
+      ]
+    }
+  ];
+
   return (
     <div className="mastermind-page">
       {/* Hero Section */}
       <section className="hero-section text-center">
         <LiquidHero />
         <div className="container hero-container" style={{ maxWidth: '880px', margin: '0 auto' }}>
-          <h1 className="hero-title" style={{ marginBottom: '1.25rem', fontSize: 'clamp(2.6rem, 5vw, 4rem)' }}>
-            The Executive Mastermind
+          <h1 className="hero-title" style={{ marginBottom: '1.25rem', fontSize: 'clamp(2.4rem, 4.8vw, 3.8rem)' }}>
+            For Executives, Leaders &amp; Stewards: <br />
+            <span className="serif-font">The Transformation Mastermind</span>
           </h1>
 
-          <p className="hero-lead" style={{ maxWidth: '720px', margin: '0 auto 2.5rem auto', fontSize: '1.15rem' }}>
-            10-week intensive program followed by dedicated handholding support till 6 months. Direction, structure, and lasting peace of mind.
+          <p className="hero-lead" style={{ maxWidth: '700px', margin: '0 auto 2.25rem auto', fontSize: '1.08rem', lineHeight: 1.65 }}>
+            A 10-week intensive container followed by 6 months of direct guidance. Private 1-on-1 diagnostics with Jagat Turkiya to break mental bottlenecks and build decisive life clarity.
           </p>
 
           <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap' }}>
             <Link to="/optin" className="btn btn-white">
               Apply for Mastermind
             </Link>
-            <button
-              type="button"
-              className="btn btn-glass"
-              onClick={() => {
-                const el = document.getElementById('curriculum');
-                if (el) {
-                  el.scrollIntoView({ behavior: 'smooth' });
-                }
-              }}
-            >
-              Explore 10-Week Roadmap ↓
-            </button>
+            <Link to="/contact" className="btn btn-glass">
+              Book Your Clarity Call
+            </Link>
           </div>
         </div>
       </section>
@@ -94,21 +211,18 @@ export default function Mastermind() {
           <div className="mastermind-visual-split">
             <div className="mm-image-wrap">
               <img
-                src="./assets/images/jagat-speaking.webp"
-                alt="Jagat Turkiya Mentoring Leaders"
+                src="./assets/images/coach/jagat-hero-portrait.png"
+                alt="Jagat Turkiya Transformation Coach"
                 loading="lazy"
               />
             </div>
 
             <div className="mm-visual-content">
               <h2 style={{ fontSize: 'clamp(1.8rem, 3vw, 2.4rem)', marginBottom: '1rem' }}>
-                Personal Advisory for Lasting Wealth &amp; Peace of Mind
+                Transforming Perspectives for Lasting Peace &amp; Clarity
               </h2>
-              <p style={{ color: 'var(--text-silver)', fontSize: '1rem', lineHeight: 1.7, marginBottom: '0.75rem' }}>
-                The Mastermind is an exclusive, closed-door coaching container designed for ambitious professionals, financial practitioners, and dedicated family stewards who are earning well, managing money, and want to build lasting, compounding wealth with absolute clarity.
-              </p>
-              <p style={{ color: 'var(--text-silver)', fontSize: '1rem', lineHeight: 1.7 }}>
-                You do not need speculative trends, confusing jargon, or random tips. You need a structured, confidential setting to audit your numbers, protect against downside risk, and direct your hard-earned capital with unshakeable confidence.
+              <p style={{ color: 'var(--text-silver)', fontSize: '1rem', lineHeight: 1.7, marginBottom: '1rem' }}>
+                A confidential advisory container for leaders and high-earners. We audit your mental patterns, eliminate self-doubt, and install an unshakeable personal operating system for permanent peace of mind.
               </p>
 
               <div className="mm-feature-list">
@@ -116,7 +230,7 @@ export default function Mastermind() {
                   <div className="mm-feature-icon">✓</div>
                   <div>
                     <h5>1-on-1 Strategic Diagnostic</h5>
-                    <p>Direct private reviews with Jagat Turkiya to audit cash flow, commitments, and blind spots.</p>
+                    <p>Direct private reviews with Jagat Turkiya to audit mindset blind spots and life vision.</p>
                   </div>
                 </div>
 
@@ -124,15 +238,15 @@ export default function Mastermind() {
                   <div className="mm-feature-icon">✓</div>
                   <div>
                     <h5>Strict Closed-Door Confidentiality</h5>
-                    <p>A trusted, private environment protecting your numbers, balance sheet, and family security.</p>
+                    <p>A trusted, private environment protecting your identity and personal decisions.</p>
                   </div>
                 </div>
 
                 <div className="mm-feature-item">
                   <div className="mm-feature-icon">✓</div>
                   <div>
-                    <h5>Actionable Institutional Architecture</h5>
-                    <p>10 structured modules engineered for execution, capital defense, and permanent peace of mind.</p>
+                    <h5>Actionable Life Architecture</h5>
+                    <p>Structured frameworks engineered for decisive execution and peace of mind.</p>
                   </div>
                 </div>
               </div>
@@ -145,9 +259,9 @@ export default function Mastermind() {
       <section className="section section-dark">
         <div className="container" style={{ maxWidth: '860px', margin: '0 auto' }}>
           <div className="section-header text-center" style={{ marginBottom: '2.5rem' }}>
-            <h2 className="section-title">Earning Money Is Only Half the Story. <br /><span className="serif-font">Building Wealth Takes a System.</span></h2>
+            <h2 className="section-title">Earning More Is Only Half The Equation. <br /><span className="serif-font">Changing Your Perspective Changes Everything.</span></h2>
             <p className="section-subtitle" style={{ margin: '0 auto', maxWidth: '640px' }}>
-              Why having good money coming in doesn’t automatically bring financial freedom—and what actually does.
+              Why hard work alone doesn't eliminate stress — and what genuine internal transformation looks like.
             </p>
           </div>
 
@@ -161,19 +275,15 @@ export default function Mastermind() {
             gap: '1.4rem'
           }}>
             <p style={{ fontSize: '1.08rem', color: '#ffffff', lineHeight: 1.7, fontWeight: 500, margin: 0 }}>
-              "Most people don't have an income problem. They have a clarity and system problem."
+              "Most people don't have an effort problem. They have a perspective, emotional conditioning, and alignment problem."
             </p>
 
             <p style={{ fontSize: '0.98rem', color: 'var(--text-silver)', lineHeight: 1.75, margin: 0 }}>
-              You work hard, you bring money in, and you save what you can. But as time goes on, life only seems to get more complicated. Taxes take a bite, household expenses expand, and capital ends up parked across disconnected policies, mutual funds, and accounts with no clear master plan.
+              You work relentlessly, take care of your responsibilities, and do your best. Yet inside, the friction persists. Decision fatigue sets in, relationships feel strained by work pressure, and despite financial inflows, you constantly worry about what lies ahead.
             </p>
 
             <p style={{ fontSize: '0.98rem', color: 'var(--text-silver)', lineHeight: 1.75, margin: 0 }}>
-              Many people spend their days managing capital or targets for others, yet their own personal family wealth stays unstructured. Others run demanding corporate careers or guide the household and want absolute security for their children's future, but feel held back by conflicting advice, fear of mistakes, or lack of time.
-            </p>
-
-            <p style={{ fontSize: '0.98rem', color: 'var(--text-silver)', lineHeight: 1.75, margin: 0 }}>
-              The truth is simple: <strong>more money without a clear direction just creates more stress.</strong> The goal isn't just to work longer hours or take blind speculative risks. The real breakthrough happens when every rupee you touch is given a defined purpose—protecting your family, compounding quietly in the background, and giving you genuine peace of mind.
+              The truth is simple: <strong>more success without internal alignment just amplifies stress.</strong> Real transformation happens when you step back, rewrite self-limiting beliefs, align your daily decisions with deep purpose, and build an unshakeable mental operating system that keeps you grounded under any circumstance.
             </p>
 
             <div style={{
@@ -184,7 +294,7 @@ export default function Mastermind() {
               borderRadius: '0 8px 8px 0'
             }}>
               <p style={{ margin: 0, color: '#ffffff', fontSize: '0.96rem', fontWeight: 600, lineHeight: 1.6 }}>
-                You don’t need complicated financial theories. You need a calm, practical roadmap tailored to your life. That is exactly what Jagat Turkiya coaches you to install across a 10-week intensive program with continuous handholding support till 6 months.
+                You don’t need temporary motivation. You need a calm, grounded transformation mentor tailored to your life. That is exactly what Jagat Turkiya and his team coach you to install across 10 intensive weeks with continuous 6-month handholding support.
               </p>
             </div>
           </div>
@@ -197,13 +307,13 @@ export default function Mastermind() {
           <div className="mastermind-visual-split mastermind-split-reverse">
             <div className="mm-visual-content">
               <h2 style={{ fontSize: 'clamp(1.65rem, 3.2vw, 2.4rem)', marginBottom: '1rem', lineHeight: 1.25 }}>
-                Transforming Ambiguity into Sovereignty
+                Transforming Confusion into Decisive Sovereignty
               </h2>
               <p style={{ color: 'var(--text-silver)', fontSize: '1rem', lineHeight: 1.7, marginBottom: '1rem' }}>
-                Through guided masterclasses and personalized worksheet reviews, you work through each layer of your personal finance step-by-step.
+                Through guided masterclasses, real coaching trench worksheets, and intimate peer exchanges, you work through each layer of your life and wealth step-by-step.
               </p>
               <p style={{ color: 'var(--text-silver)', fontSize: '1rem', lineHeight: 1.7 }}>
-                From plugging silent cash drain and structuring defensive capital moats to harmonizing real estate, liquid reserves, and equities—every piece works together to create enduring security.
+                From dismantling anxiety triggers to constructing multi-horizon security moats — every piece is harmonized so you can live with absolute peace of mind.
               </p>
 
               <div style={{ marginTop: '2rem' }}>
@@ -215,8 +325,8 @@ export default function Mastermind() {
 
             <div className="mm-image-wrap">
               <img
-                src="./assets/images/seminar.webp"
-                alt="Jagat Turkiya Live Strategy Session"
+                src="./assets/images/coach/jagat-coach-seminar.jpg"
+                alt="Jagat Turkiya Coach Training Seminar Cohort"
                 loading="lazy"
               />
             </div>
@@ -230,7 +340,7 @@ export default function Mastermind() {
           <div className="section-header text-center">
             <h2 className="section-title">Is This Right For You?</h2>
             <p className="section-subtitle" style={{ margin: '0 auto', maxWidth: '640px' }}>
-              The Mastermind is engineered for high-earning leaders and professionals who match this profile:
+              The Mastermind is engineered for high-earning leaders, professionals, and seekers who match this profile:
             </p>
           </div>
 
@@ -244,6 +354,74 @@ export default function Mastermind() {
                 </div>
               </div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Executive Leadership & Execution Team (Digital Dhairya Inspired) */}
+      <section className="mm-team-section">
+        <div className="container">
+          <div className="section-header text-center">
+            <h2 className="section-title">
+              Meet The C-Suite Behind <br />
+              <span className="serif-font">The Jagat Turkiya Mastermind</span>
+            </h2>
+            <p className="section-subtitle" style={{ margin: '0 auto', maxWidth: '640px' }}>
+              Direct mentorship from Jagat Turkiya, backed by our core board driving your operational, technical, and life execution.
+            </p>
+          </div>
+
+          <div className="mm-stack-container">
+            {leadershipTeam.map((member, idx) => (
+              <div 
+                key={member.id} 
+                ref={el => stackCardsRef.current[idx] = el}
+                className="mm-stack-card"
+                style={{
+                  zIndex: idx + 1
+                }}
+              >
+                <div className="mm-stack-visual-col">
+                  {member.image ? (
+                    <div className="mm-stack-photo-wrap">
+                      <img 
+                        src={member.image} 
+                        alt={member.name}
+                        loading="lazy"
+                      />
+                    </div>
+                  ) : (
+                    <div className="mm-stack-avatar-box">
+                      <span className="mm-stack-monogram">{member.monogram}</span>
+                    </div>
+                  )}
+                </div>
+
+                <div className="mm-stack-content-col">
+                  <h3 className="mm-stack-name">{member.name}</h3>
+                  <p className="mm-team-role-line">{member.role}</p>
+                  <p className="mm-stack-desc">{member.desc}</p>
+                  <ul className="mm-stack-points">
+                    {member.points.map((pt, i) => (
+                      <li key={i}>
+                        <span className="bullet">✓</span> {pt}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          <div className="mm-csuite-banner">
+            <div>
+              <p>
+                <strong>The Direct C-Suite Advantage:</strong> Direct mentorship from Jagat Turkiya backed by our full execution machinery. Zero handoffs to junior assistants.
+              </p>
+            </div>
+            <Link to="/optin" className="btn btn-white" style={{ flexShrink: 0, padding: '0.85rem 1.75rem' }}>
+              Apply for Mastermind Access
+            </Link>
           </div>
         </div>
       </section>
