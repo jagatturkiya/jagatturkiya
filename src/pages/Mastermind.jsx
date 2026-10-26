@@ -117,12 +117,6 @@ export default function Mastermind() {
       desc: 'Visionary anchor of the Mastermind. Having personally overcome severe adversity and guided 15,000+ individuals, Jagat conducts all private 1-on-1 diagnostics to dismantle deep subconscious bottlenecks, align high-stakes career decisions, and install lasting peace of mind.'
     },
     {
-      id: 'raunak',
-      name: 'Kumar Raunak',
-      role: 'Chief of Marketing & Tech',
-      desc: 'The strategic and technological backbone of our ecosystem. Raunak architects our digital systems, high-converting pipelines, and global reach—ensuring every mentee experiences seamless onboarding, cutting-edge tools, and reliable platform execution.'
-    },
-    {
       id: 'savita',
       name: 'Savita Turkiya',
       role: 'Operations Lead',
@@ -139,6 +133,12 @@ export default function Mastermind() {
       name: 'Neelofar',
       role: 'Editing & Social Media Lead',
       desc: 'The creative storytelling force behind our mission. Neelofar translates transformative mentee breakthroughs into compelling media narratives, expanding our brand reach and inspiring leaders across digital platforms.'
+    },
+    {
+      id: 'raunak',
+      name: 'Kumar Raunak',
+      role: 'Chief of Marketing & Tech',
+      desc: 'The strategic and technological backbone of our ecosystem. Raunak architects our digital systems, high-converting pipelines, and global reach—ensuring every mentee experiences seamless onboarding, cutting-edge tools, and reliable platform execution.'
     }
   ];
 
