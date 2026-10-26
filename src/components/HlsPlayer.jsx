@@ -4,7 +4,8 @@ import Hls from 'hls.js';
 export default function HlsPlayer({ 
   src = 'https://pub-ba6edddb861846b39535d2d0cabfeeea.r2.dev/Jagat%20Video%202%20compressed.mp4',
   poster = '',
-  autoPlay = true
+  autoPlay = true,
+  trimEndSeconds = 0
 }) {
   const videoRef = useRef(null);
   const containerRef = useRef(null);
@@ -211,12 +212,25 @@ export default function HlsPlayer({
     };
   }, [customSrc]);
 
-  // Anti-seeking enforcement: strictly lock playback to natural progress
+  // Anti-seeking enforcement & optional trimEnd cutoff
   const handleTimeUpdate = () => {
     const video = videoRef.current;
     if (!video) return;
 
     const current = video.currentTime;
+    const effectiveMax = (video.duration && !isNaN(video.duration) && trimEndSeconds > 0 && video.duration > trimEndSeconds)
+      ? video.duration - trimEndSeconds
+      : null;
+
+    if (effectiveMax !== null && current >= effectiveMax) {
+      video.pause();
+      video.currentTime = effectiveMax;
+      setIsPlaying(false);
+      lastAllowedTimeRef.current = effectiveMax;
+      setCurrentTime(effectiveMax);
+      return;
+    }
+
     if (current > lastAllowedTimeRef.current + 1.8 || current < lastAllowedTimeRef.current - 1.5) {
       video.currentTime = lastAllowedTimeRef.current;
     } else {
@@ -228,6 +242,16 @@ export default function HlsPlayer({
   const handleSeeking = () => {
     const video = videoRef.current;
     if (!video) return;
+
+    const effectiveMax = (video.duration && !isNaN(video.duration) && trimEndSeconds > 0 && video.duration > trimEndSeconds)
+      ? video.duration - trimEndSeconds
+      : null;
+
+    if (effectiveMax !== null && video.currentTime > effectiveMax) {
+      video.currentTime = effectiveMax;
+      return;
+    }
+
     if (Math.abs(video.currentTime - lastAllowedTimeRef.current) > 1.2) {
       video.currentTime = lastAllowedTimeRef.current;
     }

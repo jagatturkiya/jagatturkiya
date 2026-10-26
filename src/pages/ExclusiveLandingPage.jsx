@@ -1,5 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { useSearchParams } from 'react-router-dom';
+import FunnelHeader from '../components/FunnelHeader';
+import FunnelFooter from '../components/FunnelFooter';
 import HlsPlayer from '../components/HlsPlayer';
 import FaqAccordion from '../components/FaqAccordion';
 import { getMastermindDetails, getFaqs, recordLead } from '../lib/cmsStore';
@@ -222,50 +224,22 @@ export default function ExclusiveLandingPage() {
   ];
 
   return (
-    <div className="exclusive-landing-page" style={{ backgroundColor: '#050505', color: '#ffffff' }}>
-      {/* Personalized Welcome Banner if registered */}
-      {savedLead?.name && (
-        <div style={{
-          backgroundColor: '#0a1a12',
-          borderBottom: '1px solid #10b98133',
-          padding: '0.65rem 1rem',
-          textAlign: 'center',
-          fontSize: '0.88rem',
-          color: '#d1fae5',
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
-          gap: '8px'
-        }}>
-          <span style={{ color: '#10b981', fontWeight: 700 }}>✓ VIP BRIEFING UNLOCKED:</span>
-          <span>Welcome, <strong>{savedLead.name}</strong>. Watch the private masterclass below before connecting with the team.</span>
-        </div>
-      )}
+    <div className="exclusive-landing-page" style={{
+      minHeight: '100vh',
+      backgroundColor: '#050505',
+      color: '#ffffff',
+      display: 'flex',
+      flexDirection: 'column',
+      fontFamily: "'Inter', -apple-system, BlinkMacSystemFont, sans-serif"
+    }}>
+      {/* Plain Non-Clickable Funnel Header */}
+      <FunnelHeader />
 
       {/* Hero Section with VSL Video */}
-      <section className="section" style={{ paddingTop: 'clamp(2.5rem, 5vw, 4.5rem)', paddingBottom: '3.5rem' }}>
+      <section className="section" style={{ paddingTop: 'clamp(2.5rem, 5vw, 4rem)', paddingBottom: '3.5rem' }}>
         <div className="container" style={{ maxWidth: '1020px', margin: '0 auto', textAlign: 'center' }}>
           
-          <div style={{
-            display: 'inline-flex',
-            alignItems: 'center',
-            gap: '8px',
-            padding: '6px 16px',
-            borderRadius: '9999px',
-            backgroundColor: 'rgba(255, 255, 255, 0.05)',
-            border: '1px solid rgba(255, 255, 255, 0.12)',
-            fontSize: '0.78rem',
-            fontWeight: 700,
-            letterSpacing: '0.08em',
-            textTransform: 'uppercase',
-            color: '#a1a1aa',
-            marginBottom: '1.5rem'
-          }}>
-            <span style={{ width: '7px', height: '7px', borderRadius: '50%', backgroundColor: '#10b981' }} />
-            Exclusive Executive Mastermind
-          </div>
-
-          <h1 className="hero-title" style={{ maxWidth: '900px', margin: '0 auto 1.25rem', lineHeight: 1.18 }}>
+          <h1 className="hero-title" style={{ maxWidth: '920px', margin: '0 auto 1.25rem', lineHeight: 1.18 }}>
             How High Earners Bridge Their Wealth Gap &amp; <br />
             <span className="serif-font">Build Unshakeable Peace of Mind</span>
           </h1>
@@ -274,7 +248,7 @@ export default function ExclusiveLandingPage() {
             A confidential 10-week container followed by 6 months of direct guidance. Private 1-on-1 diagnostics with Jagat Turkiya to dismantle mental friction and build a permanent personal operating system.
           </p>
 
-          {/* VSL Video Container */}
+          {/* VSL Video Container - Trims last 60s (1 min) */}
           <div style={{
             width: '100%',
             maxWidth: '960px',
@@ -285,29 +259,49 @@ export default function ExclusiveLandingPage() {
             boxShadow: '0 25px 60px rgba(0, 0, 0, 0.85)',
             backgroundColor: '#000000'
           }}>
-            <HlsPlayer autoPlay={true} src="https://pub-ba6edddb861846b39535d2d0cabfeeea.r2.dev/Jagat%20Video%202%20compressed.mp4" />
+            <HlsPlayer autoPlay={true} trimEndSeconds={60} src="https://pub-ba6edddb861846b39535d2d0cabfeeea.r2.dev/Jagat%20Video%202%20compressed.mp4" />
           </div>
 
-          {/* Main Primary Connect CTA Button */}
-          <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '0.75rem', marginTop: '1.5rem' }}>
+          {/* Main Primary Connect CTA Button - Bold, Visible & Prominent */}
+          <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', marginTop: '2rem', marginBottom: '1rem' }}>
             <button
               type="button"
               onClick={handleOpenConnect}
               className="btn btn-white"
               style={{
-                padding: '1.1rem 2.75rem',
-                fontSize: '1.05rem',
-                fontWeight: 700,
-                letterSpacing: '0.02em',
+                display: 'inline-flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                gap: '10px',
+                width: '100%',
+                maxWidth: '460px',
+                padding: '1.3rem 2.5rem',
+                fontSize: '1.18rem',
+                fontWeight: 800,
+                letterSpacing: '0.05em',
+                textTransform: 'uppercase',
                 borderRadius: '8px',
-                boxShadow: '0 8px 30px rgba(255, 255, 255, 0.25)'
+                backgroundColor: '#ffffff',
+                color: '#080808',
+                border: '2px solid #ffffff',
+                boxShadow: '0 12px 35px rgba(255, 255, 255, 0.35)',
+                cursor: 'pointer',
+                transition: 'all 0.2s cubic-bezier(0.16, 1, 0.3, 1)',
+                boxSizing: 'border-box'
+              }}
+              onMouseEnter={e => {
+                e.currentTarget.style.backgroundColor = '#f4f4f5';
+                e.currentTarget.style.transform = 'translateY(-2px)';
+                e.currentTarget.style.boxShadow = '0 16px 45px rgba(255, 255, 255, 0.45)';
+              }}
+              onMouseLeave={e => {
+                e.currentTarget.style.backgroundColor = '#ffffff';
+                e.currentTarget.style.transform = 'translateY(0)';
+                e.currentTarget.style.boxShadow = '0 12px 35px rgba(255, 255, 255, 0.35)';
               }}
             >
-              Connect With Advisory Board →
+              Connect With Team &rarr;
             </button>
-            <p style={{ fontSize: '0.86rem', color: '#10b981', fontWeight: 600, margin: 0 }}>
-              ✓ Strict Closed-Door Confidentiality • 100% Risk-Free Consultation
-            </p>
           </div>
         </div>
       </section>
@@ -438,10 +432,16 @@ export default function ExclusiveLandingPage() {
                 <button
                   type="button"
                   onClick={handleOpenConnect}
-                  className="btn btn-outline"
-                  style={{ padding: '0.85rem 1.85rem', fontSize: '0.95rem' }}
+                  className="btn btn-white"
+                  style={{
+                    padding: '1rem 2.25rem',
+                    fontSize: '1rem',
+                    fontWeight: 700,
+                    letterSpacing: '0.03em',
+                    textTransform: 'uppercase'
+                  }}
                 >
-                  Connect With Advisory Board →
+                  Connect With Team &rarr;
                 </button>
               </div>
             </div>
@@ -552,9 +552,15 @@ export default function ExclusiveLandingPage() {
             type="button"
             onClick={handleOpenConnect}
             className="btn btn-white"
-            style={{ flexShrink: 0, padding: '0.85rem 1.75rem' }}
+            style={{
+              flexShrink: 0,
+              padding: '1rem 2rem',
+              fontWeight: 700,
+              letterSpacing: '0.03em',
+              textTransform: 'uppercase'
+            }}
           >
-            Connect With Team
+            Connect With Team &rarr;
           </button>
         </div>
       </div>
@@ -610,9 +616,15 @@ export default function ExclusiveLandingPage() {
                 type="button"
                 onClick={handleOpenConnect}
                 className="btn btn-white"
-                style={{ padding: '0.95rem 2.25rem', fontSize: '1rem' }}
+                style={{
+                  padding: '1.1rem 2.5rem',
+                  fontSize: '1.05rem',
+                  fontWeight: 700,
+                  letterSpacing: '0.03em',
+                  textTransform: 'uppercase'
+                }}
               >
-                Connect With Advisory Board
+                Connect With Team &rarr;
               </button>
             </div>
           </div>
@@ -648,9 +660,16 @@ export default function ExclusiveLandingPage() {
               type="button"
               onClick={handleOpenConnect}
               className="btn btn-white"
-              style={{ padding: '0.95rem 2.25rem', fontSize: '1rem' }}
+              style={{
+                padding: '1.2rem 2.8rem',
+                fontSize: '1.1rem',
+                fontWeight: 800,
+                letterSpacing: '0.04em',
+                textTransform: 'uppercase',
+                boxShadow: '0 10px 30px rgba(255, 255, 255, 0.3)'
+              }}
             >
-              Connect With Advisory Board
+              Connect With Team &rarr;
             </button>
           </div>
         </div>
@@ -885,21 +904,7 @@ export default function ExclusiveLandingPage() {
                     />
                   </div>
 
-                  <div className="form-group" style={{ marginBottom: '1.5rem' }}>
-                    <label className="form-label" style={{ fontSize: '0.82rem', marginBottom: '4px' }}>
-                      Specific Challenge / Note for Coach Jagat (Optional)
-                    </label>
-                    <textarea
-                      name="message"
-                      rows={3}
-                      maxLength={500}
-                      value={formData.message}
-                      onChange={handleFormChange}
-                      placeholder="Share your current career, wealth, or mindset focus..."
-                      className="form-control"
-                      style={{ fontSize: '16px', padding: '0.8rem 0.95rem', resize: 'vertical' }}
-                    />
-                  </div>
+
 
                   <div style={{ display: 'flex', gap: '0.75rem', justifyContent: 'flex-end' }}>
                     {savedLead?.name && (
@@ -927,6 +932,8 @@ export default function ExclusiveLandingPage() {
           </div>
         </div>
       )}
+      {/* Plain Funnel Footer */}
+      <FunnelFooter />
     </div>
   );
 }

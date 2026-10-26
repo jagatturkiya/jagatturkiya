@@ -34,7 +34,10 @@ import AdminLogin from './pages/admin/AdminLogin';
 export default function App() {
   const location = useLocation();
   const isAdminRoute = location.pathname.startsWith('/admin');
-  const isStandaloneFunnel = ['/vsl', '/optin', '/form', '/forms', '/apply', '/access', '/thank-you'].includes(location.pathname);
+  const isStandaloneFunnel = [
+    '/vsl', '/optin', '/form', '/forms', '/apply', '/access', '/thank-you',
+    '/exclusive', '/exclusive-mastermind', '/exclusive-landing-page', '/vip'
+  ].includes(location.pathname);
 
   // If in admin portal, render Admin directly without public headers/footers
   if (isAdminRoute) {
