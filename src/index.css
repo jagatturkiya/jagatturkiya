@@ -3248,7 +3248,7 @@ select.form-control {
    ========================================================================== */
 
 .mm-team-section {
-  padding: 6rem 0 7rem;
+  padding: 6.5rem 0 7.5rem;
   background: #050505;
   position: relative;
   border-top: 1px solid var(--border-subtle);
@@ -3258,150 +3258,65 @@ select.form-control {
 .mm-stack-container {
   position: relative;
   max-width: 960px;
-  margin: 3.5rem auto 0;
+  margin: 4rem auto 0;
   display: flex;
   flex-direction: column;
 }
 
 .mm-stack-card {
   position: sticky;
-  top: 110px;
-  background: #0c0c11;
+  top: 105px;
+  background: linear-gradient(160deg, #13131a 0%, #09090d 100%);
   border: 1px solid rgba(255, 255, 255, 0.12);
-  border-radius: 20px;
-  padding: clamp(1.75rem, 3.5vw, 2.75rem);
-  box-shadow: 0 -16px 45px rgba(0, 0, 0, 0.85), 0 24px 60px rgba(0, 0, 0, 0.9);
-  margin-bottom: 280px;
-  transition: transform 0.15s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.15s cubic-bezier(0.16, 1, 0.3, 1);
+  border-radius: 24px;
+  padding: clamp(1.85rem, 3.5vw, 2.75rem);
+  box-shadow: 0 -20px 50px rgba(0, 0, 0, 0.9), 0 30px 70px rgba(0, 0, 0, 0.95), inset 0 1px 0 rgba(255, 255, 255, 0.12);
+  margin-bottom: 260px;
+  transition: transform 0.15s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.15s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.25s ease;
   will-change: transform, opacity;
   overflow: hidden;
 }
 
-.mm-stack-card.with-photo {
-  display: grid;
-  grid-template-columns: 240px 1fr;
-  gap: 2.25rem;
-  align-items: center;
+.mm-stack-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 8%;
+  right: 8%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+  pointer-events: none;
 }
 
-.mm-stack-card.no-photo {
-  display: block;
-  padding: clamp(2.25rem, 4vw, 3.25rem);
-  background: linear-gradient(135deg, #0e0e14 0%, #08080b 100%);
-  border: 1px solid rgba(255, 255, 255, 0.13);
-}
-
-.mm-stack-full-col {
-  width: 100%;
-}
-
-.mm-stack-header-wrap {
-  margin-bottom: 1.25rem;
-  padding-bottom: 1.15rem;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-}
-
-.mm-stack-name-lg {
-  font-size: clamp(2.1rem, 4vw, 2.85rem) !important;
-  font-weight: 700;
-  color: #ffffff;
-  letter-spacing: -0.025em;
-  line-height: 1.15;
-  margin-bottom: 0.45rem !important;
-}
-
-.mm-team-role-lg {
-  font-size: clamp(1.05rem, 1.8vw, 1.25rem) !important;
-  color: rgba(255, 255, 255, 0.75) !important;
-  font-weight: 500;
-  letter-spacing: 0.015em;
-  margin-bottom: 0 !important;
-}
-
-.mm-stack-card.no-photo .mm-stack-desc {
-  font-size: 1.05rem;
-  color: var(--text-silver);
-  line-height: 1.75;
-  max-width: 820px;
-  margin-bottom: 1.65rem;
-}
-
-.mm-stack-points-grid {
-  display: grid !important;
-  grid-template-columns: repeat(3, 1fr) !important;
-  gap: 1.25rem !important;
-  border-top: 1px solid rgba(255, 255, 255, 0.08) !important;
-  padding-top: 1.35rem !important;
-}
-
-.mm-stack-points-grid li {
-  font-size: 0.92rem !important;
-  color: #e4e4e7 !important;
-  line-height: 1.55;
-  align-items: flex-start;
+.mm-stack-card:hover {
+  border-color: rgba(255, 255, 255, 0.22);
 }
 
 .mm-stack-card:last-child {
   margin-bottom: 3.5rem;
 }
 
-@media (max-width: 768px) {
-  .mm-stack-card {
-    margin-bottom: 200px;
-    top: 90px;
-  }
-
-  .mm-stack-card.with-photo {
-    grid-template-columns: 1fr;
-    gap: 1.5rem;
-    padding: 1.5rem;
-  }
-
-  .mm-stack-card.no-photo {
-    padding: 1.75rem 1.35rem;
-  }
-
-  .mm-stack-name-lg {
-    font-size: clamp(1.6rem, 5.5vw, 2rem) !important;
-    line-height: 1.2;
-  }
-
-  .mm-team-role-lg {
-    font-size: 0.94rem !important;
-  }
-
-  .mm-stack-card.no-photo .mm-stack-desc {
-    font-size: 0.92rem;
-    line-height: 1.6;
-    margin-bottom: 1.25rem;
-  }
-
-  .mm-stack-points-grid {
-    grid-template-columns: 1fr !important;
-    gap: 0.65rem !important;
-  }
-}
-
-.mm-stack-visual-col {
-  display: flex;
-  flex-direction: column;
+/* Card with Photo (Jagat) */
+.mm-card-photo-layout {
+  display: grid;
+  grid-template-columns: 210px 1fr;
+  gap: 2.25rem;
   align-items: center;
-  justify-content: center;
-}
-
-.mm-stack-photo-wrap {
-  position: relative;
-  border-radius: 16px;
-  overflow: hidden;
-  border: 1px solid rgba(255, 255, 255, 0.14);
-  aspect-ratio: 1 / 1;
-  background: #0d0d10;
   width: 100%;
-  max-width: 240px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
 }
 
-.mm-stack-photo-wrap img {
+.mm-card-photo-box {
+  width: 100%;
+  max-width: 210px;
+  aspect-ratio: 4 / 5;
+  border-radius: 18px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.65);
+  background: #08080c;
+}
+
+.mm-card-photo-box img {
   width: 100%;
   height: 100%;
   object-fit: cover;
@@ -3409,80 +3324,199 @@ select.form-control {
   display: block;
 }
 
-.mm-stack-avatar-box {
+.mm-card-body {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Card without Photo (Board Members) */
+.mm-card-full-layout {
   width: 100%;
-  max-width: 240px;
-  aspect-ratio: 1 / 1;
-  border-radius: 16px;
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0.02) 100%);
-  border: 1px solid rgba(255, 255, 255, 0.14);
   display: flex;
+  flex-direction: column;
+}
+
+/* Role Badge */
+.mm-card-role-badge {
+  display: inline-flex;
   align-items: center;
-  justify-content: center;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+  align-self: flex-start;
+  padding: 5px 13px;
+  border-radius: 100px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  font-size: 0.76rem;
+  font-weight: 600;
+  color: #e4e4e7;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 0.65rem;
 }
 
-.mm-stack-monogram {
+/* Names */
+.mm-card-name {
   font-family: var(--font-heading);
-  font-weight: 700;
-  font-size: clamp(2.5rem, 5vw, 3.5rem);
-  color: #ffffff;
-  letter-spacing: 0.04em;
-}
-
-.mm-stack-content-col {
-  display: flex;
-  flex-direction: column;
-}
-
-.mm-stack-name {
-  font-family: var(--font-heading);
-  font-size: clamp(1.6rem, 2.8vw, 2.1rem);
+  font-size: clamp(1.85rem, 3.2vw, 2.4rem);
   font-weight: 700;
   color: #ffffff;
-  margin-bottom: 0.25rem;
-  letter-spacing: -0.015em;
+  letter-spacing: -0.02em;
+  line-height: 1.15;
+  margin-bottom: 0.85rem;
 }
 
-.mm-team-role-line {
-  font-size: 0.96rem;
-  color: rgba(255, 255, 255, 0.65);
-  font-weight: 500;
-  margin-bottom: 1rem;
-  letter-spacing: 0.01em;
+.mm-card-name-large {
+  font-size: clamp(2.1rem, 3.8vw, 2.75rem);
+  margin-bottom: 0.95rem;
 }
 
-.mm-stack-desc {
-  font-size: 0.94rem;
+/* Descriptions */
+.mm-card-desc {
+  font-size: 0.98rem;
   color: var(--text-silver);
-  line-height: 1.7;
-  margin-bottom: 1.25rem;
+  line-height: 1.72;
+  margin-bottom: 1.35rem;
+  max-width: 820px;
 }
 
-.mm-stack-points {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  display: flex;
-  flex-direction: column;
-  gap: 0.55rem;
-  border-top: 1px solid rgba(255, 255, 255, 0.07);
-  padding-top: 1.1rem;
+/* Focus Chips / Highlights */
+.mm-card-chips {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.85rem;
+  padding-top: 1.35rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
 }
 
-.mm-stack-points li {
+.mm-card-chip {
+  background: rgba(255, 255, 255, 0.025);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  border-radius: 12px;
+  padding: 0.75rem 0.95rem;
   display: flex;
   align-items: center;
   gap: 0.65rem;
-  font-size: 0.86rem;
-  color: var(--text-silver);
-  line-height: 1.5;
+  font-size: 0.84rem;
+  color: #e4e4e7;
+  line-height: 1.4;
+  transition: all 0.25s ease;
 }
 
-.mm-stack-points li span.bullet {
+.mm-card-chip:hover {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: rgba(255, 255, 255, 0.15);
+  transform: translateY(-1px);
+}
+
+.chip-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.1);
   color: #ffffff;
+  font-size: 0.68rem;
   font-weight: 700;
   flex-shrink: 0;
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+  .mm-team-section {
+    padding: 3.75rem 0 4.5rem;
+  }
+
+  .mm-stack-container {
+    margin-top: 2rem;
+  }
+
+  .mm-stack-card {
+    top: 75px;
+    margin-bottom: 35px;
+    padding: 1.35rem 1.15rem;
+    border-radius: 18px;
+  }
+
+  .mm-card-photo-layout {
+    grid-template-columns: 80px 1fr;
+    gap: 1.1rem;
+    align-items: center;
+  }
+
+  .mm-card-photo-box {
+    max-width: 80px;
+    aspect-ratio: 1 / 1;
+    border-radius: 14px;
+  }
+
+  .mm-card-header {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .mm-card-role-badge {
+    padding: 3px 9px;
+    font-size: 0.68rem;
+    margin-bottom: 0.35rem;
+  }
+
+  .mm-card-name {
+    font-size: 1.3rem;
+    margin-bottom: 0;
+    line-height: 1.2;
+  }
+
+  .mm-card-name-large {
+    font-size: 1.45rem;
+  }
+
+  .mm-card-desc {
+    font-size: 0.88rem;
+    line-height: 1.58;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+  }
+
+  .mm-card-chips {
+    grid-template-columns: 1fr;
+    gap: 0.5rem;
+    padding-top: 0.9rem;
+  }
+
+  .mm-card-chip {
+    padding: 0.55rem 0.75rem;
+    font-size: 0.8rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .mm-stack-card {
+    padding: 1.2rem 1rem;
+    margin-bottom: 25px;
+  }
+
+  .mm-card-photo-layout {
+    grid-template-columns: 68px 1fr;
+    gap: 0.85rem;
+  }
+
+  .mm-card-photo-box {
+    max-width: 68px;
+  }
+
+  .mm-card-name {
+    font-size: 1.2rem;
+  }
+
+  .mm-card-name-large {
+    font-size: 1.35rem;
+  }
+
+  .mm-card-desc {
+    font-size: 0.84rem;
+    line-height: 1.52;
+  }
 }
 
 .mm-csuite-banner {

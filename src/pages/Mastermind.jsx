@@ -382,44 +382,46 @@ export default function Mastermind() {
                 }}
               >
                 {member.image ? (
-                  <>
-                    <div className="mm-stack-visual-col">
-                      <div className="mm-stack-photo-wrap">
-                        <img 
-                          src={member.image} 
-                          alt={member.name}
-                          loading="lazy" 
-                        />
-                      </div>
+                  <div className="mm-card-photo-layout">
+                    <div className="mm-card-photo-box">
+                      <img 
+                        src={member.image} 
+                        alt={member.name}
+                        loading="lazy" 
+                      />
                     </div>
 
-                    <div className="mm-stack-content-col">
-                      <h3 className="mm-stack-name">{member.name}</h3>
-                      <p className="mm-team-role-line">{member.role}</p>
-                      <p className="mm-stack-desc">{member.desc}</p>
-                      <ul className="mm-stack-points">
+                    <div className="mm-card-body">
+                      <div className="mm-card-header">
+                        <span className="mm-card-role-badge">{member.role}</span>
+                        <h3 className="mm-card-name">{member.name}</h3>
+                      </div>
+                      <p className="mm-card-desc">{member.desc}</p>
+                      <div className="mm-card-chips">
                         {member.points.map((pt, i) => (
-                          <li key={i}>
-                            <span className="bullet">✓</span> {pt}
-                          </li>
+                          <div key={i} className="mm-card-chip">
+                            <span className="chip-icon">✓</span>
+                            <span>{pt}</span>
+                          </div>
                         ))}
-                      </ul>
+                      </div>
                     </div>
-                  </>
+                  </div>
                 ) : (
-                  <div className="mm-stack-full-col">
-                    <div className="mm-stack-header-wrap">
-                      <h3 className="mm-stack-name mm-stack-name-lg">{member.name}</h3>
-                      <p className="mm-team-role-line mm-team-role-lg">{member.role}</p>
+                  <div className="mm-card-full-layout">
+                    <div className="mm-card-header">
+                      <span className="mm-card-role-badge">{member.role}</span>
+                      <h3 className="mm-card-name mm-card-name-large">{member.name}</h3>
                     </div>
-                    <p className="mm-stack-desc">{member.desc}</p>
-                    <ul className="mm-stack-points mm-stack-points-grid">
+                    <p className="mm-card-desc">{member.desc}</p>
+                    <div className="mm-card-chips">
                       {member.points.map((pt, i) => (
-                        <li key={i}>
-                          <span className="bullet">✓</span> {pt}
-                        </li>
+                        <div key={i} className="mm-card-chip">
+                          <span className="chip-icon">✓</span>
+                          <span>{pt}</span>
+                        </div>
                       ))}
-                    </ul>
+                    </div>
                   </div>
                 )}
               </div>
