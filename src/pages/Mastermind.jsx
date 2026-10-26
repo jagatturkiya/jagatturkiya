@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import LiquidHero from '../components/LiquidHero';
 import FaqAccordion from '../components/FaqAccordion';
@@ -7,6 +7,8 @@ import { getMastermindDetails, getFaqs } from '../lib/cmsStore';
 export default function Mastermind() {
   const [mmData, setMmData] = useState(() => getMastermindDetails());
   const [faqItems, setFaqItems] = useState(() => getFaqs().mastermind || []);
+  const [activeIdx, setActiveIdx] = useState(0);
+  const teamSectionRef = useRef(null);
 
   useEffect(() => {
     const handleUpdate = () => {
@@ -20,6 +22,58 @@ export default function Mastermind() {
       window.removeEventListener('storage', handleUpdate);
     };
   }, []);
+
+  useEffect(() => {
+    let ticking = false;
+
+    const handleScroll = () => {
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          const el = teamSectionRef.current;
+          if (!el) {
+            ticking = false;
+            return;
+          }
+
+          const rect = el.getBoundingClientRect();
+          const headerHeight = window.innerWidth <= 768 ? 64 : 76;
+          const scrollableDist = el.offsetHeight - window.innerHeight;
+
+          if (scrollableDist > 0) {
+            // How far we have scrolled past the sticky start point
+            const scrolled = headerHeight - rect.top;
+            const progress = Math.max(0, Math.min(1, scrolled / scrollableDist));
+
+            const numMembers = 5;
+            const rawIdx = Math.floor(progress * numMembers);
+            const nextIdx = Math.max(0, Math.min(numMembers - 1, rawIdx));
+
+            setActiveIdx(prev => (prev !== nextIdx ? nextIdx : prev));
+          }
+
+          ticking = false;
+        });
+        ticking = true;
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    handleScroll();
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
+
+  const goToMember = (idx) => {
+    const el = teamSectionRef.current;
+    if (!el) return;
+    const headerHeight = window.innerWidth <= 768 ? 64 : 76;
+    const scrollableDist = el.offsetHeight - window.innerHeight;
+    const targetScrolled = (idx + 0.5) * (scrollableDist / 5);
+    const targetScrollY = el.offsetTop - headerHeight + targetScrolled;
+    window.scrollTo({ top: targetScrollY, behavior: 'smooth' });
+  };
 
   const weeks = mmData.weeks || [];
 
@@ -267,52 +321,79 @@ export default function Mastermind() {
         </div>
       </section>
 
-      {/* Executive Leadership & Execution Team (Digital Dhairya Inspired) */}
-      <section className="mm-team-section">
-        <div className="container">
-          <div className="section-header text-center">
-            <h2 className="section-title">
-              Meet The C-Suite Behind <br />
-              <span className="serif-font">The Jagat Turkiya Mastermind</span>
-            </h2>
-            <p className="section-subtitle" style={{ margin: '0 auto', maxWidth: '640px' }}>
-              Direct mentorship from Jagat Turkiya, backed by our core board driving your operational, technical, and life execution.
-            </p>
-          </div>
-
-          <div className="team-editorial-list">
-            {leadershipTeam.map((member) => (
-              <div key={member.id} className={`team-editorial-item ${member.image ? 'with-photo' : 'no-photo'}`}>
-                {member.image && (
-                  <div className="team-editorial-photo">
-                    <img 
-                      src={member.image} 
-                      alt={member.name}
-                      loading="lazy" 
-                    />
-                  </div>
-                )}
-                <div className="team-editorial-content">
-                  <h3 className="team-editorial-name">{member.name}</h3>
-                  <p className="team-editorial-role">{member.role}</p>
-                  <p className="team-editorial-desc">{member.desc}</p>
-                </div>
-              </div>
-            ))}
-          </div>
-
-          <div className="mm-csuite-banner">
-            <div>
-              <p>
-                <strong>The Direct C-Suite Advantage:</strong> Direct mentorship from Jagat Turkiya backed by our full execution machinery. Zero handoffs to junior assistants.
+      {/* Executive Leadership & Execution Team - Scroll Pinned Stage */}
+      <section ref={teamSectionRef} className="mm-team-scroll-section">
+        <div className="mm-sticky-frame">
+          <div className="container" style={{ maxWidth: '880px', margin: '0 auto', textAlign: 'center', width: '100%' }}>
+            {/* Section Header */}
+            <div className="section-header text-center" style={{ marginBottom: '1.5rem' }}>
+              <h2 className="section-title">
+                Meet The Team Behind <br />
+                <span className="serif-font">The Jagat Turkiya Mastermind</span>
+              </h2>
+              <p className="section-subtitle" style={{ margin: '0 auto', maxWidth: '640px' }}>
+                Direct mentorship from Jagat Turkiya, backed by our core board driving your operational, technical, and life execution.
               </p>
             </div>
-            <Link to="/optin" className="btn btn-white" style={{ flexShrink: 0, padding: '0.85rem 1.75rem' }}>
-              Apply for Mastermind Access
-            </Link>
+
+            {/* Pinned Stage Stack (One member at a time on scroll, NO cards, NO capsules, NO boxes) */}
+            <div className="mm-stage-stack">
+              {leadershipTeam.map((member, idx) => {
+                const stateClass = idx === activeIdx ? 'is-active' : idx < activeIdx ? 'is-past' : 'is-upcoming';
+                return (
+                  <div
+                    key={member.id}
+                    className={`mm-stage-item ${stateClass} ${member.image ? 'has-photo' : 'no-photo'}`}
+                  >
+                    {member.image && (
+                      <div className="mm-stage-photo">
+                        <img
+                          src={member.image}
+                          alt={member.name}
+                          loading="lazy"
+                        />
+                      </div>
+                    )}
+                    <div className="mm-stage-content">
+                      <h3 className="mm-stage-name">{member.name}</h3>
+                      <p className="mm-stage-role">{member.role}</p>
+                      <p className="mm-stage-desc">{member.desc}</p>
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+
+            {/* Subtle Progress Dots */}
+            <div className="mm-stage-dots">
+              {leadershipTeam.map((m, idx) => (
+                <button
+                  key={m.id}
+                  type="button"
+                  className={`mm-stage-dot ${idx === activeIdx ? 'active' : ''}`}
+                  onClick={() => goToMember(idx)}
+                  aria-label={`View ${m.name}`}
+                  title={m.name}
+                />
+              ))}
+            </div>
           </div>
         </div>
       </section>
+
+      {/* C-Suite Direct Advantage Banner */}
+      <div className="container" style={{ maxWidth: '880px', margin: '0 auto 4rem' }}>
+        <div className="mm-csuite-banner">
+          <div>
+            <p>
+              <strong>The Direct C-Suite Advantage:</strong> Direct mentorship from Jagat Turkiya backed by our full execution machinery. Zero handoffs to junior assistants.
+            </p>
+          </div>
+          <Link to="/optin" className="btn btn-white" style={{ flexShrink: 0, padding: '0.85rem 1.75rem' }}>
+            Apply for Mastermind Access
+          </Link>
+        </div>
+      </div>
 
       {/* The 10-Week Journey */}
       <section className="section" id="curriculum">
