@@ -32,16 +32,16 @@ export default function Home() {
       <section className="hero-section text-center">
         <LiquidHero />
         <div className="container hero-container" style={{ maxWidth: '920px', margin: '0 auto' }}>
-          <h1 className="hero-title" style={{ marginBottom: '1.25rem', fontSize: 'clamp(2.4rem, 4.8vw, 3.9rem)' }}>
-            For High-Performing Executives, Founders &amp; Leaders: <br />
+          <h1 className="hero-title">
+            For High-Performing Executives, Founders &amp; Leaders: <br className="hero-desktop-br" />
             <span className="serif-font">Break Internal Bottlenecks. Master Decisive Clarity.</span>
           </h1>
 
-          <p className="hero-lead" style={{ maxWidth: '720px', margin: '0 auto 2.25rem auto' }}>
+          <p className="hero-lead">
             Battle-tested 1-on-1 and cohort advisory with Jagat Turkiya. Dismantle internal bottlenecks, align high-stakes decisions, and install permanent peace of mind.
           </p>
 
-          <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap' }}>
+          <div className="hero-actions">
             <Link to="/contact" className="btn btn-white">
               Book Your Clarity Call
             </Link>
@@ -166,8 +166,8 @@ export default function Home() {
             <div className="home-proof-card">
               <div className="home-proof-img-wrap">
                 <img 
-                  src="./assets/images/coach/jagat-hero-portrait.png" 
-                  alt="Jagat Turkiya 1-on-1 Mentorship" 
+                  src="./assets/images/coach/jagat-mentor-desk.jpg" 
+                  alt="Jagat Turkiya 1-on-1 Mentorship Advisory" 
                   loading="lazy" 
                 />
               </div>

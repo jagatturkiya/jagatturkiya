@@ -185,16 +185,16 @@ export default function Mastermind() {
       <section className="hero-section text-center">
         <LiquidHero />
         <div className="container hero-container" style={{ maxWidth: '880px', margin: '0 auto' }}>
-          <h1 className="hero-title" style={{ marginBottom: '1.25rem', fontSize: 'clamp(2.4rem, 4.8vw, 3.8rem)' }}>
-            For Executives, Leaders &amp; Stewards: <br />
+          <h1 className="hero-title">
+            For Executives, Leaders &amp; Stewards: <br className="hero-desktop-br" />
             <span className="serif-font">The Transformation Mastermind</span>
           </h1>
 
-          <p className="hero-lead" style={{ maxWidth: '700px', margin: '0 auto 2.25rem auto', fontSize: '1.08rem', lineHeight: 1.65 }}>
+          <p className="hero-lead">
             A 10-week intensive container followed by 6 months of direct guidance. Private 1-on-1 diagnostics with Jagat Turkiya to break mental bottlenecks and build decisive life clarity.
           </p>
 
-          <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap' }}>
+          <div className="hero-actions">
             <Link to="/optin" className="btn btn-white">
               Apply for Mastermind
             </Link>
@@ -211,8 +211,8 @@ export default function Mastermind() {
           <div className="mastermind-visual-split">
             <div className="mm-image-wrap">
               <img
-                src="./assets/images/coach/jagat-hero-portrait.png"
-                alt="Jagat Turkiya Transformation Coach"
+                src="./assets/images/coach/jagat-executive-staircase.jpg"
+                alt="Jagat Turkiya Executive Mentor"
                 loading="lazy"
               />
             </div>
