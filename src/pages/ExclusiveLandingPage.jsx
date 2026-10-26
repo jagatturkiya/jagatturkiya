@@ -248,21 +248,16 @@ export default function ExclusiveLandingPage() {
             A confidential 10-week container followed by 6 months of direct guidance. Private 1-on-1 diagnostics with Jagat Turkiya to dismantle mental friction and build a permanent personal operating system.
           </p>
 
-          {/* VSL Video Container - Trims last 60s (1 min) */}
+          {/* VSL Video Container - Clean Single Player, Perfectly Fit */}
           <div style={{
             width: '100%',
             maxWidth: '960px',
-            margin: '0 auto 2.5rem',
-            borderRadius: '16px',
-            overflow: 'hidden',
-            border: '1px solid rgba(255, 255, 255, 0.15)',
-            boxShadow: '0 25px 60px rgba(0, 0, 0, 0.85)',
-            backgroundColor: '#000000'
+            margin: '0 auto 2.5rem'
           }}>
             <HlsPlayer autoPlay={true} trimEndSeconds={60} src="https://pub-ba6edddb861846b39535d2d0cabfeeea.r2.dev/Jagat%20Video%202%20compressed.mp4" />
           </div>
 
-          {/* Main Primary Connect CTA Button - Bold, Visible & Prominent */}
+          {/* Main Primary Connect CTA Button - Crisp, Clean, Zero Blur Glow */}
           <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', marginTop: '2rem', marginBottom: '1rem' }}>
             <button
               type="button"
@@ -274,30 +269,30 @@ export default function ExclusiveLandingPage() {
                 justifyContent: 'center',
                 gap: '10px',
                 width: '100%',
-                maxWidth: '460px',
-                padding: '1.3rem 2.5rem',
-                fontSize: '1.18rem',
+                maxWidth: '440px',
+                padding: '1.25rem 2.5rem',
+                fontSize: '1.15rem',
                 fontWeight: 800,
-                letterSpacing: '0.05em',
+                letterSpacing: '0.04em',
                 textTransform: 'uppercase',
                 borderRadius: '8px',
                 backgroundColor: '#ffffff',
                 color: '#080808',
                 border: '2px solid #ffffff',
-                boxShadow: '0 12px 35px rgba(255, 255, 255, 0.35)',
+                boxShadow: 'none',
                 cursor: 'pointer',
                 transition: 'all 0.2s cubic-bezier(0.16, 1, 0.3, 1)',
                 boxSizing: 'border-box'
               }}
               onMouseEnter={e => {
-                e.currentTarget.style.backgroundColor = '#f4f4f5';
+                e.currentTarget.style.backgroundColor = '#e4e4e7';
                 e.currentTarget.style.transform = 'translateY(-2px)';
-                e.currentTarget.style.boxShadow = '0 16px 45px rgba(255, 255, 255, 0.45)';
+                e.currentTarget.style.boxShadow = 'none';
               }}
               onMouseLeave={e => {
                 e.currentTarget.style.backgroundColor = '#ffffff';
                 e.currentTarget.style.transform = 'translateY(0)';
-                e.currentTarget.style.boxShadow = '0 12px 35px rgba(255, 255, 255, 0.35)';
+                e.currentTarget.style.boxShadow = 'none';
               }}
             >
               Connect With Team &rarr;
@@ -356,10 +351,35 @@ export default function ExclusiveLandingPage() {
                 <button
                   type="button"
                   onClick={handleOpenConnect}
-                  className="btn btn-outline"
-                  style={{ padding: '0.85rem 1.85rem', fontSize: '0.95rem' }}
+                  className="btn btn-white"
+                  style={{
+                    display: 'inline-flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    gap: '8px',
+                    padding: '1.1rem 2.5rem',
+                    fontSize: '1.05rem',
+                    fontWeight: 800,
+                    letterSpacing: '0.04em',
+                    textTransform: 'uppercase',
+                    color: '#080808',
+                    backgroundColor: '#ffffff',
+                    border: '2px solid #ffffff',
+                    borderRadius: '6px',
+                    boxShadow: 'none',
+                    cursor: 'pointer',
+                    transition: 'all 0.2s cubic-bezier(0.16, 1, 0.3, 1)'
+                  }}
+                  onMouseEnter={e => {
+                    e.currentTarget.style.backgroundColor = '#e4e4e7';
+                    e.currentTarget.style.transform = 'translateY(-2px)';
+                  }}
+                  onMouseLeave={e => {
+                    e.currentTarget.style.backgroundColor = '#ffffff';
+                    e.currentTarget.style.transform = 'translateY(0)';
+                  }}
                 >
-                  Connect With Team →
+                  Connect With Team &rarr;
                 </button>
               </div>
             </div>
@@ -666,7 +686,7 @@ export default function ExclusiveLandingPage() {
                 fontWeight: 800,
                 letterSpacing: '0.04em',
                 textTransform: 'uppercase',
-                boxShadow: '0 10px 30px rgba(255, 255, 255, 0.3)'
+                boxShadow: 'none'
               }}
             >
               Connect With Team &rarr;

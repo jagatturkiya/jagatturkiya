@@ -414,13 +414,13 @@ export default function HlsPlayer({
       style={{
         position: 'relative',
         width: '100%',
-        maxWidth: '860px',
+        maxWidth: '100%',
         margin: '0 auto',
-        borderRadius: '10px',
+        borderRadius: '14px',
         overflow: 'hidden',
-        background: '#040405',
-        boxShadow: '0 20px 50px rgba(0, 0, 0, 0.95)',
-        border: '1px solid rgba(255, 255, 255, 0.1)',
+        background: '#000000',
+        boxShadow: '0 25px 60px rgba(0, 0, 0, 0.95)',
+        border: '1px solid rgba(255, 255, 255, 0.14)',
         userSelect: 'none',
         outline: 'none'
       }}
