@@ -376,39 +376,52 @@ export default function Mastermind() {
               <div 
                 key={member.id} 
                 ref={el => stackCardsRef.current[idx] = el}
-                className="mm-stack-card"
+                className={`mm-stack-card ${member.image ? 'with-photo' : 'no-photo'}`}
                 style={{
                   zIndex: idx + 1
                 }}
               >
-                <div className="mm-stack-visual-col">
-                  {member.image ? (
-                    <div className="mm-stack-photo-wrap">
-                      <img 
-                        src={member.image} 
-                        alt={member.name}
-                        loading="lazy"
-                      />
+                {member.image ? (
+                  <>
+                    <div className="mm-stack-visual-col">
+                      <div className="mm-stack-photo-wrap">
+                        <img 
+                          src={member.image} 
+                          alt={member.name}
+                          loading="lazy" 
+                        />
+                      </div>
                     </div>
-                  ) : (
-                    <div className="mm-stack-avatar-box">
-                      <span className="mm-stack-monogram">{member.monogram}</span>
-                    </div>
-                  )}
-                </div>
 
-                <div className="mm-stack-content-col">
-                  <h3 className="mm-stack-name">{member.name}</h3>
-                  <p className="mm-team-role-line">{member.role}</p>
-                  <p className="mm-stack-desc">{member.desc}</p>
-                  <ul className="mm-stack-points">
-                    {member.points.map((pt, i) => (
-                      <li key={i}>
-                        <span className="bullet">✓</span> {pt}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
+                    <div className="mm-stack-content-col">
+                      <h3 className="mm-stack-name">{member.name}</h3>
+                      <p className="mm-team-role-line">{member.role}</p>
+                      <p className="mm-stack-desc">{member.desc}</p>
+                      <ul className="mm-stack-points">
+                        {member.points.map((pt, i) => (
+                          <li key={i}>
+                            <span className="bullet">✓</span> {pt}
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  </>
+                ) : (
+                  <div className="mm-stack-full-col">
+                    <div className="mm-stack-header-wrap">
+                      <h3 className="mm-stack-name mm-stack-name-lg">{member.name}</h3>
+                      <p className="mm-team-role-line mm-team-role-lg">{member.role}</p>
+                    </div>
+                    <p className="mm-stack-desc">{member.desc}</p>
+                    <ul className="mm-stack-points mm-stack-points-grid">
+                      {member.points.map((pt, i) => (
+                        <li key={i}>
+                          <span className="bullet">✓</span> {pt}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
               </div>
             ))}
           </div>
