@@ -17,6 +17,7 @@ import NotFound from './pages/NotFound';
 import Vsl from './pages/Vsl';
 import Optin from './pages/Optin';
 import ThankYou from './pages/ThankYou';
+import ExclusiveLandingPage from './pages/ExclusiveLandingPage';
 
 // Admin Portal Pages
 import AdminLayout from './pages/admin/AdminLayout';
@@ -75,6 +76,12 @@ export default function App() {
           <Route path="/terms" element={<Terms />} />
           <Route path="/refund-policy" element={<RefundPolicy />} />
           <Route path="/disclaimer" element={<Disclaimer />} />
+
+          {/* Exclusive Mastermind Landing Page with Header & Footer */}
+          <Route path="/exclusive" element={<ExclusiveLandingPage />} />
+          <Route path="/exclusive-mastermind" element={<ExclusiveLandingPage />} />
+          <Route path="/exclusive-landing-page" element={<ExclusiveLandingPage />} />
+          <Route path="/vip" element={<ExclusiveLandingPage />} />
 
           {/* Standalone Private Funnel Pages */}
           <Route path="/optin" element={<Optin />} />

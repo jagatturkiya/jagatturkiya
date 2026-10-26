@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import FunnelHeader from '../components/FunnelHeader';
 import FunnelFooter from '../components/FunnelFooter';
 import HlsPlayer from '../components/HlsPlayer';
@@ -57,8 +58,8 @@ export default function Vsl() {
           maxWidth: '560px',
           marginBottom: '4rem'
         }}>
-          <a
-            href="https://pages.razorpay.com/pl_TocpRp9wNnEJwI/view"
+          <Link
+            to="/exclusive"
             style={{
               display: 'block',
               width: '100%',
@@ -88,10 +89,10 @@ export default function Vsl() {
               e.currentTarget.style.transform = 'translateY(0)';
             }}
           >
-            BOOK A CALL
-          </a>
+            CONNECT WITH ADVISORY BOARD
+          </Link>
 
-          {/* 100% Refundable Commitment Deposit in Vibrant Green (No Capsule) */}
+          {/* Subtext */}
           <p style={{
             color: '#10b981',
             fontSize: '0.95rem',
@@ -100,7 +101,7 @@ export default function Vsl() {
             textAlign: 'center',
             letterSpacing: '0.02em'
           }}>
-            100% Refundable Commitment Deposit
+            ✓ Strict Closed-Door Confidentiality • Priority Consultation
           </p>
         </div>
 

@@ -65,7 +65,7 @@ export default function Optin() {
     }
 
     setTimeout(() => {
-      navigate('/vsl?autoplay=1');
+      navigate('/exclusive?autoplay=1');
     }, 200);
   };
 

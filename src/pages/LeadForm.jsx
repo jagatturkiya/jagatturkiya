@@ -65,8 +65,8 @@ export default function LeadForm() {
 
     // Direct user to VSL training page
     setTimeout(() => {
-      navigate('/vsl');
-    }, 250);
+      navigate('/exclusive?autoplay=1');
+    }, 200);
   };
 
   return (

@@ -97,6 +97,7 @@ export default function LeadsCRM() {
 
     const matchesSource = 
       sourceFilter === 'ALL' ? true :
+      sourceFilter === 'EXCLUSIVE' ? (l.source && l.source.toLowerCase().includes('exclusive')) :
       sourceFilter === 'OPTIN' ? (l.source && l.source.toLowerCase().includes('optin')) :
       sourceFilter === 'CONTACT' ? (l.source && (l.source.toLowerCase().includes('contact') || l.source.toLowerCase().includes('inquiry'))) :
       true;
@@ -109,6 +110,7 @@ export default function LeadsCRM() {
     return matchesSearch && matchesSource && matchesStatus;
   });
 
+  const exclusiveCount = leads.filter(l => l.source && l.source.toLowerCase().includes('exclusive')).length;
   const optinCount = leads.filter(l => l.source && l.source.toLowerCase().includes('optin')).length;
   const contactCount = leads.filter(l => l.source && (l.source.toLowerCase().includes('contact') || l.source.toLowerCase().includes('inquiry'))).length;
 
@@ -231,6 +233,22 @@ export default function LeadsCRM() {
             }}
           >
             Optin Funnel ({optinCount})
+          </button>
+          <button
+            type="button"
+            onClick={() => setSourceFilter('EXCLUSIVE')}
+            style={{
+              padding: '0.4rem 0',
+              border: 'none',
+              borderBottom: sourceFilter === 'EXCLUSIVE' ? '2px solid #ffffff' : '2px solid transparent',
+              backgroundColor: 'transparent',
+              color: sourceFilter === 'EXCLUSIVE' ? '#ffffff' : '#666666',
+              fontSize: '0.88rem',
+              fontWeight: sourceFilter === 'EXCLUSIVE' ? 700 : 500,
+              cursor: 'pointer'
+            }}
+          >
+            Exclusive VIP ({exclusiveCount})
           </button>
           <button
             type="button"
@@ -726,6 +744,7 @@ export default function LeadsCRM() {
                   }}
                 >
                   <option value="Manual Inquiry">Manual Inquiry</option>
+                  <option value="Exclusive Landing Page">Exclusive Landing Page</option>
                   <option value="VSL Optin Funnel">VSL Optin Funnel</option>
                   <option value="Contact Page Inquiry">Contact Page Inquiry</option>
                   <option value="Direct Call / WhatsApp">Direct Call / WhatsApp</option>
