@@ -230,7 +230,7 @@ export default function BookingModal({ isOpen, onClose }) {
                     required
                     value={phone}
                     onChange={e => setPhone(e.target.value)}
-                    placeholder="+91 9876543210"
+                    placeholder="Enter WhatsApp number"
                     style={{
                       width: '100%',
                       padding: '10px 12px',

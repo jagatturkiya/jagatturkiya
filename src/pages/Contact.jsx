@@ -58,9 +58,9 @@ export default function Contact() {
   return (
     <div className="contact-page">
       {/* Page Header */}
-      <section className="page-header" style={{ padding: '5.5rem 0 3.5rem', borderBottom: '1px solid var(--border-subtle)', background: 'var(--bg-black)' }}>
+      <section className="page-header contact-page-header">
         <div className="container text-center" style={{ maxWidth: '820px', margin: '0 auto' }}>
-          <h1 className="section-title" style={{ fontSize: 'clamp(2.2rem, 4vw, 3.2rem)', marginBottom: '1rem' }}>
+          <h1 className="section-title">
             Connect Directly with <span className="serif-font">Jagat Turkiya Team</span>
           </h1>
           <p className="section-subtitle" style={{ maxWidth: '640px', margin: '0 auto', fontSize: '1.05rem', color: 'var(--text-silver)', lineHeight: 1.6 }}>
@@ -175,7 +175,7 @@ export default function Contact() {
                       name="phone"
                       maxLength={15}
                       className="form-control"
-                      placeholder="+91 98XXXXXXXX"
+                      placeholder="Enter your phone number"
                       value={formData.phone}
                       onChange={handleChange}
                       required

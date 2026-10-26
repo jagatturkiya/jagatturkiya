@@ -105,7 +105,7 @@ export default function ContactInfoAdmin() {
                 maxLength={20}
                 value={formData.phone || ''}
                 onChange={e => handleChange('phone', e.target.value)}
-                placeholder="+91 98765 43210"
+                placeholder="Enter calling phone number"
                 style={{
                   width: '100%',
                   padding: '0.75rem 1rem',
@@ -130,7 +130,7 @@ export default function ContactInfoAdmin() {
                 maxLength={20}
                 value={formData.whatsapp || ''}
                 onChange={e => handleChange('whatsapp', e.target.value)}
-                placeholder="+91 98765 43210"
+                placeholder="Enter WhatsApp support number"
                 style={{
                   width: '100%',
                   padding: '0.75rem 1rem',

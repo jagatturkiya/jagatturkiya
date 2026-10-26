@@ -685,7 +685,17 @@ export const defaultContactInfo = {
 export function getContactInfo() {
   try {
     const cached = localStorage.getItem('jt_cms_contact_info');
-    if (cached) return { ...defaultContactInfo, ...JSON.parse(cached) };
+    if (cached) {
+      const parsed = JSON.parse(cached);
+      if (parsed.phone && (parsed.phone.includes('98765') || parsed.phone === '+91 98765 43210')) {
+        parsed.phone = "";
+      }
+      if (parsed.whatsapp && (parsed.whatsapp.includes('98765') || parsed.whatsapp === '+91 98765 43210')) {
+        parsed.whatsapp = "";
+      }
+      localStorage.setItem('jt_cms_contact_info', JSON.stringify(parsed));
+      return { ...defaultContactInfo, ...parsed };
+    }
     localStorage.setItem('jt_cms_contact_info', JSON.stringify(defaultContactInfo));
     return defaultContactInfo;
   } catch {

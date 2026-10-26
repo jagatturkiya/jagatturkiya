@@ -667,7 +667,7 @@ export default function LeadsCRM() {
                     maxLength={15}
                     value={newLead.phone}
                     onChange={e => setNewLead({ ...newLead, phone: e.target.value })}
-                    placeholder="+91 98765 43210"
+                    placeholder="Enter phone number"
                     style={{
                       width: '100%',
                       padding: '0.75rem 1rem',

@@ -61,7 +61,6 @@ export default function Footer() {
             <h5>Advisory Desk</h5>
             <ul className="footer-links">
               <li><a href={`mailto:${contact.email || 'hello@apkacoach.com'}`}>{contact.email || 'hello@apkacoach.com'}</a></li>
-              {contact.phone && <li><a href={`tel:${contact.phone}`}>{contact.phone}</a></li>}
               <li><Link to="/contact">Book Clarity Call</Link></li>
               {contact.wealthCompassUrl && (
                 <li>

@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import LiquidHero from '../components/LiquidHero';
 import FaqAccordion from '../components/FaqAccordion';
@@ -7,7 +7,6 @@ import { getMastermindDetails, getFaqs } from '../lib/cmsStore';
 export default function Mastermind() {
   const [mmData, setMmData] = useState(() => getMastermindDetails());
   const [faqItems, setFaqItems] = useState(() => getFaqs().mastermind || []);
-  const stackCardsRef = useRef([]);
 
   useEffect(() => {
     const handleUpdate = () => {
@@ -19,66 +18,6 @@ export default function Mastermind() {
     return () => {
       window.removeEventListener('jt_cms_updated', handleUpdate);
       window.removeEventListener('storage', handleUpdate);
-    };
-  }, []);
-
-  useEffect(() => {
-    let ticking = false;
-
-    const handleScroll = () => {
-      if (!ticking) {
-        window.requestAnimationFrame(() => {
-          const cards = stackCardsRef.current;
-          if (!cards || cards.length === 0) {
-            ticking = false;
-            return;
-          }
-
-          const STICKY_TOP = window.innerWidth <= 768 ? 90 : 110;
-          const FADE_DISTANCE = window.innerWidth <= 768 ? 180 : 240;
-
-          for (let i = 0; i < cards.length; i++) {
-            const currentCard = cards[i];
-            if (!currentCard) continue;
-
-            const nextCard = cards[i + 1];
-            if (nextCard) {
-              const nextRect = nextCard.getBoundingClientRect();
-              const distance = nextRect.top - STICKY_TOP;
-
-              if (distance > FADE_DISTANCE) {
-                // Next card is far below -> current card is fully visible
-                currentCard.style.opacity = '1';
-                currentCard.style.transform = 'scale(1)';
-              } else if (distance > 0) {
-                // Next card is approaching -> current card dissolves smoothly
-                const progress = Math.max(0, Math.min(1, distance / FADE_DISTANCE));
-                currentCard.style.opacity = String(progress);
-                const scale = 0.95 + 0.05 * progress;
-                currentCard.style.transform = `scale(${scale.toFixed(3)})`;
-              } else {
-                // Next card has covered it -> completely disappear
-                currentCard.style.opacity = '0';
-                currentCard.style.transform = 'scale(0.95)';
-              }
-            } else {
-              // Last card stays fully visible
-              currentCard.style.opacity = '1';
-              currentCard.style.transform = 'scale(1)';
-            }
-          }
-
-          ticking = false;
-        });
-        ticking = true;
-      }
-    };
-
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    handleScroll();
-
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
     };
   }, []);
 
@@ -119,63 +58,33 @@ export default function Mastermind() {
     {
       id: 'jagat',
       name: 'Jagat Turkiya',
-      role: 'Founder & CEO',
-      featured: true,
+      role: 'Founder & Lead Transformation Coach',
       image: './assets/images/coach/jagat-hero-portrait.png',
-      desc: 'Author of 5 books and Times Square featured coach. Jagat conducts private 1-on-1 diagnostics to rewire self-doubt and install decisive mental clarity.',
-      points: [
-        '1-on-1 Mindset & Life Diagnostic',
-        'Rewiring Career & Wealth Friction',
-        'Permanent Peace of Mind Blueprint'
-      ]
+      desc: 'Visionary anchor of the Mastermind. Having personally overcome severe adversity and guided 15,000+ individuals, Jagat conducts all private 1-on-1 diagnostics to dismantle deep subconscious bottlenecks, align high-stakes career decisions, and install lasting peace of mind.'
     },
     {
       id: 'raunak',
       name: 'Kumar Raunak',
       role: 'Chief of Marketing & Tech',
-      monogram: 'KR',
-      desc: 'Architect of high-converting growth funnels, tech infrastructure, and brand distribution pipelines across the ecosystem.',
-      points: [
-        'High-Conversion Growth Funnels',
-        'Strategic Brand Distribution',
-        'Tech Stack & Automation'
-      ]
+      desc: 'The strategic and technological backbone of our ecosystem. Raunak architects our digital systems, high-converting pipelines, and global reach—ensuring every mentee experiences seamless onboarding, cutting-edge tools, and reliable platform execution.'
     },
     {
       id: 'savita',
       name: 'Savita Turkiya',
-      role: 'Operations',
-      monogram: 'ST',
-      desc: 'Operational anchor managing seamless cohort onboarding, schedule alignment, and continuous 6-month mentee care.',
-      points: [
-        'Cohort Coordination & Logistics',
-        '6-Month Mentee Handholding',
-        'Accountability & Execution Cadence'
-      ]
+      role: 'Operations Lead',
+      desc: 'The operational heart of the Mastermind. Savita manages cohort logistics, scheduling, and direct 6-month mentee handholding—ensuring zero friction, dedicated personal accountability, and an exceptional member experience.'
     },
     {
       id: 'manish',
       name: 'Manish Sharma',
       role: 'Finance & Team Lead',
-      monogram: 'MS',
-      desc: 'Drives financial governance, capital protection frameworks, and team execution discipline.',
-      points: [
-        'Fiscal Governance & Risk Defense',
-        'Resource & Capital Allocation',
-        'Cross-Functional Team Alignment'
-      ]
+      desc: 'Drives fiscal governance, organizational discipline, and cross-team alignment. Manish safeguards strategic resources and execution cadence, ensuring our advisory programs operate with institutional precision.'
     },
     {
       id: 'neelofar',
       name: 'Neelofar',
-      role: 'Editing & Social Media Management',
-      monogram: 'NL',
-      desc: 'Drives creative media production, high-impact video storytelling, and digital content distribution.',
-      points: [
-        'Cinematic Video Storytelling',
-        'High-Engagement Brand Content',
-        'Multi-Platform Media Strategy'
-      ]
+      role: 'Editing & Social Media Lead',
+      desc: 'The creative storytelling force behind our mission. Neelofar translates transformative mentee breakthroughs into compelling media narratives, expanding our brand reach and inspiring leaders across digital platforms.'
     }
   ];
 
@@ -371,59 +280,23 @@ export default function Mastermind() {
             </p>
           </div>
 
-          <div className="mm-stack-container">
-            {leadershipTeam.map((member, idx) => (
-              <div 
-                key={member.id} 
-                ref={el => stackCardsRef.current[idx] = el}
-                className={`mm-stack-card ${member.image ? 'with-photo' : 'no-photo'}`}
-                style={{
-                  zIndex: idx + 1
-                }}
-              >
-                {member.image ? (
-                  <div className="mm-card-photo-layout">
-                    <div className="mm-card-photo-box">
-                      <img 
-                        src={member.image} 
-                        alt={member.name}
-                        loading="lazy" 
-                      />
-                    </div>
-
-                    <div className="mm-card-body">
-                      <div className="mm-card-header">
-                        <span className="mm-card-role-badge">{member.role}</span>
-                        <h3 className="mm-card-name">{member.name}</h3>
-                      </div>
-                      <p className="mm-card-desc">{member.desc}</p>
-                      <div className="mm-card-chips">
-                        {member.points.map((pt, i) => (
-                          <div key={i} className="mm-card-chip">
-                            <span className="chip-icon">✓</span>
-                            <span>{pt}</span>
-                          </div>
-                        ))}
-                      </div>
-                    </div>
-                  </div>
-                ) : (
-                  <div className="mm-card-full-layout">
-                    <div className="mm-card-header">
-                      <span className="mm-card-role-badge">{member.role}</span>
-                      <h3 className="mm-card-name mm-card-name-large">{member.name}</h3>
-                    </div>
-                    <p className="mm-card-desc">{member.desc}</p>
-                    <div className="mm-card-chips">
-                      {member.points.map((pt, i) => (
-                        <div key={i} className="mm-card-chip">
-                          <span className="chip-icon">✓</span>
-                          <span>{pt}</span>
-                        </div>
-                      ))}
-                    </div>
+          <div className="team-editorial-list">
+            {leadershipTeam.map((member) => (
+              <div key={member.id} className={`team-editorial-item ${member.image ? 'with-photo' : 'no-photo'}`}>
+                {member.image && (
+                  <div className="team-editorial-photo">
+                    <img 
+                      src={member.image} 
+                      alt={member.name}
+                      loading="lazy" 
+                    />
                   </div>
                 )}
+                <div className="team-editorial-content">
+                  <h3 className="team-editorial-name">{member.name}</h3>
+                  <p className="team-editorial-role">{member.role}</p>
+                  <p className="team-editorial-desc">{member.desc}</p>
+                </div>
               </div>
             ))}
           </div>
