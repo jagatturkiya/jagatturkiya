@@ -449,37 +449,7 @@ export default function HlsPlayer({
           }
         }}
       >
-        {/* Unmute floating banner if playing muted */}
-        {isPlaying && isMuted && (
-          <div 
-            onClick={(e) => {
-              e.stopPropagation();
-              toggleMute();
-            }}
-            style={{
-              position: 'absolute',
-              top: '16px',
-              left: '50%',
-              transform: 'translateX(-50%)',
-              zIndex: 15,
-              display: 'flex',
-              alignItems: 'center',
-              gap: '8px',
-              backgroundColor: 'rgba(0, 0, 0, 0.82)',
-              border: '1px solid rgba(255, 255, 255, 0.3)',
-              borderRadius: '24px',
-              padding: '8px 16px',
-              color: '#ffffff',
-              fontSize: '0.85rem',
-              fontWeight: 600,
-              cursor: 'pointer',
-              backdropFilter: 'blur(8px)',
-              boxShadow: '0 4px 20px rgba(0, 0, 0, 0.6)'
-            }}
-          >
-            <span>🔊 Video playing muted — Tap for sound</span>
-          </div>
-        )}
+
 
         {/* Video Element */}
         <video
