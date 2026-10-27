@@ -199,15 +199,17 @@ export default function ApkaCoachGrowth() {
               </div>
             </div>
 
-            {/* Clean Image: No Border, No Frame, No Badge */}
+            {/* Visual: Coach Jagat Speaking on Stage */}
             <div style={{ position: 'relative' }}>
               <img
-                src="./assets/apkacoach-team-poster.png"
-                alt="ApkaCoach Opportunity Poster"
+                src="./assets/images/jagat-speaking.jpg"
+                alt="Coach Jagat Turkiya Keynote Speaker on Stage"
                 style={{
                   width: '100%',
-                  height: '420px',
+                  height: '480px',
+                  maxHeight: '520px',
                   objectFit: 'cover',
+                  objectPosition: 'center 15%',
                   display: 'block',
                   borderRadius: '16px',
                   border: '0',
