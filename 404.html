@@ -15,16 +15,17 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Hedvig+Letters+Serif:ital@0;1&family=Instrument+Sans:ital,wght@0,400..800;1,400..800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
-  <script type="module" crossorigin src="./assets/index.js?v=1793112778696"></script>
-  <link rel="stylesheet" crossorigin href="./assets/index.css?v=1793112778696">
+  <script type="module" crossorigin src="./assets/index.js?v=1793115774554"></script>
+  <link rel="stylesheet" crossorigin href="./assets/index.css?v=1793115774554">
   <script>
     (function() {
       var p = window.location.pathname;
       var repo = '/jagatturkiya';
-      if (p.startsWith(repo)) p = p.slice(repo.length);
+      var basePrefix = p.startsWith(repo) ? repo : '';
+      if (basePrefix) p = p.slice(repo.length);
       p = p.replace(/^\/+/, '').replace(/\.html$/, '');
       if (p && !p.startsWith('assets/')) {
-        window.location.replace(window.location.origin + repo + '/#/' + p + window.location.search);
+        window.location.replace(window.location.origin + basePrefix + '/#/' + p + window.location.search);
       }
     })();
   </script>

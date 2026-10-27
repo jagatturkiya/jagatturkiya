@@ -38,6 +38,7 @@ export default function App() {
   const isStandaloneFunnel = [
     '/vsl', '/optin', '/form', '/forms', '/apply', '/access', '/thank-you',
     '/exclusive', '/exclusive-mastermind', '/exclusive-landing-page', '/vip',
+    '/directconnect', '/direct-connect',
     '/apkacoach-connect', '/connect', '/growth', '/apkacoach-growth', '/apkacoach'
   ].includes(location.pathname);
 
@@ -93,7 +94,9 @@ export default function App() {
           <Route path="/vsl" element={<Vsl />} />
           <Route path="/thank-you" element={<ThankYou />} />
 
-          {/* ApkaCoach Growth Connect Landing Page */}
+          {/* ApkaCoach Direct Connect Landing Page */}
+          <Route path="/directconnect" element={<ApkaCoachGrowth />} />
+          <Route path="/direct-connect" element={<ApkaCoachGrowth />} />
           <Route path="/apkacoach-connect" element={<ApkaCoachGrowth />} />
           <Route path="/connect" element={<ApkaCoachGrowth />} />
           <Route path="/growth" element={<ApkaCoachGrowth />} />

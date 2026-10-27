@@ -23,15 +23,16 @@ if (fs.existsSync(compiledHtmlPath)) {
   // Write to dist
   fs.writeFileSync(path.join(distDir, 'index.html'), htmlContent);
 
-  // Create 404.html with automatic HashRouter SPA redirect for GitHub Pages
+  // Create 404.html with automatic HashRouter SPA redirect for GitHub Pages (supporting custom domains)
   const spa404Content = htmlContent.replace('</head>', `  <script>
     (function() {
       var p = window.location.pathname;
       var repo = '/jagatturkiya';
-      if (p.startsWith(repo)) p = p.slice(repo.length);
+      var basePrefix = p.startsWith(repo) ? repo : '';
+      if (basePrefix) p = p.slice(repo.length);
       p = p.replace(/^\\/+/, '').replace(/\\.html$/, '');
       if (p && !p.startsWith('assets/')) {
-        window.location.replace(window.location.origin + repo + '/#/' + p + window.location.search);
+        window.location.replace(window.location.origin + basePrefix + '/#/' + p + window.location.search);
       }
     })();
   </script>
@@ -46,15 +47,35 @@ if (fs.existsSync(compiledHtmlPath)) {
 
   // Standalone routes are handled dynamically by SPA 404.html redirect shim
 
-  // Also sync standalone ApkaCoach Growth connect pages from src/index.html
+  // Also sync standalone directconnect and ApkaCoach Growth connect pages from src/index.html
   const srcIndexHtmlPath = path.join(rootDir, 'src', 'index.html');
   if (fs.existsSync(srcIndexHtmlPath)) {
     const apkaHtmlContent = fs.readFileSync(srcIndexHtmlPath, 'utf-8');
-    ['apkacoach-connect.html', 'connect.html', 'growth.html'].forEach(filename => {
+    const apkaHtmlWithBase = apkaHtmlContent.replace('<head>', '<head>\n  <base href="/" />');
+
+    const htmlFiles = [
+      'directconnect.html',
+      'direct-connect.html',
+      'apkacoach-connect.html',
+      'connect.html',
+      'growth.html'
+    ];
+    htmlFiles.forEach(filename => {
       fs.writeFileSync(path.join(distDir, filename), apkaHtmlContent);
       fs.writeFileSync(path.join(rootDir, filename), apkaHtmlContent);
     });
-    console.log('[prepare-gh-pages] Written standalone apkacoach-connect, connect & growth html files.');
+
+    // Also write clean directories with index.html (so /directconnect loads directly on static hosts)
+    const routeDirs = ['directconnect', 'direct-connect', 'apkacoach-connect', 'connect', 'growth'];
+    routeDirs.forEach(dirName => {
+      const distSubDir = path.join(distDir, dirName);
+      const rootSubDir = path.join(rootDir, dirName);
+      if (!fs.existsSync(distSubDir)) fs.mkdirSync(distSubDir, { recursive: true });
+      if (!fs.existsSync(rootSubDir)) fs.mkdirSync(rootSubDir, { recursive: true });
+      fs.writeFileSync(path.join(distSubDir, 'index.html'), apkaHtmlWithBase);
+      fs.writeFileSync(path.join(rootSubDir, 'index.html'), apkaHtmlWithBase);
+    });
+    console.log('[prepare-gh-pages] Written standalone directconnect, apkacoach-connect, connect & growth html files and clean route directories.');
   }
 
   // Copy all favicon formats to dist & root
