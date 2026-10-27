@@ -41,7 +41,7 @@ export default function Vsl() {
           margin: '0 auto 2.5rem',
           letterSpacing: '-0.02em'
         }}>
-          How High Earners Bridge Their Wealth Gap &amp; Build Unshakeable Peace of Mind
+          How High-Performing Leaders &amp; Executives Break Internal Ceilings &amp; Build Unshakeable Peace of Mind
         </h1>
 
         {/* Clean HLS Video Player (100% video focus, no watermarks, no stream buttons) */}
@@ -89,7 +89,7 @@ export default function Vsl() {
               e.currentTarget.style.transform = 'translateY(0)';
             }}
           >
-            CONNECT WITH ADVISORY BOARD
+            CONNECT WITH COACH JAGAT
           </Link>
 
           {/* Subtext */}
@@ -124,7 +124,7 @@ export default function Vsl() {
             textAlign: 'left',
             letterSpacing: '-0.01em'
           }}>
-            Your Private Advisory Blueprint: What to Expect Next
+            Your Transformation Blueprint: What to Expect Next
           </h2>
 
           <ul style={{
@@ -169,7 +169,7 @@ export default function Vsl() {
                 margin: 0
               }}>
                 <strong style={{ color: '#ffffff', fontWeight: 600 }}>What we do on the call:</strong>{' '}
-                We get on a private video chat to look at your real numbers, talk through your goals, and see if our 10-week program with 6 months of handholding support is genuinely the right fit for you. No pressure.
+                We get on a private video chat to diagnose your internal bottlenecks, talk through your life and career goals, and see if our 10-week program with 6 months of handholding support is genuinely the right fit for you. No pressure.
               </p>
             </li>
 
@@ -207,7 +207,7 @@ export default function Vsl() {
                 margin: 0
               }}>
                 <strong style={{ color: '#ffffff', fontWeight: 600 }}>The only exception:</strong>{' '}
-                The deposit is non-refundable only if you book a slot, block an advisor's time, and simply don't show up without telling us beforehand.
+                The deposit is non-refundable only if you book a slot, block Coach Jagat's time, and simply don't show up without telling us beforehand.
               </p>
             </li>
           </ul>

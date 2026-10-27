@@ -10,10 +10,10 @@ export default function NotFound() {
           Page Not Found
         </h2>
         <p style={{ color: 'var(--text-muted)', lineHeight: '1.7', marginBottom: '2.5rem' }}>
-          The requested advisory destination does not exist or has been relocated to our core executive platform.
+          The requested page does not exist or has been relocated to our main platform.
         </p>
         <Link to="/" className="btn btn-white">
-          Return to Executive Home →
+          Return to Home →
         </Link>
       </div>
     </div>

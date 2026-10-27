@@ -98,12 +98,12 @@ export default function ThankYou() {
               lineHeight: 1.7,
               color: '#d4d4d8'
             }}>
-              <strong style={{ color: '#ffffff' }}>Complete the application form:</strong>{' '}
-              Fill out the short questions sent to your email with your real numbers, current wealth stage, and primary goals. This allows our advisory desk to prepare specifically for your situation.
+              <strong style={{ color: '#ffffff' }}>Complete the leadership diagnostic:</strong>{' '}
+              Fill out the short questions sent to your email regarding your current challenges, leadership scope, and transformation goals. This allows Coach Jagat's team to prepare specifically for your consultation.
             </p>
           </div>
 
-          {/* Point 3: Advisory Review & Call Scheduling */}
+          {/* Point 3: Application Review & Call Scheduling */}
           <div style={{ display: 'flex', alignItems: 'flex-start', gap: '14px' }}>
             <span style={{
               color: '#ffffff',
@@ -119,8 +119,8 @@ export default function ThankYou() {
               lineHeight: 1.7,
               color: '#d4d4d8'
             }}>
-              <strong style={{ color: '#ffffff' }}>Advisory review &amp; scheduling:</strong>{' '}
-              Our team will review your application within 24&ndash;48 business hours. Once accepted, you will receive an exclusive calendar link to schedule your private 1-on-1 strategy call with us.
+              <strong style={{ color: '#ffffff' }}>Application review &amp; scheduling:</strong>{' '}
+              Our team will review your application within 24&ndash;48 business hours. Once accepted, you will receive a private calendar link to schedule your 1-on-1 transformation session with Coach Jagat.
             </p>
           </div>
         </div>
@@ -140,7 +140,7 @@ export default function ThankYou() {
             margin: 0,
             lineHeight: 1.6
           }}>
-            Have any immediate questions? Write to our advisory team directly at{' '}
+            Have any immediate questions? Write to our coaching team directly at{' '}
             <a 
               href="mailto:hello@apkacoach.com" 
               style={{ color: '#ffffff', textDecoration: 'underline', textUnderlineOffset: '3px', fontWeight: 600 }}

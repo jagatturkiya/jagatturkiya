@@ -80,32 +80,32 @@ export default function Mastermind() {
   const qualifyingCriteria = [
     {
       title: "Corporate & Industry Professionals",
-      desc: "Specialists, consultants, managers, and executives who have solid recurring income but want to transition from trading time for money to building long-term compounding assets."
+      desc: "Specialists, managers, and executives who have solid professional standing but face burnout, decision fatigue, and want a grounded personal operating system."
     },
     {
-      title: "Insurance Advisors, Bankers & Practitioners",
-      desc: "Professionals who guide others on financial instruments daily, but recognize the critical need for an objective, disciplined wealth architecture for their own household."
+      title: "High-Pressure Practitioners & Leaders",
+      desc: "Driven leaders who guide others daily, but recognize the critical need for an objective transformation mentor to dismantle subconscious friction and emotional fatigue."
     },
     {
-      title: "Homemakers & Family Wealth Custodians",
-      desc: "Family stewards who manage household decisions and want the financial sovereignty, structured literacy, and security systems to protect their family's long-term future."
+      title: "Homemakers & Family Stewards",
+      desc: "Family pillars who want deep emotional sovereignty, clear communication tools, and the grounding to foster harmonious, resilient homes."
     },
     {
       title: "Seekers of Direction & Lifelong Peace",
-      desc: "Driven individuals who are tired of noise, confusion, and emotional decisions, and are ready for a grounded, disciplined operating system that delivers permanent peace of mind."
+      desc: "Driven individuals tired of noise, confusion, and emotional reactivity, ready for an unshakeable operating system that delivers permanent peace of mind."
     }
   ];
 
   const deliverables = [
     "10-Week Intensive Mastermind Curriculum",
     "Ongoing Handholding & Implementation Support Till 6 Months",
-    "Step-by-Step Personal Financial & Life Blueprint",
-    "Objective Investment & Capital Allocation Guidance",
-    "Defensive Risk Architecture & Capital Moats",
-    "Flow-of-Money & Cash Leakage Audit",
-    "Multi-Horizon Goal Planning (Short, Medium, Long-Term)",
+    "Step-by-Step Personal Life & Decisive Operating Blueprint",
+    "Radical Identity & Subconscious Bottleneck Removal",
+    "Emotional Resilience & High-Pressure Stress Mastery",
+    "Cognitive Bandwidth & Mental Energy Audit",
+    "Multi-Horizon Life & Purpose Architecture",
     "Guided 1-on-1 Coaching & Diagnostic Sessions With Jagat Turkiya",
-    "Your Lifetime Wealth & Mental Operating System"
+    "Your Lifetime Personal Operating System for Unshakeable Peace"
   ];
 
   const leadershipTeam = [
@@ -126,7 +126,7 @@ export default function Mastermind() {
       id: 'manish',
       name: 'Manish Sharma',
       role: 'Finance & Team Lead',
-      desc: 'Drives fiscal governance, organizational discipline, and cross-team alignment. Manish safeguards strategic resources and execution cadence, ensuring our advisory programs operate with institutional precision.'
+      desc: 'Drives fiscal governance, organizational discipline, and cross-team alignment. Manish safeguards strategic resources and execution cadence, ensuring our coaching and mastermind programs operate with institutional precision.'
     },
     {
       id: 'neelofar',
@@ -185,7 +185,7 @@ export default function Mastermind() {
                 Transforming Perspectives for Lasting Peace &amp; Clarity
               </h2>
               <p style={{ color: 'var(--text-silver)', fontSize: '1rem', lineHeight: 1.7, marginBottom: '1rem' }}>
-                A confidential advisory container for leaders and high-earners. We audit your mental patterns, eliminate self-doubt, and install an unshakeable personal operating system for permanent peace of mind.
+                A confidential transformation container for leaders and high-earners. We audit your mental patterns, eliminate self-doubt, and install an unshakeable personal operating system for permanent peace of mind.
               </p>
 
               <div className="mm-feature-list">
@@ -242,7 +242,7 @@ export default function Mastermind() {
             </p>
 
             <p style={{ fontSize: '0.98rem', color: 'var(--text-silver)', lineHeight: 1.75, margin: 0 }}>
-              You work relentlessly, take care of your responsibilities, and do your best. Yet inside, the friction persists. Decision fatigue sets in, relationships feel strained by work pressure, and despite financial inflows, you constantly worry about what lies ahead.
+              You work relentlessly, take care of your responsibilities, and do your best. Yet inside, the friction persists. Decision fatigue sets in, relationships feel strained by work pressure, and despite outward success, you constantly worry about what lies ahead.
             </p>
 
             <p style={{ fontSize: '0.98rem', color: 'var(--text-silver)', lineHeight: 1.75, margin: 0 }}>
@@ -273,10 +273,10 @@ export default function Mastermind() {
                 Transforming Confusion into Decisive Sovereignty
               </h2>
               <p style={{ color: 'var(--text-silver)', fontSize: '1rem', lineHeight: 1.7, marginBottom: '1rem' }}>
-                Through guided masterclasses, real coaching trench worksheets, and intimate peer exchanges, you work through each layer of your life and wealth step-by-step.
+                Through guided masterclasses, deep reflective worksheets, and intimate peer exchanges, you work through each layer of your mindset, leadership, and personal life step-by-step.
               </p>
               <p style={{ color: 'var(--text-silver)', fontSize: '1rem', lineHeight: 1.7 }}>
-                From dismantling anxiety triggers to constructing multi-horizon security moats — every piece is harmonized so you can live with absolute peace of mind.
+                From dismantling subconscious ceilings to installing daily high-performance rituals — every dimension is harmonized so you can lead with absolute peace of mind.
               </p>
 
               <div style={{ marginTop: '2rem' }}>
@@ -468,11 +468,11 @@ export default function Mastermind() {
       <section className="section section-dark text-center" style={{ padding: '5.5rem 0' }}>
         <div className="container" style={{ maxWidth: '780px', margin: '0 auto' }}>
           <h2 style={{ fontSize: 'clamp(2rem, 3.5vw, 2.8rem)', marginBottom: '1.25rem' }}>
-            Earning is only one part of the equation. <br />
-            <span className="serif-font">What are you doing with what you already earn?</span>
+            External success is only one part of the journey. <br />
+            <span className="serif-font">How are you mastering your mind, energy &amp; inner peace?</span>
           </h2>
           <p style={{ color: 'var(--text-silver)', fontSize: '1.05rem', marginBottom: '2.25rem', lineHeight: 1.7 }}>
-            If you are tired of making random financial decisions and ready to give your wealth a clear, permanent direction, The Mastermind is your next step.
+            If you are tired of internal friction, chronic overthinking, and second-guessing, and ready to give your life an unshakeable, permanent direction, The Mastermind is your next step.
           </p>
           <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap' }}>
             <Link to="/contact" className="btn btn-white" style={{ padding: '0.95rem 2.25rem', fontSize: '1rem' }}>

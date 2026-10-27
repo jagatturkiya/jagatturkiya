@@ -1,25 +1,25 @@
 export const initialPrograms = [
   {
     id: 'prog-1',
-    title: 'Goal-based financial planning',
-    slug: 'goal-based-financial-planning',
+    title: 'Goal-Based Life & Leadership Blueprint',
+    slug: 'goal-based-life-leadership-blueprint',
     type: 'SESSION',
     tag: 'Transformation',
     price: 0,
     original_price: 999,
     status: 'Active',
-    description: 'Structured clarity roadmap for financial milestones and asset allocation.'
+    description: 'Structured clarity roadmap for life milestones, career breakthroughs, and executive focus.'
   },
   {
     id: 'prog-2',
-    title: 'Get Your — Finance Fitness & Personality Report',
-    slug: 'get-yourself-personality-report',
+    title: 'Get Your — Mindset & Leadership Diagnostic Report',
+    slug: 'get-your-mindset-leadership-report',
     type: 'DIGITAL',
     tag: 'Transformation',
     price: 499,
     original_price: 4999,
     status: 'Active',
-    description: 'Comprehensive wealth mindset and behavioural financial diagnostic.'
+    description: 'Comprehensive mindset, emotional resilience, and behavioural diagnostic.'
   },
   {
     id: 'prog-3',
@@ -30,7 +30,7 @@ export const initialPrograms = [
     price: 999,
     original_price: 1999,
     status: 'Draft',
-    description: 'Aligning core values, wealth expectations and life vision.'
+    description: 'Aligning core values, emotional clarity, and lifelong vision.'
   },
   {
     id: 'prog-4',
@@ -192,7 +192,7 @@ export const initialLeads = [
     preferred_time: 'AFTERNOON (12:00 PM - 4:00 PM)',
     created_at: '25 SEP, 2026 - 08:55 AM',
     status: 'Closed (Resolved)',
-    message: 'Interested in wealth structuring and generational planning consultation.',
+    message: 'Interested in executive mindset coaching and leadership clarity consultation.',
     program: 'Mastermind'
   },
   {

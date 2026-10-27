@@ -38,7 +38,7 @@ export default function Home() {
           </h1>
 
           <p className="hero-lead">
-            Battle-tested 1-on-1 and cohort advisory with Jagat Turkiya. Dismantle internal bottlenecks, align high-stakes decisions, and install permanent peace of mind.
+            Battle-tested 1-on-1 and cohort transformation coaching with Jagat Turkiya. Dismantle internal bottlenecks, align high-stakes decisions, and install permanent peace of mind.
           </p>
 
           <div className="hero-actions">
@@ -167,7 +167,7 @@ export default function Home() {
               <div className="home-proof-img-wrap">
                 <img 
                   src="./assets/images/coach/jagat-mentor-desk.jpg" 
-                  alt="Jagat Turkiya 1-on-1 Mentorship Advisory" 
+                  alt="Jagat Turkiya 1-on-1 Mentorship Coaching" 
                   loading="lazy" 
                 />
               </div>

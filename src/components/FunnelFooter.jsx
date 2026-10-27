@@ -247,13 +247,13 @@ export default function FunnelFooter() {
                 </h2>
                 <div style={{ fontSize: '0.92rem', lineHeight: '1.75', color: '#d4d4d8', display: 'flex', flexDirection: 'column', gap: '1rem' }}>
                   <p>
-                    By registering for our private video briefing or booking a 1-on-1 strategy call, you acknowledge and agree that Jagat Turkiya provides strategic financial guidance, portfolio structuring frameworks, and executive coaching.
+                    By registering for our private video briefing or booking a 1-on-1 strategy call, you acknowledge and agree that Jagat Turkiya provides life, mindset &amp; executive transformation coaching, clarity frameworks, and personal leadership mentorship.
                   </p>
                   <p>
-                    <strong>Attendance Commitment:</strong> Private advisory sessions involve dedicated time blocked with senior advisors. If you book a consultation slot, you are expected to attend on time or reschedule at least 12 hours in advance.
+                    <strong>Attendance Commitment:</strong> Private coaching sessions involve dedicated time blocked with Coach Jagat. If you book a consultation slot, you are expected to attend on time or reschedule at least 12 hours in advance.
                   </p>
                   <p>
-                    <strong>No Speculative Schemes:</strong> We do not provide false &quot;100% guaranteed returns&quot; or speculative get-rich-quick methods. Financial growth depends on individual discipline and market execution.
+                    <strong>Authentic Growth Commitment:</strong> We do not provide quick-fix tricks or superficial motivation. Meaningful personal and executive transformation depends on individual commitment, self-honesty, and disciplined execution.
                   </p>
                 </div>
               </div>
@@ -270,10 +270,10 @@ export default function FunnelFooter() {
                     <strong>100% Instant Refund:</strong> When you book a 1-on-1 strategy call, the ₹499 commitment deposit is strictly a reservation anchor to prevent no-shows. The moment you show up to your scheduled video chat, your ₹499 is transferred right back to your source account.
                   </p>
                   <p>
-                    <strong>Mutual Fit Decision:</strong> Even if, during or after the call, we determine that our 10-week mentorship is not the ideal fit for your current financial situation, you still receive your 100% full deposit back immediately.
+                    <strong>Mutual Fit Decision:</strong> Even if, during or after the call, we determine that our 10-week mentorship is not the ideal fit for your current goals and stage in life, you still receive your 100% full deposit back immediately.
                   </p>
                   <p>
-                    <strong>The Only Exception:</strong> The deposit is non-refundable only if you book a slot, block an advisor&apos;s time, and simply don&apos;t show up without informing us beforehand.
+                    <strong>The Only Exception:</strong> The deposit is non-refundable only if you book a slot, block Coach Jagat&apos;s time, and simply don&apos;t show up without informing us beforehand.
                   </p>
                 </div>
               </div>

@@ -32,7 +32,7 @@ export default function SuccessStories() {
           </h1>
 
           <p className="section-subtitle success-hero-subtitle">
-            Discover how corporate executives, insurance advisors, bankers, and homemakers turned money into enduring wealth, overcame limiting beliefs, and built unshakeable direction working with Coach Jagat Turkiya.
+            Discover how corporate executives, founders, leaders, and homemakers broke through limiting beliefs, conquered self-doubt, and built unshakeable life clarity working with Coach Jagat Turkiya.
           </p>
 
           {/* Social Proof Stats Bar */}
@@ -292,7 +292,7 @@ export default function SuccessStories() {
             Ready to Build Your Own <span className="serif-font">Success Story?</span>
           </h2>
           <p style={{ color: 'var(--text-silver)', fontSize: '1.05rem', marginBottom: '2.25rem', lineHeight: 1.6 }}>
-            Whether you are navigating executive complexity, financial advisory practices, or stewarding family capital—work directly with Coach Jagat Turkiya to install an institutional wealth and life architecture.
+            Whether you are navigating executive complexity, high-pressure career crossroads, or seeking deep internal peace—work directly with Coach Jagat Turkiya to install an unshakeable personal operating system.
           </p>
           <div className="success-cta-actions">
             <Link to="/optin" className="btn btn-white" style={{ padding: '0.95rem 2.25rem', fontSize: '1rem' }}>

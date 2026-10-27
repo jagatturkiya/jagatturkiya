@@ -13,12 +13,12 @@ export default function Terms() {
         <div className="container" style={{ maxWidth: '840px', margin: '0 auto', color: 'var(--text-silver)', lineHeight: '1.8' }}>
           <h3 style={{ color: '#fff', marginTop: '2rem', marginBottom: '0.75rem' }}>1. Scope of Engagement</h3>
           <p>
-            By accessing jagatturkiya.com, contacting us, or enrolling in mentorship or mastermind programs, you agree to these Terms and Conditions. Advisory and mentorship services are operated under Minderist Training LLP.
+            By accessing jagatturkiya.com, contacting us, or enrolling in mentorship or mastermind programs, you agree to these Terms and Conditions. Coaching and mentorship services are operated under Minderist Training LLP.
           </p>
 
           <h3 style={{ color: '#fff', marginTop: '2rem', marginBottom: '0.75rem' }}>2. Professional Nature of Mentorship</h3>
           <p>
-            Mentorship, strategy audits, and mastermind sessions provide educational, psychological, and strategic frameworks based on Jagat Turkiya’s executive experience and published works. They do not constitute formal SEBI-registered portfolio management, legal counsel, or statutory accounting opinions.
+            Mentorship, transformation audits, and mastermind sessions provide educational, mindset, and leadership frameworks based on Jagat Turkiya’s executive coaching experience and published works. They do not constitute financial advice, investment advisory, legal counsel, or statutory accounting opinions.
           </p>
 
           <h3 style={{ color: '#fff', marginTop: '2rem', marginBottom: '0.75rem' }}>3. Confidentiality</h3>

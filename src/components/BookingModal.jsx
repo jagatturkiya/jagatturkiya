@@ -124,7 +124,7 @@ export default function BookingModal({ isOpen, onClose }) {
                 color: '#ffffff',
                 marginBottom: '6px'
               }}>
-                Book Your 1-on-1 Wealth Session
+                Book Your 1-on-1 Transformation Session
               </h3>
               <p style={{ color: '#9ca3af', fontSize: '0.85rem' }}>
                 Pick your preferred time slot. Your ₹499 is transferred right back to you the second you show up.

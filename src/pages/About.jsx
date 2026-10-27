@@ -81,7 +81,7 @@ export default function About() {
               </div>
 
               <p>
-                Every framework he delivers is battle-tested through 1,500+ private consultations and executive advisory—engineered to produce permanent shifts in human perspective.
+                Every framework he delivers is battle-tested through 1,500+ private consultations and executive coaching—engineered to produce permanent shifts in human perspective.
               </p>
             </div>
           </div>
@@ -248,7 +248,7 @@ export default function About() {
                 On a Mission to Empower 500,000 Lives
               </h2>
               <p style={{ color: 'var(--text-silver)', lineHeight: 1.7, fontSize: '1rem', marginBottom: '1.75rem' }}>
-                Through <strong>Minderist Training LLP</strong>, 5 published books, and <strong>Aapka Coach</strong> (<a href="https://apkacoach.com" target="_blank" rel="noopener noreferrer" style={{ color: '#ffffff', textDecoration: 'underline' }}>apkacoach.com</a>), Jagat is dedicated to equipping 500,000 people with the tools to live with absolute clarity, emotional strength, and financial sovereignty.
+                Through <strong>Minderist Training LLP</strong>, 5 published books, and <strong>Aapka Coach</strong> (<a href="https://apkacoach.com" target="_blank" rel="noopener noreferrer" style={{ color: '#ffffff', textDecoration: 'underline' }}>apkacoach.com</a>), Jagat is dedicated to equipping 500,000 people with the tools to live with absolute clarity, emotional strength, and personal sovereignty.
               </p>
               <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap' }}>
                 <Link to="/contact" className="btn btn-white">

@@ -104,7 +104,7 @@ export default function Optin() {
           marginBottom: '1.75rem',
           letterSpacing: '-0.025em'
         }}>
-          Work Directly With Coach Jagat Turkiya To Master Your Wealth, Mindset &amp; Long-Term Direction.
+          Work Directly With Coach Jagat Turkiya To Break Internal Bottlenecks, Master Decisive Clarity &amp; Build Unshakeable Direction.
         </h1>
 
         {/* Money-Back Guarantee in Vibrant Green (Directly above the form) */}

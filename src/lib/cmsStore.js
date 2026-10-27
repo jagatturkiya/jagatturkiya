@@ -63,11 +63,11 @@ export const defaultVideoTestimonials = [
     id: 'hema',
     type: 'video',
     name: 'Hema Pandey',
-    role: 'Family Wealth & Life Planning',
+    role: 'Executive & Life Transformation',
     thumbnail: './assets/images/testimonials/hema-pandey.png',
     videoUrl: 'https://jagatturkiya.com/videos/testimonial/hema-pandey.mp4',
-    quote: 'His patient, step-by-step handholding brought deep structure and lasting security to our financial thinking.',
-    outcome: 'Personal Discipline & Financial Peace'
+    quote: 'His patient, step-by-step handholding brought deep structure, emotional clarity, and lasting direction to our lives.',
+    outcome: 'Personal Discipline & Lifelong Peace'
   },
   {
     id: 'deepali',
@@ -155,49 +155,49 @@ export const defaultTextReviews = [
     category: 'advisors',
     image: null,
     monogram: 'RC',
-    tag: 'Handholding & Architecture',
+    tag: 'Handholding & Life Architecture',
     source: 'Topmate Verified Review',
     timeAgo: 'Verified Session',
-    quote: 'He provides continuous handholding support to face complex life and financial hurdles. The tools and frameworks Jagat shares are not textbook theories—they are practical, disciplined, and immediately applicable.'
+    quote: 'He provides continuous handholding support to face complex life and career hurdles. The tools and frameworks Jagat shares are not textbook theories—they are practical, disciplined, and immediately applicable.'
   },
   {
     id: 'rev-7',
     type: 'text',
     name: 'Priya Sharma',
-    role: 'Insurance Advisor & Wealth Consultant',
+    role: 'Corporate Leader & Consultant',
     category: 'advisors',
     image: null,
     monogram: 'PS',
-    tag: 'Personal Capital Architecture',
+    tag: 'Life & Leadership Architecture',
     source: 'Mastermind Graduate',
     timeAgo: 'Verified Client',
-    quote: 'For years I was advising clients on their policies and investments, but my own personal wealth was completely unstructured. Jagat helped me install a clean, disciplined capital allocation framework that finally gave me and my family total peace of mind.'
+    quote: 'For years I was managing high-stakes projects, but my own personal life and mindset were completely burned out. Jagat helped me install a clean, disciplined personal operating system that finally gave me and my family total peace of mind.'
   },
   {
     id: 'rev-8',
     type: 'text',
     name: 'Sunita Verma',
-    role: 'Homemaker & Family Portfolio Steward',
+    role: 'Homemaker & Family Decision Maker',
     category: 'homemakers',
     image: null,
     monogram: 'SV',
-    tag: 'Family Wealth & Clarity',
+    tag: 'Family Harmony & Inner Clarity',
     source: 'Mentorship Client',
     timeAgo: 'Verified Client',
-    quote: 'As a homemaker, I often felt intimidated by complex financial jargon. Jagat explained wealth architecture in such a humane, logical, and dignified way. Today, I actively co-manage our family reserves with total confidence.'
+    quote: 'Jagat explained life transformation, emotional resilience, and communication in such a humane, logical, and dignified way. Today, I lead our household decisions with total confidence and zero anxiety.'
   },
   {
     id: 'rev-9',
     type: 'text',
     name: 'Amitabh Joshi',
-    role: 'Senior Private Banker',
+    role: 'Senior Banking Executive',
     category: 'advisors',
     image: null,
     monogram: 'AJ',
-    tag: 'Tax & Capital Protection Moats',
+    tag: 'Stress Mastery & Life Alignment',
     source: 'Direct Mentorship',
     timeAgo: 'Verified Client',
-    quote: 'High earnings in banking come with relentless stress and hidden capital leakage. Jagat Turkiya’s 10-week framework is the only system that bridged my earning with enduring wealth. His psychological approach to money is extraordinary.'
+    quote: 'High earnings in banking come with relentless stress and internal friction. Jagat Turkiya’s 10-week framework is the only system that eliminated my anxiety and gave me unshakeable mental clarity. His psychological approach to personal transformation is extraordinary.'
   },
   {
     id: 'rev-10',
@@ -392,12 +392,12 @@ export const defaultMastermindFaqs = [
   {
     id: 'mm-faq-1',
     question: "Who is The Mastermind specifically built for?",
-    answer: "The Mastermind is crafted for driven working professionals, financial practitioners, bankers, insurance advisors, and family wealth custodians who have money coming in and are ready to turn it into enduring, protected wealth. It is for anyone who wants an organized, systematic operating system to manage, protect, and multiply their capital with complete peace of mind."
+    answer: "The Mastermind is crafted for driven leaders, corporate professionals, entrepreneurs, and seekers who have achieved external milestones but are facing internal ceilings, burnout, or a lack of deep fulfillment. It is for anyone who wants an unshakeable, systematic personal operating system to master their mindset, conquer self-doubt, and live with decisive clarity and permanent peace of mind."
   },
   {
     id: 'mm-faq-2',
-    question: "Is this program about selling financial products or stocks?",
-    answer: "No. Absolutely not. The Mastermind is an independent educational and strategic advisory framework. We do not sell insurance, mutual funds, or stocks, nor do we take commissions. Our sole objective is to give you the clarity, frameworks, and decision-making system to manage your own wealth independently."
+    question: "What makes Jagat Turkiya's coaching methodology unique?",
+    answer: "Jagat's approach is not generic motivational hype. Synthesized from 15+ years in high-stakes enterprise IT, 5 published books, and 1,500+ private mentorship sessions, his framework uncovers subconscious blind spots, silences inner fear, and installs practical, daily behavioral architecture tailored to your life."
   },
   {
     id: 'mm-faq-3',
@@ -495,62 +495,62 @@ export const defaultCurriculumWeeks = [
   {
     id: 'week-1',
     num: "Week 01",
-    title: "Know Your Identity",
-    desc: "Discover what drives you to do what you do. These simple question-based tools help you unlock financial clarity, personal transformation, and how each area of your life aligns."
+    title: "Know Your Identity & Core Drives",
+    desc: "Discover what truly drives your decisions beneath social conditioning. Use deep diagnostic question frameworks to unlock self-awareness, radical honesty, and personal alignment."
   },
   {
     id: 'week-2',
     num: "Week 02",
-    title: "Flow of Money & Silent Leakage",
-    desc: "Map your true cash flow and plug unnoticed leaks. Understand the psychology behind your spending and install simple controls to keep your capital safe."
+    title: "Dismantling Inner Friction & Bottlenecks",
+    desc: "Identify and silence the 'Black Dragon' of self-doubt, chronic hesitation, and imposter anxiety that drains your mental energy and stalls progress."
   },
   {
     id: 'week-3',
     num: "Week 03",
-    title: "Multi-Horizon Financial Goals",
-    desc: "Define what you want your money to accomplish across three clear timelines: immediate peace of mind, medium-term family milestones, and generational freedom."
+    title: "Multi-Horizon Life & Purpose Architecture",
+    desc: "Define what genuine fulfillment and peace look like across three clear horizons: immediate mental calm, medium-term family milestones, and long-term legacy."
   },
   {
     id: 'week-4',
     num: "Week 04",
-    title: "Objective Investment Guidance",
-    desc: "Stop reacting to market noise and stock tips. Learn a practical, objective framework to assess real risk capacity, time horizons, and asset quality."
+    title: "Emotional Resilience & High-Pressure Mastery",
+    desc: "Master emotional grounding under high-stakes conditions. Learn psychological firewalls so external chaos, workplace friction, or crises never shake your internal calm."
   },
   {
     id: 'week-5',
     num: "Week 05",
-    title: "Defensive Risk & Capital Moats",
-    desc: "Master downside protection. Build unshakeable emergency buffers and insurance firewalls so market shocks never threaten your family’s security."
+    title: "Radical Focus & Mental Energy Audit",
+    desc: "Eliminate decision fatigue and time-wasting commitments. Audit where your cognitive bandwidth leaks and protect your highest-leverage life priorities."
   },
   {
     id: 'week-6',
     num: "Week 06",
-    title: "Cohesive Wealth Allocation",
-    desc: "Connect scattered investments into one balanced ecosystem where liquid reserves, real estate, and equities work together seamlessly."
+    title: "Authentic Leadership & Relationship Harmony",
+    desc: "Restore honest communication and deep empathy in high-pressure family and professional relationships, removing unspoken friction and expectations."
   },
   {
     id: 'week-7',
     num: "Week 07",
-    title: "High-Stakes Decision Making",
-    desc: "Eliminate emotional, impulsive financial choices. Install a stress-tested evaluation matrix to decide what to fund, cut, or scale with absolute calm."
+    title: "High-Stakes Decision-Making Framework",
+    desc: "Stop relying on emotional impulse or chronic overthinking. Install a stress-tested evaluation matrix to make bold, decisive life and career moves with absolute calm."
   },
   {
     id: 'week-8',
     num: "Week 08",
-    title: "Your Custom Financial Blueprint",
-    desc: "Synthesize your unique cash flow, commitments, and family priorities into a single personalized strategy built exclusively for you."
+    title: "Your Custom Personal Life Blueprint",
+    desc: "Synthesize your values, energy cycles, family priorities, and long-term vision into a single, actionable personal operating manual built exclusively for you."
   },
   {
     id: 'week-9',
     num: "Week 09",
-    title: "Hands-On Execution & Restructuring",
-    desc: "Put strategy into live action. Reorganize account allocations, automate capital defense protocols, and implement your blueprint step-by-step."
+    title: "Hands-On Habit Execution & Daily Cadence",
+    desc: "Put transformation into daily motion. Build non-negotiable morning and evening anchors, emotional self-check protocols, and structured personal accountability."
   },
   {
     id: 'week-10',
     num: "Week 10",
     title: "Your Permanent Operating System",
-    desc: "Integrate every layer into an unshakeable operating system—giving you lifelong clarity, daily focus, and permanent financial peace of mind."
+    desc: "Integrate every tool into an unshakeable way of living—giving you permanent clarity, fearless execution, and unshakeable peace of mind for the next 6 months and beyond."
   }
 ];
 

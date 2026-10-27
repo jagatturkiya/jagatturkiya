@@ -32,7 +32,7 @@ export default function Footer() {
               />
             </Link>
             <p>
-              Global Transformation Coach, Financial Consultant, Author of 5 published books, and Founder of Aapka Coach.
+              Global Transformation Coach, Author of 5 published books, and Founder of Aapka Coach.
             </p>
           </div>
 
@@ -43,7 +43,7 @@ export default function Footer() {
               <li><Link to="/mastermind">Mastermind</Link></li>
               <li><Link to="/success-stories">Success Stories</Link></li>
               <li><Link to="/about">About Jagat Turkiya</Link></li>
-              <li><Link to="/contact">Contact &amp; Advisory</Link></li>
+              <li><Link to="/contact">Contact &amp; Connect</Link></li>
             </ul>
           </div>
 
@@ -58,7 +58,7 @@ export default function Footer() {
           </div>
 
           <div className="footer-nav-col">
-            <h5>Advisory Desk</h5>
+            <h5>Direct Connect</h5>
             <ul className="footer-links">
               <li><a href={`mailto:${contact.email || 'hello@apkacoach.com'}`}>{contact.email || 'hello@apkacoach.com'}</a></li>
               <li><Link to="/contact">Book Clarity Call</Link></li>

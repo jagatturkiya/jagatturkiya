@@ -13,7 +13,7 @@ export default function PrivacyPolicy() {
         <div className="container" style={{ maxWidth: '840px', margin: '0 auto', color: 'var(--text-silver)', lineHeight: '1.8' }}>
           <h3 style={{ color: '#fff', marginTop: '2rem', marginBottom: '0.75rem' }}>1. Commitment to Discretion</h3>
           <p>
-            Jagat Turkiya and Minderist Training LLP operate strictly within high-trust executive advisory and mentorship domains. We treat your personal, corporate, and financial disclosures with institutional discretion and confidentiality.
+            Jagat Turkiya and Minderist Training LLP operate strictly within high-trust executive transformation coaching and mentorship domains. We treat your personal, professional, and corporate disclosures with institutional discretion and confidentiality.
           </p>
 
           <h3 style={{ color: '#fff', marginTop: '2rem', marginBottom: '0.75rem' }}>2. Information Collected</h3>

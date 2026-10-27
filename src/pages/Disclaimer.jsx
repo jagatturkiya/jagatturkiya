@@ -13,15 +13,15 @@ export default function Disclaimer() {
         <div className="container" style={{ maxWidth: '840px', margin: '0 auto', color: 'var(--text-silver)', lineHeight: '1.8' }}>
           <h3 style={{ color: '#fff', marginTop: '2rem', marginBottom: '0.75rem' }}>1. Educational &amp; Mentorship Scope</h3>
           <p>
-            The content provided on jagatturkiya.com, across Jagat Turkiya’s published books, and within mentorship sessions is intended solely for educational, psychological, and personal mentorship purposes.
+            The content provided on jagatturkiya.com, across Jagat Turkiya’s published books, and within mentorship sessions is intended solely for personal, psychological, and executive transformation coaching purposes. Jagat Turkiya is a Life, Mindset &amp; Executive Transformation Coach.
           </p>
           <p>
-            Jagat Turkiya and Minderist Training LLP are not SEBI-registered investment advisers, certified financial planners, chartered accountants, or registered brokers. Neither the website nor mentorship sessions constitute formal solicitation or recommendations to buy, sell, or hold specific securities, equity shares, real estate properties, or financial derivatives.
+            Jagat Turkiya and Minderist Training LLP do not provide financial consulting, investment advice, portfolio management, or tax planning. Neither the website nor mentorship sessions constitute financial consultation or recommendations to buy, sell, or hold specific securities, equity shares, real estate properties, or financial derivatives.
           </p>
 
           <h3 style={{ color: '#fff', marginTop: '2rem', marginBottom: '0.75rem' }}>2. Individual Responsibility</h3>
           <p>
-            All business, career, and personal decisions made by clients remain strictly the personal responsibility of the individual. Past results, case studies, or testimonials do not guarantee identical outcomes. You are advised to consult your personal chartered accountant, tax attorney, and certified wealth managers before executing major capital transactions.
+            All business, career, and personal decisions made by clients remain strictly the personal responsibility of the individual. Past results, case studies, or testimonials do not guarantee identical outcomes. For financial, legal, or tax advice, you are advised to consult qualified licensed professionals.
           </p>
 
           <h3 style={{ color: '#fff', marginTop: '2rem', marginBottom: '0.75rem' }}>3. Results &amp; Commitment</h3>

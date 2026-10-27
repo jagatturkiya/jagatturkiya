@@ -359,7 +359,7 @@ export default function CustomizeWebsite() {
                       maxWidth: '680px',
                       margin: '0 auto 2rem auto'
                     }}>
-                      {homeData.heroLead || 'Overcome limiting beliefs, eliminate friction, and build an unshakeable direction for your career, wealth, and life with Jagat Turkiya.'}
+                      {homeData.heroLead || 'Overcome limiting beliefs, eliminate friction, and build an unshakeable direction for your mindset, leadership, and life with Jagat Turkiya.'}
                     </p>
                   </EditableBlock>
 
