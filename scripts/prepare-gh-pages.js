@@ -46,6 +46,17 @@ if (fs.existsSync(compiledHtmlPath)) {
 
   // Standalone routes are handled dynamically by SPA 404.html redirect shim
 
+  // Also sync standalone ApkaCoach Growth connect pages from src/index.html
+  const srcIndexHtmlPath = path.join(rootDir, 'src', 'index.html');
+  if (fs.existsSync(srcIndexHtmlPath)) {
+    const apkaHtmlContent = fs.readFileSync(srcIndexHtmlPath, 'utf-8');
+    ['apkacoach-connect.html', 'connect.html', 'growth.html'].forEach(filename => {
+      fs.writeFileSync(path.join(distDir, filename), apkaHtmlContent);
+      fs.writeFileSync(path.join(rootDir, filename), apkaHtmlContent);
+    });
+    console.log('[prepare-gh-pages] Written standalone apkacoach-connect, connect & growth html files.');
+  }
+
   // Copy all favicon formats to dist & root
   const faviconFiles = ['favicon.ico', 'favicon.png', 'favicon.svg', 'favicon-32x32.png', 'favicon-16x16.png', 'favicon-64x64.png', 'apple-touch-icon.png'];
   for (const f of faviconFiles) {

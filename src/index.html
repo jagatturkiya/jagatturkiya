@@ -1,0 +1,867 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>ApkaCoach Growth | Professional Opportunity in Financial Wellness</title>
+  <meta name="description" content="Explore a professional opportunity with ApkaCoach Growth. Use your experience, customer network, and people skills with complete expert support. Get your free Financial Fitness Report." />
+  
+  <link rel="icon" type="image/svg+xml" href="./assets/favicon.svg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      --navy: #102A56;
+      --navy-deep: #071c40;
+      --blue: #1769AA;
+      --orange: #FF7900;
+      --orange-hover: #e56c00;
+      --gold: #FFC247;
+      --teal: #16A6A1;
+      --green: #168B55;
+      --green-hover: #117245;
+      --ink: #1B2940;
+      --muted: #5D6B82;
+      --pale: #F3F7FF;
+      --pale-warm: #FFF6E9;
+      --white: #ffffff;
+      --border-subtle: #D5E4F6;
+      --border-warm: #FFD6A8;
+      --shadow-sm: 0 4px 14px rgba(16, 42, 86, 0.06);
+      --shadow-md: 0 10px 30px rgba(16, 42, 86, 0.08);
+      --shadow-lg: 0 20px 50px rgba(16, 42, 86, 0.12);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      color: var(--ink);
+      background: var(--white);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    h1, h2, h3, h4, h5 {
+      font-family: 'Instrument Sans', sans-serif;
+      font-weight: 700;
+      color: var(--navy);
+    }
+
+    .wrap {
+      width: min(1140px, 92%);
+      margin: 0 auto;
+    }
+
+    /* Header Nav */
+    header {
+      background: rgba(255, 255, 255, 0.98);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid #E8EDF4;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 2px 10px rgba(16, 42, 86, 0.03);
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      padding: 16px 0;
+    }
+
+    .brand-wrap {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+    }
+
+    .brand-badge {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      border-radius: 12px;
+      background: linear-gradient(135deg, var(--navy), var(--blue));
+      color: #fff;
+      font-weight: 900;
+      font-size: 1.2rem;
+      box-shadow: 0 6px 16px rgba(16, 42, 86, 0.2);
+    }
+
+    .brand-text {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .brand-title {
+      font-size: 1.5rem;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+      color: var(--navy);
+      line-height: 1.1;
+    }
+
+    .brand-title span.orange {
+      color: var(--orange);
+    }
+
+    .brand-title span.blue {
+      color: var(--blue);
+      font-weight: 700;
+    }
+
+    .brand-subtitle {
+      font-size: 0.68rem;
+      letter-spacing: 2px;
+      color: var(--muted);
+      font-weight: 700;
+      text-transform: uppercase;
+      margin-top: 2px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      text-decoration: none;
+      border: 0;
+      border-radius: 999px;
+      padding: 13px 26px;
+      font-family: 'Instrument Sans', sans-serif;
+      font-weight: 700;
+      font-size: 0.98rem;
+      background: var(--orange);
+      color: #fff;
+      cursor: pointer;
+      box-shadow: 0 8px 24px rgba(255, 121, 0, 0.28);
+      transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .btn:hover {
+      background: var(--orange-hover);
+      transform: translateY(-2px);
+      box-shadow: 0 12px 28px rgba(255, 121, 0, 0.38);
+    }
+
+    .btn.navy {
+      background: var(--navy);
+      box-shadow: 0 8px 22px rgba(16, 42, 86, 0.2);
+    }
+
+    .btn.navy:hover {
+      background: #0c2042;
+      box-shadow: 0 12px 26px rgba(16, 42, 86, 0.3);
+    }
+
+    .btn.whatsapp {
+      background: var(--green);
+      box-shadow: 0 8px 22px rgba(22, 139, 85, 0.25);
+    }
+
+    .btn.whatsapp:hover {
+      background: var(--green-hover);
+      box-shadow: 0 12px 28px rgba(22, 139, 85, 0.35);
+    }
+
+    /* Hero Section */
+    .hero {
+      background: radial-gradient(circle at 90% 12%, #dcecff 0%, transparent 40%),
+                  radial-gradient(circle at 10% 85%, #fff0df 0%, transparent 35%),
+                  linear-gradient(135deg, #f8fbff 0%, #ffffff 55%, #fff6ed 100%);
+      padding: 64px 0 60px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.05fr 0.95fr;
+      align-items: center;
+      gap: 48px;
+    }
+
+    .eyebrow {
+      color: var(--orange);
+      font-weight: 800;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      font-size: 0.82rem;
+      display: inline-block;
+      margin-bottom: 8px;
+    }
+
+    .hero h1 {
+      font-size: clamp(2.4rem, 4.6vw, 3.8rem);
+      line-height: 1.08;
+      letter-spacing: -1.5px;
+      margin: 12px 0 18px;
+      color: var(--navy);
+    }
+
+    .hero h1 span {
+      color: var(--orange);
+    }
+
+    .lead {
+      font-size: 1.12rem;
+      color: #3b4962;
+      max-width: 580px;
+      line-height: 1.65;
+      margin-bottom: 24px;
+    }
+
+    .chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin: 20px 0 24px;
+    }
+
+    .chip {
+      padding: 8px 14px;
+      border: 1px solid #D5E4F6;
+      border-radius: 30px;
+      background: #ffffff;
+      font-size: 0.88rem;
+      font-weight: 600;
+      color: var(--navy);
+      box-shadow: 0 2px 6px rgba(16, 42, 86, 0.04);
+      transition: all 0.2s ease;
+    }
+
+    .chip:hover {
+      border-color: var(--orange);
+      transform: translateY(-1px);
+    }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: #FFF0DF;
+      color: #9A3E00;
+      border: 1px solid #FFD0A5;
+      padding: 9px 16px;
+      border-radius: 30px;
+      font-weight: 700;
+      font-size: 0.92rem;
+      margin-bottom: 24px;
+    }
+
+    .visual {
+      position: relative;
+    }
+
+    .visual-frame {
+      position: relative;
+      border-radius: 24px;
+      padding: 10px;
+      background: #FFF5E8;
+      border: 2px solid var(--orange);
+      box-shadow: var(--shadow-lg);
+    }
+
+    .visual img {
+      width: 100%;
+      height: 440px;
+      object-fit: cover;
+      display: block;
+      border-radius: 16px;
+    }
+
+    .visual-badge {
+      position: absolute;
+      bottom: -15px;
+      right: 20px;
+      background: var(--navy);
+      color: #fff;
+      padding: 10px 18px;
+      border-radius: 30px;
+      font-family: 'Instrument Sans', sans-serif;
+      font-size: 0.88rem;
+      font-weight: 700;
+      box-shadow: 0 8px 24px rgba(16, 42, 86, 0.3);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    /* General Sections */
+    .section {
+      padding: 76px 0;
+    }
+
+    .section.alt {
+      background: var(--pale);
+    }
+
+    .section-header {
+      text-align: center;
+      max-width: 720px;
+      margin: 0 auto 42px;
+    }
+
+    .section-title {
+      font-size: clamp(1.9rem, 3.2vw, 2.6rem);
+      line-height: 1.2;
+      color: var(--navy);
+      margin-bottom: 12px;
+    }
+
+    .section-sub {
+      font-size: 1.05rem;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    /* Grid for Audience Cards */
+    .cards-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    .opp-card {
+      padding: 26px 24px;
+      border: 1px solid var(--border-subtle);
+      border-radius: 20px;
+      background: #ffffff;
+      box-shadow: var(--shadow-sm);
+      transition: all 0.25s ease;
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+    }
+
+    .opp-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-md);
+      border-color: #B9D5F4;
+    }
+
+    .opp-card .ico {
+      font-size: 2rem;
+      margin-bottom: 14px;
+      display: inline-block;
+    }
+
+    .opp-card h3 {
+      font-size: 1.25rem;
+      margin-bottom: 8px;
+      color: var(--navy);
+    }
+
+    .opp-card p {
+      font-size: 0.95rem;
+      color: var(--muted);
+      line-height: 1.55;
+      margin: 0;
+    }
+
+    /* Income Target Box */
+    .income-box {
+      background: linear-gradient(135deg, var(--navy) 0%, #104886 100%);
+      color: #ffffff;
+      border-radius: 24px;
+      padding: 48px 36px;
+      text-align: center;
+      border: 2px solid rgba(255, 121, 0, 0.4);
+      box-shadow: var(--shadow-lg);
+      max-width: 860px;
+      margin: 0 auto;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .income-box::before {
+      content: '';
+      position: absolute;
+      top: -50px;
+      right: -50px;
+      width: 150px;
+      height: 150px;
+      background: radial-gradient(circle, rgba(255, 121, 0, 0.25) 0%, transparent 70%);
+      border-radius: 50%;
+    }
+
+    .income-box .eyebrow {
+      color: var(--gold);
+    }
+
+    .income-box h2 {
+      color: #ffffff;
+      font-size: clamp(1.8rem, 3vw, 2.3rem);
+      margin-bottom: 12px;
+    }
+
+    .income-amount {
+      display: block;
+      font-size: clamp(2.6rem, 6vw, 4.2rem);
+      line-height: 1.1;
+      font-weight: 800;
+      font-family: 'Instrument Sans', sans-serif;
+      color: var(--gold);
+      margin: 14px 0 28px;
+      letter-spacing: -1px;
+      text-shadow: 0 4px 20px rgba(255, 194, 71, 0.25);
+    }
+
+    /* 4 Support Pillars */
+    .support-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 18px;
+    }
+
+    .support-card {
+      background: var(--pale-warm);
+      border: 1px solid var(--border-warm);
+      border-radius: 18px;
+      padding: 24px 20px;
+      transition: transform 0.2s ease;
+    }
+
+    .support-card:hover {
+      transform: translateY(-3px);
+    }
+
+    .support-num {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 32px;
+      height: 32px;
+      background: var(--white);
+      color: var(--orange);
+      border-radius: 50%;
+      font-weight: 800;
+      font-size: 0.9rem;
+      margin-bottom: 12px;
+      box-shadow: 0 2px 8px rgba(255, 121, 0, 0.15);
+    }
+
+    .support-card h3 {
+      font-size: 1.15rem;
+      color: var(--orange);
+      margin-bottom: 8px;
+    }
+
+    .support-card p {
+      font-size: 0.92rem;
+      color: #4A5568;
+      line-height: 1.5;
+      margin: 0;
+    }
+
+    /* Free Report & CTA Card Boxes */
+    .action-panel {
+      background: linear-gradient(135deg, #FFF7EF 0%, #EEF6FF 100%);
+      border: 1px solid #D5E4F6;
+      border-radius: 24px;
+      padding: 44px 36px;
+      text-align: center;
+      box-shadow: var(--shadow-sm);
+      max-width: 860px;
+      margin: 0 auto;
+    }
+
+    .action-panel h2 {
+      font-size: clamp(1.8rem, 3.2vw, 2.4rem);
+      margin: 10px 0 14px;
+    }
+
+    .action-panel p {
+      max-width: 640px;
+      margin: 0 auto 28px;
+      color: var(--muted);
+      font-size: 1.05rem;
+      line-height: 1.6;
+    }
+
+    /* WhatsApp Direct Contact Block */
+    .wa-card {
+      background: linear-gradient(135deg, #102A56 0%, #1769AA 100%);
+      color: #ffffff;
+      border-radius: 24px;
+      padding: 44px 36px;
+      text-align: center;
+      border: 1px solid var(--orange);
+      box-shadow: var(--shadow-lg);
+      max-width: 860px;
+      margin: 0 auto;
+    }
+
+    .wa-card h2 {
+      color: #ffffff;
+      font-size: clamp(1.8rem, 3vw, 2.3rem);
+      margin-bottom: 12px;
+    }
+
+    .wa-card p {
+      color: #E2ECF8;
+      max-width: 620px;
+      margin: 0 auto 26px;
+      font-size: 1.05rem;
+    }
+
+    .wa-link {
+      display: inline-block;
+      color: #B4DBFF;
+      font-size: 0.92rem;
+      margin-top: 14px;
+      text-decoration: underline;
+      text-underline-offset: 4px;
+    }
+
+    /* Footer */
+    footer {
+      background: var(--navy-deep);
+      color: #CFDAEB;
+      padding: 44px 0 36px;
+      text-align: center;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    footer .brand-title {
+      color: #ffffff;
+      font-size: 1.4rem;
+      margin-bottom: 4px;
+    }
+
+    footer .fine {
+      font-size: 0.8rem;
+      color: #8C9EB8;
+      max-width: 640px;
+      margin: 16px auto 0;
+      line-height: 1.6;
+    }
+
+    /* Sticky Mobile CTA */
+    .mobile-cta {
+      display: none;
+    }
+
+    /* Responsive */
+    @media (max-width: 900px) {
+      .cards-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .support-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 760px) {
+      .hero {
+        padding: 40px 0 36px;
+      }
+      .hero-grid {
+        grid-template-columns: 1fr;
+        gap: 32px;
+      }
+      .visual img {
+        height: 320px;
+      }
+      .cards-grid,
+      .support-grid {
+        grid-template-columns: 1fr;
+      }
+      .section {
+        padding: 50px 0;
+      }
+      .nav .btn {
+        padding: 9px 16px;
+        font-size: 0.86rem;
+      }
+      .brand-title {
+        font-size: 1.25rem;
+      }
+      .income-box {
+        padding: 34px 20px;
+      }
+      .action-panel,
+      .wa-card {
+        padding: 32px 18px;
+      }
+      .mobile-cta {
+        display: block;
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background: rgba(255, 255, 255, 0.98);
+        backdrop-filter: blur(10px);
+        padding: 12px 16px;
+        border-top: 1px solid #E5EAF1;
+        z-index: 999;
+        text-align: center;
+        box-shadow: 0 -4px 16px rgba(0, 0, 0, 0.06);
+      }
+      .mobile-cta .btn {
+        width: 100%;
+        padding: 14px 20px;
+        font-size: 1rem;
+      }
+      body {
+        padding-bottom: 74px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header Nav -->
+  <header>
+    <div class="wrap nav">
+      <a href="#join" class="brand-wrap">
+        <span class="brand-badge">▲</span>
+        <div class="brand-text">
+          <div class="brand-title">
+            Apka<span class="orange">Coach</span> <span class="blue">Growth</span>
+          </div>
+          <div class="brand-subtitle">Growth • Financial Wellness</div>
+        </div>
+      </a>
+      
+      <!-- Redirects to Your Wealth Compass as requested -->
+      <a class="btn navy" href="https://yourwealthcompass.in" target="_blank" rel="noopener noreferrer">
+        Get Free Report ↗
+      </a>
+    </div>
+  </header>
+
+  <main>
+    <!-- Hero Section -->
+    <section class="hero">
+      <div class="wrap hero-grid">
+        <div>
+          <span class="eyebrow">Your Knowledge. Your Network. Your Growth.</span>
+          <h1>Build Your Next <span>Growth Story.</span></h1>
+          <p class="lead">
+            Explore a professional opportunity in financial consulting with <strong>ApkaCoach Growth</strong>—using your experience, people skills and a supportive learning environment.
+          </p>
+
+          <div class="chips">
+            <span class="chip">Insurance Agents</span>
+            <span class="chip">Banking Professionals</span>
+            <span class="chip">Teachers</span>
+            <span class="chip">Doctors &amp; Nurses</span>
+            <span class="chip">Post Office Agents</span>
+            <span class="chip">CAs &amp; Tax Consultants</span>
+          </div>
+
+          <div class="pill">
+            🎯 Looking to connect with 5 motivated professionals
+          </div>
+
+          <div>
+            <a class="btn" href="https://wa.me/919799879381?text=Hi%20Apkacoach%20Growth%2C%20I%27m%20interested%20in%20learning%20more%20about%20the%20financial%20consulting%20opportunity." target="_blank" rel="noopener noreferrer">
+              I'm Interested — DM Now →
+            </a>
+          </div>
+        </div>
+
+        <div class="visual">
+          <div class="visual-frame">
+            <img src="./assets/apkacoach-team-poster.png" alt="ApkaCoach Growth Opportunity Workshop Team Poster" />
+          </div>
+          <div class="visual-badge">
+            ApkaCoach Growth Cohort
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Target Income Section (Disclaimer removed as requested) -->
+    <section class="section alt">
+      <div class="wrap">
+        <div class="income-box">
+          <span class="eyebrow">Target Income</span>
+          <h2>Explore Your Income Potential</h2>
+          <strong class="income-amount">₹2 Lakh+ / Month</strong>
+          <div>
+            <a class="btn" href="https://wa.me/919799879381?text=Hi%20Apkacoach%20Growth%2C%20I%27m%20interested%20in%20learning%20more%20about%20the%20financial%20consulting%20opportunity." target="_blank" rel="noopener noreferrer">
+              Discuss the Opportunity →
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Who Is This Opportunity For? -->
+    <section class="section">
+      <div class="wrap">
+        <div class="section-header">
+          <span class="eyebrow">Target Audience</span>
+          <h2 class="section-title">Who Is This Opportunity For?</h2>
+          <p class="section-sub">
+            We’re looking to connect with 5 motivated professionals who want to explore financial consulting as an additional or expanded professional opportunity.
+          </p>
+        </div>
+
+        <div class="cards-grid">
+          <!-- Card 1 -->
+          <article class="opp-card">
+            <span class="ico">🛡️</span>
+            <h3>Insurance &amp; Banking</h3>
+            <p>Insurance agents, banking professionals and financial-services distributors.</p>
+          </article>
+
+          <!-- Card 2 -->
+          <article class="opp-card">
+            <span class="ico">🎓</span>
+            <h3>Education</h3>
+            <p>Teachers and education professionals with strong communication skills.</p>
+          </article>
+
+          <!-- Card 3 -->
+          <article class="opp-card">
+            <span class="ico">🩺</span>
+            <h3>Healthcare</h3>
+            <p>Doctors, medical practitioners and nurses interested in financial wellness.</p>
+          </article>
+
+          <!-- Card 4 -->
+          <article class="opp-card">
+            <span class="ico">📮</span>
+            <h3>Post Office Agents</h3>
+            <p>Professionals who understand customer needs and value long-term relationships.</p>
+          </article>
+
+          <!-- Card 5 -->
+          <article class="opp-card">
+            <span class="ico">📊</span>
+            <h3>CA &amp; Tax Consultants</h3>
+            <p>Accounting and tax professionals interested in broadening their service offering.</p>
+          </article>
+
+          <!-- Card 6 -->
+          <article class="opp-card">
+            <span class="ico">🤝</span>
+            <h3>People-Focused Professionals</h3>
+            <p>Motivated people who want to learn, build trust and grow with expert support.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Grow With the Right Support -->
+    <section class="section alt">
+      <div class="wrap">
+        <div class="section-header">
+          <span class="eyebrow">Structured Mentorship</span>
+          <h2 class="section-title">Grow With the Right Support</h2>
+          <p class="section-sub">
+            Get a clearer picture of the opportunity before you decide whether it is right for you.
+          </p>
+        </div>
+
+        <div class="support-grid">
+          <div class="support-card">
+            <span class="support-num">1</span>
+            <h3>Expert Guidance</h3>
+            <p>Learn with experienced professionals who have scaled high-trust client relationships.</p>
+          </div>
+
+          <div class="support-card">
+            <span class="support-num">2</span>
+            <h3>Practical Tools</h3>
+            <p>Use modern resources and calculators designed to support your day-to-day work.</p>
+          </div>
+
+          <div class="support-card">
+            <span class="support-num">3</span>
+            <h3>Training &amp; Learning</h3>
+            <p>Build domain knowledge and advisory confidence step-by-step at your own pace.</p>
+          </div>
+
+          <div class="support-card">
+            <span class="support-num">4</span>
+            <h3>Long-Term Growth</h3>
+            <p>Explore an opportunity that aligns with your personal milestones and lifestyle goals.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Get Your FREE Financial Fitness Report (Redirect to Your Wealth Compass) -->
+    <section class="section" id="free-report">
+      <div class="wrap">
+        <div class="action-panel">
+          <span class="eyebrow">Free Wellness Resource</span>
+          <h2>Get Your FREE Financial Fitness Report</h2>
+          <p>
+            Take a practical first step toward better financial planning. Fill in the quick assessment on Your Wealth Compass to evaluate your financial readiness.
+          </p>
+          <a class="btn navy" href="https://yourwealthcompass.in" target="_blank" rel="noopener noreferrer">
+            Get My Free Report ↗
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Ready to Explore the Opportunity? (WhatsApp Connect) -->
+    <section class="section alt" id="join">
+      <div class="wrap">
+        <div class="wa-card">
+          <span class="eyebrow" style="color: var(--gold);">Direct Connect</span>
+          <h2>Ready to Explore the Opportunity?</h2>
+          <p>
+            We’re looking for just 5 motivated professionals. Send us a message on WhatsApp to express your interest and learn more—no pressure to commit.
+          </p>
+          <div>
+            <a class="btn whatsapp" href="https://wa.me/919799879381?text=Hi%20Apkacoach%20Growth%2C%20I%27m%20interested%20in%20learning%20more%20about%20the%20financial%20consulting%20opportunity." target="_blank" rel="noopener noreferrer">
+              CHAT WITH US ON WHATSAPP →
+            </a>
+          </div>
+          <div>
+            <a class="wa-link" href="https://wa.me/919799879381?text=Hi%20Apkacoach%20Growth%2C%20I%27m%20interested%20in%20learning%20more%20about%20the%20financial%20consulting%20opportunity." target="_blank" rel="noopener noreferrer">
+              WhatsApp: +91 97998 79381
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <div class="wrap">
+      <div style="margin-bottom: 12px;">
+        <img src="./assets/images/apkacoach-logo-dark.png" alt="ApkaCoach" style="height: 36px; vertical-align: middle;" />
+      </div>
+      <div class="brand-title">
+        Apka<span style="color: var(--orange);">Coach</span> <span style="color: #64B5F6;">Growth</span>
+      </div>
+      <div style="font-size: 0.88rem; color: #A0B2CD; margin-top: 4px;">
+        Your Knowledge. Your Network. Your Growth.
+      </div>
+      <p class="fine">
+        This page provides general information about a professional opportunity and financial wellness. It is not a guarantee of income or individualized financial advice.
+      </p>
+    </div>
+  </footer>
+
+  <!-- Sticky Mobile Action CTA -->
+  <div class="mobile-cta">
+    <a class="btn whatsapp" href="https://wa.me/919799879381?text=Hi%20Apkacoach%20Growth%2C%20I%27m%20interested%20in%20learning%20more%20about%20the%20financial%20consulting%20opportunity." target="_blank" rel="noopener noreferrer">
+      DM Me Now · Explore Opportunity →
+    </a>
+  </div>
+
+</body>
+</html>

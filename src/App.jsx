@@ -18,6 +18,7 @@ import Vsl from './pages/Vsl';
 import Optin from './pages/Optin';
 import ThankYou from './pages/ThankYou';
 import ExclusiveLandingPage from './pages/ExclusiveLandingPage';
+import ApkaCoachGrowth from './pages/ApkaCoachGrowth';
 
 // Admin Portal Pages
 import AdminLayout from './pages/admin/AdminLayout';
@@ -36,7 +37,8 @@ export default function App() {
   const isAdminRoute = location.pathname.startsWith('/admin');
   const isStandaloneFunnel = [
     '/vsl', '/optin', '/form', '/forms', '/apply', '/access', '/thank-you',
-    '/exclusive', '/exclusive-mastermind', '/exclusive-landing-page', '/vip'
+    '/exclusive', '/exclusive-mastermind', '/exclusive-landing-page', '/vip',
+    '/apkacoach-connect', '/connect', '/growth', '/apkacoach-growth', '/apkacoach'
   ].includes(location.pathname);
 
   // If in admin portal, render Admin directly without public headers/footers
@@ -90,6 +92,13 @@ export default function App() {
           <Route path="/optin" element={<Optin />} />
           <Route path="/vsl" element={<Vsl />} />
           <Route path="/thank-you" element={<ThankYou />} />
+
+          {/* ApkaCoach Growth Connect Landing Page */}
+          <Route path="/apkacoach-connect" element={<ApkaCoachGrowth />} />
+          <Route path="/connect" element={<ApkaCoachGrowth />} />
+          <Route path="/growth" element={<ApkaCoachGrowth />} />
+          <Route path="/apkacoach-growth" element={<ApkaCoachGrowth />} />
+          <Route path="/apkacoach" element={<ApkaCoachGrowth />} />
 
           {/* Redirections to /optin as requested */}
           <Route path="/form" element={<Navigate to="/optin" replace />} />
