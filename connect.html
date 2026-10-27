@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>ApkaCoach Growth | Professional Opportunity in Financial Wellness</title>
-  <meta name="description" content="Explore a professional opportunity with ApkaCoach Growth. Use your experience, customer network, and people skills with complete expert support. Get your free Financial Fitness Report." />
+  <title>ApkaCoach | Professional Opportunity in Financial Wellness</title>
+  <meta name="description" content="Explore a professional opportunity with ApkaCoach. Use your experience, customer network, and people skills with complete expert support. Get your free Financial Fitness Report." />
   
   <link rel="icon" type="image/svg+xml" href="./assets/favicon.svg" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -24,14 +24,11 @@
       --green-hover: #117245;
       --ink: #1B2940;
       --muted: #5D6B82;
-      --pale: #F3F7FF;
-      --pale-warm: #FFF6E9;
+      --pale: #F8FAFC;
+      --pale-warm: #FFF9F2;
       --white: #ffffff;
-      --border-subtle: #D5E4F6;
-      --border-warm: #FFD6A8;
-      --shadow-sm: 0 4px 14px rgba(16, 42, 86, 0.06);
-      --shadow-md: 0 10px 30px rgba(16, 42, 86, 0.08);
-      --shadow-lg: 0 20px 50px rgba(16, 42, 86, 0.12);
+      --border-subtle: #E2E8F0;
+      --border-warm: #FDE6CF;
     }
 
     * {
@@ -65,13 +62,11 @@
 
     /* Header Nav */
     header {
-      background: rgba(255, 255, 255, 0.98);
-      backdrop-filter: blur(10px);
-      border-bottom: 1px solid #E8EDF4;
+      background: #ffffff;
+      border-bottom: 1px solid var(--border-subtle);
       position: sticky;
       top: 0;
       z-index: 100;
-      box-shadow: 0 2px 10px rgba(16, 42, 86, 0.03);
     }
 
     .nav {
@@ -85,53 +80,28 @@
     .brand-wrap {
       display: flex;
       align-items: center;
-      gap: 12px;
+      gap: 10px;
       text-decoration: none;
     }
 
-    .brand-badge {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      width: 40px;
-      height: 40px;
-      border-radius: 12px;
-      background: linear-gradient(135deg, var(--navy), var(--blue));
-      color: #fff;
-      font-weight: 900;
-      font-size: 1.2rem;
-      box-shadow: 0 6px 16px rgba(16, 42, 86, 0.2);
-    }
-
-    .brand-text {
-      display: flex;
-      flex-direction: column;
+    .brand-logo-img {
+      height: 38px;
+      width: auto;
+      object-fit: contain;
+      display: block;
     }
 
     .brand-title {
-      font-size: 1.5rem;
+      font-family: 'Instrument Sans', sans-serif;
+      font-size: 1.55rem;
       font-weight: 800;
       letter-spacing: -0.5px;
       color: var(--navy);
-      line-height: 1.1;
+      line-height: 1;
     }
 
     .brand-title span.orange {
       color: var(--orange);
-    }
-
-    .brand-title span.blue {
-      color: var(--blue);
-      font-weight: 700;
-    }
-
-    .brand-subtitle {
-      font-size: 0.68rem;
-      letter-spacing: 2px;
-      color: var(--muted);
-      font-weight: 700;
-      text-transform: uppercase;
-      margin-top: 2px;
     }
 
     .btn {
@@ -149,44 +119,38 @@
       background: var(--orange);
       color: #fff;
       cursor: pointer;
-      box-shadow: 0 8px 24px rgba(255, 121, 0, 0.28);
-      transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+      box-shadow: none;
+      transition: all 0.2s ease;
     }
 
     .btn:hover {
       background: var(--orange-hover);
-      transform: translateY(-2px);
-      box-shadow: 0 12px 28px rgba(255, 121, 0, 0.38);
+      transform: translateY(-1px);
     }
 
     .btn.navy {
       background: var(--navy);
-      box-shadow: 0 8px 22px rgba(16, 42, 86, 0.2);
+      box-shadow: none;
     }
 
     .btn.navy:hover {
       background: #0c2042;
-      box-shadow: 0 12px 26px rgba(16, 42, 86, 0.3);
     }
 
     .btn.whatsapp {
       background: var(--green);
-      box-shadow: 0 8px 22px rgba(22, 139, 85, 0.25);
+      box-shadow: none;
     }
 
     .btn.whatsapp:hover {
       background: var(--green-hover);
-      box-shadow: 0 12px 28px rgba(22, 139, 85, 0.35);
     }
 
-    /* Hero Section */
+    /* Hero Section - Clean, No Glow */
     .hero {
-      background: radial-gradient(circle at 90% 12%, #dcecff 0%, transparent 40%),
-                  radial-gradient(circle at 10% 85%, #fff0df 0%, transparent 35%),
-                  linear-gradient(135deg, #f8fbff 0%, #ffffff 55%, #fff6ed 100%);
+      background: #F8FAFC;
+      border-bottom: 1px solid var(--border-subtle);
       padding: 64px 0 60px;
-      position: relative;
-      overflow: hidden;
     }
 
     .hero-grid {
@@ -235,19 +199,18 @@
 
     .chip {
       padding: 8px 14px;
-      border: 1px solid #D5E4F6;
+      border: 1px solid var(--border-subtle);
       border-radius: 30px;
       background: #ffffff;
       font-size: 0.88rem;
       font-weight: 600;
       color: var(--navy);
-      box-shadow: 0 2px 6px rgba(16, 42, 86, 0.04);
+      box-shadow: none;
       transition: all 0.2s ease;
     }
 
     .chip:hover {
       border-color: var(--orange);
-      transform: translateY(-1px);
     }
 
     .pill {
@@ -264,17 +227,9 @@
       margin-bottom: 24px;
     }
 
+    /* Visual: Clean Image without Border or Badges */
     .visual {
       position: relative;
-    }
-
-    .visual-frame {
-      position: relative;
-      border-radius: 24px;
-      padding: 10px;
-      background: #FFF5E8;
-      border: 2px solid var(--orange);
-      box-shadow: var(--shadow-lg);
     }
 
     .visual img {
@@ -283,21 +238,9 @@
       object-fit: cover;
       display: block;
       border-radius: 16px;
-    }
-
-    .visual-badge {
-      position: absolute;
-      bottom: -15px;
-      right: 20px;
-      background: var(--navy);
-      color: #fff;
-      padding: 10px 18px;
-      border-radius: 30px;
-      font-family: 'Instrument Sans', sans-serif;
-      font-size: 0.88rem;
-      font-weight: 700;
-      box-shadow: 0 8px 24px rgba(16, 42, 86, 0.3);
-      border: 1px solid rgba(255, 255, 255, 0.2);
+      border: 0;
+      outline: 0;
+      box-shadow: none;
     }
 
     /* General Sections */
@@ -338,19 +281,18 @@
     .opp-card {
       padding: 26px 24px;
       border: 1px solid var(--border-subtle);
-      border-radius: 20px;
+      border-radius: 16px;
       background: #ffffff;
-      box-shadow: var(--shadow-sm);
-      transition: all 0.25s ease;
+      box-shadow: none;
+      transition: all 0.2s ease;
       display: flex;
       flex-direction: column;
       height: 100%;
     }
 
     .opp-card:hover {
-      transform: translateY(-4px);
-      box-shadow: var(--shadow-md);
-      border-color: #B9D5F4;
+      border-color: #CBD5E1;
+      transform: translateY(-2px);
     }
 
     .opp-card .ico {
@@ -372,30 +314,17 @@
       margin: 0;
     }
 
-    /* Income Target Box */
+    /* Income Target Box - Clean, Flat, No Glow */
     .income-box {
-      background: linear-gradient(135deg, var(--navy) 0%, #104886 100%);
+      background: var(--navy);
       color: #ffffff;
-      border-radius: 24px;
+      border-radius: 20px;
       padding: 48px 36px;
       text-align: center;
-      border: 2px solid rgba(255, 121, 0, 0.4);
-      box-shadow: var(--shadow-lg);
+      border: 1px solid #1E3A8A;
+      box-shadow: none;
       max-width: 860px;
       margin: 0 auto;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .income-box::before {
-      content: '';
-      position: absolute;
-      top: -50px;
-      right: -50px;
-      width: 150px;
-      height: 150px;
-      background: radial-gradient(circle, rgba(255, 121, 0, 0.25) 0%, transparent 70%);
-      border-radius: 50%;
     }
 
     .income-box .eyebrow {
@@ -417,7 +346,7 @@
       color: var(--gold);
       margin: 14px 0 28px;
       letter-spacing: -1px;
-      text-shadow: 0 4px 20px rgba(255, 194, 71, 0.25);
+      text-shadow: none;
     }
 
     /* 4 Support Pillars */
@@ -430,13 +359,14 @@
     .support-card {
       background: var(--pale-warm);
       border: 1px solid var(--border-warm);
-      border-radius: 18px;
+      border-radius: 16px;
       padding: 24px 20px;
+      box-shadow: none;
       transition: transform 0.2s ease;
     }
 
     .support-card:hover {
-      transform: translateY(-3px);
+      transform: translateY(-2px);
     }
 
     .support-num {
@@ -451,7 +381,7 @@
       font-weight: 800;
       font-size: 0.9rem;
       margin-bottom: 12px;
-      box-shadow: 0 2px 8px rgba(255, 121, 0, 0.15);
+      border: 1px solid var(--border-warm);
     }
 
     .support-card h3 {
@@ -467,14 +397,14 @@
       margin: 0;
     }
 
-    /* Free Report & CTA Card Boxes */
+    /* Free Report Panel */
     .action-panel {
-      background: linear-gradient(135deg, #FFF7EF 0%, #EEF6FF 100%);
-      border: 1px solid #D5E4F6;
-      border-radius: 24px;
+      background: #F8FAFC;
+      border: 1px solid var(--border-subtle);
+      border-radius: 20px;
       padding: 44px 36px;
       text-align: center;
-      box-shadow: var(--shadow-sm);
+      box-shadow: none;
       max-width: 860px;
       margin: 0 auto;
     }
@@ -492,15 +422,15 @@
       line-height: 1.6;
     }
 
-    /* WhatsApp Direct Contact Block */
+    /* WhatsApp Direct Contact Block - Clean, Flat, No Glow */
     .wa-card {
-      background: linear-gradient(135deg, #102A56 0%, #1769AA 100%);
+      background: var(--navy);
       color: #ffffff;
-      border-radius: 24px;
-      padding: 44px 36px;
+      border-radius: 20px;
+      padding: 48px 36px;
       text-align: center;
-      border: 1px solid var(--orange);
-      box-shadow: var(--shadow-lg);
+      border: 1px solid #1E3A8A;
+      box-shadow: none;
       max-width: 860px;
       margin: 0 auto;
     }
@@ -518,15 +448,6 @@
       font-size: 1.05rem;
     }
 
-    .wa-link {
-      display: inline-block;
-      color: #B4DBFF;
-      font-size: 0.92rem;
-      margin-top: 14px;
-      text-decoration: underline;
-      text-underline-offset: 4px;
-    }
-
     /* Footer */
     footer {
       background: var(--navy-deep);
@@ -538,8 +459,7 @@
 
     footer .brand-title {
       color: #ffffff;
-      font-size: 1.4rem;
-      margin-bottom: 4px;
+      font-size: 1.45rem;
     }
 
     footer .fine {
@@ -588,7 +508,7 @@
         font-size: 0.86rem;
       }
       .brand-title {
-        font-size: 1.25rem;
+        font-size: 1.35rem;
       }
       .income-box {
         padding: 34px 20px;
@@ -603,13 +523,11 @@
         bottom: 0;
         left: 0;
         right: 0;
-        background: rgba(255, 255, 255, 0.98);
-        backdrop-filter: blur(10px);
+        background: #ffffff;
         padding: 12px 16px;
-        border-top: 1px solid #E5EAF1;
+        border-top: 1px solid #E2E8F0;
         z-index: 999;
         text-align: center;
-        box-shadow: 0 -4px 16px rgba(0, 0, 0, 0.06);
       }
       .mobile-cta .btn {
         width: 100%;
@@ -624,17 +542,14 @@
 </head>
 <body>
 
-  <!-- Header Nav -->
+  <!-- Header Nav (ApkaCoach logo with A symbol, no Growth text) -->
   <header>
     <div class="wrap nav">
       <a href="#join" class="brand-wrap">
-        <span class="brand-badge">▲</span>
-        <div class="brand-text">
-          <div class="brand-title">
-            Apka<span class="orange">Coach</span> <span class="blue">Growth</span>
-          </div>
-          <div class="brand-subtitle">Growth • Financial Wellness</div>
-        </div>
+        <img src="./assets/images/apkacoach-symbol.png" alt="ApkaCoach" class="brand-logo-img" />
+        <span class="brand-title">
+          Apka<span class="orange">Coach</span>
+        </span>
       </a>
       
       <!-- Redirects to Your Wealth Compass as requested -->
@@ -675,18 +590,14 @@
           </div>
         </div>
 
+        <!-- Clean Image: No Border, No Frame, No Badge -->
         <div class="visual">
-          <div class="visual-frame">
-            <img src="./assets/apkacoach-team-poster.png" alt="ApkaCoach Growth Opportunity Workshop Team Poster" />
-          </div>
-          <div class="visual-badge">
-            ApkaCoach Growth Cohort
-          </div>
+          <img src="./assets/apkacoach-team-poster.png" alt="ApkaCoach Opportunity Poster" />
         </div>
       </div>
     </section>
 
-    <!-- Target Income Section (Disclaimer removed as requested) -->
+    <!-- Target Income Section (Disclaimer removed, clean flat style) -->
     <section class="section alt">
       <div class="wrap">
         <div class="income-box">
@@ -814,7 +725,7 @@
       </div>
     </section>
 
-    <!-- Ready to Explore the Opportunity? (WhatsApp Connect) -->
+    <!-- Ready to Explore the Opportunity? (WhatsApp CTA, Number outside button removed) -->
     <section class="section alt" id="join">
       <div class="wrap">
         <div class="wa-card">
@@ -828,27 +739,19 @@
               CHAT WITH US ON WHATSAPP →
             </a>
           </div>
-          <div>
-            <a class="wa-link" href="https://wa.me/919799879381?text=Hi%20Apkacoach%20Growth%2C%20I%27m%20interested%20in%20learning%20more%20about%20the%20financial%20consulting%20opportunity." target="_blank" rel="noopener noreferrer">
-              WhatsApp: +91 97998 79381
-            </a>
-          </div>
         </div>
       </div>
     </section>
   </main>
 
-  <!-- Footer -->
+  <!-- Footer (ApkaCoach with A symbol, no Growth text) -->
   <footer>
     <div class="wrap">
-      <div style="margin-bottom: 12px;">
-        <img src="./assets/images/apkacoach-logo-dark.png" alt="ApkaCoach" style="height: 36px; vertical-align: middle;" />
-      </div>
-      <div class="brand-title">
-        Apka<span style="color: var(--orange);">Coach</span> <span style="color: #64B5F6;">Growth</span>
-      </div>
-      <div style="font-size: 0.88rem; color: #A0B2CD; margin-top: 4px;">
-        Your Knowledge. Your Network. Your Growth.
+      <div style="margin-bottom: 10px;">
+        <img src="./assets/images/apkacoach-symbol.png" alt="ApkaCoach" style="height: 32px; width: auto; object-fit: contain; display: inline-block; vertical-align: middle; margin-right: 8px;" />
+        <span class="brand-title" style="color: #ffffff; vertical-align: middle;">
+          Apka<span style="color: var(--orange);">Coach</span>
+        </span>
       </div>
       <p class="fine">
         This page provides general information about a professional opportunity and financial wellness. It is not a guarantee of income or individualized financial advice.

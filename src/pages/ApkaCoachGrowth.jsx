@@ -14,15 +14,13 @@ export default function ApkaCoachGrowth() {
       margin: 0,
       padding: 0
     }}>
-      {/* Top Header Navigation */}
+      {/* Top Header Navigation (ApkaCoach logo with A symbol, no Growth text) */}
       <header style={{
-        background: 'rgba(255, 255, 255, 0.98)',
-        backdropFilter: 'blur(10px)',
-        borderBottom: '1px solid #E8EDF4',
+        background: '#ffffff',
+        borderBottom: '1px solid #E2E8F0',
         position: 'sticky',
         top: 0,
-        zIndex: 100,
-        boxShadow: '0 2px 10px rgba(16, 42, 86, 0.04)'
+        zIndex: 100
       }}>
         <div style={{
           width: 'min(1140px, 92%)',
@@ -33,44 +31,27 @@ export default function ApkaCoachGrowth() {
           padding: '16px 0',
           gap: '20px'
         }}>
-          <a href="#join" style={{ display: 'flex', alignItems: 'center', gap: '12px', textDecoration: 'none' }}>
+          <a href="#join" style={{ display: 'flex', alignItems: 'center', gap: '10px', textDecoration: 'none' }}>
+            <img
+              src="./assets/images/apkacoach-symbol.png"
+              alt="ApkaCoach"
+              style={{
+                height: '38px',
+                width: 'auto',
+                objectFit: 'contain',
+                display: 'block'
+              }}
+            />
             <span style={{
-              display: 'inline-flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              width: '40px',
-              height: '40px',
-              borderRadius: '12px',
-              background: 'linear-gradient(135deg, #102A56, #1769AA)',
-              color: '#ffffff',
-              fontWeight: 900,
-              fontSize: '1.2rem',
-              boxShadow: '0 6px 16px rgba(16, 42, 86, 0.2)'
+              fontFamily: "'Instrument Sans', sans-serif",
+              fontSize: '1.55rem',
+              fontWeight: 800,
+              letterSpacing: '-0.5px',
+              color: '#102A56',
+              lineHeight: 1
             }}>
-              ▲
+              Apka<span style={{ color: '#FF7900' }}>Coach</span>
             </span>
-            <div style={{ display: 'flex', flexDirection: 'column' }}>
-              <div style={{
-                fontFamily: "'Instrument Sans', sans-serif",
-                fontSize: '1.5rem',
-                fontWeight: 800,
-                letterSpacing: '-0.5px',
-                color: '#102A56',
-                lineHeight: 1.1
-              }}>
-                Apka<span style={{ color: '#FF7900' }}>Coach</span> <span style={{ color: '#1769AA', fontWeight: 700 }}>Growth</span>
-              </div>
-              <div style={{
-                fontSize: '0.68rem',
-                letterSpacing: '2px',
-                color: '#5D6B82',
-                fontWeight: 700,
-                textTransform: 'uppercase',
-                marginTop: '2px'
-              }}>
-                Growth • Financial Wellness
-              </div>
-            </div>
           </a>
 
           {/* Header Action: Redirects to Your Wealth Compass */}
@@ -90,8 +71,7 @@ export default function ApkaCoachGrowth() {
               fontSize: '0.94rem',
               backgroundColor: '#102A56',
               color: '#ffffff',
-              boxShadow: '0 6px 18px rgba(16, 42, 86, 0.18)',
-              transition: 'all 0.2s ease'
+              boxShadow: 'none'
             }}
           >
             Get Free Report ↗
@@ -100,9 +80,10 @@ export default function ApkaCoachGrowth() {
       </header>
 
       <main>
-        {/* Hero Section */}
+        {/* Hero Section - Clean, No Glow */}
         <section style={{
-          background: 'radial-gradient(circle at 90% 12%, #dcecff 0%, transparent 40%), radial-gradient(circle at 10% 85%, #fff0df 0%, transparent 35%), linear-gradient(135deg, #f8fbff 0%, #ffffff 55%, #fff6ed 100%)',
+          background: '#F8FAFC',
+          borderBottom: '1px solid #E2E8F0',
           padding: '64px 0 60px',
           position: 'relative'
         }}>
@@ -164,13 +145,12 @@ export default function ApkaCoachGrowth() {
                     key={chip}
                     style={{
                       padding: '8px 14px',
-                      border: '1px solid #D5E4F6',
+                      border: '1px solid #E2E8F0',
                       borderRadius: '30px',
                       backgroundColor: '#ffffff',
                       fontSize: '0.88rem',
                       fontWeight: 600,
-                      color: '#102A56',
-                      boxShadow: '0 2px 6px rgba(16, 42, 86, 0.04)'
+                      color: '#102A56'
                     }}
                   >
                     {chip}
@@ -211,7 +191,7 @@ export default function ApkaCoachGrowth() {
                     fontSize: '1rem',
                     backgroundColor: '#FF7900',
                     color: '#ffffff',
-                    boxShadow: '0 8px 24px rgba(255, 121, 0, 0.28)'
+                    boxShadow: 'none'
                   }}
                 >
                   I'm Interested — DM Now →
@@ -219,57 +199,36 @@ export default function ApkaCoachGrowth() {
               </div>
             </div>
 
+            {/* Clean Image: No Border, No Frame, No Badge */}
             <div style={{ position: 'relative' }}>
-              <div style={{
-                borderRadius: '24px',
-                padding: '10px',
-                backgroundColor: '#FFF5E8',
-                border: '2px solid #FF7900',
-                boxShadow: '0 20px 50px rgba(16, 42, 86, 0.12)'
-              }}>
-                <img
-                  src="./assets/apkacoach-team-poster.png"
-                  alt="ApkaCoach Growth Cohort"
-                  style={{
-                    width: '100%',
-                    height: '420px',
-                    objectFit: 'cover',
-                    display: 'block',
-                    borderRadius: '16px'
-                  }}
-                />
-              </div>
-              <div style={{
-                position: 'absolute',
-                bottom: '-14px',
-                right: '24px',
-                backgroundColor: '#102A56',
-                color: '#ffffff',
-                padding: '10px 18px',
-                borderRadius: '30px',
-                fontFamily: "'Instrument Sans', sans-serif",
-                fontSize: '0.88rem',
-                fontWeight: 700,
-                boxShadow: '0 8px 24px rgba(16, 42, 86, 0.3)',
-                border: '1px solid rgba(255, 255, 255, 0.2)'
-              }}>
-                ApkaCoach Growth Cohort
-              </div>
+              <img
+                src="./assets/apkacoach-team-poster.png"
+                alt="ApkaCoach Opportunity Poster"
+                style={{
+                  width: '100%',
+                  height: '420px',
+                  objectFit: 'cover',
+                  display: 'block',
+                  borderRadius: '16px',
+                  border: '0',
+                  boxShadow: 'none'
+                }}
+              />
             </div>
           </div>
         </section>
 
-        {/* Target Income Highlight Section (Disclaimer removed as instructed) */}
-        <section style={{ padding: '70px 0', backgroundColor: '#F3F7FF' }}>
+        {/* Target Income Highlight Section (Disclaimer removed, Clean Flat Style, No Glow) */}
+        <section style={{ padding: '70px 0', backgroundColor: '#F8FAFC' }}>
           <div style={{ width: 'min(1140px, 92%)', margin: '0 auto' }}>
             <div style={{
-              background: 'linear-gradient(135deg, #102A56 0%, #104886 100%)',
+              background: '#102A56',
               color: '#ffffff',
-              borderRadius: '24px',
+              borderRadius: '20px',
               padding: '48px 32px',
               textAlign: 'center',
-              border: '2px solid rgba(255, 121, 0, 0.4)',
-              boxShadow: '0 20px 50px rgba(16, 42, 86, 0.12)',
+              border: '1px solid #1E3A8A',
+              boxShadow: 'none',
               maxWidth: '860px',
               margin: '0 auto'
             }}>
@@ -299,7 +258,7 @@ export default function ApkaCoachGrowth() {
                 color: '#FFC247',
                 margin: '14px 0 28px',
                 letterSpacing: '-1px',
-                textShadow: '0 4px 20px rgba(255, 194, 71, 0.25)'
+                textShadow: 'none'
               }}>
                 ₹2 Lakh+ / Month
               </strong>
@@ -321,7 +280,7 @@ export default function ApkaCoachGrowth() {
                     fontSize: '0.98rem',
                     backgroundColor: '#FF7900',
                     color: '#ffffff',
-                    boxShadow: '0 8px 22px rgba(255, 121, 0, 0.3)'
+                    boxShadow: 'none'
                   }}
                 >
                   Discuss the Opportunity →
@@ -374,10 +333,10 @@ export default function ApkaCoachGrowth() {
                   key={card.title}
                   style={{
                     padding: '26px 24px',
-                    border: '1px solid #D5E4F6',
-                    borderRadius: '20px',
+                    border: '1px solid #E2E8F0',
+                    borderRadius: '16px',
                     backgroundColor: '#ffffff',
-                    boxShadow: '0 4px 14px rgba(16, 42, 86, 0.05)',
+                    boxShadow: 'none',
                     display: 'flex',
                     flexDirection: 'column'
                   }}
@@ -401,7 +360,7 @@ export default function ApkaCoachGrowth() {
         </section>
 
         {/* Grow With the Right Support */}
-        <section style={{ padding: '76px 0', backgroundColor: '#F3F7FF' }}>
+        <section style={{ padding: '76px 0', backgroundColor: '#F8FAFC' }}>
           <div style={{ width: 'min(1140px, 92%)', margin: '0 auto' }}>
             <div style={{ textAlign: 'center', maxWidth: '720px', margin: '0 auto 42px' }}>
               <span style={{
@@ -440,10 +399,11 @@ export default function ApkaCoachGrowth() {
                 <div
                   key={step.num}
                   style={{
-                    backgroundColor: '#FFF6E9',
-                    border: '1px solid #FFD6A8',
-                    borderRadius: '18px',
-                    padding: '24px 20px'
+                    backgroundColor: '#FFF9F2',
+                    border: '1px solid #FDE6CF',
+                    borderRadius: '16px',
+                    padding: '24px 20px',
+                    boxShadow: 'none'
                   }}
                 >
                   <span style={{
@@ -458,7 +418,7 @@ export default function ApkaCoachGrowth() {
                     fontWeight: 800,
                     fontSize: '0.9rem',
                     marginBottom: '12px',
-                    boxShadow: '0 2px 8px rgba(255, 121, 0, 0.15)'
+                    border: '1px solid #FDE6CF'
                   }}>
                     {step.num}
                   </span>
@@ -483,12 +443,12 @@ export default function ApkaCoachGrowth() {
         <section id="free-report" style={{ padding: '76px 0', backgroundColor: '#ffffff' }}>
           <div style={{ width: 'min(1140px, 92%)', margin: '0 auto' }}>
             <div style={{
-              background: 'linear-gradient(135deg, #FFF7EF 0%, #EEF6FF 100%)',
-              border: '1px solid #D5E4F6',
-              borderRadius: '24px',
+              background: '#F8FAFC',
+              border: '1px solid #E2E8F0',
+              borderRadius: '20px',
               padding: '44px 32px',
               textAlign: 'center',
-              boxShadow: '0 4px 14px rgba(16, 42, 86, 0.04)',
+              boxShadow: 'none',
               maxWidth: '860px',
               margin: '0 auto'
             }}>
@@ -534,7 +494,7 @@ export default function ApkaCoachGrowth() {
                   fontSize: '0.98rem',
                   backgroundColor: '#102A56',
                   color: '#ffffff',
-                  boxShadow: '0 8px 22px rgba(16, 42, 86, 0.2)'
+                  boxShadow: 'none'
                 }}
               >
                 Get My Free Report ↗
@@ -543,17 +503,17 @@ export default function ApkaCoachGrowth() {
           </div>
         </section>
 
-        {/* Ready to Explore Opportunity Section (WhatsApp Connect) */}
-        <section id="join" style={{ padding: '76px 0', backgroundColor: '#F3F7FF' }}>
+        {/* Ready to Explore Opportunity Section (WhatsApp CTA, Outside phone number removed) */}
+        <section id="join" style={{ padding: '76px 0', backgroundColor: '#F8FAFC' }}>
           <div style={{ width: 'min(1140px, 92%)', margin: '0 auto' }}>
             <div style={{
-              background: 'linear-gradient(135deg, #102A56 0%, #1769AA 100%)',
+              background: '#102A56',
               color: '#ffffff',
-              borderRadius: '24px',
+              borderRadius: '20px',
               padding: '48px 32px',
               textAlign: 'center',
-              border: '1px solid #FF7900',
-              boxShadow: '0 20px 50px rgba(16, 42, 86, 0.12)',
+              border: '1px solid #1E3A8A',
+              boxShadow: 'none',
               maxWidth: '860px',
               margin: '0 auto'
             }}>
@@ -599,25 +559,10 @@ export default function ApkaCoachGrowth() {
                     fontSize: '1.05rem',
                     backgroundColor: '#168B55',
                     color: '#ffffff',
-                    boxShadow: '0 8px 24px rgba(22, 139, 85, 0.35)'
+                    boxShadow: 'none'
                   }}
                 >
                   CHAT WITH US ON WHATSAPP →
-                </a>
-              </div>
-              <div style={{ marginTop: '16px' }}>
-                <a
-                  href={WHATSAPP_URL}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  style={{
-                    color: '#B4DBFF',
-                    fontSize: '0.92rem',
-                    textDecoration: 'underline',
-                    textUnderlineOffset: '4px'
-                  }}
-                >
-                  WhatsApp: +91 97998 79381
                 </a>
               </div>
             </div>
@@ -625,7 +570,7 @@ export default function ApkaCoachGrowth() {
         </section>
       </main>
 
-      {/* Footer */}
+      {/* Footer (ApkaCoach with A symbol, no Growth text) */}
       <footer style={{
         backgroundColor: '#071c40',
         color: '#CFDAEB',
@@ -634,24 +579,28 @@ export default function ApkaCoachGrowth() {
         borderTop: '1px solid rgba(255, 255, 255, 0.08)'
       }}>
         <div style={{ width: 'min(1140px, 92%)', margin: '0 auto' }}>
-          <div style={{ marginBottom: '12px' }}>
+          <div style={{ marginBottom: '10px' }}>
             <img
-              src="./assets/images/apkacoach-logo-dark.png"
+              src="./assets/images/apkacoach-symbol.png"
               alt="ApkaCoach"
-              style={{ height: '36px', verticalAlign: 'middle' }}
+              style={{
+                height: '32px',
+                width: 'auto',
+                objectFit: 'contain',
+                display: 'inline-block',
+                verticalAlign: 'middle',
+                marginRight: '8px'
+              }}
             />
-          </div>
-          <div style={{
-            fontFamily: "'Instrument Sans', sans-serif",
-            color: '#ffffff',
-            fontSize: '1.4rem',
-            fontWeight: 800,
-            marginBottom: '4px'
-          }}>
-            Apka<span style={{ color: '#FF7900' }}>Coach</span> <span style={{ color: '#64B5F6' }}>Growth</span>
-          </div>
-          <div style={{ fontSize: '0.88rem', color: '#A0B2CD', marginTop: '4px' }}>
-            Your Knowledge. Your Network. Your Growth.
+            <span style={{
+              fontFamily: "'Instrument Sans', sans-serif",
+              color: '#ffffff',
+              fontSize: '1.45rem',
+              fontWeight: 800,
+              verticalAlign: 'middle'
+            }}>
+              Apka<span style={{ color: '#FF7900' }}>Coach</span>
+            </span>
           </div>
           <p style={{
             fontSize: '0.8rem',
@@ -671,13 +620,11 @@ export default function ApkaCoachGrowth() {
         bottom: 0,
         left: 0,
         right: 0,
-        backgroundColor: 'rgba(255, 255, 255, 0.98)',
-        backdropFilter: 'blur(10px)',
+        backgroundColor: '#ffffff',
         padding: '12px 16px',
-        borderTop: '1px solid #E5EAF1',
+        borderTop: '1px solid #E2E8F0',
         zIndex: 999,
-        textAlign: 'center',
-        boxShadow: '0 -4px 16px rgba(0, 0, 0, 0.06)'
+        textAlign: 'center'
       }}>
         <a
           href={WHATSAPP_URL}
@@ -696,7 +643,7 @@ export default function ApkaCoachGrowth() {
             fontSize: '1rem',
             backgroundColor: '#168B55',
             color: '#ffffff',
-            boxShadow: '0 4px 14px rgba(22, 139, 85, 0.3)'
+            boxShadow: 'none'
           }}
         >
           DM Me Now · Explore Opportunity →
