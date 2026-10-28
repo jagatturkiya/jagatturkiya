@@ -79,6 +79,46 @@ export default function ApkaCoachGrowth() {
           .apka-mobile-cta {
             display: block !important;
           }
+          .apka-achieve-card {
+            padding: 24px 16px !important;
+            border-radius: 16px !important;
+          }
+          .apka-achieve-title {
+            font-size: 1.35rem !important;
+          }
+          .apka-achieve-intro {
+            padding: 16px 14px !important;
+          }
+          .apka-achieve-highlight {
+            font-size: 0.88rem !important;
+          }
+          .apka-goal-tag {
+            font-size: 0.74rem !important;
+            padding: 4px 9px !important;
+          }
+          .apka-exam-notice {
+            font-size: 0.78rem !important;
+            padding: 8px 10px !important;
+          }
+          .apka-achieve-grid {
+            grid-template-columns: 1fr !important;
+            gap: 12px !important;
+            margin-bottom: 24px !important;
+          }
+          .apka-achieve-item {
+            padding: 12px 14px !important;
+          }
+          .apka-achieve-ico {
+            width: 38px !important;
+            height: 38px !important;
+            font-size: 1.35rem !important;
+          }
+          .apka-achieve-item h4 {
+            font-size: 0.94rem !important;
+          }
+          .apka-achieve-item p {
+            font-size: 0.8rem !important;
+          }
         }
       `}</style>
       {/* Top Header Navigation (ApkaCoach logo with A symbol, no Growth text) */}
@@ -427,6 +467,259 @@ export default function ApkaCoachGrowth() {
                   </p>
                 </article>
               ))}
+            </div>
+          </div>
+        </section>
+
+        {/* What You Will Achieve by Joining Us */}
+        <section id="achieve" style={{ padding: '76px 0', backgroundColor: '#F8FAFC' }}>
+          <div style={{ width: 'min(1140px, 92%)', margin: '0 auto' }}>
+            <div
+              className="apka-achieve-card"
+              style={{
+                background: '#ffffff',
+                border: '1px solid #E2E8F0',
+                borderRadius: '20px',
+                padding: '44px 36px',
+                maxWidth: '920px',
+                margin: '0 auto',
+                boxShadow: '0 4px 20px rgba(0, 0, 0, 0.04)'
+              }}
+            >
+              <div style={{ textAlign: 'center', marginBottom: '28px' }}>
+                <span style={{
+                  color: '#FF7900',
+                  fontWeight: 800,
+                  letterSpacing: '2px',
+                  textTransform: 'uppercase',
+                  fontSize: '0.82rem'
+                }}>
+                  Career &amp; Income Transformation
+                </span>
+                <h2
+                  className="apka-achieve-title"
+                  style={{
+                    fontFamily: "'Instrument Sans', sans-serif",
+                    fontSize: 'clamp(1.8rem, 3.2vw, 2.5rem)',
+                    color: '#102A56',
+                    margin: '10px 0 16px',
+                    letterSpacing: '-0.5px'
+                  }}
+                >
+                  What You Will Achieve by Joining Us
+                </h2>
+                <div
+                  className="apka-achieve-intro"
+                  style={{
+                    background: '#F8FAFC',
+                    border: '1px solid #E2E8F0',
+                    borderRadius: '14px',
+                    padding: '22px 24px',
+                    textAlign: 'left'
+                  }}
+                >
+                  <p
+                    className="apka-achieve-highlight"
+                    style={{
+                      fontSize: '1.02rem',
+                      color: '#102A56',
+                      lineHeight: 1.6,
+                      marginBottom: '12px'
+                    }}
+                  >
+                    <strong>Once you become a licensed Financial Advisor with us**</strong>, it allows individuals to legally offer financial advisory and plan their clients' goal achievements:
+                  </p>
+                  <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px', margin: '10px 0 14px' }}>
+                    {[
+                      '🏖️ Retirement Planning',
+                      '💰 Corpus Building',
+                      '🎓 Child Higher Education',
+                      '💍 Child Marriage',
+                      '🏡 Dream House',
+                      '✨ Wealth Goals'
+                    ].map((goal) => (
+                      <span
+                        key={goal}
+                        className="apka-goal-tag"
+                        style={{
+                          background: '#EFF6FF',
+                          color: '#1E40AF',
+                          border: '1px solid #DBEAFE',
+                          borderRadius: '999px',
+                          padding: '5px 12px',
+                          fontSize: '0.82rem',
+                          fontWeight: 600
+                        }}
+                      >
+                        {goal}
+                      </span>
+                    ))}
+                  </div>
+                  <p
+                    className="apka-exam-notice"
+                    style={{
+                      background: '#FEF3C7',
+                      color: '#92400E',
+                      border: '1px solid #FDE68A',
+                      borderRadius: '10px',
+                      padding: '10px 14px',
+                      fontSize: '0.86rem',
+                      fontWeight: 600,
+                      margin: 0
+                    }}
+                  >
+                    📋 <em>One must undergo mandatory training from our coaches and take up the Govt. body exam.</em>
+                  </p>
+                </div>
+              </div>
+
+              <div
+                className="apka-achieve-grid"
+                style={{
+                  display: 'grid',
+                  gridTemplateColumns: 'repeat(2, 1fr)',
+                  gap: '16px',
+                  marginBottom: '34px'
+                }}
+              >
+                {[
+                  { ico: '💵', title: 'Financial Freedom', desc: 'Build uncapped income potential and recurring financial wellness revenue.' },
+                  { ico: '⏰', title: 'Flexible Work Hours', desc: 'Work on your own flexible schedule with total independence and autonomy.' },
+                  { ico: '🏆', title: 'Rewards & Recognition', desc: 'Earn prestigious industry awards, trophies, and peer appreciation at grand galas.' },
+                  { ico: '🌟', title: 'Get Skilled & Groomed', desc: 'Develop elite communication, leadership mindset, and executive persona.' },
+                  { ico: '🧭', title: 'Professional Guidance', desc: 'Receive close mentorship and proven advisory guidance from Coach Jagat Turkiya.' },
+                  { ico: '📈', title: 'Comprehensive Training', desc: 'Complete learning roadmap covering regulations, advisory frameworks, and exam prep.' },
+                  { ico: '🎧', title: 'Service Support', desc: 'End-to-end backend operational assistance, case resolution, and dedicated helpdesk.' },
+                  { ico: '✈️', title: 'Domestic and International Trips', desc: 'Qualify for all-expense-paid domestic luxury retreats and global conventions.' }
+                ].map((item) => (
+                  <div
+                    key={item.title}
+                    className="apka-achieve-item"
+                    style={{
+                      display: 'flex',
+                      alignItems: 'flex-start',
+                      gap: '14px',
+                      background: '#F8FAFC',
+                      border: '1px solid #E2E8F0',
+                      borderRadius: '14px',
+                      padding: '16px 18px'
+                    }}
+                  >
+                    <div
+                      className="apka-achieve-ico"
+                      style={{
+                        fontSize: '1.6rem',
+                        width: '44px',
+                        height: '44px',
+                        background: '#ffffff',
+                        border: '1px solid #E2E8F0',
+                        borderRadius: '10px',
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        flexShrink: 0
+                      }}
+                    >
+                      {item.ico}
+                    </div>
+                    <div>
+                      <h4 style={{
+                        fontFamily: "'Instrument Sans', sans-serif",
+                        fontSize: '1.02rem',
+                        color: '#102A56',
+                        fontWeight: 700,
+                        margin: '0 0 4px 0'
+                      }}>
+                        {item.title}
+                      </h4>
+                      <p style={{
+                        fontSize: '0.85rem',
+                        color: '#5D6B82',
+                        margin: 0,
+                        lineHeight: 1.45
+                      }}>
+                        {item.desc}
+                      </p>
+                    </div>
+                  </div>
+                ))}
+
+                {/* 9. AI Practical Tools (Full Width) */}
+                <div
+                  className="apka-achieve-item"
+                  style={{
+                    display: 'flex',
+                    alignItems: 'flex-start',
+                    gap: '14px',
+                    background: '#F8FAFC',
+                    border: '1px solid #E2E8F0',
+                    borderRadius: '14px',
+                    padding: '16px 18px',
+                    gridColumn: '1 / -1'
+                  }}
+                >
+                  <div
+                    className="apka-achieve-ico"
+                    style={{
+                      fontSize: '1.6rem',
+                      width: '44px',
+                      height: '44px',
+                      background: '#ffffff',
+                      border: '1px solid #E2E8F0',
+                      borderRadius: '10px',
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      flexShrink: 0
+                    }}
+                  >
+                    🤖
+                  </div>
+                  <div>
+                    <h4 style={{
+                      fontFamily: "'Instrument Sans', sans-serif",
+                      fontSize: '1.02rem',
+                      color: '#102A56',
+                      fontWeight: 700,
+                      margin: '0 0 4px 0'
+                    }}>
+                      AI Practical Tools for Business Growth
+                    </h4>
+                    <p style={{
+                      fontSize: '0.85rem',
+                      color: '#5D6B82',
+                      margin: 0,
+                      lineHeight: 1.45
+                    }}>
+                      Harness modern financial planning calculators, client assessment tech, and digital advisory tools.
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <div style={{ textAlign: 'center' }}>
+                <a
+                  href={WHATSAPP_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  style={{
+                    display: 'inline-flex',
+                    alignItems: 'center',
+                    gap: '8px',
+                    textDecoration: 'none',
+                    borderRadius: '999px',
+                    padding: '14px 34px',
+                    fontFamily: "'Instrument Sans', sans-serif",
+                    fontWeight: 700,
+                    fontSize: '1.05rem',
+                    backgroundColor: '#FF7900',
+                    color: '#ffffff',
+                    boxShadow: 'none'
+                  }}
+                >
+                  BECOME A FINANCIAL ADVISOR →
+                </a>
+              </div>
             </div>
           </div>
         </section>

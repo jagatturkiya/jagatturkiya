@@ -508,6 +508,112 @@
       display: none;
     }
 
+    /* What You Will Achieve Section */
+    .achieve-card {
+      background: #ffffff;
+      border: 1px solid #E2E8F0;
+      border-radius: 20px;
+      padding: 44px 36px;
+      max-width: 920px;
+      margin: 0 auto;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+    }
+    .achieve-header {
+      text-align: center;
+      margin-bottom: 28px;
+    }
+    .achieve-title {
+      font-size: clamp(1.8rem, 3.2vw, 2.5rem);
+      color: #102A56;
+      margin: 10px 0 16px;
+      letter-spacing: -0.5px;
+    }
+    .achieve-intro-box {
+      background: #F8FAFC;
+      border: 1px solid #E2E8F0;
+      border-radius: 14px;
+      padding: 22px 24px;
+      text-align: left;
+    }
+    .achieve-highlight {
+      font-size: 1.02rem;
+      color: #102A56;
+      line-height: 1.6;
+      margin-bottom: 12px;
+    }
+    .goals-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin: 10px 0 14px;
+    }
+    .goal-tag {
+      background: #EFF6FF;
+      color: #1E40AF;
+      border: 1px solid #DBEAFE;
+      border-radius: 999px;
+      padding: 5px 12px;
+      font-size: 0.82rem;
+      font-weight: 600;
+    }
+    .exam-notice {
+      background: #FEF3C7;
+      color: #92400E;
+      border: 1px solid #FDE68A;
+      border-radius: 10px;
+      padding: 10px 14px;
+      font-size: 0.86rem;
+      font-weight: 600;
+      margin: 0;
+    }
+    .achieve-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+      margin-bottom: 34px;
+    }
+    .achieve-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      background: #F8FAFC;
+      border: 1px solid #E2E8F0;
+      border-radius: 14px;
+      padding: 16px 18px;
+      transition: transform 0.2s ease, border-color 0.2s ease;
+    }
+    .achieve-item:hover {
+      transform: translateY(-2px);
+      border-color: #CBD5E1;
+    }
+    .achieve-ico {
+      font-size: 1.6rem;
+      width: 44px;
+      height: 44px;
+      background: #ffffff;
+      border: 1px solid #E2E8F0;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .achieve-text h4 {
+      font-size: 1.02rem;
+      color: #102A56;
+      font-weight: 700;
+      margin: 0 0 4px 0;
+    }
+    .achieve-text p {
+      font-size: 0.85rem;
+      color: #5D6B82;
+      margin: 0;
+      line-height: 1.45;
+    }
+    .achieve-cta-wrap {
+      text-align: center;
+    }
+
     /* Sticky Mobile CTA */
     .mobile-cta {
       display: none;
@@ -670,6 +776,48 @@
         padding: 12px 16px;
         font-size: 0.92rem;
       }
+      /* Achieve Card Mobile */
+      .achieve-card {
+        padding: 24px 16px;
+        border-radius: 16px;
+      }
+      .achieve-title {
+        font-size: 1.35rem;
+      }
+      .achieve-intro-box {
+        padding: 16px 14px;
+      }
+      .achieve-highlight {
+        font-size: 0.88rem;
+      }
+      .goal-tag {
+        font-size: 0.74rem;
+        padding: 4px 9px;
+      }
+      .exam-notice {
+        font-size: 0.78rem;
+        padding: 8px 10px;
+      }
+      .achieve-grid {
+        grid-template-columns: 1fr;
+        gap: 12px;
+        margin-bottom: 24px;
+      }
+      .achieve-item {
+        padding: 12px 14px;
+      }
+      .achieve-ico {
+        width: 38px;
+        height: 38px;
+        font-size: 1.35rem;
+      }
+      .achieve-text h4 {
+        font-size: 0.94rem;
+      }
+      .achieve-text p {
+        font-size: 0.8rem;
+      }
+
       body {
         padding-bottom: 70px;
       }
@@ -826,6 +974,123 @@
             <h3>People-Focused Professionals</h3>
             <p>Motivated people who want to learn, build trust and grow with expert support.</p>
           </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- What You Will Achieve to Join Us -->
+    <section class="section" id="achieve" style="background-color: #F8FAFC;">
+      <div class="wrap">
+        <div class="achieve-card">
+          <div class="achieve-header">
+            <span class="eyebrow" style="color: var(--orange);">Career &amp; Income Transformation</span>
+            <h2 class="achieve-title">What You Will Achieve by Joining Us</h2>
+            <div class="achieve-intro-box">
+              <p class="achieve-highlight">
+                <strong>Once you become a licensed Financial Advisor with us**</strong>, it allows individuals to legally offer financial advisory and plan their clients' goal achievements:
+              </p>
+              <div class="goals-tags">
+                <span class="goal-tag">🏖️ Retirement Planning</span>
+                <span class="goal-tag">💰 Corpus Building</span>
+                <span class="goal-tag">🎓 Child Higher Education</span>
+                <span class="goal-tag">💍 Child Marriage</span>
+                <span class="goal-tag">🏡 Dream House</span>
+                <span class="goal-tag">✨ Wealth Goals</span>
+              </div>
+              <p class="exam-notice">
+                📋 <em>One must undergo mandatory training from our coaches and take up the Govt. body exam.</em>
+              </p>
+            </div>
+          </div>
+
+          <div class="achieve-grid">
+            <!-- 1. Financial freedom -->
+            <div class="achieve-item">
+              <div class="achieve-ico">💵</div>
+              <div class="achieve-text">
+                <h4>Financial Freedom</h4>
+                <p>Build uncapped income potential and recurring financial wellness revenue.</p>
+              </div>
+            </div>
+
+            <!-- 2. Flexible work hours -->
+            <div class="achieve-item">
+              <div class="achieve-ico">⏰</div>
+              <div class="achieve-text">
+                <h4>Flexible Work Hours</h4>
+                <p>Work on your own flexible schedule with total independence and autonomy.</p>
+              </div>
+            </div>
+
+            <!-- 3. Rewards & Recognition -->
+            <div class="achieve-item">
+              <div class="achieve-ico">🏆</div>
+              <div class="achieve-text">
+                <h4>Rewards &amp; Recognition</h4>
+                <p>Earn prestigious industry awards, trophies, and peer appreciation at grand galas.</p>
+              </div>
+            </div>
+
+            <!-- 4. Get skilled & groomed -->
+            <div class="achieve-item">
+              <div class="achieve-ico">🌟</div>
+              <div class="achieve-text">
+                <h4>Get Skilled &amp; Groomed</h4>
+                <p>Develop elite communication, leadership mindset, and executive persona.</p>
+              </div>
+            </div>
+
+            <!-- 5. Professional Guidance -->
+            <div class="achieve-item">
+              <div class="achieve-ico">🧭</div>
+              <div class="achieve-text">
+                <h4>Professional Guidance</h4>
+                <p>Receive close mentorship and proven advisory guidance from Coach Jagat Turkiya.</p>
+              </div>
+            </div>
+
+            <!-- 6. Training -->
+            <div class="achieve-item">
+              <div class="achieve-ico">📈</div>
+              <div class="achieve-text">
+                <h4>Comprehensive Training</h4>
+                <p>Complete learning roadmap covering regulations, advisory frameworks, and exam prep.</p>
+              </div>
+            </div>
+
+            <!-- 7. Service Support -->
+            <div class="achieve-item">
+              <div class="achieve-ico">🎧</div>
+              <div class="achieve-text">
+                <h4>Service Support</h4>
+                <p>End-to-end backend operational assistance, case resolution, and dedicated helpdesk.</p>
+              </div>
+            </div>
+
+            <!-- 8. Domestic and International trip -->
+            <div class="achieve-item">
+              <div class="achieve-ico">✈️</div>
+              <div class="achieve-text">
+                <h4>Domestic and International Trips</h4>
+                <p>Qualify for all-expense-paid domestic luxury retreats and global conventions.</p>
+              </div>
+            </div>
+
+            <!-- 9. AI Practical Tools for business growth -->
+            <div class="achieve-item" style="grid-column: 1 / -1;">
+              <div class="achieve-ico">🤖</div>
+              <div class="achieve-text">
+                <h4>AI Practical Tools for Business Growth</h4>
+                <p>Harness modern financial planning calculators, client assessment tech, and digital advisory tools.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="achieve-cta-wrap">
+            <a class="btn" style="background-color: var(--orange); padding: 14px 34px; font-size: 1.05rem;" href="https://wa.me/919799879381?text=Hi%20Apkacoach%20Growth%2C%20I%27m%20interested%20in%20becoming%20a%20licensed%20financial%20advisor." target="_blank" rel="noopener noreferrer">
+              BECOME A FINANCIAL ADVISOR →
+            </a>
+          </div>
         </div>
       </div>
     </section>
