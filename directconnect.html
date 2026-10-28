@@ -468,12 +468,43 @@
       font-size: 1.45rem;
     }
 
+    /* Footer Policies */
+    .footer-policies {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin: 14px 0 10px;
+      font-size: 0.82rem;
+    }
+
+    .footer-policies a {
+      color: #A0B2CD;
+      text-decoration: none;
+      transition: color 0.2s ease;
+    }
+
+    .footer-policies a:hover {
+      color: #ffffff;
+      text-decoration: underline;
+    }
+
+    .policy-sep {
+      color: #4A5B75;
+      font-size: 0.78rem;
+    }
+
     footer .fine {
-      font-size: 0.8rem;
+      font-size: 0.78rem;
       color: #8C9EB8;
-      max-width: 640px;
-      margin: 16px auto 0;
-      line-height: 1.6;
+      max-width: 620px;
+      margin: 10px auto 0;
+      line-height: 1.5;
+    }
+
+    .mobile-break {
+      display: none;
     }
 
     /* Sticky Mobile CTA */
@@ -491,37 +522,135 @@
       }
     }
 
-    @media (max-width: 760px) {
+    @media (max-width: 768px) {
       .hero {
-        padding: 40px 0 36px;
+        padding: 28px 0 24px;
       }
       .hero-grid {
         grid-template-columns: 1fr;
-        gap: 32px;
+        gap: 24px;
+      }
+      .eyebrow {
+        font-size: 0.74rem;
+        letter-spacing: 0.8px;
+        margin-bottom: 8px;
+      }
+      h1 {
+        font-size: 1.72rem !important;
+        line-height: 1.25;
+        margin-bottom: 12px;
+        letter-spacing: -0.5px;
+      }
+      .lead {
+        font-size: 0.92rem;
+        line-height: 1.55;
+        margin-bottom: 16px;
+      }
+      .chips {
+        gap: 6px;
+        margin: 10px 0 16px;
+      }
+      .chip {
+        padding: 5px 10px;
+        font-size: 0.76rem;
+      }
+      .pill {
+        padding: 6px 12px;
+        font-size: 0.78rem;
+        margin-bottom: 18px;
+        line-height: 1.35;
       }
       .visual img {
-        height: 320px;
+        height: 290px;
+        object-position: center 12%;
+        border-radius: 14px;
       }
       .cards-grid,
       .support-grid {
         grid-template-columns: 1fr;
+        gap: 14px;
       }
       .section {
-        padding: 50px 0;
+        padding: 38px 0;
+      }
+      .section-header {
+        margin: 0 auto 24px;
+      }
+      .section-header h2 {
+        font-size: 1.4rem;
+        line-height: 1.28;
+      }
+      .section-header p {
+        font-size: 0.86rem;
+        line-height: 1.5;
+      }
+      .nav {
+        padding: 12px 0;
       }
       .nav .btn {
-        padding: 9px 16px;
-        font-size: 0.86rem;
+        padding: 7px 12px;
+        font-size: 0.78rem;
       }
       .brand-title {
-        font-size: 1.35rem;
+        font-size: 1.2rem;
+      }
+      .brand-logo-img {
+        height: 28px;
       }
       .income-box {
-        padding: 34px 20px;
+        padding: 26px 16px;
+        border-radius: 16px;
+      }
+      .income-box h2 {
+        font-size: 1.3rem;
+        line-height: 1.3;
+      }
+      .income-amount {
+        font-size: 2rem;
+        margin: 10px 0 16px;
+        letter-spacing: -0.5px;
+      }
+      .opp-card {
+        padding: 18px 16px;
+        border-radius: 14px;
+      }
+      .opp-card h3 {
+        font-size: 1.02rem;
+      }
+      .opp-card p {
+        font-size: 0.85rem;
+        line-height: 1.5;
+      }
+      .support-card {
+        padding: 18px 16px;
+        border-radius: 14px;
+      }
+      .support-card h3 {
+        font-size: 1rem;
+      }
+      .support-card p {
+        font-size: 0.85rem;
+        line-height: 1.5;
       }
       .action-panel,
       .wa-card {
-        padding: 32px 18px;
+        padding: 26px 16px;
+        border-radius: 16px;
+      }
+      .action-panel h2,
+      .wa-card h2 {
+        font-size: 1.3rem;
+        line-height: 1.3;
+      }
+      .action-panel p,
+      .wa-card p {
+        font-size: 0.86rem;
+        line-height: 1.5;
+        margin-bottom: 18px;
+      }
+      .btn {
+        padding: 11px 18px;
+        font-size: 0.92rem;
       }
       .mobile-cta {
         display: block;
@@ -530,18 +659,42 @@
         left: 0;
         right: 0;
         background: #ffffff;
-        padding: 12px 16px;
+        padding: 10px 14px;
         border-top: 1px solid #E2E8F0;
         z-index: 999;
         text-align: center;
       }
       .mobile-cta .btn {
         width: 100%;
-        padding: 14px 20px;
-        font-size: 1rem;
+        padding: 12px 16px;
+        font-size: 0.92rem;
       }
       body {
-        padding-bottom: 74px;
+        padding-bottom: 70px;
+      }
+
+      /* Mobile 2-line disclaimer */
+      footer {
+        padding: 30px 0 24px;
+      }
+      .footer-policies {
+        gap: 6px 8px;
+        font-size: 0.76rem;
+        margin: 10px 0 8px;
+      }
+      .footer-policies a {
+        font-size: 0.76rem;
+        color: #B4C5DC;
+      }
+      footer .fine {
+        font-size: 0.71rem;
+        line-height: 1.36;
+        max-width: 350px;
+        margin: 8px auto 0;
+        color: #8C9EB8;
+      }
+      .mobile-break {
+        display: block;
       }
     }
   </style>
@@ -750,17 +903,30 @@
     </section>
   </main>
 
-  <!-- Footer (ApkaCoach with A symbol, no Growth text) -->
+  <!-- Footer (ApkaCoach with A symbol, policy links, and 2-line mobile disclaimer) -->
   <footer>
     <div class="wrap">
-      <div style="margin-bottom: 10px;">
-        <img src="./assets/images/apkacoach-symbol.png" alt="ApkaCoach" style="height: 32px; width: auto; object-fit: contain; display: inline-block; vertical-align: middle; margin-right: 8px;" />
+      <div style="margin-bottom: 8px;">
+        <img src="./assets/images/apkacoach-symbol.png" alt="ApkaCoach" style="height: 30px; width: auto; object-fit: contain; display: inline-block; vertical-align: middle; margin-right: 8px;" />
         <span class="brand-title" style="color: #ffffff; vertical-align: middle;">
           Apka<span style="color: var(--orange);">Coach</span>
         </span>
       </div>
+
+      <!-- Legal Policies (VSL, Optin & ThankYou style) -->
+      <div class="footer-policies">
+        <a href="#/privacy-policy" target="_blank" rel="noopener noreferrer">Privacy Policy</a>
+        <span class="policy-sep">|</span>
+        <a href="#/terms" target="_blank" rel="noopener noreferrer">Terms &amp; Conditions</a>
+        <span class="policy-sep">|</span>
+        <a href="#/refund-policy" target="_blank" rel="noopener noreferrer">Refund Policy</a>
+        <span class="policy-sep">|</span>
+        <a href="#/disclaimer" target="_blank" rel="noopener noreferrer">Disclaimer</a>
+      </div>
+
       <p class="fine">
-        This page provides general information about a professional opportunity and financial wellness. It is not a guarantee of income or individualized financial advice.
+        This page provides general information about a professional opportunity and financial wellness.<br class="mobile-break" />
+        It is not any guarantee or financial investment advice.
       </p>
     </div>
   </footer>

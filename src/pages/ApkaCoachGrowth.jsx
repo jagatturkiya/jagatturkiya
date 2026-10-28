@@ -12,8 +12,75 @@ export default function ApkaCoachGrowth() {
       lineHeight: 1.6,
       minHeight: '100vh',
       margin: 0,
-      padding: 0
+      padding: '0 0 74px 0'
     }}>
+      <style>{`
+        .apka-mobile-cta {
+          display: none;
+        }
+        .apka-mobile-break {
+          display: none;
+        }
+        @media (max-width: 768px) {
+          .apka-hero-h1 {
+            font-size: 1.72rem !important;
+            line-height: 1.25 !important;
+            margin-bottom: 12px !important;
+            letter-spacing: -0.5px !important;
+          }
+          .apka-hero-lead {
+            font-size: 0.92rem !important;
+            line-height: 1.55 !important;
+            margin-bottom: 16px !important;
+          }
+          .apka-chip {
+            padding: 5px 10px !important;
+            font-size: 0.76rem !important;
+          }
+          .apka-pill {
+            padding: 6px 12px !important;
+            font-size: 0.78rem !important;
+            margin-bottom: 18px !important;
+          }
+          .apka-hero-img {
+            height: 290px !important;
+            object-position: center 12% !important;
+          }
+          .apka-income-title {
+            font-size: 1.3rem !important;
+          }
+          .apka-income-num {
+            font-size: 2rem !important;
+            margin: 10px 0 16px !important;
+          }
+          .apka-section-title {
+            font-size: 1.4rem !important;
+          }
+          .apka-section-sub {
+            font-size: 0.86rem !important;
+          }
+          .apka-card-pad {
+            padding: 18px 16px !important;
+          }
+          .apka-footer-policies {
+            gap: 6px 8px !important;
+            font-size: 0.76rem !important;
+            margin: 10px 0 8px !important;
+          }
+          .apka-mobile-break {
+            display: block !important;
+          }
+          .apka-fine-text {
+            font-size: 0.71rem !important;
+            line-height: 1.36 !important;
+            max-width: 350px !important;
+            margin: 8px auto 0 !important;
+          }
+          .apka-mobile-cta {
+            display: block !important;
+          }
+        }
+      `}</style>
       {/* Top Header Navigation (ApkaCoach logo with A symbol, no Growth text) */}
       <header style={{
         background: '#ffffff',
@@ -107,7 +174,7 @@ export default function ApkaCoachGrowth() {
               }}>
                 Your Knowledge. Your Network. Your Growth.
               </span>
-              <h1 style={{
+              <h1 className="apka-hero-h1" style={{
                 fontFamily: "'Instrument Sans', sans-serif",
                 fontSize: 'clamp(2.4rem, 4.4vw, 3.8rem)',
                 lineHeight: 1.1,
@@ -117,7 +184,7 @@ export default function ApkaCoachGrowth() {
               }}>
                 Build Your Next <span style={{ color: '#FF7900' }}>Growth Story.</span>
               </h1>
-              <p style={{
+              <p className="apka-hero-lead" style={{
                 fontSize: '1.12rem',
                 color: '#3b4962',
                 maxWidth: '580px',
@@ -143,6 +210,7 @@ export default function ApkaCoachGrowth() {
                 ].map((chip) => (
                   <span
                     key={chip}
+                    className="apka-chip"
                     style={{
                       padding: '8px 14px',
                       border: '1px solid #E2E8F0',
@@ -158,7 +226,7 @@ export default function ApkaCoachGrowth() {
                 ))}
               </div>
 
-              <div style={{
+              <div className="apka-pill" style={{
                 display: 'inline-flex',
                 alignItems: 'center',
                 gap: '8px',
@@ -204,6 +272,7 @@ export default function ApkaCoachGrowth() {
               <img
                 src="./assets/images/jagat-speaking.jpg"
                 alt="Coach Jagat Turkiya Keynote Speaker on Stage"
+                className="apka-hero-img"
                 style={{
                   width: '100%',
                   height: '480px',
@@ -243,7 +312,7 @@ export default function ApkaCoachGrowth() {
               }}>
                 Target Income
               </span>
-              <h2 style={{
+              <h2 className="apka-income-title" style={{
                 fontFamily: "'Instrument Sans', sans-serif",
                 color: '#ffffff',
                 fontSize: 'clamp(1.8rem, 3vw, 2.3rem)',
@@ -251,7 +320,7 @@ export default function ApkaCoachGrowth() {
               }}>
                 Explore Your Income Potential
               </h2>
-              <strong style={{
+              <strong className="apka-income-num" style={{
                 display: 'block',
                 fontSize: 'clamp(2.6rem, 6vw, 4.2rem)',
                 lineHeight: 1.1,
@@ -305,7 +374,7 @@ export default function ApkaCoachGrowth() {
               }}>
                 Target Audience
               </span>
-              <h2 style={{
+              <h2 className="apka-section-title" style={{
                 fontFamily: "'Instrument Sans', sans-serif",
                 fontSize: 'clamp(1.9rem, 3.2vw, 2.6rem)',
                 color: '#102A56',
@@ -313,7 +382,7 @@ export default function ApkaCoachGrowth() {
               }}>
                 Who Is This Opportunity For?
               </h2>
-              <p style={{ fontSize: '1.05rem', color: '#5D6B82', lineHeight: 1.6 }}>
+              <p className="apka-section-sub" style={{ fontSize: '1.05rem', color: '#5D6B82', lineHeight: 1.6 }}>
                 We’re looking to connect with 5 motivated professionals who want to explore financial consulting as an additional or expanded professional opportunity.
               </p>
             </div>
@@ -333,6 +402,7 @@ export default function ApkaCoachGrowth() {
               ].map((card) => (
                 <article
                   key={card.title}
+                  className="apka-card-pad"
                   style={{
                     padding: '26px 24px',
                     border: '1px solid #E2E8F0',
@@ -374,7 +444,7 @@ export default function ApkaCoachGrowth() {
               }}>
                 Structured Mentorship
               </span>
-              <h2 style={{
+              <h2 className="apka-section-title" style={{
                 fontFamily: "'Instrument Sans', sans-serif",
                 fontSize: 'clamp(1.9rem, 3.2vw, 2.6rem)',
                 color: '#102A56',
@@ -382,7 +452,7 @@ export default function ApkaCoachGrowth() {
               }}>
                 Grow With the Right Support
               </h2>
-              <p style={{ fontSize: '1.05rem', color: '#5D6B82', lineHeight: 1.6 }}>
+              <p className="apka-section-sub" style={{ fontSize: '1.05rem', color: '#5D6B82', lineHeight: 1.6 }}>
                 Get a clearer picture of the opportunity before you decide whether it is right for you.
               </p>
             </div>
@@ -400,6 +470,7 @@ export default function ApkaCoachGrowth() {
               ].map((step) => (
                 <div
                   key={step.num}
+                  className="apka-card-pad"
                   style={{
                     backgroundColor: '#FFF9F2',
                     border: '1px solid #FDE6CF',
@@ -463,7 +534,7 @@ export default function ApkaCoachGrowth() {
               }}>
                 Free Wellness Resource
               </span>
-              <h2 style={{
+              <h2 className="apka-section-title" style={{
                 fontFamily: "'Instrument Sans', sans-serif",
                 fontSize: 'clamp(1.8rem, 3.2vw, 2.4rem)',
                 color: '#102A56',
@@ -528,7 +599,7 @@ export default function ApkaCoachGrowth() {
               }}>
                 Direct Connect
               </span>
-              <h2 style={{
+              <h2 className="apka-section-title" style={{
                 fontFamily: "'Instrument Sans', sans-serif",
                 color: '#ffffff',
                 fontSize: 'clamp(1.8rem, 3vw, 2.3rem)',
@@ -572,21 +643,21 @@ export default function ApkaCoachGrowth() {
         </section>
       </main>
 
-      {/* Footer (ApkaCoach with A symbol, no Growth text) */}
+      {/* Footer (ApkaCoach with A symbol, policy links, and 2-line mobile disclaimer) */}
       <footer style={{
         backgroundColor: '#071c40',
         color: '#CFDAEB',
-        padding: '44px 0 36px',
+        padding: '34px 0 26px',
         textAlign: 'center',
         borderTop: '1px solid rgba(255, 255, 255, 0.08)'
       }}>
         <div style={{ width: 'min(1140px, 92%)', margin: '0 auto' }}>
-          <div style={{ marginBottom: '10px' }}>
+          <div style={{ marginBottom: '8px' }}>
             <img
               src="./assets/images/apkacoach-symbol.png"
               alt="ApkaCoach"
               style={{
-                height: '32px',
+                height: '30px',
                 width: 'auto',
                 objectFit: 'contain',
                 display: 'inline-block',
@@ -597,27 +668,90 @@ export default function ApkaCoachGrowth() {
             <span style={{
               fontFamily: "'Instrument Sans', sans-serif",
               color: '#ffffff',
-              fontSize: '1.45rem',
+              fontSize: '1.35rem',
               fontWeight: 800,
               verticalAlign: 'middle'
             }}>
               Apka<span style={{ color: '#FF7900' }}>Coach</span>
             </span>
           </div>
-          <p style={{
-            fontSize: '0.8rem',
-            color: '#8C9EB8',
-            maxWidth: '640px',
-            margin: '16px auto 0',
-            lineHeight: 1.6
-          }}>
-            This page provides general information about a professional opportunity and financial wellness. It is not a guarantee of income or individualized financial advice.
+
+          {/* Legal Policies (VSL, Optin & ThankYou style) */}
+          <div
+            className="apka-footer-policies"
+            style={{
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              gap: '12px',
+              flexWrap: 'wrap',
+              margin: '12px 0 8px',
+              fontSize: '0.82rem'
+            }}
+          >
+            <a
+              href="#/privacy-policy"
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{ color: '#A0B2CD', textDecoration: 'none' }}
+              onMouseEnter={e => e.currentTarget.style.color = '#ffffff'}
+              onMouseLeave={e => e.currentTarget.style.color = '#A0B2CD'}
+            >
+              Privacy Policy
+            </a>
+            <span style={{ color: '#4A5B75', fontSize: '0.78rem' }}>|</span>
+            <a
+              href="#/terms"
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{ color: '#A0B2CD', textDecoration: 'none' }}
+              onMouseEnter={e => e.currentTarget.style.color = '#ffffff'}
+              onMouseLeave={e => e.currentTarget.style.color = '#A0B2CD'}
+            >
+              Terms &amp; Conditions
+            </a>
+            <span style={{ color: '#4A5B75', fontSize: '0.78rem' }}>|</span>
+            <a
+              href="#/refund-policy"
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{ color: '#A0B2CD', textDecoration: 'none' }}
+              onMouseEnter={e => e.currentTarget.style.color = '#ffffff'}
+              onMouseLeave={e => e.currentTarget.style.color = '#A0B2CD'}
+            >
+              Refund Policy
+            </a>
+            <span style={{ color: '#4A5B75', fontSize: '0.78rem' }}>|</span>
+            <a
+              href="#/disclaimer"
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{ color: '#A0B2CD', textDecoration: 'none' }}
+              onMouseEnter={e => e.currentTarget.style.color = '#ffffff'}
+              onMouseLeave={e => e.currentTarget.style.color = '#A0B2CD'}
+            >
+              Disclaimer
+            </a>
+          </div>
+
+          <p
+            className="apka-fine-text"
+            style={{
+              fontSize: '0.78rem',
+              color: '#8C9EB8',
+              maxWidth: '620px',
+              margin: '8px auto 0',
+              lineHeight: 1.45
+            }}
+          >
+            This page provides general information about a professional opportunity and financial wellness.<br className="apka-mobile-break" />
+            It is not any guarantee or financial investment advice.
           </p>
         </div>
       </footer>
 
       {/* Mobile Sticky CTA */}
-      <div style={{
+      <div className="apka-mobile-cta" style={{
         position: 'fixed',
         bottom: 0,
         left: 0,
