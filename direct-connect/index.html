@@ -844,6 +844,129 @@
         display: block;
       }
     }
+  
+    /* Policy Modal Popup */
+    .policy-btn {
+      background: none;
+      border: none;
+      padding: 0;
+      color: #A0B2CD;
+      font-size: 0.82rem;
+      font-family: inherit;
+      cursor: pointer;
+      text-decoration: none;
+      transition: color 0.15s ease;
+    }
+    .policy-btn:hover {
+      color: #ffffff;
+      text-decoration: underline;
+    }
+    .policy-modal-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.82);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      z-index: 99999;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 16px;
+      opacity: 0;
+      transition: opacity 0.2s ease;
+    }
+    .policy-modal-overlay.active {
+      display: flex;
+      opacity: 1;
+    }
+    .policy-modal-dialog {
+      background: #0a0a0d;
+      color: #d4d4d8;
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      border-radius: 16px;
+      width: min(740px, 100%);
+      max-height: 85vh;
+      display: flex;
+      flex-direction: column;
+      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.9);
+      overflow: hidden;
+      transform: scale(0.96);
+      transition: transform 0.2s ease;
+    }
+    .policy-modal-overlay.active .policy-modal-dialog {
+      transform: scale(1);
+    }
+    .policy-modal-header {
+      padding: 18px 24px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: #0d0d12;
+    }
+    .policy-modal-title {
+      font-family: 'Instrument Sans', sans-serif;
+      font-size: 1.35rem;
+      font-weight: 700;
+      color: #ffffff;
+      margin: 0;
+    }
+    .policy-modal-close {
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 50%;
+      width: 32px;
+      height: 32px;
+      color: #ffffff;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.1rem;
+      line-height: 1;
+      transition: all 0.15s ease;
+    }
+    .policy-modal-close:hover {
+      background: rgba(255, 255, 255, 0.2);
+    }
+    .policy-modal-body {
+      padding: 24px;
+      overflow-y: auto;
+      line-height: 1.75;
+      font-size: 0.95rem;
+      color: #d4d4d8;
+    }
+    .policy-modal-body h4 {
+      color: #ffffff;
+      font-family: 'Instrument Sans', sans-serif;
+      font-size: 1.15rem;
+      margin: 20px 0 8px 0;
+    }
+    .policy-modal-body p {
+      margin-bottom: 14px;
+    }
+    .policy-modal-footer {
+      padding: 14px 24px;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      background: #0d0d12;
+      display: flex;
+      justify-content: flex-end;
+    }
+    .policy-modal-footer-btn {
+      padding: 8px 22px;
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.16);
+      border-radius: 8px;
+      color: #ffffff;
+      font-weight: 600;
+      font-size: 0.9rem;
+      cursor: pointer;
+      transition: background 0.15s ease;
+    }
+    .policy-modal-footer-btn:hover {
+      background: rgba(255, 255, 255, 0.2);
+    }
+
   </style>
 </head>
 <body>
@@ -1175,13 +1298,13 @@
 
       <!-- Legal Policies (VSL, Optin & ThankYou style) -->
       <div class="footer-policies">
-        <a href="/#/privacy-policy" target="_blank" rel="noopener noreferrer">Privacy Policy</a>
+        <button type="button" class="policy-btn" onclick="openPolicyModal('privacy')">Privacy Policy</button>
         <span class="policy-sep">|</span>
-        <a href="/#/terms" target="_blank" rel="noopener noreferrer">Terms &amp; Conditions</a>
+        <button type="button" class="policy-btn" onclick="openPolicyModal('terms')">Terms &amp; Conditions</button>
         <span class="policy-sep">|</span>
-        <a href="/#/refund-policy" target="_blank" rel="noopener noreferrer">Refund Policy</a>
+        <button type="button" class="policy-btn" onclick="openPolicyModal('refund')">Refund Policy</button>
         <span class="policy-sep">|</span>
-        <a href="/#/disclaimer" target="_blank" rel="noopener noreferrer">Disclaimer</a>
+        <button type="button" class="policy-btn" onclick="openPolicyModal('disclaimer')">Disclaimer</button>
       </div>
 
       <p class="fine">
@@ -1198,15 +1321,225 @@
     </a>
   </div>
 
+  
+  <!-- Policy Modal Popup Container -->
+  <div id="policyModal" class="policy-modal-overlay" onclick="handlePolicyBackdrop(event)">
+    <div class="policy-modal-dialog">
+      <div class="policy-modal-header">
+        <h3 id="policyModalTitle" class="policy-modal-title">Policy</h3>
+        <button type="button" class="policy-modal-close" onclick="closePolicyModal()" aria-label="Close modal">✕</button>
+      </div>
+      <div id="policyModalBody" class="policy-modal-body"></div>
+      <div class="policy-modal-footer">
+        <button type="button" class="policy-modal-footer-btn" onclick="closePolicyModal()">Close</button>
+      </div>
+    </div>
+  </div>
+
   <script>
-    if (window.location.hash && (window.location.hash.includes('policy') || window.location.hash.includes('terms') || window.location.hash.includes('disclaimer'))) {
-      window.location.replace('/' + window.location.hash);
+    const policyData = {
+      privacy: {
+        title: "Privacy Policy",
+        content: `
+          <p style="margin-bottom: 16px; color: #9ca3af;">
+            We respect your privacy and are deeply committed to protecting your personal information.
+          </p>
+
+          <h4>Introduction</h4>
+          <p>
+            Welcome to <strong style="color: #ffffff;">Jagat Turkiya</strong>. We respect your privacy and are deeply committed to protecting your <strong style="color: #ffffff;">personal information</strong>.
+          </p>
+          <p>
+            This <strong style="color: #ffffff;">Privacy Policy</strong> outlines our practices regarding the collection, use, and disclosure of your information when you use our website, digital products, and coaching services. By accessing our platform, you agree to the collection and use of information in accordance with this policy.
+          </p>
+
+          <h4>Who We Are</h4>
+          <p>
+            <strong style="color: #ffffff;">Jagat Turkiya</strong> is a premium transformational coaching platform dedicated to helping individuals improve their mindset, relationships, and overall life success. Our primary goal is to provide a safe, secure, and inspiring environment for personal growth.
+          </p>
+
+          <h4>Information We Collect</h4>
+          <p>While using our Service, we may ask you to provide certain personally identifiable information:</p>
+          <ul style="list-style: disc; padding-left: 20px; margin-bottom: 14px;">
+            <li><strong style="color: #ffffff;">Identity Data:</strong> First name and last name.</li>
+            <li><strong style="color: #ffffff;">Contact Data:</strong> Email address and phone number.</li>
+            <li><strong style="color: #ffffff;">Transaction Data:</strong> Details about payments and services purchased.</li>
+          </ul>
+
+          <h4>How We Use Your Information</h4>
+          <p>We use the collected data to provide, maintain, and improve our coaching programs, process transactions securely, and communicate updates.</p>
+          <div style="border-left: 2px solid #ffffff; padding: 10px 14px; margin: 12px 0 16px 0; background: rgba(255, 255, 255, 0.02); color: #f4f4f5;">
+            We never sell, rent, or misuse your personal information.
+          </div>
+
+          <h4>Log Data &amp; Cookies</h4>
+          <p>We collect standard log information and use cookies to enhance navigation and site performance. You can instruct your browser to refuse cookies if preferred.</p>
+
+          <h4>Data Security</h4>
+          <p>We implement industry-standard security measures to safeguard your personal data. While we strive to use commercially acceptable means to protect your information, no transmission method over the Internet is 100% secure.</p>
+
+          <h4>Contact Us</h4>
+          <p>If you have questions regarding this Privacy Policy, please reach out to:</p>
+          <p><a href="mailto:hello@apkacoach.com" style="color: #ffffff; font-weight: 600; text-decoration: underline;">hello@apkacoach.com</a></p>
+        `
+      },
+      terms: {
+        title: "Terms & Conditions",
+        content: `
+          <p style="margin-bottom: 16px; color: #9ca3af;">
+            Please review the terms and conditions governing the use of Jagat Turkiya's website, programs, and digital products.
+          </p>
+
+          <h4>1. Acceptance of Terms</h4>
+          <p>
+            By accessing or using the website and coaching services provided by <strong style="color: #ffffff;">Jagat Turkiya</strong>, you acknowledge that you have read, understood, and agree to be bound by these <strong style="color: #ffffff;">Terms</strong>.
+          </p>
+
+          <h4>2. Intellectual Property Rights</h4>
+          <p>
+            All content, materials, frameworks, videos, and digital products available on this platform are the exclusive intellectual property of <strong style="color: #ffffff;">Jagat Turkiya</strong>. You are granted a limited license strictly for personal, non-commercial use.
+          </p>
+
+          <h4>3. Third-Party Links</h4>
+          <p>
+            Our platform may contain links to external sites that are not owned or controlled by us. We assume no responsibility for third-party practices or content.
+          </p>
+
+          <h4>4. Termination of Access</h4>
+          <p>
+            We reserve the right to suspend or terminate access immediately, without prior notice, if any user breaches these Terms.
+          </p>
+
+          <h4>5. No Warranties Disclaimer</h4>
+          <p>
+            Coaching services and resources are provided on an "AS IS" and "AS AVAILABLE" basis. While we strive to provide proven frameworks, individual outcomes are solely the responsibility of the client.
+          </p>
+
+          <h4>6. Governing Law</h4>
+          <p>
+            These Terms shall be governed and construed in accordance with the laws of <strong style="color: #ffffff;">India</strong>.
+          </p>
+
+          <h4>7. Contact Information</h4>
+          <p>For questions regarding these Terms &amp; Conditions, please contact:</p>
+          <p><a href="mailto:hello@apkacoach.com" style="color: #ffffff; font-weight: 600; text-decoration: underline;">hello@apkacoach.com</a></p>
+        `
+      },
+      refund: {
+        title: "Refund Policy",
+        content: `
+          <p style="margin-bottom: 16px; color: #9ca3af;">
+            Refund and cancellation policy for Jagat Turkiya programs, consultations, and digital products.
+          </p>
+
+          <div style="border-left: 2px solid #ffffff; padding: 12px 16px; margin-bottom: 20px; background: rgba(255, 255, 255, 0.02);">
+            <p style="color: #ffffff; font-weight: 700; font-size: 1.05rem; margin: 0 0 4px 0;">All purchases are non-refundable.</p>
+            <p style="color: #9ca3af; font-size: 0.92rem; margin: 0;">Please ensure you are fully committed before enrolling in any program.</p>
+          </div>
+
+          <h4>Non-Refundable Programs &amp; Services</h4>
+          <p>All sales of coaching services, masterminds, digital products, and events are final:</p>
+          <ul style="list-style: disc; padding-left: 20px; margin-bottom: 14px;">
+            <li><strong style="color: #ffffff;">Mastermind &amp; Group Programs:</strong> Enrolled seats cannot be transferred, cancelled, or refunded.</li>
+            <li><strong style="color: #ffffff;">1-on-1 Consultations:</strong> Confirmed consultation slots are non-refundable.</li>
+            <li><strong style="color: #ffffff;">Digital Products:</strong> Immediate digital access is granted, making all digital content strictly non-refundable.</li>
+            <li><strong style="color: #ffffff;">Live Workshops:</strong> Event tickets are non-refundable due to venue commitments.</li>
+          </ul>
+
+          <h4>Cancellations &amp; Rescheduling</h4>
+          <p>
+            For 1-on-1 sessions, rescheduling requests must be submitted at least 24 hours prior. Last-minute cancellations or missed sessions will be forfeited.
+          </p>
+
+          <h4>Exceptions</h4>
+          <p>
+            The only exception is in the event of a proven billing error or accidental duplicate payment for the same service. In such rare instances, notify our support team within 48 hours.
+          </p>
+
+          <h4>Need Help or Have Questions?</h4>
+          <p>If you have questions prior to enrolling or making a purchase, reach out to our team:</p>
+          <p><a href="mailto:hello@apkacoach.com" style="color: #ffffff; font-weight: 600; text-decoration: underline;">hello@apkacoach.com</a></p>
+        `
+      },
+      disclaimer: {
+        title: "Disclaimer",
+        content: `
+          <p style="margin-bottom: 16px; color: #9ca3af;">
+            All content, coaching guidance, and resources provided by Jagat Turkiya are for informational and educational purposes only.
+          </p>
+
+          <div style="border-left: 2px solid #ffffff; padding: 12px 16px; margin-bottom: 20px; background: rgba(255, 255, 255, 0.02);">
+            <p style="color: #ffffff; font-weight: 700; font-size: 1.05rem; margin: 0 0 4px 0;">This is not a guarantee-based system.</p>
+            <p style="color: #9ca3af; font-size: 0.92rem; margin: 0;">Your results depend entirely on your personal effort, consistency, and real-world execution.</p>
+          </div>
+
+          <h4>1. General Disclaimer</h4>
+          <p>
+            Information and methodologies are provided solely for personal growth and educational purposes. You are entirely responsible for your own progress and decisions.
+          </p>
+
+          <h4>2. No Promise or Guarantee</h4>
+          <p>
+            We make no guarantees regarding specific levels of success, financial gain, or personal fulfillment. Testimonials reflect exceptional results and do not guarantee identical outcomes for every individual.
+          </p>
+
+          <h4>3. Educational Purposes Only</h4>
+          <p>
+            Our content is not a substitute for professional legal, medical, psychological, or certified financial advice.
+          </p>
+
+          <h4>4. Effort and Application Matter</h4>
+          <p>
+            Your transformation outcome is directly determined by your consistency, relentless real-world action, and an open mindset.
+          </p>
+
+          <h4>Questions?</h4>
+          <p>If you have any questions regarding this disclaimer, please contact:</p>
+          <p><a href="mailto:hello@apkacoach.com" style="color: #ffffff; font-weight: 600; text-decoration: underline;">hello@apkacoach.com</a></p>
+        `
+      }
+    };
+
+    function openPolicyModal(type) {
+      const p = policyData[type];
+      if (!p) return;
+      document.getElementById('policyModalTitle').textContent = p.title;
+      document.getElementById('policyModalBody').innerHTML = p.content;
+      const modal = document.getElementById('policyModal');
+      modal.classList.add('active');
+      document.body.style.overflow = 'hidden';
     }
-    window.addEventListener('hashchange', function() {
-      if (window.location.hash && (window.location.hash.includes('policy') || window.location.hash.includes('terms') || window.location.hash.includes('disclaimer'))) {
-        window.location.href = '/' + window.location.hash;
+
+    function closePolicyModal() {
+      const modal = document.getElementById('policyModal');
+      modal.classList.remove('active');
+      document.body.style.overflow = '';
+      if (window.location.hash) {
+        history.replaceState(null, '', window.location.pathname + window.location.search);
+      }
+    }
+
+    function handlePolicyBackdrop(e) {
+      if (e.target.id === 'policyModal') {
+        closePolicyModal();
+      }
+    }
+
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') {
+        closePolicyModal();
       }
     });
+
+    // Check on load if URL has hash for policy
+    window.addEventListener('DOMContentLoaded', function() {
+      const h = window.location.hash.toLowerCase();
+      if (h.includes('privacy')) openPolicyModal('privacy');
+      else if (h.includes('terms')) openPolicyModal('terms');
+      else if (h.includes('refund')) openPolicyModal('refund');
+      else if (h.includes('disclaimer')) openPolicyModal('disclaimer');
+    });
   </script>
+
 </body>
 </html>
