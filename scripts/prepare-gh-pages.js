@@ -45,8 +45,6 @@ if (fs.existsSync(compiledHtmlPath)) {
   fs.writeFileSync(path.join(rootDir, '404.html'), spa404Content);
   fs.writeFileSync(path.join(rootDir, '.nojekyll'), '');
 
-  // Standalone routes are handled dynamically by SPA 404.html redirect shim
-
   // Also sync standalone directconnect and ApkaCoach Growth connect pages from src/index.html
   const srcIndexHtmlPath = path.join(rootDir, 'src', 'index.html');
   if (fs.existsSync(srcIndexHtmlPath)) {
@@ -78,7 +76,25 @@ if (fs.existsSync(compiledHtmlPath)) {
     console.log('[prepare-gh-pages] Written standalone directconnect, apkacoach-connect, connect & growth html files and clean route directories.');
   }
 
-  // Copy all favicon formats to dist & root
+  // Also write clean route directories & html redirects for policy pages so /privacy-policy, /terms, /refund-policy, /disclaimer load directly with 200 OK
+  const policyRoutes = ['privacy-policy', 'terms', 'refund-policy', 'disclaimer'];
+  policyRoutes.forEach(dirName => {
+    const redirectHtml = htmlContent.replace('</head>', `  <script>
+    window.location.replace(window.location.origin + '/#/${dirName}' + window.location.search);
+  </script>
+</head>`);
+    const distSubDir = path.join(distDir, dirName);
+    const rootSubDir = path.join(rootDir, dirName);
+    if (!fs.existsSync(distSubDir)) fs.mkdirSync(distSubDir, { recursive: true });
+    if (!fs.existsSync(rootSubDir)) fs.mkdirSync(rootSubDir, { recursive: true });
+    fs.writeFileSync(path.join(distSubDir, 'index.html'), redirectHtml);
+    fs.writeFileSync(path.join(rootSubDir, 'index.html'), redirectHtml);
+    fs.writeFileSync(path.join(distDir, `${dirName}.html`), redirectHtml);
+    fs.writeFileSync(path.join(rootDir, `${dirName}.html`), redirectHtml);
+  });
+  console.log('[prepare-gh-pages] Written standalone policy html redirects for privacy-policy, terms, refund-policy, and disclaimer.');
+
+  // Copy all favicon formats to dist & root (JT icons for main site)
   const faviconFiles = ['favicon.ico', 'favicon.png', 'favicon.svg', 'favicon-32x32.png', 'favicon-16x16.png', 'favicon-64x64.png', 'apple-touch-icon.png'];
   for (const f of faviconFiles) {
     const srcPath = path.join(rootDir, 'public', f);

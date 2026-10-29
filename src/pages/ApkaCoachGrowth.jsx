@@ -4,6 +4,23 @@ export default function ApkaCoachGrowth() {
   const WHATSAPP_URL = "https://wa.me/919799879381?text=Hi%20Apkacoach%20Growth%2C%20I%27m%20interested%20in%20learning%20more%20about%20the%20financial%20consulting%20opportunity.";
   const WEALTH_COMPASS_URL = "https://yourwealthcompass.in";
 
+  React.useEffect(() => {
+    // Dynamic favicon for ApkaCoach DirectConnect page
+    const iconLinks = document.querySelectorAll("link[rel*='icon'], link[rel='apple-touch-icon']");
+    const originalHrefs = [];
+    iconLinks.forEach(link => {
+      originalHrefs.push({ el: link, href: link.getAttribute('href') });
+      link.setAttribute('href', './assets/images/apkacoach-symbol.png');
+    });
+
+    return () => {
+      // Revert back to original JT favicon when leaving directconnect
+      originalHrefs.forEach(({ el, href }) => {
+        if (href) el.setAttribute('href', href);
+      });
+    };
+  }, []);
+
   return (
     <div style={{
       fontFamily: "'Inter', -apple-system, BlinkMacSystemFont, sans-serif",
@@ -404,27 +421,15 @@ export default function ApkaCoachGrowth() {
         {/* Who Is This Opportunity For? */}
         <section style={{ padding: '76px 0', backgroundColor: '#ffffff' }}>
           <div style={{ width: 'min(1140px, 92%)', margin: '0 auto' }}>
-            <div style={{ textAlign: 'center', maxWidth: '720px', margin: '0 auto 42px' }}>
-              <span style={{
-                color: '#FF7900',
-                fontWeight: 800,
-                letterSpacing: '2px',
-                textTransform: 'uppercase',
-                fontSize: '0.82rem'
-              }}>
-                Target Audience
-              </span>
+            <div style={{ textAlign: 'center', maxWidth: '720px', margin: '0 auto 36px' }}>
               <h2 className="apka-section-title" style={{
                 fontFamily: "'Instrument Sans', sans-serif",
                 fontSize: 'clamp(1.9rem, 3.2vw, 2.6rem)',
                 color: '#102A56',
-                margin: '10px 0 12px'
+                margin: 0
               }}>
                 Who Is This Opportunity For?
               </h2>
-              <p className="apka-section-sub" style={{ fontSize: '1.05rem', color: '#5D6B82', lineHeight: 1.6 }}>
-                We’re looking to connect with 5 motivated professionals who want to explore financial consulting as an additional or expanded professional opportunity.
-              </p>
             </div>
 
             <div style={{
@@ -983,7 +988,7 @@ export default function ApkaCoachGrowth() {
             }}
           >
             <a
-              href="#/privacy-policy"
+              href="/#/privacy-policy"
               target="_blank"
               rel="noopener noreferrer"
               style={{ color: '#A0B2CD', textDecoration: 'none' }}
@@ -994,7 +999,7 @@ export default function ApkaCoachGrowth() {
             </a>
             <span style={{ color: '#4A5B75', fontSize: '0.78rem' }}>|</span>
             <a
-              href="#/terms"
+              href="/#/terms"
               target="_blank"
               rel="noopener noreferrer"
               style={{ color: '#A0B2CD', textDecoration: 'none' }}
@@ -1005,7 +1010,7 @@ export default function ApkaCoachGrowth() {
             </a>
             <span style={{ color: '#4A5B75', fontSize: '0.78rem' }}>|</span>
             <a
-              href="#/refund-policy"
+              href="/#/refund-policy"
               target="_blank"
               rel="noopener noreferrer"
               style={{ color: '#A0B2CD', textDecoration: 'none' }}
@@ -1016,7 +1021,7 @@ export default function ApkaCoachGrowth() {
             </a>
             <span style={{ color: '#4A5B75', fontSize: '0.78rem' }}>|</span>
             <a
-              href="#/disclaimer"
+              href="/#/disclaimer"
               target="_blank"
               rel="noopener noreferrer"
               style={{ color: '#A0B2CD', textDecoration: 'none' }}

@@ -2,41 +2,28 @@ import React from 'react';
 
 export default function Terms() {
   return (
-    <div className="legal-page" style={{ backgroundColor: '#070D18', color: '#CBD5E1', minHeight: '100vh', paddingBottom: '80px' }}>
+    <div className="legal-page" style={{ backgroundColor: '#050505', color: '#d4d4d8', minHeight: '100vh', paddingBottom: '90px' }}>
       {/* Header Banner */}
       <section style={{
-        background: 'linear-gradient(180deg, #0f172a 0%, #070D18 100%)',
-        padding: '6rem 1rem 3.5rem 1rem',
+        background: '#050505',
+        padding: '5.5rem 1.5rem 3.5rem 1.5rem',
         borderBottom: '1px solid rgba(255, 255, 255, 0.08)',
         textAlign: 'center'
       }}>
-        <div style={{ maxWidth: '840px', margin: '0 auto' }}>
-          <span style={{
-            display: 'inline-flex',
-            alignItems: 'center',
-            gap: '8px',
-            color: '#FF7900',
-            fontWeight: 700,
-            letterSpacing: '2px',
-            textTransform: 'uppercase',
-            fontSize: '0.85rem',
-            marginBottom: '14px'
-          }}>
-            📜 User Agreement
-          </span>
+        <div style={{ maxWidth: '820px', margin: '0 auto' }}>
           <h1 style={{
             fontFamily: "'Instrument Sans', sans-serif",
-            fontSize: 'clamp(2.4rem, 5vw, 3.6rem)',
+            fontSize: 'clamp(2.4rem, 5vw, 3.5rem)',
             fontWeight: 800,
             color: '#ffffff',
-            letterSpacing: '-1px',
+            letterSpacing: '-0.02em',
             margin: '0 0 16px 0'
           }}>
             Terms &amp; Conditions
           </h1>
           <p style={{
             fontSize: '1.15rem',
-            color: '#94A3B8',
+            color: '#9ca3af',
             lineHeight: 1.6,
             maxWidth: '680px',
             margin: '0 auto'
@@ -47,25 +34,24 @@ export default function Terms() {
       </section>
 
       {/* Main Legal Content Container */}
-      <main style={{ maxWidth: '840px', margin: '0 auto', padding: '40px 20px 0 20px' }}>
+      <main style={{ maxWidth: '820px', margin: '0 auto', padding: '48px 24px 0 24px' }}>
         <div style={{ display: 'flex', flexDirection: 'column', gap: '36px' }}>
 
           {/* 1. Acceptance of Terms */}
           <section>
             <h2 style={{
               fontFamily: "'Instrument Sans', sans-serif",
-              fontSize: '1.45rem',
+              fontSize: '1.4rem',
               fontWeight: 700,
               color: '#ffffff',
-              borderLeft: '4px solid #FF7900',
-              paddingLeft: '14px',
-              marginBottom: '16px'
+              marginBottom: '14px',
+              letterSpacing: '-0.01em'
             }}>
               1. Acceptance of Terms
             </h2>
-            <div style={{ lineHeight: '1.8', color: '#94A3B8', fontSize: '1.02rem', paddingLeft: '18px' }}>
+            <div style={{ lineHeight: '1.8', color: '#d4d4d8', fontSize: '1.02rem' }}>
               <p style={{ marginBottom: '14px' }}>
-                By accessing, browsing, or using the website and coaching services provided by <strong style={{ color: '#F1F5F9' }}>Jagat Turkiya</strong>, you acknowledge that you have read, understood, and agree to be bound by these <strong style={{ color: '#F1F5F9' }}>Terms</strong>.
+                By accessing, browsing, or using the website and coaching services provided by <strong style={{ color: '#ffffff' }}>Jagat Turkiya</strong>, you acknowledge that you have read, understood, and agree to be bound by these <strong style={{ color: '#ffffff' }}>Terms</strong>.
               </p>
               <p style={{ margin: 0 }}>
                 If you do not agree with any part of these conditions, you must discontinue your use of our platform and programs immediately. These terms apply to all visitors, registered users, and clients.
@@ -79,18 +65,17 @@ export default function Terms() {
           <section>
             <h2 style={{
               fontFamily: "'Instrument Sans', sans-serif",
-              fontSize: '1.45rem',
+              fontSize: '1.4rem',
               fontWeight: 700,
               color: '#ffffff',
-              borderLeft: '4px solid #FF7900',
-              paddingLeft: '14px',
-              marginBottom: '16px'
+              marginBottom: '14px',
+              letterSpacing: '-0.01em'
             }}>
               2. Intellectual Property Rights
             </h2>
-            <div style={{ lineHeight: '1.8', color: '#94A3B8', fontSize: '1.02rem', paddingLeft: '18px' }}>
+            <div style={{ lineHeight: '1.8', color: '#d4d4d8', fontSize: '1.02rem' }}>
               <p style={{ marginBottom: '14px' }}>
-                All content, materials, frameworks, videos, and digital products available on this platform are the exclusive intellectual property of <strong style={{ color: '#F1F5F9' }}>Jagat Turkiya</strong>.
+                All content, materials, frameworks, videos, and digital products available on this platform are the exclusive intellectual property of <strong style={{ color: '#ffffff' }}>Jagat Turkiya</strong>.
               </p>
               <p style={{ margin: 0 }}>
                 You are granted a limited, non-exclusive, non-transferable license to access and use the materials strictly for your personal, non-commercial transformation journey. Unauthorized reproduction, distribution, or resale is strictly prohibited.
@@ -104,16 +89,15 @@ export default function Terms() {
           <section>
             <h2 style={{
               fontFamily: "'Instrument Sans', sans-serif",
-              fontSize: '1.45rem',
+              fontSize: '1.4rem',
               fontWeight: 700,
               color: '#ffffff',
-              borderLeft: '4px solid #FF7900',
-              paddingLeft: '14px',
-              marginBottom: '16px'
+              marginBottom: '14px',
+              letterSpacing: '-0.01em'
             }}>
               3. Third-Party Links
             </h2>
-            <div style={{ lineHeight: '1.8', color: '#94A3B8', fontSize: '1.02rem', paddingLeft: '18px' }}>
+            <div style={{ lineHeight: '1.8', color: '#d4d4d8', fontSize: '1.02rem' }}>
               <p style={{ marginBottom: '14px' }}>
                 Our platform may contain links to third-party websites or services that are not owned or controlled by us. We assume no responsibility for the content, privacy policies, or practices of any third-party websites.
               </p>
@@ -129,18 +113,17 @@ export default function Terms() {
           <section>
             <h2 style={{
               fontFamily: "'Instrument Sans', sans-serif",
-              fontSize: '1.45rem',
+              fontSize: '1.4rem',
               fontWeight: 700,
               color: '#ffffff',
-              borderLeft: '4px solid #FF7900',
-              paddingLeft: '14px',
-              marginBottom: '16px'
+              marginBottom: '14px',
+              letterSpacing: '-0.01em'
             }}>
               4. Termination of Access
             </h2>
-            <div style={{ lineHeight: '1.8', color: '#94A3B8', fontSize: '1.02rem', paddingLeft: '18px' }}>
+            <div style={{ lineHeight: '1.8', color: '#d4d4d8', fontSize: '1.02rem' }}>
               <p style={{ marginBottom: '14px' }}>
-                We reserve the right to suspend or terminate your access to our coaching programs and digital platform immediately, without prior notice or liability, for any reason whatsoever, including without limitation if you breach the <strong style={{ color: '#F1F5F9' }}>Terms</strong>.
+                We reserve the right to suspend or terminate your access to our coaching programs and digital platform immediately, without prior notice or liability, for any reason whatsoever, including without limitation if you breach the <strong style={{ color: '#ffffff' }}>Terms</strong>.
               </p>
               <p style={{ margin: 0 }}>
                 Upon termination, your right to use the service will cease immediately.
@@ -154,21 +137,20 @@ export default function Terms() {
           <section>
             <h2 style={{
               fontFamily: "'Instrument Sans', sans-serif",
-              fontSize: '1.45rem',
+              fontSize: '1.4rem',
               fontWeight: 700,
               color: '#ffffff',
-              borderLeft: '4px solid #FF7900',
-              paddingLeft: '14px',
-              marginBottom: '16px'
+              marginBottom: '14px',
+              letterSpacing: '-0.01em'
             }}>
               5. No Warranties Disclaimer
             </h2>
-            <div style={{ lineHeight: '1.8', color: '#94A3B8', fontSize: '1.02rem', paddingLeft: '18px' }}>
+            <div style={{ lineHeight: '1.8', color: '#d4d4d8', fontSize: '1.02rem' }}>
               <p style={{ marginBottom: '14px' }}>
                 The coaching services, guidance, and digital products are provided on an "AS IS" and "AS AVAILABLE" basis. While we strive to provide highly effective transformational frameworks, individual results may vary.
               </p>
               <p style={{ margin: 0 }}>
-                <strong style={{ color: '#F1F5F9' }}>Jagat Turkiya</strong> makes no guarantees regarding specific personal, financial, or relationship outcomes. The application of the principles taught is solely the responsibility of the user.
+                <strong style={{ color: '#ffffff' }}>Jagat Turkiya</strong> makes no guarantees regarding specific personal, financial, or relationship outcomes. The application of the principles taught is solely the responsibility of the user.
               </p>
             </div>
           </section>
@@ -179,18 +161,17 @@ export default function Terms() {
           <section>
             <h2 style={{
               fontFamily: "'Instrument Sans', sans-serif",
-              fontSize: '1.45rem',
+              fontSize: '1.4rem',
               fontWeight: 700,
               color: '#ffffff',
-              borderLeft: '4px solid #FF7900',
-              paddingLeft: '14px',
-              marginBottom: '16px'
+              marginBottom: '14px',
+              letterSpacing: '-0.01em'
             }}>
               6. Governing Law
             </h2>
-            <div style={{ lineHeight: '1.8', color: '#94A3B8', fontSize: '1.02rem', paddingLeft: '18px' }}>
+            <div style={{ lineHeight: '1.8', color: '#d4d4d8', fontSize: '1.02rem' }}>
               <p style={{ marginBottom: '14px' }}>
-                These <strong style={{ color: '#F1F5F9' }}>Terms</strong> shall be governed and construed in accordance with the laws of <strong style={{ color: '#F1F5F9' }}>India</strong>, without regard to its conflict of law provisions.
+                These <strong style={{ color: '#ffffff' }}>Terms</strong> shall be governed and construed in accordance with the laws of <strong style={{ color: '#ffffff' }}>India</strong>, without regard to its conflict of law provisions.
               </p>
               <p style={{ margin: 0 }}>
                 Our failure to enforce any right or provision of these Terms will not be considered a waiver of those rights. If any provision is held to be invalid or unenforceable by a court, the remaining provisions will remain in effect.
@@ -204,16 +185,15 @@ export default function Terms() {
           <section>
             <h2 style={{
               fontFamily: "'Instrument Sans', sans-serif",
-              fontSize: '1.45rem',
+              fontSize: '1.4rem',
               fontWeight: 700,
               color: '#ffffff',
-              borderLeft: '4px solid #FF7900',
-              paddingLeft: '14px',
-              marginBottom: '16px'
+              marginBottom: '14px',
+              letterSpacing: '-0.01em'
             }}>
               7. Modifications to the Terms
             </h2>
-            <div style={{ lineHeight: '1.8', color: '#94A3B8', fontSize: '1.02rem', paddingLeft: '18px' }}>
+            <div style={{ lineHeight: '1.8', color: '#d4d4d8', fontSize: '1.02rem' }}>
               <p style={{ marginBottom: '14px' }}>
                 We reserve the right, at our sole discretion, to modify or replace these Terms at any time. If a revision is material, we will try to provide at least 30 days' notice prior to any new terms taking effect.
               </p>
@@ -225,11 +205,9 @@ export default function Terms() {
 
           {/* 8. Contact Information */}
           <section style={{
-            backgroundColor: '#0F1E36',
-            border: '1px solid #1E3A5F',
-            borderRadius: '16px',
-            padding: '28px 24px',
-            textAlign: 'center'
+            borderTop: '1px solid rgba(255, 255, 255, 0.08)',
+            paddingTop: '36px',
+            marginTop: '8px'
           }}>
             <h2 style={{
               fontFamily: "'Instrument Sans', sans-serif",
@@ -238,44 +216,30 @@ export default function Terms() {
               color: '#ffffff',
               marginBottom: '10px'
             }}>
-              8. Contact Information
+              Contact Information
             </h2>
             <p style={{
               fontSize: '1rem',
-              color: '#94A3B8',
-              maxWidth: '600px',
-              margin: '0 auto 18px auto',
+              color: '#9ca3af',
+              maxWidth: '680px',
+              margin: '0 0 16px 0',
               lineHeight: 1.6
             }}>
-              If you have any questions, concerns, or require clarification regarding these Terms &amp; Conditions, please feel free to reach out to our support team.
+              If you have any questions, concerns, or require clarification regarding these Terms &amp; Conditions, please reach out to our support team:
             </p>
             <a
-              href="mailto:hello@jagatturkiya.com"
+              href="mailto:hello@apkacoach.com"
               style={{
-                color: '#FF7900',
-                fontSize: '1.1rem',
-                fontWeight: 700,
-                textDecoration: 'none'
+                color: '#ffffff',
+                fontSize: '1.05rem',
+                fontWeight: 600,
+                textDecoration: 'underline',
+                textUnderlineOffset: '4px'
               }}
-              onMouseEnter={(e) => e.currentTarget.style.textDecoration = 'underline'}
-              onMouseLeave={(e) => e.currentTarget.style.textDecoration = 'none'}
             >
-              ✉️ hello@jagatturkiya.com
+              hello@apkacoach.com
             </a>
           </section>
-
-          {/* Footer note */}
-          <div style={{
-            backgroundColor: '#1E293B',
-            border: '1px solid #334155',
-            borderRadius: '12px',
-            padding: '16px 20px',
-            textAlign: 'center',
-            color: '#E2E8F0',
-            fontSize: '1.02rem'
-          }}>
-            Thank you for being a part of the <span style={{ color: '#FF7900', fontWeight: 700 }}>Jagat Turkiya</span> community. We look forward to guiding you on your transformation journey.
-          </div>
 
         </div>
       </main>
