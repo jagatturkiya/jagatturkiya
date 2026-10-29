@@ -956,7 +956,7 @@ export default function ApkaCoachGrowth() {
         color: '#CFDAEB',
         padding: '34px 0 26px',
         textAlign: 'center',
-        borderTop: '1px solid rgba(255, 255, 255, 0.08)'
+        borderTop: '1px solid rgba(255, 255, 255, 0.1)'
       }}>
         <div style={{ width: 'min(1140px, 92%)', margin: '0 auto' }}>
           <div style={{ marginBottom: '8px' }}>
@@ -1134,9 +1134,9 @@ function PolicyModal({ policy, onClose }) {
       <div
         onClick={(e) => e.stopPropagation()}
         style={{
-          backgroundColor: '#0a0a0d',
-          color: '#d4d4d8',
-          border: '1px solid rgba(255, 255, 255, 0.14)',
+          backgroundColor: '#071c40',
+          color: '#CFDAEB',
+          border: '1px solid rgba(255, 255, 255, 0.16)',
           borderRadius: '16px',
           width: 'min(740px, 100%)',
           maxHeight: '85vh',
@@ -1149,11 +1149,11 @@ function PolicyModal({ policy, onClose }) {
         {/* Header */}
         <div style={{
           padding: '18px 24px',
-          borderBottom: '1px solid rgba(255, 255, 255, 0.08)',
+          borderBottom: '1px solid rgba(255, 255, 255, 0.1)',
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'space-between',
-          backgroundColor: '#0d0d12'
+          backgroundColor: '#051530'
         }}>
           <h3 style={{
             fontFamily: "'Instrument Sans', sans-serif",
@@ -1200,7 +1200,7 @@ function PolicyModal({ policy, onClose }) {
         }}>
           {policy === 'privacy' && (
             <div>
-              <p style={{ marginBottom: '16px', color: '#9ca3af' }}>
+              <p style={{ marginBottom: '16px', color: '#9cb2d6' }}>
                 We respect your privacy and are deeply committed to protecting your personal information.
               </p>
 
@@ -1227,7 +1227,7 @@ function PolicyModal({ policy, onClose }) {
 
               <h4 style={{ color: '#ffffff', fontFamily: "'Instrument Sans', sans-serif", fontSize: '1.15rem', margin: '20px 0 8px 0' }}>How We Use Your Information</h4>
               <p style={{ marginBottom: '10px' }}>We use the collected data to provide, maintain, and improve our coaching programs, process transactions securely, and communicate updates.</p>
-              <div style={{ borderLeft: '2px solid #ffffff', padding: '10px 14px', margin: '12px 0 16px 0', background: 'rgba(255, 255, 255, 0.02)', color: '#f4f4f5' }}>
+              <div style={{ borderLeft: '2px solid #FF7900', padding: '10px 14px', margin: '12px 0 16px 0', background: 'rgba(255, 255, 255, 0.05)', color: '#f4f4f5' }}>
                 We never sell, rent, or misuse your personal information.
               </div>
 
@@ -1243,13 +1243,13 @@ function PolicyModal({ policy, onClose }) {
 
               <h4 style={{ color: '#ffffff', fontFamily: "'Instrument Sans', sans-serif", fontSize: '1.15rem', margin: '20px 0 8px 0' }}>Contact Us</h4>
               <p style={{ marginBottom: '10px' }}>If you have questions regarding this Privacy Policy, please reach out to:</p>
-              <p><a href="mailto:hello@apkacoach.com" style={{ color: '#ffffff', fontWeight: 600, textDecoration: 'underline' }}>hello@apkacoach.com</a></p>
+              <p><a href="mailto:hello@apkacoach.com" style={{ color: '#FF7900', fontWeight: 600, textDecoration: 'underline' }}>hello@apkacoach.com</a></p>
             </div>
           )}
 
           {policy === 'terms' && (
             <div>
-              <p style={{ marginBottom: '16px', color: '#9ca3af' }}>
+              <p style={{ marginBottom: '16px', color: '#9cb2d6' }}>
                 Please review the terms and conditions governing the use of Jagat Turkiya's website, programs, and digital products.
               </p>
 
@@ -1285,19 +1285,19 @@ function PolicyModal({ policy, onClose }) {
 
               <h4 style={{ color: '#ffffff', fontFamily: "'Instrument Sans', sans-serif", fontSize: '1.15rem', margin: '20px 0 8px 0' }}>7. Contact Information</h4>
               <p style={{ marginBottom: '10px' }}>For questions regarding these Terms &amp; Conditions, please contact:</p>
-              <p><a href="mailto:hello@apkacoach.com" style={{ color: '#ffffff', fontWeight: 600, textDecoration: 'underline' }}>hello@apkacoach.com</a></p>
+              <p><a href="mailto:hello@apkacoach.com" style={{ color: '#FF7900', fontWeight: 600, textDecoration: 'underline' }}>hello@apkacoach.com</a></p>
             </div>
           )}
 
           {policy === 'refund' && (
             <div>
-              <p style={{ marginBottom: '16px', color: '#9ca3af' }}>
+              <p style={{ marginBottom: '16px', color: '#9cb2d6' }}>
                 Refund and cancellation policy for Jagat Turkiya programs, consultations, and digital products.
               </p>
 
-              <div style={{ borderLeft: '2px solid #ffffff', padding: '12px 16px', marginBottom: '20px', background: 'rgba(255, 255, 255, 0.02)' }}>
+              <div style={{ borderLeft: '2px solid #FF7900', padding: '12px 16px', marginBottom: '20px', background: 'rgba(255, 255, 255, 0.05)' }}>
                 <p style={{ color: '#ffffff', fontWeight: 700, fontSize: '1.05rem', margin: '0 0 4px 0' }}>All purchases are non-refundable.</p>
-                <p style={{ color: '#9ca3af', fontSize: '0.92rem', margin: 0 }}>Please ensure you are fully committed before enrolling in any program.</p>
+                <p style={{ color: '#9cb2d6', fontSize: '0.92rem', margin: 0 }}>Please ensure you are fully committed before enrolling in any program.</p>
               </div>
 
               <h4 style={{ color: '#ffffff', fontFamily: "'Instrument Sans', sans-serif", fontSize: '1.15rem', margin: '20px 0 8px 0' }}>Non-Refundable Programs &amp; Services</h4>
@@ -1321,19 +1321,19 @@ function PolicyModal({ policy, onClose }) {
 
               <h4 style={{ color: '#ffffff', fontFamily: "'Instrument Sans', sans-serif", fontSize: '1.15rem', margin: '20px 0 8px 0' }}>Need Help or Have Questions?</h4>
               <p style={{ marginBottom: '10px' }}>If you have questions prior to enrolling or making a purchase, reach out to our team:</p>
-              <p><a href="mailto:hello@apkacoach.com" style={{ color: '#ffffff', fontWeight: 600, textDecoration: 'underline' }}>hello@apkacoach.com</a></p>
+              <p><a href="mailto:hello@apkacoach.com" style={{ color: '#FF7900', fontWeight: 600, textDecoration: 'underline' }}>hello@apkacoach.com</a></p>
             </div>
           )}
 
           {policy === 'disclaimer' && (
             <div>
-              <p style={{ marginBottom: '16px', color: '#9ca3af' }}>
+              <p style={{ marginBottom: '16px', color: '#9cb2d6' }}>
                 All content, coaching guidance, and resources provided by Jagat Turkiya are for informational and educational purposes only.
               </p>
 
-              <div style={{ borderLeft: '2px solid #ffffff', padding: '12px 16px', marginBottom: '20px', background: 'rgba(255, 255, 255, 0.02)' }}>
+              <div style={{ borderLeft: '2px solid #FF7900', padding: '12px 16px', marginBottom: '20px', background: 'rgba(255, 255, 255, 0.05)' }}>
                 <p style={{ color: '#ffffff', fontWeight: 700, fontSize: '1.05rem', margin: '0 0 4px 0' }}>This is not a guarantee-based system.</p>
-                <p style={{ color: '#9ca3af', fontSize: '0.92rem', margin: 0 }}>Your results depend entirely on your personal effort, consistency, and real-world execution.</p>
+                <p style={{ color: '#9cb2d6', fontSize: '0.92rem', margin: 0 }}>Your results depend entirely on your personal effort, consistency, and real-world execution.</p>
               </div>
 
               <h4 style={{ color: '#ffffff', fontFamily: "'Instrument Sans', sans-serif", fontSize: '1.15rem', margin: '20px 0 8px 0' }}>1. General Disclaimer</h4>
@@ -1358,7 +1358,7 @@ function PolicyModal({ policy, onClose }) {
 
               <h4 style={{ color: '#ffffff', fontFamily: "'Instrument Sans', sans-serif", fontSize: '1.15rem', margin: '20px 0 8px 0' }}>Questions?</h4>
               <p style={{ marginBottom: '10px' }}>If you have any questions regarding this disclaimer, please contact:</p>
-              <p><a href="mailto:hello@apkacoach.com" style={{ color: '#ffffff', fontWeight: 600, textDecoration: 'underline' }}>hello@apkacoach.com</a></p>
+              <p><a href="mailto:hello@apkacoach.com" style={{ color: '#FF7900', fontWeight: 600, textDecoration: 'underline' }}>hello@apkacoach.com</a></p>
             </div>
           )}
         </div>
@@ -1367,7 +1367,7 @@ function PolicyModal({ policy, onClose }) {
         <div style={{
           padding: '14px 24px',
           borderTop: '1px solid rgba(255, 255, 255, 0.08)',
-          backgroundColor: '#0d0d12',
+          backgroundColor: '#051530',
           display: 'flex',
           justifyContent: 'flex-end'
         }}>
@@ -1375,12 +1375,12 @@ function PolicyModal({ policy, onClose }) {
             type="button"
             onClick={onClose}
             style={{
-              padding: '8px 22px',
-              backgroundColor: 'rgba(255, 255, 255, 0.1)',
-              border: '1px solid rgba(255, 255, 255, 0.16)',
+              padding: '8px 24px',
+              backgroundColor: '#FF7900',
+              border: '1px solid #FF7900',
               borderRadius: '8px',
               color: '#ffffff',
-              fontWeight: 600,
+              fontWeight: 700,
               fontSize: '0.9rem',
               cursor: 'pointer'
             }}

@@ -880,15 +880,15 @@
       opacity: 1;
     }
     .policy-modal-dialog {
-      background: #0a0a0d;
-      color: #d4d4d8;
-      border: 1px solid rgba(255, 255, 255, 0.14);
+      background: #071c40;
+      color: #CFDAEB;
+      border: 1px solid rgba(255, 255, 255, 0.16);
       border-radius: 16px;
       width: min(740px, 100%);
       max-height: 85vh;
       display: flex;
       flex-direction: column;
-      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.9);
+      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.85);
       overflow: hidden;
       transform: scale(0.96);
       transition: transform 0.2s ease;
@@ -898,11 +898,11 @@
     }
     .policy-modal-header {
       padding: 18px 24px;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
       display: flex;
       align-items: center;
       justify-content: space-between;
-      background: #0d0d12;
+      background: #051530;
     }
     .policy-modal-title {
       font-family: 'Instrument Sans', sans-serif;
@@ -912,8 +912,8 @@
       margin: 0;
     }
     .policy-modal-close {
-      background: rgba(255, 255, 255, 0.08);
-      border: 1px solid rgba(255, 255, 255, 0.12);
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.15);
       border-radius: 50%;
       width: 32px;
       height: 32px;
@@ -927,14 +927,15 @@
       transition: all 0.15s ease;
     }
     .policy-modal-close:hover {
-      background: rgba(255, 255, 255, 0.2);
+      background: rgba(255, 255, 255, 0.22);
     }
     .policy-modal-body {
       padding: 24px;
       overflow-y: auto;
       line-height: 1.75;
       font-size: 0.95rem;
-      color: #d4d4d8;
+      color: #CFDAEB;
+      background: #071c40;
     }
     .policy-modal-body h4 {
       color: #ffffff;
@@ -947,24 +948,24 @@
     }
     .policy-modal-footer {
       padding: 14px 24px;
-      border-top: 1px solid rgba(255, 255, 255, 0.08);
-      background: #0d0d12;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      background: #051530;
       display: flex;
       justify-content: flex-end;
     }
     .policy-modal-footer-btn {
-      padding: 8px 22px;
-      background: rgba(255, 255, 255, 0.1);
-      border: 1px solid rgba(255, 255, 255, 0.16);
+      padding: 8px 24px;
+      background: var(--orange);
+      border: 1px solid var(--orange);
       border-radius: 8px;
       color: #ffffff;
-      font-weight: 600;
+      font-weight: 700;
       font-size: 0.9rem;
       cursor: pointer;
       transition: background 0.15s ease;
     }
     .policy-modal-footer-btn:hover {
-      background: rgba(255, 255, 255, 0.2);
+      background: var(--orange-hover);
     }
 
   </style>
@@ -1341,7 +1342,7 @@
       privacy: {
         title: "Privacy Policy",
         content: `
-          <p style="margin-bottom: 16px; color: #9ca3af;">
+          <p style="margin-bottom: 16px; color: #9cb2d6;">
             We respect your privacy and are deeply committed to protecting your personal information.
           </p>
 
@@ -1368,7 +1369,7 @@
 
           <h4>How We Use Your Information</h4>
           <p>We use the collected data to provide, maintain, and improve our coaching programs, process transactions securely, and communicate updates.</p>
-          <div style="border-left: 2px solid #ffffff; padding: 10px 14px; margin: 12px 0 16px 0; background: rgba(255, 255, 255, 0.02); color: #f4f4f5;">
+          <div style="border-left: 2px solid #FF7900; padding: 10px 14px; margin: 12px 0 16px 0; background: rgba(255, 255, 255, 0.05); color: #f4f4f5;">
             We never sell, rent, or misuse your personal information.
           </div>
 
@@ -1380,13 +1381,13 @@
 
           <h4>Contact Us</h4>
           <p>If you have questions regarding this Privacy Policy, please reach out to:</p>
-          <p><a href="mailto:hello@apkacoach.com" style="color: #ffffff; font-weight: 600; text-decoration: underline;">hello@apkacoach.com</a></p>
+          <p><a href="mailto:hello@apkacoach.com" style="color: #FF7900; font-weight: 600; text-decoration: underline;">hello@apkacoach.com</a></p>
         `
       },
       terms: {
         title: "Terms & Conditions",
         content: `
-          <p style="margin-bottom: 16px; color: #9ca3af;">
+          <p style="margin-bottom: 16px; color: #9cb2d6;">
             Please review the terms and conditions governing the use of Jagat Turkiya's website, programs, and digital products.
           </p>
 
@@ -1422,19 +1423,19 @@
 
           <h4>7. Contact Information</h4>
           <p>For questions regarding these Terms &amp; Conditions, please contact:</p>
-          <p><a href="mailto:hello@apkacoach.com" style="color: #ffffff; font-weight: 600; text-decoration: underline;">hello@apkacoach.com</a></p>
+          <p><a href="mailto:hello@apkacoach.com" style="color: #FF7900; font-weight: 600; text-decoration: underline;">hello@apkacoach.com</a></p>
         `
       },
       refund: {
         title: "Refund Policy",
         content: `
-          <p style="margin-bottom: 16px; color: #9ca3af;">
+          <p style="margin-bottom: 16px; color: #9cb2d6;">
             Refund and cancellation policy for Jagat Turkiya programs, consultations, and digital products.
           </p>
 
-          <div style="border-left: 2px solid #ffffff; padding: 12px 16px; margin-bottom: 20px; background: rgba(255, 255, 255, 0.02);">
+          <div style="border-left: 2px solid #FF7900; padding: 12px 16px; margin-bottom: 20px; background: rgba(255, 255, 255, 0.05);">
             <p style="color: #ffffff; font-weight: 700; font-size: 1.05rem; margin: 0 0 4px 0;">All purchases are non-refundable.</p>
-            <p style="color: #9ca3af; font-size: 0.92rem; margin: 0;">Please ensure you are fully committed before enrolling in any program.</p>
+            <p style="color: #9cb2d6; font-size: 0.92rem; margin: 0;">Please ensure you are fully committed before enrolling in any program.</p>
           </div>
 
           <h4>Non-Refundable Programs &amp; Services</h4>
@@ -1458,19 +1459,19 @@
 
           <h4>Need Help or Have Questions?</h4>
           <p>If you have questions prior to enrolling or making a purchase, reach out to our team:</p>
-          <p><a href="mailto:hello@apkacoach.com" style="color: #ffffff; font-weight: 600; text-decoration: underline;">hello@apkacoach.com</a></p>
+          <p><a href="mailto:hello@apkacoach.com" style="color: #FF7900; font-weight: 600; text-decoration: underline;">hello@apkacoach.com</a></p>
         `
       },
       disclaimer: {
         title: "Disclaimer",
         content: `
-          <p style="margin-bottom: 16px; color: #9ca3af;">
+          <p style="margin-bottom: 16px; color: #9cb2d6;">
             All content, coaching guidance, and resources provided by Jagat Turkiya are for informational and educational purposes only.
           </p>
 
-          <div style="border-left: 2px solid #ffffff; padding: 12px 16px; margin-bottom: 20px; background: rgba(255, 255, 255, 0.02);">
+          <div style="border-left: 2px solid #FF7900; padding: 12px 16px; margin-bottom: 20px; background: rgba(255, 255, 255, 0.05);">
             <p style="color: #ffffff; font-weight: 700; font-size: 1.05rem; margin: 0 0 4px 0;">This is not a guarantee-based system.</p>
-            <p style="color: #9ca3af; font-size: 0.92rem; margin: 0;">Your results depend entirely on your personal effort, consistency, and real-world execution.</p>
+            <p style="color: #9cb2d6; font-size: 0.92rem; margin: 0;">Your results depend entirely on your personal effort, consistency, and real-world execution.</p>
           </div>
 
           <h4>1. General Disclaimer</h4>
@@ -1495,7 +1496,7 @@
 
           <h4>Questions?</h4>
           <p>If you have any questions regarding this disclaimer, please contact:</p>
-          <p><a href="mailto:hello@apkacoach.com" style="color: #ffffff; font-weight: 600; text-decoration: underline;">hello@apkacoach.com</a></p>
+          <p><a href="mailto:hello@apkacoach.com" style="color: #FF7900; font-weight: 600; text-decoration: underline;">hello@apkacoach.com</a></p>
         `
       }
     };
