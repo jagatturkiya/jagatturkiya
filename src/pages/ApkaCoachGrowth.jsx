@@ -238,7 +238,7 @@ export default function ApkaCoachGrowth() {
                 display: 'inline-block',
                 marginBottom: '8px'
               }}>
-                Your Knowledge. Your Network. Your Growth.
+                Our Expertise
               </span>
               <h1 className="apka-hero-h1" style={{
                 fontFamily: "'Instrument Sans', sans-serif",
